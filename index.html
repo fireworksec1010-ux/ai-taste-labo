@@ -1,0 +1,687 @@
+<title>食卓の物価</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+    --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+
+    --series-1: #2a78d6; /* 米 */
+    --series-2: #eb6834; /* 食パン */
+    --series-3: #1baf7a; /* 鶏卵 */
+    --series-4: #eda100; /* 牛乳 */
+    --series-5: #e87ba4; /* 食用油 */
+    --series-6: #008300; /* 即席めん */
+    --series-7: #4a3aa7; /* 豚肉 */
+    --series-8: #e34948; /* しょうゆ */
+
+    --status-good:     #0ca30c;
+    --status-warning:  #fab219;
+    --status-serious:  #ec835a;
+    --status-critical: #d03b3b;
+
+    --accent: var(--series-1);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page-plane:     #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255,255,255,0.10);
+      --card-shadow:    0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --series-3: #199e70;
+      --series-4: #c98500;
+      --series-5: #d55181;
+      --series-6: #008300;
+      --series-7: #9085e9;
+      --series-8: #e66767;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page-plane:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+    --card-shadow:    0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+    --series-8: #e66767;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--page-plane);
+    color:var(--text-primary);
+    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:48px 0 28px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; letter-spacing:.08em;
+    color:var(--text-secondary); text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{ font-size:clamp(30px,5.2vw,44px); line-height:1.2; }
+  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:62ch; margin:16px 0 0; }
+  .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
+  .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
+
+  /* ---------- section shell ---------- */
+  section{ padding:34px 0; border-top:1px solid var(--border); }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px;}
+  .section-head h2{ font-size:22px; }
+  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:4px; max-width:60ch; line-height:1.7;}
+
+  /* ---------- stat tiles ---------- */
+  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+  .stat-tile{
+    background:var(--surface-1); border:1px solid var(--border); border-radius:10px;
+    padding:16px 16px 14px; box-shadow:var(--card-shadow);
+  }
+  .stat-tile .label{ font-size:12px; color:var(--text-secondary); margin-bottom:8px; }
+  .stat-tile .value{ font-size:28px; font-weight:900; line-height:1.1; }
+  .stat-tile .value .unit{ font-size:13px; font-weight:500; color:var(--text-secondary); margin-left:2px;}
+  .badge{
+    display:inline-flex; align-items:center; gap:5px; margin-top:9px;
+    font-size:11.5px; font-weight:700; padding:3px 8px; border-radius:99px;
+  }
+  .badge.critical{ color:#fff; background:var(--status-critical); }
+  .badge.serious{ color:#fff; background:var(--status-serious); }
+  .badge.warning{ color:#3a2a00; background:var(--status-warning); }
+  .badge.good{ color:#fff; background:var(--status-good); }
+  .stat-tile .foot{ font-size:11.5px; color:var(--text-muted); margin-top:8px; line-height:1.5;}
+
+  /* ---------- chips ---------- */
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:8px 13px; border-radius:99px; border:1px solid var(--border);
+    background:var(--surface-1); color:var(--text-primary);
+    font-size:13px; font-weight:500; cursor:pointer; font-family:inherit;
+  }
+  .chip .sw{ width:9px; height:9px; border-radius:50%; flex:none; }
+  .chip[aria-pressed="true"]{ border-color:currentColor; font-weight:700; box-shadow:0 0 0 1px currentColor inset; }
+  .chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* ---------- chart card ---------- */
+  .chart-card{
+    background:var(--surface-1); border:1px solid var(--border); border-radius:12px;
+    padding:18px 18px 8px; box-shadow:var(--card-shadow); position:relative;
+  }
+  .chart-card + .chart-card{ margin-top:14px; }
+  .chart-card h3{ font-size:15px; font-weight:700; font-family:"Zen Kaku Gothic New",sans-serif; }
+  .chart-card .chart-note{ font-size:12px; color:var(--text-secondary); margin-top:2px; line-height:1.6;}
+  .chart-svg-wrap{ position:relative; margin-top:10px; }
+  svg.chart{ width:100%; height:auto; display:block; overflow:visible; }
+  .axis-label{ fill:var(--text-muted); font-size:10.5px; font-family:"Zen Kaku Gothic New",sans-serif; }
+  .gridline{ stroke:var(--gridline); stroke-width:1; }
+  .baseline{ stroke:var(--baseline); stroke-width:1; stroke-dasharray:3 3; }
+  .line-path{ fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .line-path.dashed{ stroke-dasharray:5 4; }
+  .hover-dot{ fill:var(--surface-1); stroke-width:2; r:4.5; display:none; }
+  .hover-line{ stroke:var(--text-muted); stroke-width:1; stroke-dasharray:2 3; display:none; }
+  .chart-hit{ fill:transparent; cursor:crosshair; }
+
+  .tooltip{
+    position:absolute; pointer-events:none; z-index:5;
+    background:var(--text-primary); color:var(--page-plane);
+    font-size:12px; line-height:1.5; padding:6px 9px; border-radius:6px;
+    transform:translate(-50%,-115%); white-space:nowrap; opacity:0; transition:opacity .08s;
+    font-family:"Zen Kaku Gothic New",sans-serif; font-variant-numeric:tabular-nums;
+  }
+  .tooltip b{ font-weight:900; }
+
+  .note-box{
+    margin-top:14px; padding:12px 14px; border-radius:10px;
+    background:var(--page-plane); border:1px solid var(--border);
+    font-size:12.5px; color:var(--text-secondary); line-height:1.7;
+  }
+  .note-box b{ color:var(--text-primary); }
+
+  details.table-toggle{ margin-top:10px; }
+  details.table-toggle summary{
+    cursor:pointer; font-size:12.5px; color:var(--text-secondary); font-weight:700;
+    padding:6px 0;
+  }
+  .data-table-scroll{ overflow-x:auto; margin-top:6px; }
+  table.data-table{ border-collapse:collapse; width:100%; font-size:12px; font-variant-numeric:tabular-nums; }
+  table.data-table th, table.data-table td{ padding:5px 9px; text-align:right; border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  table.data-table th:first-child, table.data-table td:first-child{ text-align:left; }
+
+  #egg-panel[hidden]{ display:none; }
+
+  .legend-tier{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; font-size:11.5px; color:var(--text-secondary); }
+  .legend-tier span{ display:inline-flex; align-items:center; gap:6px; }
+  .legend-tier i{ width:16px; height:0; border-top:2px solid var(--text-muted); display:inline-block; }
+  .legend-tier i.dashed{ border-top-style:dashed; }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  .sources{ display:grid; gap:10px; margin-top:14px; }
+  .source-item{ font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
+  .source-item .org{ font-weight:700; color:var(--text-primary); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:70ch; }
+
+  @media (max-width:520px){
+    .hero{ padding:36px 0 22px; }
+    .stat-tile .value{ font-size:24px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span>公的統計で見る食品価格</div>
+    <h1>食卓の物価</h1>
+    <p>総務省統計局「消費者物価指数」「小売物価統計調査」「家計調査」、農林水産省「食品価格動向調査」など公的統計をもとに、生活必需品の価格推移と家計への影響をまとめました。営業・商品提案の説明資料としてご利用いただけます。</p>
+    <div class="meta-row">
+      <span id="updated-at">データ取得日を読み込み中…</span>
+      <span>出典：総務省統計局／農林水産省（詳細は末尾）</span>
+    </div>
+  </div>
+
+  <section id="stats">
+    <div class="section-head">
+      <div>
+        <h2>値上げの実感を数字で</h2>
+        <div class="section-sub">直近で特に変化が大きい指標のハイライトです。指数は2020年を100とした消費者物価指数（CPI）。</div>
+      </div>
+    </div>
+    <div class="stat-grid" id="stat-grid"></div>
+  </section>
+
+  <section id="trend">
+    <div class="section-head">
+      <div>
+        <h2>品目別・価格指数の推移</h2>
+        <div class="section-sub">品目を選ぶと、下のグラフが切り替わります。指数は総務省統計局「消費者物価指数」品目別価格指数（2020年＝100、全国・年平均）。</div>
+      </div>
+    </div>
+
+    <div class="chip-row" id="chip-row" role="group" aria-label="品目を選択"></div>
+
+    <div class="chart-card">
+      <h3 id="long-title">長期推移（1970年〜2025年）</h3>
+      <div class="chart-note" id="long-note"></div>
+      <div class="chart-svg-wrap">
+        <svg class="chart" id="svg-long" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tip-long"></div>
+      </div>
+      <details class="table-toggle"><summary>年ごとの数値を表で見る</summary>
+        <div class="data-table-scroll"><table class="data-table" id="table-long"></table></div>
+      </details>
+    </div>
+
+    <div class="chart-card">
+      <h3 id="recent-title">直近10年のズーム（2015年〜2025年）</h3>
+      <div class="chart-note" id="recent-note"></div>
+      <div class="chart-svg-wrap">
+        <svg class="chart" id="svg-recent" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tip-recent"></div>
+      </div>
+    </div>
+
+    <div id="egg-panel" class="chart-card" hidden>
+      <h3>鶏卵の実勢価格（参考・円ベース）</h3>
+      <div class="chart-note">東京都区部の年平均小売価格（2018〜2023年）と、農林水産省「食品価格動向調査」の全国平均月次価格（2024年4月〜2025年9月）をつないだ参考系列です。</div>
+      <div class="chart-svg-wrap">
+        <svg class="chart" id="svg-egg" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tip-egg"></div>
+      </div>
+    </div>
+
+    <div class="note-box" id="trend-item-note" style="display:none;"></div>
+  </section>
+
+  <section id="engel">
+    <div class="section-head">
+      <div>
+        <h2>家計への影響：エンゲル係数</h2>
+        <div class="section-sub">消費支出に占める食料費の割合（二人以上の世帯）。総務省統計局「家計調査」ベース。</div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-svg-wrap">
+        <svg class="chart" id="svg-engel" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tip-engel"></div>
+      </div>
+      <div class="legend-tier">
+        <span><i></i>総務省統計局 一次資料</span>
+        <span><i class="dashed"></i>二次情報（総務省データを基に集計・要確認）</span>
+      </div>
+    </div>
+    <div class="note-box" id="engel-note"></div>
+  </section>
+
+  <footer>
+    <h2 style="font-size:18px;">出典・注記</h2>
+    <div class="sources" id="sources"></div>
+    <div class="disclaimer">
+      ・指数は各年の年平均値です。実勢価格（円）は特定の調査地域・時点のサンプルであり、全国のすべての店舗の価格を代表するものではありません。<br>
+      ・エンゲル係数の2018年は公表値を確認できず欠測、2019〜2022年は二次情報のため参考値としています（グラフ上は破線）。<br>
+      ・本ページは社内外への説明・提案資料としての利用を想定した参考資料です。引用の際は各統計の一次資料をご確認ください。
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var COLOR_VAR = {
+    rice:"--series-1", bread:"--series-2", egg:"--series-3", milk:"--series-4",
+    cooking_oil:"--series-5", instant_noodles:"--series-6", pork:"--series-7", soy_sauce:"--series-8"
+  };
+  var state = { currentItem:"rice", data:null };
+
+  function cssVar(name){
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+  function fmt1(v){ return (Math.round(v*10)/10).toLocaleString("ja-JP",{minimumFractionDigits:1,maximumFractionDigits:1}); }
+  function fmtInt(v){ return Math.round(v).toLocaleString("ja-JP"); }
+  function niceMax(v){
+    if(v<=0) return 10;
+    var base = Math.pow(10, Math.floor(Math.log10(v)));
+    var f = v/base, niceF;
+    if(f<=1) niceF=1; else if(f<=1.2) niceF=1.2; else if(f<=1.5) niceF=1.5;
+    else if(f<=2) niceF=2; else if(f<=2.5) niceF=2.5; else if(f<=3) niceF=3;
+    else if(f<=4) niceF=4; else if(f<=5) niceF=5; else if(f<=6) niceF=6;
+    else if(f<=8) niceF=8; else niceF=10;
+    return niceF*base;
+  }
+
+  /* ---------------- generic SVG line chart ---------------- */
+  function buildChart(svg, points, opts){
+    // points: [{x:Number, y:Number|null, tier:'primary'|'secondary'|..., label:String(optional)}]
+    opts = opts || {};
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var vb = svg.viewBox.baseVal;
+    var W = vb.width || 720, H = vb.height || 300;
+    var m = {top:14, right:14, bottom:26, left:44};
+    var innerW = W-m.left-m.right, innerH = H-m.top-m.bottom;
+
+    var xs = points.map(function(p){return p.x;});
+    var ys = points.filter(function(p){return p.y!==null && p.y!==undefined;}).map(function(p){return p.y;});
+    var xMin = Math.min.apply(null,xs), xMax = Math.max.apply(null,xs);
+    var yMax = opts.yMax!==undefined ? opts.yMax : niceMax(Math.max.apply(null,ys)*1.12);
+    var yMin = opts.yMin!==undefined ? opts.yMin : 0;
+
+    function sx(x){ return m.left + (xMax===xMin?0:(x-xMin)/(xMax-xMin))*innerW; }
+    function sy(y){ return m.top + innerH - (yMax===yMin?0:(y-yMin)/(yMax-yMin))*innerH; }
+
+    var svgns = "http://www.w3.org/2000/svg";
+    function el(tag,attrs){
+      var e = document.createElementNS(svgns,tag);
+      for(var k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    // y gridlines
+    var yTickCount = 4;
+    for(var i=0;i<=yTickCount;i++){
+      var yv = yMin + (yMax-yMin)*i/yTickCount;
+      var yy = sy(yv);
+      svg.appendChild(el("line",{class:"gridline", x1:m.left, x2:W-m.right, y1:yy, y2:yy}));
+      var t = el("text",{class:"axis-label", x:m.left-8, y:yy+3, "text-anchor":"end"});
+      t.textContent = opts.yTickFormatter ? opts.yTickFormatter(yv) : fmtInt(yv);
+      svg.appendChild(t);
+    }
+    // reference line (e.g. index=100)
+    if(opts.refLine!==undefined){
+      var ry = sy(opts.refLine);
+      svg.appendChild(el("line",{class:"baseline", x1:m.left, x2:W-m.right, y1:ry, y2:ry}));
+      var rt = el("text",{class:"axis-label", x:W-m.right, y:ry-4, "text-anchor":"end"});
+      rt.textContent = opts.refLineLabel || "";
+      svg.appendChild(rt);
+    }
+    // x ticks
+    var tickEvery = opts.xTickEvery || Math.max(1, Math.round((xMax-xMin)/6));
+    var lastTickDrawn = null;
+    for(var xv=Math.ceil(xMin/tickEvery)*tickEvery; xv<=xMax; xv+=tickEvery){
+      var xx = sx(xv);
+      var xt = el("text",{class:"axis-label", x:xx, y:H-m.bottom+16, "text-anchor":"middle"});
+      xt.textContent = opts.xTickFormatter ? opts.xTickFormatter(xv) : String(Math.round(xv));
+      svg.appendChild(xt);
+      lastTickDrawn = xv;
+    }
+    if(points.length && xMax!==xMin && (lastTickDrawn===null || (xMax-lastTickDrawn) > tickEvery*0.4)){
+      var lastLabel = opts.xTickFormatter ? opts.xTickFormatter(xMax) : String(Math.round(xMax));
+      var lt = el("text",{class:"axis-label", x:sx(xMax), y:H-m.bottom+16, "text-anchor":"middle"});
+      lt.textContent = lastLabel;
+      svg.appendChild(lt);
+    }
+
+    // build contiguous segments (break on null, style-split on tier change)
+    var color = cssVar(opts.colorVar || "--series-1");
+    var segments = [];
+    var cur = null;
+    points.forEach(function(p, idx){
+      if(p.y===null || p.y===undefined){
+        if(cur){ segments.push(cur); cur=null; }
+        return;
+      }
+      var tier = p.tier || "primary";
+      if(!cur){ cur = {tier:tier, pts:[p]}; return; }
+      if(cur.tier!==tier){
+        cur.pts.push(p);
+        segments.push(cur);
+        cur = {tier:tier, pts:[p]};
+      } else {
+        cur.pts.push(p);
+      }
+    });
+    if(cur) segments.push(cur);
+
+    segments.forEach(function(seg){
+      var d = seg.pts.map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
+      var path = el("path",{class:"line-path"+(seg.tier!=="primary"?" dashed":""), d:d, stroke:color});
+      svg.appendChild(path);
+    });
+
+    // hover interaction
+    var hitRect = el("rect",{class:"chart-hit", x:m.left, y:m.top, width:innerW, height:innerH});
+    var hoverLineEl = el("line",{class:"hover-line", x1:0,x2:0,y1:m.top,y2:m.top+innerH});
+    var hoverDotEl = el("circle",{class:"hover-dot", stroke:color, r:4.5});
+    svg.appendChild(hitRect);
+    svg.appendChild(hoverLineEl);
+    svg.appendChild(hoverDotEl);
+
+    var validPts = points.filter(function(p){return p.y!==null && p.y!==undefined;});
+    var tooltipEl = opts.tooltipEl;
+
+    function pointFromEvent(evt){
+      var pt = svg.createSVGPoint();
+      pt.x = evt.clientX; pt.y = evt.clientY;
+      var ctm = svg.getScreenCTM();
+      if(!ctm) return null;
+      return pt.matrixTransform(ctm.inverse());
+    }
+    function nearest(userX){
+      var best=null,bestD=Infinity;
+      validPts.forEach(function(p){
+        var d = Math.abs(sx(p.x)-userX);
+        if(d<bestD){bestD=d;best=p;}
+      });
+      return best;
+    }
+    function showAt(p){
+      hoverLineEl.setAttribute("x1", sx(p.x)); hoverLineEl.setAttribute("x2", sx(p.x));
+      hoverLineEl.style.display="block";
+      hoverDotEl.setAttribute("cx", sx(p.x)); hoverDotEl.setAttribute("cy", sy(p.y));
+      hoverDotEl.style.display="block";
+      if(tooltipEl){
+        var label = p.label || (opts.xTickFormatter?opts.xTickFormatter(p.x):p.x);
+        var valTxt = opts.tooltipFormatter ? opts.tooltipFormatter(p) : fmt1(p.y);
+        tooltipEl.innerHTML = label+"：<b>"+valTxt+"</b>";
+        var box = svg.getBoundingClientRect();
+        var leftPx = box.width * (sx(p.x)/W);
+        var topPx = box.height * (sy(p.y)/H);
+        tooltipEl.style.left = leftPx+"px";
+        tooltipEl.style.top = topPx+"px";
+        tooltipEl.style.opacity = "1";
+      }
+    }
+    function hide(){
+      hoverLineEl.style.display="none";
+      hoverDotEl.style.display="none";
+      if(tooltipEl) tooltipEl.style.opacity="0";
+    }
+    hitRect.addEventListener("mousemove", function(evt){
+      var p = pointFromEvent(evt); if(!p || !validPts.length) return;
+      showAt(nearest(p.x));
+    });
+    hitRect.addEventListener("mouseleave", hide);
+    hitRect.addEventListener("touchstart", function(evt){
+      var t = evt.touches[0]; if(!t || !validPts.length) return;
+      var p = pointFromEvent(t); if(!p) return;
+      showAt(nearest(p.x));
+    }, {passive:true});
+    hitRect.addEventListener("touchend", hide);
+  }
+
+  /* ---------------- rendering ---------------- */
+  function itemByKey(key){ return state.data.items.find(function(it){return it.key===key;}); }
+
+  function renderChips(){
+    var row = document.getElementById("chip-row");
+    row.innerHTML = "";
+    state.data.items.forEach(function(it){
+      var color = cssVar(COLOR_VAR[it.key]);
+      var btn = document.createElement("button");
+      btn.className = "chip"; btn.type="button";
+      btn.style.color = color;
+      btn.setAttribute("aria-pressed", it.key===state.currentItem ? "true":"false");
+      var last = it.cpi_index[it.cpi_index.length-1];
+      btn.innerHTML = '<span class="sw" style="background:'+color+'"></span>'+it.label_ja+
+        '<span style="color:var(--text-muted);font-weight:400;">'+fmt1(last.value)+'</span>';
+      btn.addEventListener("click", function(){ selectItem(it.key); });
+      row.appendChild(btn);
+    });
+  }
+
+  function renderTable(item){
+    var tbl = document.getElementById("table-long");
+    var rows = item.cpi_index.filter(function(p){return p.year % 5 === 0 || p.year===item.cpi_index[item.cpi_index.length-1].year;});
+    var head = "<thead><tr><th>年</th>"+rows.map(function(r){return "<th>"+r.year+"</th>";}).join("")+"</tr></thead>";
+    var body = "<tbody><tr><th>指数(2020=100)</th>"+rows.map(function(r){return "<td>"+fmt1(r.value)+"</td>";}).join("")+"</tr></tbody>";
+    tbl.innerHTML = head+body;
+  }
+
+  function renderDetail(){
+    var item = itemByKey(state.currentItem);
+    var color = cssVar(COLOR_VAR[item.key]);
+    document.documentElement.style.setProperty("--accent", color);
+
+    document.getElementById("long-title").textContent = item.label_ja+"の長期推移（"+item.cpi_index[0].year+"年〜"+item.cpi_index[item.cpi_index.length-1].year+"年）";
+    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2020年＝100、全国・年平均）";
+
+    buildChart(document.getElementById("svg-long"), item.cpi_index.map(function(p){return {x:p.year,y:p.value};}), {
+      colorVar: COLOR_VAR[item.key],
+      refLine: 100, refLineLabel:"2020年=100",
+      xTickEvery: 10,
+      tooltipEl: document.getElementById("tip-long"),
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      xTickFormatter: function(x){ return x+"年"; }
+    });
+
+    var recent = item.cpi_index.filter(function(p){return p.year>=2015;});
+    document.getElementById("recent-title").textContent = item.label_ja+"：直近10年のズーム（2015年〜"+recent[recent.length-1].year+"年）";
+    var first = recent[0].value, lastR = recent[recent.length-1].value;
+    var pct = ((lastR-first)/first*100);
+    document.getElementById("recent-note").textContent =
+      "2015年（"+fmt1(first)+"）→"+recent[recent.length-1].year+"年（"+fmt1(lastR)+"）："+(pct>=0?"+":"")+fmt1(pct)+"%";
+
+    buildChart(document.getElementById("svg-recent"), recent.map(function(p){return {x:p.year,y:p.value};}), {
+      colorVar: COLOR_VAR[item.key],
+      refLine: 100, refLineLabel:"2020年=100",
+      xTickEvery: 1,
+      tooltipEl: document.getElementById("tip-recent"),
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      xTickFormatter: function(x){ return x+"年"; }
+    });
+
+    renderTable(item);
+
+    // egg-only yen panel
+    var eggPanel = document.getElementById("egg-panel");
+    if(item.key === "egg"){
+      eggPanel.hidden = false;
+      var series = [];
+      (item.retail_price_yen||[]).forEach(function(p){ series.push({x:p.year*12, y:p.value, label:p.year+"年（年平均）"}); });
+      (item.retail_price_yen_monthly_recent||[]).forEach(function(p){
+        var parts = p.month.split("-"); var yv=+parts[0], mv=+parts[1];
+        series.push({x:yv*12+mv, y:p.value, label:p.month.replace("-","年")+"月"});
+      });
+      series.sort(function(a,b){return a.x-b.x;});
+      buildChart(document.getElementById("svg-egg"), series, {
+        colorVar: COLOR_VAR.egg,
+        xTickEvery: 12,
+        tooltipEl: document.getElementById("tip-egg"),
+        tooltipFormatter: function(p){ return fmtInt(p.y)+"円/パック"; },
+        xTickFormatter: function(x){ return Math.floor(x/12)+""; }
+      });
+    } else {
+      eggPanel.hidden = true;
+    }
+
+    // contextual note
+    var NOTE_KEY = { rice:"米", cooking_oil:"食用油", egg:"鶏卵", pork:"豚肉" };
+    var noteBox = document.getElementById("trend-item-note");
+    var noteKey = NOTE_KEY[item.key];
+    var note = noteKey ? (state.data.recent_trend_notes||[]).find(function(n){ return n.item.indexOf(noteKey)!==-1; }) : null;
+    if(note){
+      noteBox.style.display = "block";
+      noteBox.innerHTML = "<b>"+note.item+"の動き：</b>"+note.note;
+    } else {
+      noteBox.style.display = "none";
+    }
+  }
+
+  function selectItem(key){
+    state.currentItem = key;
+    Array.prototype.forEach.call(document.querySelectorAll("#chip-row .chip"), function(btn,idx){
+      btn.setAttribute("aria-pressed", state.data.items[idx].key===key ? "true":"false");
+    });
+    renderDetail();
+  }
+
+  function monthLabel(m){ var p=m.split("-"); return (+p[0])+"年"+(+p[1])+"月"; }
+  function statBadge(pct){
+    if(pct>=50) return {cls:"critical", label:"大幅上昇"};
+    if(pct>=20) return {cls:"serious", label:"上昇"};
+    if(pct>=5) return {cls:"warning", label:"やや上昇"};
+    if(pct> -5) return {cls:"good", label:"横ばい"};
+    return {cls:"good", label:"下落"};
+  }
+
+  function renderStats(){
+    var grid = document.getElementById("stat-grid");
+    grid.innerHTML = "";
+    var rice = itemByKey("rice"), oil = itemByKey("cooking_oil"), egg = itemByKey("egg");
+    var riceLast = rice.cpi_index[rice.cpi_index.length-1];
+    var oilLast = oil.cpi_index[oil.cpi_index.length-1];
+    var eggMonthly = egg.retail_price_yen_monthly_recent||[];
+    var eggFirst = eggMonthly[0], eggLast = eggMonthly[eggMonthly.length-1];
+    var eggPct = eggFirst ? ((eggLast.value-eggFirst.value)/eggFirst.value*100) : 0;
+    var engel = state.data.engel_coefficient;
+    var engelLast = engel[engel.length-1], engelPrev = engel[engel.length-2];
+
+    var tiles = [
+      { label:"米（価格指数・"+riceLast.year+"年）", value:fmt1(riceLast.value), unit:"（2020年=100）",
+        badge: statBadge(riceLast.value-100), badgeText: (riceLast.value-100>=0?"+":"")+fmt1(riceLast.value-100)+"pt（2020年比）",
+        foot:"令和の米騒動と呼ばれる需給ひっ迫で急騰。" },
+      { label:"食用油（価格指数・"+oilLast.year+"年）", value:fmt1(oilLast.value), unit:"（2020年=100）",
+        badge: statBadge(oilLast.value-100), badgeText: (oilLast.value-100>=0?"+":"")+fmt1(oilLast.value-100)+"pt（2020年比）",
+        foot:"原料油脂の国際価格上昇が影響。" },
+      { label:"鶏卵（実勢価格・全国平均）", value: eggLast?fmtInt(eggLast.value):"—", unit:"円/パック",
+        badge: statBadge(eggPct), badgeText:(eggPct>=0?"+":"")+fmt1(eggPct)+"%（"+monthLabel(eggFirst.month)+"→"+monthLabel(eggLast.month)+"）",
+        foot:"農林水産省「食品価格動向調査」より。" },
+      { label:"エンゲル係数（"+engelLast.year+"年）", value: fmt1(engelLast.value), unit:"%",
+        badge: {cls:"serious", label:"43年ぶりの高さ"},
+        badgeText:"前年比"+(engelLast.value-engelPrev.value>=0?"+":"")+fmt1(engelLast.value-engelPrev.value)+"pt",
+        foot:"1981年（昭和56年）以来の水準。総務省「家計調査」より。" }
+    ];
+
+    tiles.forEach(function(t){
+      var div = document.createElement("div");
+      div.className = "stat-tile";
+      div.innerHTML =
+        '<div class="label">'+t.label+'</div>'+
+        '<div class="value">'+t.value+'<span class="unit">'+t.unit+'</span></div>'+
+        '<div class="badge '+t.badge.cls+'">'+t.badge.label+' '+t.badgeText+'</div>'+
+        '<div class="foot">'+t.foot+'</div>';
+      grid.appendChild(div);
+    });
+  }
+
+  function renderEngel(){
+    var engel = state.data.engel_coefficient;
+    var pts = engel.map(function(e){ return {x:e.year, y:e.value, tier: e.tier==="primary"?"primary":"secondary"}; });
+    buildChart(document.getElementById("svg-engel"), pts, {
+      colorVar: "--series-1",
+      xTickEvery: 10,
+      tooltipEl: document.getElementById("tip-engel"),
+      tooltipFormatter: function(p){ return fmt1(p.y)+"%"; },
+      xTickFormatter: function(x){ return x+"年"; }
+    });
+    var last = engel[engel.length-1];
+    document.getElementById("engel-note").innerHTML =
+      "<b>2024年のエンゲル係数は"+fmt1(last.value)+"%。</b>1981年（昭和56年）以来43年ぶりの高水準で、食料価格の高騰が家計を圧迫していることを示しています。2019〜2022年は総務省公表資料での一次確認ができていない参考値、2018年は欠測として扱っています。";
+  }
+
+  function renderSources(){
+    var wrap = document.getElementById("sources");
+    wrap.innerHTML = "";
+    state.data.meta.sources.forEach(function(s){
+      var div = document.createElement("div");
+      div.className = "source-item";
+      div.innerHTML = '<span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+ (s.url||s.file_url||s.mirror_url) +'" target="_blank" rel="noopener">出典を見る</a>'+(s.note? "　"+s.note : "");
+      wrap.appendChild(div);
+    });
+  }
+
+  function renderUpdated(){
+    var parts = state.data.meta.generated_at.split("-");
+    document.getElementById("updated-at").textContent = "データ取得日：" + parts[0]+"年"+(+parts[1])+"月"+(+parts[2])+"日";
+  }
+
+  function renderAll(){
+    renderUpdated();
+    renderStats();
+    renderChips();
+    renderDetail();
+    renderEngel();
+    renderSources();
+  }
+
+  fetch("data.json").then(function(r){return r.json();}).then(function(json){
+    state.data = json;
+    renderAll();
+  }).catch(function(err){
+    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    console.error(err);
+  });
+
+  if(window.matchMedia){
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){
+      if(state.data) renderAll();
+    });
+  }
+})();
+</script>

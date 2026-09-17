@@ -1,0 +1,2677 @@
+﻿{
+    "meta":  {
+                 "generated_at":  "2026-09-17",
+                 "description":  "日本の食品価格推移とエンゲル係数に関するマーケティング資料用データセット。公的統計（総務省統計局・農林水産省）を主な出典とする。",
+                 "coverage_summary":  "品目8種のCPI価格指数は1970年～2025年（牛乳のみ1975年～）を網羅。エンゲル係数は1946年～2024年（うち2018年は欠測、2019-2022年は二次情報）。実勢価格（円）は鶏卵・豚肉の一部年のみ取得。",
+                 "sources":  [
+                                 {
+                                     "id":  "cpi_item_index",
+                                     "name":  "消費者物価指数 品目別価格指数（2020年基準、全国・年平均、1970年～2025年）",
+                                     "org":  "総務省統計局",
+                                     "url":  "https://www.e-stat.go.jp/stat-search/files?tclass=000001138366\u0026cycle=0",
+                                     "file_url":  "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032103938\u0026fileKind=1",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "原本CSVをダウンロードし直接集計（一次情報）。"
+                                 },
+                                 {
+                                     "id":  "retail_price_tokyo_annual",
+                                     "name":  "小売物価統計調査（動向編） 年次結果（東京都区部、鶏卵の年平均小売価格、2018年～2023年）",
+                                     "org":  "総務省統計局",
+                                     "url":  "https://www.stat.go.jp/data/kouri/doukou/2023np/pdf/kourikakaku2023.pdf",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "一次情報。同調査結果コラム「鶏卵と関連製品の価格の動きについて」内の図表より。"
+                                 },
+                                 {
+                                     "id":  "maff_meat_egg_price",
+                                     "name":  "食品価格動向調査（食肉・鶏卵） 全国平均小売価格（月次、2024年4月～2025年9月）",
+                                     "org":  "農林水産省 大臣官房政策課食料安全保障室",
+                                     "url":  "https://www.maff.go.jp/j/zyukyu/anpo/kouri/k_gyuniku/index.html",
+                                     "mirror_url":  "https://www.j-chicken.jp/wp-chicken/wp-content/uploads/2025/10/R7.9%E9%A3%9F%E5%93%81%E4%BE%A1%E6%A0%BC%E5%8B%95%E5%90%91%E8%AA%BF%E6%9F%BB.pdf",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "一次情報（農水省公表資料。本データセットでは一般社団法人日本食鳥協会サイトに掲載のPDF転載版から取得）。"
+                                 },
+                                 {
+                                     "id":  "maff_price_trend_overview",
+                                     "name":  "食品価格動向調査（野菜・加工食品・食肉鶏卵・魚介類・果樹）概要ページ",
+                                     "org":  "農林水産省",
+                                     "url":  "https://www.maff.go.jp/j/zyukyu/anpo/kouri/",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "調査の枠組み説明のみ取得。個別の週次価格データは今回未取得。"
+                                 },
+                                 {
+                                     "id":  "engel_coefficient_primary",
+                                     "name":  "家計調査報告（家計収支編）2024年（令和6年）平均結果の概要",
+                                     "org":  "総務省統計局",
+                                     "url":  "https://www.stat.go.jp/data/kakei/sokuhou/tsuki/pdf/fies_gaikyo2024.pdf",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "一次情報。二人以上の世帯のエンゲル係数（2023年27.8%、2024年28.3%）を明記。"
+                                 },
+                                 {
+                                     "id":  "engel_coefficient_secondary",
+                                     "name":  "エンゲル係数｜年次統計（1946年～2017年、二人以上の世帯）",
+                                     "org":  "生活情報センター「年次統計」（nenji-toukei.com）※総務省「家計調査」を基に集計",
+                                     "url":  "https://nenji-toukei.com/n/kiji/10081/%E3%82%A8%E3%83%B3%E3%82%B2%E3%83%AB%E4%BF%82%E6%95%B0",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "二次情報（アグリゲーターサイト）。2000年値(23.28%)が総務省統計局公表資料の「23.3%」とおおむね整合することを確認済み。"
+                                 },
+                                 {
+                                     "id":  "engel_coefficient_secondary2",
+                                     "name":  "第183回 2024年のエンゲル係数は28.3%と、43年ぶりの高水準（記事中の要約値、2019年～2022年）",
+                                     "org":  "日本生命/ニッセイアセットマネジメント関連記事、総務省「家計調査」を基に算出と説明",
+                                     "url":  "https://www.nissay.co.jp/enjoy/keizai/183.html",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "二次情報。ウェブ検索要約から得た数値であり、一次資料（e-Stat家計調査時系列表）での再確認を推奨。"
+                                 },
+                                 {
+                                     "id":  "engel_wikipedia",
+                                     "name":  "エンゲル係数（Wikipedia、参考・未採用）",
+                                     "org":  "Wikipedia",
+                                     "url":  "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%82%B2%E3%83%AB%E4%BF%82%E6%95%B0",
+                                     "retrieved":  "2026-09-17",
+                                     "note":  "本データセットの採用値とは一部年で差異があり、参考情報として記載するに留め、採用は見送った。"
+                                 }
+                             ]
+             },
+    "items":  [
+                  {
+                      "key":  "rice",
+                      "label_ja":  "米（うるち米・米類）",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  41.9
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  42
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  43.6
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  47.2
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  53.7
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  69.4
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  79.7
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  87.6
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  92.8
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  94.8
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  97.3
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  101.2
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  105.1
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  107.1
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  111
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  114.5
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  115.3
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  115.3
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  113.3
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  115
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  116.4
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  116.3
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  120.8
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  124.4
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  136.3
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  119.4
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  116.4
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  115.5
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  110.9
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  112.7
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  108.1
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  104.7
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  104.3
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  108.3
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  118.8
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  103
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  99.8
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  98.1
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  96.8
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  97.2
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  93.8
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  90.1
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  98.3
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  100.3
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  94
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  87.5
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  90.9
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  95.2
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  99.7
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  99.9
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  96.8
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  92.6
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  96.1
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  122.8
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  205.6
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index"
+                                     ]
+                  },
+                  {
+                      "key":  "bread",
+                      "label_ja":  "食パン",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  27.2
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  29.9
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  31.8
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  34.8
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  50.6
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  51.5
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  57.4
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  62.1
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  62.9
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  63.1
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  69
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  73.4
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  77
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  79
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  81.6
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  82.3
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  82.9
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  82.1
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  81.5
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  83.5
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  84.7
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  86.4
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  87.9
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  88.3
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  88.2
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  87.8
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  87.8
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  89.1
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  89.8
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  90.3
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  90.5
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  90.5
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  90.5
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  90.7
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  89.5
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  88.2
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  87.7
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  88.2
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  101.2
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  99.7
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  95.2
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  96.1
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  96
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  95.1
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  97.3
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  98.8
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  99.9
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  99.7
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  100.2
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  101.1
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  99.2
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  110.2
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  118.7
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  122
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  126.8
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index"
+                                     ]
+                  },
+                  {
+                      "key":  "egg",
+                      "label_ja":  "鶏卵",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  60.8
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  60.9
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  63.3
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  70.4
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  89.4
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  96.4
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  89.2
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  96.3
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  83
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  82.3
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  99.6
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  108.4
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  93.2
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  85.5
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  88.8
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  91.5
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  95.3
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  67.3
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  65.4
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  73
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  83.6
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  93.9
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  71.2
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  69.9
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  70.7
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  73.9
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  79.2
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  81.8
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  75.5
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  80.8
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  81.4
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  78.1
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  79.3
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  75.6
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  78.7
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  89.7
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  83.1
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  83.2
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  88.6
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  85.7
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  86.7
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  90.1
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  85.9
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  88.7
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  96.7
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  99.4
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  98.1
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  98.2
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  100.5
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  99.6
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  102.4
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  105.3
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  135.4
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  126.6
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  139.7
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index",
+                                         "retail_price_tokyo_annual",
+                                         "maff_meat_egg_price"
+                                     ],
+                      "retail_price_yen":  [
+                                               {
+                                                   "year":  2018,
+                                                   "value":  230,
+                                                   "unit":  "円/1パック(10個入り)",
+                                                   "area":  "東京都区部",
+                                                   "source_id":  "retail_price_tokyo_annual"
+                                               },
+                                               {
+                                                   "year":  2019,
+                                                   "value":  223,
+                                                   "unit":  "円/1パック(10個入り)",
+                                                   "area":  "東京都区部",
+                                                   "source_id":  "retail_price_tokyo_annual"
+                                               },
+                                               {
+                                                   "year":  2020,
+                                                   "value":  223,
+                                                   "unit":  "円/1パック(10個入り)",
+                                                   "area":  "東京都区部",
+                                                   "source_id":  "retail_price_tokyo_annual"
+                                               },
+                                               {
+                                                   "year":  2021,
+                                                   "value":  228,
+                                                   "unit":  "円/1パック(10個入り)",
+                                                   "area":  "東京都区部",
+                                                   "source_id":  "retail_price_tokyo_annual"
+                                               },
+                                               {
+                                                   "year":  2022,
+                                                   "value":  239,
+                                                   "unit":  "円/1パック(10個入り)",
+                                                   "area":  "東京都区部",
+                                                   "source_id":  "retail_price_tokyo_annual"
+                                               },
+                                               {
+                                                   "year":  2023,
+                                                   "value":  297,
+                                                   "unit":  "円/1パック(10個入り)",
+                                                   "area":  "東京都区部",
+                                                   "source_id":  "retail_price_tokyo_annual"
+                                               }
+                                           ],
+                      "retail_price_yen_monthly_recent":  [
+                                                              {
+                                                                  "month":  "2024-04",
+                                                                  "value":  244,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-05",
+                                                                  "value":  247,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-06",
+                                                                  "value":  247,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-07",
+                                                                  "value":  244,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-08",
+                                                                  "value":  246,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-09",
+                                                                  "value":  251,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-10",
+                                                                  "value":  259,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-11",
+                                                                  "value":  264,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-12",
+                                                                  "value":  268,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-01",
+                                                                  "value":  269,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-02",
+                                                                  "value":  276,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-03",
+                                                                  "value":  286,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-04",
+                                                                  "value":  294,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-05",
+                                                                  "value":  297,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-06",
+                                                                  "value":  301,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-07",
+                                                                  "value":  299,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-08",
+                                                                  "value":  303,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-09",
+                                                                  "value":  303,
+                                                                  "unit":  "円/1パック(10個入り,サイズ混合)",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              }
+                                                          ]
+                  },
+                  {
+                      "key":  "milk",
+                      "label_ja":  "牛乳",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  null
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  null
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  null
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  null
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  null
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  90.4
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  98.8
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  99.3
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  101.2
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  103.3
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  102.6
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  102.1
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  101
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  100.4
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  98.9
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  98.2
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  96.6
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  95.8
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  97
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  97.2
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  98.8
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  99.3
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  99.1
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  98.1
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  97.1
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  96.2
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  97.1
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  96.9
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  96.5
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  95.3
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  93.9
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  93.1
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  92.8
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  92
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  91.5
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  90.5
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  90
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  92.2
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  92.9
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  91.3
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  90.7
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  89.9
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  89.8
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  93.9
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  96.6
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  97.4
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  96.9
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  96.1
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  99.1
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  99.8
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  101.4
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  113.8
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  119.6
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  122.4
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index"
+                                     ]
+                  },
+                  {
+                      "key":  "cooking_oil",
+                      "label_ja":  "食用油",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  75.4
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  76.7
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  81
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  84.2
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  119.9
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  148.3
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  147.5
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  145.9
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  143.3
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  138.5
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  139.2
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  139.3
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  137.7
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  137.4
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  148
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  160.1
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  151
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  136.1
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  132.3
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  136.3
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  141.1
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  151.7
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  151.8
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  149.7
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  145
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  139.7
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  134.5
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  132.5
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  130.6
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  130
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  126.5
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  124.1
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  121.2
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  118.3
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  118.9
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  119.2
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  117.9
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  117.5
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  136.7
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  127.4
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  111.3
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  111.5
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  111
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  111.6
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  111.7
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  108.7
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  106.3
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  102.7
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  101.4
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  100.9
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  106.9
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  144.4
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  160.2
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  148.6
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  149.2
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index"
+                                     ]
+                  },
+                  {
+                      "key":  "instant_noodles",
+                      "label_ja":  "即席めん（カップ麺）",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  27.8
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  30.2
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  30.4
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  33
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  52.3
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  50.1
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  48.9
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  49.9
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  55.4
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  55.5
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  62.1
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  65.5
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  65.8
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  69.2
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  73.9
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  74.1
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  73.9
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  73.8
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  73.5
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  74.7
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  79.1
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  85.4
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  85.7
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  85.6
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  85.3
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  85
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  84.9
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  86
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  85.8
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  85.5
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  85.7
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  83.2
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  79.5
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  78.3
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  77.5
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  77.5
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  76
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  75.5
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  89.8
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  90.7
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  89.7
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  89.2
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  89
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  88.5
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  90.6
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  96.2
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  96.2
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  95.7
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  95.3
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  98.5
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  100.1
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  107.6
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  119.7
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  122.4
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  119.4
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index"
+                                     ]
+                  },
+                  {
+                      "key":  "pork",
+                      "label_ja":  "豚肉（国産品）",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  35.2
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  36.2
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  38.7
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  44.1
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  49.1
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  60.2
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  66
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  64
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  64
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  62.5
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  61.6
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  65.3
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  66.8
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  68.9
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  69
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  68.3
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  67
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  65.9
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  65.4
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  66.1
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  67.9
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  69.6
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  70.6
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  70.2
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  69.1
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  69.2
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  70.4
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  74.1
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  75.2
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  74.7
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  74.2
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  74.2
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  76
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  76.6
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  77.8
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  78.4
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  78.4
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  78.8
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  80.7
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  80.3
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  79.4
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  79.7
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  79.3
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  79.5
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  85.5
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  91.6
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  91.8
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  93.6
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  95.6
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  97
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  101.4
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  105.5
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  113.8
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  118.9
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  125.3
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index",
+                                         "maff_meat_egg_price"
+                                     ],
+                      "retail_price_yen_monthly_recent":  [
+                                                              {
+                                                                  "month":  "2024-04",
+                                                                  "value":  254,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-05",
+                                                                  "value":  256,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-06",
+                                                                  "value":  256,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-07",
+                                                                  "value":  265,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-08",
+                                                                  "value":  276,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-09",
+                                                                  "value":  278,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-10",
+                                                                  "value":  279,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-11",
+                                                                  "value":  278,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2024-12",
+                                                                  "value":  274,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-01",
+                                                                  "value":  273,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-02",
+                                                                  "value":  273,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-03",
+                                                                  "value":  275,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-04",
+                                                                  "value":  274,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-05",
+                                                                  "value":  275,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-06",
+                                                                  "value":  274,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-07",
+                                                                  "value":  278,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-08",
+                                                                  "value":  283,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              },
+                                                              {
+                                                                  "month":  "2025-09",
+                                                                  "value":  286,
+                                                                  "unit":  "円/100g（国産・ロース）",
+                                                                  "area":  "全国平均",
+                                                                  "source_id":  "maff_meat_egg_price"
+                                                              }
+                                                          ]
+                  },
+                  {
+                      "key":  "soy_sauce",
+                      "label_ja":  "しょうゆ",
+                      "cpi_index_unit":  "2020年=100（全国・年平均）",
+                      "cpi_index":  [
+                                        {
+                                            "year":  1970,
+                                            "value":  42.9
+                                        },
+                                        {
+                                            "year":  1971,
+                                            "value":  46.6
+                                        },
+                                        {
+                                            "year":  1972,
+                                            "value":  46.8
+                                        },
+                                        {
+                                            "year":  1973,
+                                            "value":  56.3
+                                        },
+                                        {
+                                            "year":  1974,
+                                            "value":  74.9
+                                        },
+                                        {
+                                            "year":  1975,
+                                            "value":  76.2
+                                        },
+                                        {
+                                            "year":  1976,
+                                            "value":  76.4
+                                        },
+                                        {
+                                            "year":  1977,
+                                            "value":  83.4
+                                        },
+                                        {
+                                            "year":  1978,
+                                            "value":  84.1
+                                        },
+                                        {
+                                            "year":  1979,
+                                            "value":  84.1
+                                        },
+                                        {
+                                            "year":  1980,
+                                            "value":  93.5
+                                        },
+                                        {
+                                            "year":  1981,
+                                            "value":  96.7
+                                        },
+                                        {
+                                            "year":  1982,
+                                            "value":  96.7
+                                        },
+                                        {
+                                            "year":  1983,
+                                            "value":  96.4
+                                        },
+                                        {
+                                            "year":  1984,
+                                            "value":  96.4
+                                        },
+                                        {
+                                            "year":  1985,
+                                            "value":  95.9
+                                        },
+                                        {
+                                            "year":  1986,
+                                            "value":  95.6
+                                        },
+                                        {
+                                            "year":  1987,
+                                            "value":  95.4
+                                        },
+                                        {
+                                            "year":  1988,
+                                            "value":  95.3
+                                        },
+                                        {
+                                            "year":  1989,
+                                            "value":  96.1
+                                        },
+                                        {
+                                            "year":  1990,
+                                            "value":  98.8
+                                        },
+                                        {
+                                            "year":  1991,
+                                            "value":  108.4
+                                        },
+                                        {
+                                            "year":  1992,
+                                            "value":  108.7
+                                        },
+                                        {
+                                            "year":  1993,
+                                            "value":  108.3
+                                        },
+                                        {
+                                            "year":  1994,
+                                            "value":  108.8
+                                        },
+                                        {
+                                            "year":  1995,
+                                            "value":  107.7
+                                        },
+                                        {
+                                            "year":  1996,
+                                            "value":  106.7
+                                        },
+                                        {
+                                            "year":  1997,
+                                            "value":  108.3
+                                        },
+                                        {
+                                            "year":  1998,
+                                            "value":  108
+                                        },
+                                        {
+                                            "year":  1999,
+                                            "value":  107.8
+                                        },
+                                        {
+                                            "year":  2000,
+                                            "value":  106.2
+                                        },
+                                        {
+                                            "year":  2001,
+                                            "value":  104.5
+                                        },
+                                        {
+                                            "year":  2002,
+                                            "value":  103.9
+                                        },
+                                        {
+                                            "year":  2003,
+                                            "value":  102.7
+                                        },
+                                        {
+                                            "year":  2004,
+                                            "value":  101.4
+                                        },
+                                        {
+                                            "year":  2005,
+                                            "value":  100.5
+                                        },
+                                        {
+                                            "year":  2006,
+                                            "value":  98.9
+                                        },
+                                        {
+                                            "year":  2007,
+                                            "value":  97.5
+                                        },
+                                        {
+                                            "year":  2008,
+                                            "value":  104.4
+                                        },
+                                        {
+                                            "year":  2009,
+                                            "value":  106.1
+                                        },
+                                        {
+                                            "year":  2010,
+                                            "value":  103.8
+                                        },
+                                        {
+                                            "year":  2011,
+                                            "value":  101.5
+                                        },
+                                        {
+                                            "year":  2012,
+                                            "value":  100.3
+                                        },
+                                        {
+                                            "year":  2013,
+                                            "value":  99.4
+                                        },
+                                        {
+                                            "year":  2014,
+                                            "value":  101
+                                        },
+                                        {
+                                            "year":  2015,
+                                            "value":  100.2
+                                        },
+                                        {
+                                            "year":  2016,
+                                            "value":  99.4
+                                        },
+                                        {
+                                            "year":  2017,
+                                            "value":  99.8
+                                        },
+                                        {
+                                            "year":  2018,
+                                            "value":  100.2
+                                        },
+                                        {
+                                            "year":  2019,
+                                            "value":  100.1
+                                        },
+                                        {
+                                            "year":  2020,
+                                            "value":  100
+                                        },
+                                        {
+                                            "year":  2021,
+                                            "value":  99.3
+                                        },
+                                        {
+                                            "year":  2022,
+                                            "value":  107.1
+                                        },
+                                        {
+                                            "year":  2023,
+                                            "value":  117.9
+                                        },
+                                        {
+                                            "year":  2024,
+                                            "value":  122
+                                        },
+                                        {
+                                            "year":  2025,
+                                            "value":  121.2
+                                        }
+                                    ],
+                      "source_ids":  [
+                                         "cpi_item_index"
+                                     ]
+                  }
+              ],
+    "engel_coefficient":  [
+                              {
+                                  "year":  1946,
+                                  "value":  66.4,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1947,
+                                  "value":  63.02,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1948,
+                                  "value":  60.39,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1949,
+                                  "value":  60.06,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1950,
+                                  "value":  57.43,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1951,
+                                  "value":  54.36,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1952,
+                                  "value":  51.21,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1953,
+                                  "value":  48.52,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1954,
+                                  "value":  48.48,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1955,
+                                  "value":  46.92,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1956,
+                                  "value":  45.02,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1957,
+                                  "value":  44.39,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1958,
+                                  "value":  43.79,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1959,
+                                  "value":  42.42,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1960,
+                                  "value":  41.57,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1961,
+                                  "value":  40.32,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1962,
+                                  "value":  39.04,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1963,
+                                  "value":  38.69,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1964,
+                                  "value":  38.07,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1965,
+                                  "value":  38.13,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1966,
+                                  "value":  37.31,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1967,
+                                  "value":  36.8,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1968,
+                                  "value":  35.51,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1969,
+                                  "value":  34.59,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1970,
+                                  "value":  34.06,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1971,
+                                  "value":  33.34,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1972,
+                                  "value":  32.65,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1973,
+                                  "value":  31.92,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1974,
+                                  "value":  32.6,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1975,
+                                  "value":  31.95,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1976,
+                                  "value":  31.64,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1977,
+                                  "value":  30.79,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1978,
+                                  "value":  30.19,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1979,
+                                  "value":  29.24,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1980,
+                                  "value":  29.03,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1981,
+                                  "value":  28.82,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1982,
+                                  "value":  28.18,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1983,
+                                  "value":  27.81,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1984,
+                                  "value":  27.4,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1985,
+                                  "value":  27,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1986,
+                                  "value":  26.77,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1987,
+                                  "value":  26.06,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1988,
+                                  "value":  25.48,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1989,
+                                  "value":  25.34,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1990,
+                                  "value":  25.37,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1991,
+                                  "value":  25.11,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1992,
+                                  "value":  24.69,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1993,
+                                  "value":  24.33,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1994,
+                                  "value":  24.13,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1995,
+                                  "value":  23.67,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1996,
+                                  "value":  23.43,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1997,
+                                  "value":  23.49,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1998,
+                                  "value":  23.81,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  1999,
+                                  "value":  23.71,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2000,
+                                  "value":  23.28,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2001,
+                                  "value":  23.17,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2002,
+                                  "value":  23.29,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2003,
+                                  "value":  23.22,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2004,
+                                  "value":  23.05,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2005,
+                                  "value":  22.9,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2006,
+                                  "value":  23.09,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2007,
+                                  "value":  23.06,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2008,
+                                  "value":  23.24,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2009,
+                                  "value":  23.42,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2010,
+                                  "value":  23.28,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2011,
+                                  "value":  23.64,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2012,
+                                  "value":  23.51,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2013,
+                                  "value":  23.62,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2014,
+                                  "value":  24.01,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2015,
+                                  "value":  25,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2016,
+                                  "value":  25.85,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2017,
+                                  "value":  25.75,
+                                  "tier":  "secondary"
+                              },
+                              {
+                                  "year":  2018,
+                                  "value":  null,
+                                  "tier":  "missing"
+                              },
+                              {
+                                  "year":  2019,
+                                  "value":  25.7,
+                                  "tier":  "secondary_unverified"
+                              },
+                              {
+                                  "year":  2020,
+                                  "value":  27.5,
+                                  "tier":  "secondary_unverified"
+                              },
+                              {
+                                  "year":  2021,
+                                  "value":  27.2,
+                                  "tier":  "secondary_unverified"
+                              },
+                              {
+                                  "year":  2022,
+                                  "value":  26.6,
+                                  "tier":  "secondary_unverified"
+                              },
+                              {
+                                  "year":  2023,
+                                  "value":  27.8,
+                                  "tier":  "primary"
+                              },
+                              {
+                                  "year":  2024,
+                                  "value":  28.3,
+                                  "tier":  "primary"
+                              }
+                          ],
+    "recent_trend_notes":  [
+                               {
+                                   "item":  "鶏卵",
+                                   "note":  "2022年10月下旬～2023年4月に高病原性鳥インフルエンザが発生（国内61例、採卵鶏約1,654万羽殺処分、全国の約12%）。2023年の鶏卵生産量は前年比-6.1%（237.7万トン）。東京市場のMサイズ卸売価格は2023年4-5月に350円/kgと10年間で最高値。鶏卵のCPI価格指数(2020=100)は2022年105.3→2023年135.4（前年比+28.7%）。",
+                                   "source_id":  "cpi_item_index",
+                                   "source_note":  "総務省統計局「小売物価統計調査（動向編）」年次結果コラムより。同コラムは農林水産省資料を引用。"
+                               },
+                               {
+                                   "item":  "米",
+                                   "note":  "2024年夏、南海トラフ地震臨時情報等をきっかけとした買い込み需要等により米が品薄に（いわゆる「令和の米騒動」）。CPI「米類」価格指数(2020=100)は2023年96.1→2024年122.8（+27.8%）→2025年205.6（+67.4%）と急騰。",
+                                   "source_id":  "cpi_item_index"
+                               },
+                               {
+                                   "item":  "食用油",
+                                   "note":  "CPI「食用油」価格指数(2020=100)は2021年106.9→2022年144.4（+35.1%）と急騰し、2025年時点でも149.2と高止まり。ウクライナ情勢等による原料油脂の国際価格上昇が背景。",
+                                   "source_id":  "cpi_item_index"
+                               },
+                               {
+                                   "item":  "豚肉・鶏卵（直近月次）",
+                                   "note":  "農林水産省「食品価格動向調査（食肉・鶏卵）」の全国平均小売価格によると、2024年4月から2025年9月にかけて、鶏卵（サイズ混合10個入り）は244円→303円（+24%）、豚肉（国産ロース）は254円→286円（+13%）、鶏肉（もも肉）は134円→151円（+13%）と上昇が継続。2025年9月の平年比（令和2～6年度5カ年平均比）は鶏卵+27%、輸入牛肉+18%。",
+                                   "source_id":  "maff_meat_egg_price"
+                               },
+                               {
+                                   "item":  "エンゲル係数",
+                                   "note":  "2024年の二人以上世帯のエンゲル係数は28.3%となり、1981年（昭和56年）以来43年ぶりの高水準。食料価格の高騰が家計を圧迫している状況を示す。",
+                                   "source_id":  "engel_coefficient_primary"
+                               }
+                           ]
+}
