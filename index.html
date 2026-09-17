@@ -212,6 +212,32 @@
     <div class="stat-grid" id="stat-grid"></div>
   </section>
 
+  <section id="ranking">
+    <div class="section-head">
+      <div>
+        <h2>月次価格ランキング</h2>
+        <div class="section-sub" id="ranking-sub">品目をコロナ禍前（2019年平均）比の上昇率が高い順に並べています。行をクリックすると下のグラフが切り替わります。</div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="padding:6px 6px 6px;">
+      <div id="ranking-list"></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="section-head" style="margin-bottom:6px;">
+        <h3 id="monthly-title">月次推移</h3>
+        <button type="button" class="chip" id="btn-export-xlsx" style="cursor:pointer;">Excelでダウンロード</button>
+      </div>
+      <div class="chart-note" id="monthly-note"></div>
+      <div class="chart-svg-wrap">
+        <svg class="chart" id="svg-monthly" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tip-monthly"></div>
+      </div>
+      <div class="chart-note" style="margin-top:10px;">※ このArtifactプレビュー内ではブラウザの制限によりダウンロードが動作しない場合があります。GitHub Pages公開後のページでご利用ください。</div>
+    </div>
+  </section>
+
   <section id="trend">
     <div class="section-head">
       <div>
@@ -253,32 +279,6 @@
     </div>
 
     <div class="note-box" id="trend-item-note" style="display:none;"></div>
-  </section>
-
-  <section id="ranking">
-    <div class="section-head">
-      <div>
-        <h2>月次価格ランキング</h2>
-        <div class="section-sub" id="ranking-sub">品目をコロナ禍前（2019年平均）比の上昇率が高い順に並べています。行をクリックすると下のグラフが切り替わります。</div>
-      </div>
-    </div>
-
-    <div class="chart-card" style="padding:6px 6px 6px;">
-      <div id="ranking-list"></div>
-    </div>
-
-    <div class="chart-card">
-      <div class="section-head" style="margin-bottom:6px;">
-        <h3 id="monthly-title">月次推移</h3>
-        <button type="button" class="chip" id="btn-export-xlsx" style="cursor:pointer;">Excelでダウンロード</button>
-      </div>
-      <div class="chart-note" id="monthly-note"></div>
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-monthly" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-monthly"></div>
-      </div>
-      <div class="chart-note" style="margin-top:10px;">※ このArtifactプレビュー内ではブラウザの制限によりダウンロードが動作しない場合があります。GitHub Pages公開後のページでご利用ください。</div>
-    </div>
   </section>
 
   <section id="engel">
@@ -700,6 +700,15 @@
     var engel = state.data.engel_coefficient;
     var engelLast = engel[engel.length-1], engelPrev = engel[engel.length-2];
 
+    var monthlyRanked = state.data.items.map(function(it){
+      var base = baseline2019Avg(it);
+      var lastM = it.cpi_index_monthly[it.cpi_index_monthly.length-1];
+      var pct = base ? ((lastM.value-base)/base*100) : null;
+      return {item:it, last:lastM, pct:pct};
+    }).filter(function(r){ return r.pct!==null; });
+    monthlyRanked.sort(function(a,b){ return a.pct-b.pct; });
+    var lowest = monthlyRanked[0];
+
     var tiles = [
       { label:"米（価格指数・"+riceLast.year+"年）", value:fmt1(riceLast.value), unit:"（2020年=100）",
         badge: statBadge(riceLast.value-100), badgeText: (riceLast.value-100>=0?"+":"")+fmt1(riceLast.value-100)+"pt（2020年比）",
@@ -710,6 +719,9 @@
       { label:"鶏卵（実勢価格・全国平均）", value: eggLast?fmtInt(eggLast.value):"—", unit:"円/パック",
         badge: statBadge(eggPct), badgeText:(eggPct>=0?"+":"")+fmt1(eggPct)+"%（"+monthLabel(eggFirst.month)+"→"+monthLabel(eggLast.month)+"）",
         foot:"農林水産省「食品価格動向調査」より。" },
+      { label: lowest.item.label_ja+"（"+monthLabel(lowest.last.ym)+"）", value:fmt1(lowest.last.value), unit:"（2020年=100）",
+        badge: statBadge(lowest.pct), badgeText:(lowest.pct>=0?"+":"")+fmt1(lowest.pct)+"%（2019年平均比）",
+        foot:"8品目の中で、2019年平均比の上昇率が最も低い品目です。" },
       { label:"エンゲル係数（"+engelLast.year+"年）", value: fmt1(engelLast.value), unit:"%",
         badge: {cls:"serious", label:"43年ぶりの高さ"},
         badgeText:"前年比"+(engelLast.value-engelPrev.value>=0?"+":"")+fmt1(engelLast.value-engelPrev.value)+"pt",
