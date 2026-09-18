@@ -1,4 +1,4 @@
-<title>野菜の物価</title>
+<title>輸入原材料の物価</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -16,14 +16,11 @@
     --border:         rgba(11,11,11,0.10);
     --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
 
-    --series-1: #2a78d6; /* キャベツ */
-    --series-2: #eb6834; /* ねぎ */
-    --series-3: #1baf7a; /* レタス */
-    --series-4: #eda100; /* じゃがいも */
-    --series-5: #e87ba4; /* たまねぎ */
-    --series-6: #008300; /* きゅうり */
-    --series-7: #4a3aa7; /* トマト */
-    --series-8: #e34948; /* にんじん */
+    --series-1: #2a78d6; /* 小麦 */
+    --series-2: #eb6834; /* 大豆 */
+    --series-3: #1baf7a; /* 輸入牛肉 */
+    --series-4: #eda100; /* とうもろこし */
+    --series-5: #e87ba4; /* コーヒー生豆 */
 
     --status-good:     #0ca30c;
     --status-warning:  #fab219;
@@ -147,6 +144,16 @@
   }
   .note-box b{ color:var(--text-primary); }
 
+  details.table-toggle{ margin-top:10px; }
+  details.table-toggle summary{
+    cursor:pointer; font-size:12.5px; color:var(--text-secondary); font-weight:700;
+    padding:6px 0;
+  }
+  .data-table-scroll{ overflow-x:auto; margin-top:6px; }
+  table.data-table{ border-collapse:collapse; width:100%; font-size:12px; font-variant-numeric:tabular-nums; }
+  table.data-table th, table.data-table td{ padding:5px 9px; text-align:right; border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  table.data-table th:first-child, table.data-table td:first-child{ text-align:left; }
+
   footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
   .sources{ display:grid; gap:10px; margin-top:14px; }
   .source-item{ font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
@@ -163,25 +170,25 @@
 
   <nav class="top-nav">
     <a href="index.html">食品価格</a>
-    <a href="vegetables.html" class="active">野菜価格</a>
-    <a href="trade.html">輸入統計</a>
+    <a href="vegetables.html">野菜価格</a>
+    <a href="trade.html" class="active">輸入統計</a>
   </nav>
 
   <div class="hero">
-    <div class="eyebrow"><span class="dot"></span>公的統計で見る野菜の価格</div>
-    <h1>野菜の物価</h1>
-    <p>総務省統計局「消費者物価指数」の品目別価格指数（月次）をもとに、生鮮野菜8品目の価格推移をまとめました。野菜は天候や季節による変動が大きいため、月次のグラフで動きを追えるようにしています。</p>
+    <div class="eyebrow"><span class="dot"></span>財務省貿易統計に基づく輸入原材料の動き</div>
+    <h1>輸入原材料の物価</h1>
+    <p>食品価格ページ・野菜価格ページで見た小売価格の「上流」にあたる、輸入原材料5品目（小麦・大豆・輸入牛肉・とうもろこし・コーヒー生豆）の輸入数量・金額・輸入単価の推移をまとめました。財務省「貿易統計」を基にした農林水産省の集計データ（年次）を使用しています。</p>
     <div class="meta-row">
       <span id="updated-at">データ取得日を読み込み中…</span>
-      <span>出典：総務省統計局（詳細は末尾）</span>
+      <span>出典：農林水産省（財務省貿易統計を基に集計）（詳細は末尾）</span>
     </div>
   </div>
 
   <section id="stats">
     <div class="section-head">
       <div>
-        <h2>野菜価格の動き</h2>
-        <div class="section-sub">2019年（コロナ禍前）平均を基準にした、直近の上昇率・下落率のハイライトです。</div>
+        <h2>輸入コストの動き</h2>
+        <div class="section-sub">2019年（コロナ禍前）と2023年（最新の年次確定値）を比べた、輸入単価（金額÷数量）の変化のハイライトです。</div>
       </div>
     </div>
     <div class="stat-grid" id="stat-grid"></div>
@@ -190,8 +197,8 @@
   <section id="ranking">
     <div class="section-head">
       <div>
-        <h2>月次価格ランキング</h2>
-        <div class="section-sub" id="ranking-sub">品目を2019年平均比の上昇率が高い順に並べています。行をクリックすると下のグラフが切り替わります。</div>
+        <h2>輸入単価ランキング</h2>
+        <div class="section-sub" id="ranking-sub">2019年比の輸入単価の上昇率が高い順に並べています。行をクリックすると下のグラフが切り替わります。</div>
       </div>
     </div>
 
@@ -203,43 +210,38 @@
   <section id="trend">
     <div class="section-head">
       <div>
-        <h2 id="trend-heading">品目別・価格指数の推移</h2>
-        <div class="section-sub">指数は総務省統計局「消費者物価指数」品目別価格指数（2020年＝100、全国・月次）。</div>
-      </div>
-    </div>
-
-    <div class="chart-card">
-      <h3 id="long-title">長期推移</h3>
-      <div class="chart-note" id="long-note"></div>
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-long" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-long"></div>
+        <h2 id="trend-heading">品目別・輸入単価の推移</h2>
+        <div class="section-sub">輸入単価＝輸入金額÷輸入数量（円/kg）。財務省「貿易統計」を基にした農林水産省集計（年次、2014〜2023年）。</div>
       </div>
     </div>
 
     <div class="chart-card">
       <div class="section-head" style="margin-bottom:6px;">
-        <h3 id="recent-title">直近のズーム</h3>
+        <h3 id="detail-title">輸入単価の推移</h3>
         <button type="button" class="chip" id="btn-export-xlsx" style="cursor:pointer;">Excelでダウンロード</button>
       </div>
-      <div class="chart-note" id="recent-note"></div>
+      <div class="chart-note" id="detail-note"></div>
       <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-recent" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-recent"></div>
+        <svg class="chart" id="svg-detail" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tip-detail"></div>
       </div>
+      <details class="table-toggle"><summary>年ごとの数量・金額・単価を表で見る</summary>
+        <div class="data-table-scroll"><table class="data-table" id="table-detail"></table></div>
+      </details>
       <div class="chart-note" style="margin-top:10px;">※ このArtifactプレビュー内ではブラウザの制限によりダウンロードが動作しない場合があります。GitHub Pages公開後のページでご利用ください。</div>
     </div>
 
-    <div class="note-box" id="trend-item-note" style="display:none;"></div>
+    <div class="note-box" id="trend-item-note"></div>
   </section>
 
   <footer>
     <h2 style="font-size:18px;">出典・注記</h2>
     <div class="sources" id="sources"></div>
     <div class="disclaimer">
-      ・指数は各月の月次値です。野菜は天候や作柄により月ごとの価格変動が大きく、同じ品目でも年による季節変動の出方が異なります。<br>
-      ・「2019年平均比」は2019年（1〜12月）の月次指数の平均値を基準にした上昇率です。<br>
-      ・本ページは社内外への説明・提案資料としての利用を想定した参考資料です。引用の際は統計局の一次資料をご確認ください。
+      ・数量はkg、金額は円（生の円単位）に正規化して掲載しています。元データの単位（トン、千円等）からの変換係数は各出典の一次資料をご確認ください。<br>
+      ・すべて世界計（全世界からの輸入合計）の数値です。主要輸入相手国別の内訳は含まれていません。<br>
+      ・現時点で年次データ（2014〜2023年）のみの提供です。農林水産省の輸入統計は品目・月ごとに個別ファイルで配布されているため、月次化には別途大規模なデータ収集が必要です。<br>
+      ・本ページは社内外への説明・提案資料としての利用を想定した参考資料です。引用の際は農林水産省・財務省の一次資料をご確認ください。
     </div>
   </footer>
 
@@ -250,16 +252,15 @@
   "use strict";
 
   var COLOR_VAR = {
-    cabbage:"--series-1", green_onion:"--series-2", lettuce:"--series-3", potato:"--series-4",
-    onion:"--series-5", cucumber:"--series-6", tomato:"--series-7", carrot:"--series-8"
+    wheat:"--series-1", soybean:"--series-2", beef_import:"--series-3", corn:"--series-4", coffee:"--series-5"
   };
-  var state = { currentItem:"cabbage", data:null };
+  var state = { currentItem:"wheat", data:null };
 
   function cssVar(name){
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
   function fmt1(v){ return (Math.round(v*10)/10).toLocaleString("ja-JP",{minimumFractionDigits:1,maximumFractionDigits:1}); }
-  function monthLabel(ym){ var p=ym.split("-"); return (+p[0])+"年"+(+p[1])+"月"; }
+  function fmtInt(v){ return Math.round(v).toLocaleString("ja-JP"); }
   function niceMax(v){
     if(v<=0) return 10;
     var base = Math.pow(10, Math.floor(Math.log10(v)));
@@ -284,7 +285,7 @@
     while(svg.firstChild) svg.removeChild(svg.firstChild);
     var vb = svg.viewBox.baseVal;
     var W = vb.width || 720, H = vb.height || 300;
-    var m = {top:14, right:14, bottom:26, left:44};
+    var m = {top:14, right:14, bottom:26, left:52};
     var innerW = W-m.left-m.right, innerH = H-m.top-m.bottom;
 
     var xs = points.map(function(p){return p.x;});
@@ -336,30 +337,9 @@
     }
 
     var color = cssVar(opts.colorVar || "--series-1");
-    var segments = [];
-    var cur = null;
-    points.forEach(function(p){
-      if(p.y===null || p.y===undefined){
-        if(cur){ segments.push(cur); cur=null; }
-        return;
-      }
-      var tier = p.tier || "primary";
-      if(!cur){ cur = {tier:tier, pts:[p]}; return; }
-      if(cur.tier!==tier){
-        cur.pts.push(p);
-        segments.push(cur);
-        cur = {tier:tier, pts:[p]};
-      } else {
-        cur.pts.push(p);
-      }
-    });
-    if(cur) segments.push(cur);
-
-    segments.forEach(function(seg){
-      var d = seg.pts.map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
-      var path = el("path",{class:"line-path"+(seg.tier!=="primary"?" dashed":""), d:d, stroke:color});
-      svg.appendChild(path);
-    });
+    var d = points.filter(function(p){return p.y!==null && p.y!==undefined;})
+      .map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
+    svg.appendChild(el("path",{class:"line-path", d:d, stroke:color}));
 
     var hitRect = el("rect",{class:"chart-hit", x:m.left, y:m.top, width:innerW, height:innerH});
     var hoverLineEl = el("line",{class:"hover-line", x1:0,x2:0,y1:m.top,y2:m.top+innerH});
@@ -381,8 +361,8 @@
     function nearest(userX){
       var best=null,bestD=Infinity;
       validPts.forEach(function(p){
-        var d = Math.abs(sx(p.x)-userX);
-        if(d<bestD){bestD=d;best=p;}
+        var d2 = Math.abs(sx(p.x)-userX);
+        if(d2<bestD){bestD=d2;best=p;}
       });
       return best;
     }
@@ -422,13 +402,8 @@
   }
 
   function itemByKey(key){ return state.data.items.find(function(it){return it.key===key;}); }
-
-  function baseline2019Avg(item){
-    var pts = (item.cpi_index_monthly||[]).filter(function(p){ return p.ym.indexOf("2019-")===0; });
-    var sum=0, n=0;
-    pts.forEach(function(p){ if(p.value!==null && p.value!==undefined){ sum+=p.value; n++; } });
-    return n ? sum/n : null;
-  }
+  function priceOf(row){ return row.value_yen / row.quantity_kg; }
+  function rowByYear(item, year){ return item.yearly.find(function(r){return r.year===year;}); }
 
   function sparklinePath(values, w, h){
     var vals = values.filter(function(v){ return v!==null && v!==undefined; });
@@ -448,21 +423,22 @@
     var wrap = document.getElementById("ranking-list");
     wrap.innerHTML = "";
     var rows = state.data.items.map(function(it){
-      var base = baseline2019Avg(it);
-      var last = it.cpi_index_monthly[it.cpi_index_monthly.length-1];
-      var pct = base ? ((last.value-base)/base*100) : null;
-      return {item:it, base:base, last:last, pct:pct};
-    }).filter(function(r){ return r.pct!==null; });
+      var base = rowByYear(it, 2019), last = it.yearly[it.yearly.length-1];
+      if(!base || !last) return null;
+      var basePrice = priceOf(base), lastPrice = priceOf(last);
+      var pct = (lastPrice-basePrice)/basePrice*100;
+      return {item:it, base:base, last:last, basePrice:basePrice, lastPrice:lastPrice, pct:pct};
+    }).filter(Boolean);
     rows.sort(function(a,b){ return b.pct-a.pct; });
 
     if(rows.length){
       document.getElementById("ranking-sub").textContent =
-        "品目を2019年平均比の上昇率が高い順に並べています（"+monthLabel(rows[0].last.ym)+"時点）。行をクリックすると下のグラフが切り替わります。";
+        "2019年比の輸入単価の上昇率が高い順に並べています（"+rows[0].last.year+"年時点）。行をクリックすると下のグラフが切り替わります。";
     }
 
     rows.forEach(function(r, idx){
       var color = cssVar(COLOR_VAR[r.item.key]);
-      var vals = r.item.cpi_index_monthly.map(function(p){ return p.value; });
+      var vals = r.item.yearly.map(function(row){ return priceOf(row); });
       var path = sparklinePath(vals, 78, 26);
       var up = r.pct>=0;
       var btn = document.createElement("button");
@@ -473,10 +449,20 @@
         '<span class="rank-sw" style="background:'+color+'"></span>'+
         '<span class="rank-label">'+r.item.label_ja+'</span>'+
         '<svg class="rank-spark" viewBox="0 0 78 26" preserveAspectRatio="none"><path d="'+path+'" fill="none" stroke="'+color+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'+
-        '<span class="rank-val"><span class="idx">'+fmt1(r.last.value)+'</span><span class="pct" style="color:'+(up?"var(--status-critical)":"var(--status-good)")+'">'+(up?"+":"")+fmt1(r.pct)+'%</span></span>';
+        '<span class="rank-val"><span class="idx">'+fmtInt(r.lastPrice)+'円/kg</span><span class="pct" style="color:'+(up?"var(--status-critical)":"var(--status-good)")+'">'+(up?"+":"")+fmt1(r.pct)+'%</span></span>';
       btn.addEventListener("click", function(){ selectItem(r.item.key); });
       wrap.appendChild(btn);
     });
+  }
+
+  function renderTable(item){
+    var tbl = document.getElementById("table-detail");
+    var rows = item.yearly;
+    var head = "<thead><tr><th>年</th>"+rows.map(function(r){return "<th>"+r.year+"</th>";}).join("")+"</tr></thead>";
+    var qRow = "<tr><th>輸入数量</th>"+rows.map(function(r){return "<td>"+fmtInt(r.quantity_kg/1000)+" t</td>";}).join("")+"</tr>";
+    var vRow = "<tr><th>輸入金額</th>"+rows.map(function(r){return "<td>"+fmtInt(r.value_yen/100000000)+" 億円</td>";}).join("")+"</tr>";
+    var pRow = "<tr><th>輸入単価</th>"+rows.map(function(r){return "<td>"+fmtInt(priceOf(r))+" 円/kg</td>";}).join("")+"</tr>";
+    tbl.innerHTML = head+"<tbody>"+qRow+vRow+pRow+"</tbody>";
   }
 
   function renderDetail(){
@@ -484,47 +470,25 @@
     var color = cssVar(COLOR_VAR[item.key]);
     document.documentElement.style.setProperty("--accent", color);
 
-    var all = item.cpi_index_monthly;
-    var longPts = all.map(function(p){
-      var parts = p.ym.split("-"); var yv=+parts[0], mv=+parts[1];
-      return {x:yv*12+mv, y:p.value, label:monthLabel(p.ym)};
-    });
-    var firstYear = Math.floor(longPts[0].x/12), lastYear = Math.floor(longPts[longPts.length-1].x/12);
-    document.getElementById("long-title").textContent = item.label_ja+"の長期推移（"+firstYear+"年〜"+lastYear+"年、月次）";
-    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2020年＝100、全国・月次）";
-    buildChart(document.getElementById("svg-long"), longPts, {
+    var pts = item.yearly.map(function(r){ return {x:r.year, y:priceOf(r)}; });
+    document.getElementById("detail-title").textContent = item.label_ja+"の輸入単価の推移（"+item.yearly[0].year+"年〜"+item.yearly[item.yearly.length-1].year+"年）";
+    document.getElementById("detail-note").textContent = "輸入単価＝輸入金額÷輸入数量（円/kg、世界計）";
+
+    var base = rowByYear(item, 2019);
+    buildChart(document.getElementById("svg-detail"), pts, {
       colorVar: COLOR_VAR[item.key],
-      refLine: 100, refLineLabel:"2020年=100",
-      xTickEvery: 120,
-      tooltipEl: document.getElementById("tip-long"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
-      xTickFormatter: function(x){ return Math.floor(x/12)+"年"; }
+      refLine: base ? priceOf(base) : undefined,
+      refLineLabel: base ? "2019年" : "",
+      xTickEvery: 1,
+      tooltipEl: document.getElementById("tip-detail"),
+      tooltipFormatter: function(p){ return fmtInt(p.y)+"円/kg"; },
+      xTickFormatter: function(x){ return x+"年"; }
     });
 
-    var recentAll = all.filter(function(p){ return p.ym >= "2019-01"; });
-    var recentPts = recentAll.map(function(p){
-      var parts = p.ym.split("-"); var yv=+parts[0], mv=+parts[1];
-      return {x:yv*12+mv, y:p.value, label:monthLabel(p.ym)};
-    });
-    var base = baseline2019Avg(item);
-    var lastPt = recentPts[recentPts.length-1];
-    document.getElementById("recent-title").textContent = item.label_ja+"：直近の動き（2019年〜"+Math.floor(lastPt.x/12)+"年、月次）";
-    var pct = base ? ((lastPt.y-base)/base*100) : null;
-    document.getElementById("recent-note").textContent = base ?
-      ("2019年平均（"+fmt1(base)+"）を基準に、直近（"+lastPt.label+"）は"+(pct>=0?"+":"")+fmt1(pct)+"%。") : "";
-    buildChart(document.getElementById("svg-recent"), recentPts, {
-      colorVar: COLOR_VAR[item.key],
-      refLine: base===null ? undefined : base,
-      refLineLabel: base===null ? "" : "2019年平均",
-      xTickEvery: 12,
-      tooltipEl: document.getElementById("tip-recent"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
-      xTickFormatter: function(x){ return Math.floor(x/12)+"年"; }
-    });
+    renderTable(item);
 
     var noteBox = document.getElementById("trend-item-note");
-    noteBox.style.display = "block";
-    noteBox.innerHTML = "<b>"+item.label_ja+"のポイント：</b>野菜は天候・作柄による影響が大きく、同じ月でも年によって指数が大きく変動します。長期の傾向とあわせて、直近の季節変動もご確認ください。";
+    noteBox.innerHTML = "<b>"+item.label_ja+"：</b>"+item.related_page_note;
   }
 
   function selectItem(key){
@@ -537,21 +501,21 @@
     var grid = document.getElementById("stat-grid");
     grid.innerHTML = "";
     var withPct = state.data.items.map(function(it){
-      var base = baseline2019Avg(it);
-      var last = it.cpi_index_monthly[it.cpi_index_monthly.length-1];
-      var pct = base ? ((last.value-base)/base*100) : null;
-      return {item:it, last:last, pct:pct};
-    }).filter(function(r){ return r.pct!==null; });
+      var base = rowByYear(it, 2019), last = it.yearly[it.yearly.length-1];
+      if(!base || !last) return null;
+      var basePrice = priceOf(base), lastPrice = priceOf(last);
+      return {item:it, last:last, pct:(lastPrice-basePrice)/basePrice*100, lastPrice:lastPrice};
+    }).filter(Boolean);
     withPct.sort(function(a,b){ return b.pct-a.pct; });
     var top = withPct[0], bottom = withPct[withPct.length-1];
 
     var tiles = [
-      { label:top.item.label_ja+"（"+monthLabel(top.last.ym)+"）", value:fmt1(top.last.value), unit:"（2020年=100）",
-        badge: statBadge(top.pct), badgeText:(top.pct>=0?"+":"")+fmt1(top.pct)+"%（2019年平均比）",
-        foot:"野菜の中で最も上昇率が高い品目です。" },
-      { label:bottom.item.label_ja+"（"+monthLabel(bottom.last.ym)+"）", value:fmt1(bottom.last.value), unit:"（2020年=100）",
-        badge: statBadge(bottom.pct), badgeText:(bottom.pct>=0?"+":"")+fmt1(bottom.pct)+"%（2019年平均比）",
-        foot:"野菜の中で最も上昇率が低い（または下落している）品目です。" }
+      { label:top.item.label_ja+"（"+top.last.year+"年）", value:fmtInt(top.lastPrice), unit:"円/kg",
+        badge: statBadge(top.pct), badgeText:(top.pct>=0?"+":"")+fmt1(top.pct)+"%（2019年比）",
+        foot:"5品目の中で最も輸入単価の上昇率が高い品目です。" },
+      { label:bottom.item.label_ja+"（"+bottom.last.year+"年）", value:fmtInt(bottom.lastPrice), unit:"円/kg",
+        badge: statBadge(bottom.pct), badgeText:(bottom.pct>=0?"+":"")+fmt1(bottom.pct)+"%（2019年比）",
+        foot:"5品目の中で最も輸入単価の上昇率が低い品目です。" }
     ];
     tiles.forEach(function(t){
       var div = document.createElement("div");
@@ -565,7 +529,7 @@
     });
     var note = document.createElement("div");
     note.className = "stat-tile";
-    note.innerHTML = '<div class="label">野菜価格の特徴</div><div class="value" style="font-size:15px;font-weight:700;line-height:1.6;">天候・作柄による季節変動が大きい</div><div class="foot">同じ品目でも、台風や日照不足などで月ごとに数十%価格が動くことがあります。</div>';
+    note.innerHTML = '<div class="label">なぜ輸入コストが動くと国内価格が動くのか</div><div class="value" style="font-size:15px;font-weight:700;line-height:1.6;">原材料費は数か月遅れで小売価格に波及</div><div class="foot">為替（円安・円高）と国際商品市況の両方が輸入単価に影響し、その動きは数か月〜1年ほど遅れて国内の小売価格に波及する傾向があります。</div>';
     grid.appendChild(note);
   }
 
@@ -575,7 +539,7 @@
     state.data.meta.sources.forEach(function(s){
       var div = document.createElement("div");
       div.className = "source-item";
-      div.innerHTML = '<span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+ (s.url||s.file_url) +'" target="_blank" rel="noopener">出典を見る</a>'+(s.note? "　"+s.note : "");
+      div.innerHTML = '<span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+ (s.page_url||s.url) +'" target="_blank" rel="noopener">出典を見る</a>'+(s.note? "　"+s.note : "");
       wrap.appendChild(div);
     });
   }
@@ -593,7 +557,7 @@
     renderSources();
   }
 
-  fetch("vegetables_data.json").then(function(r){return r.json();}).then(function(json){
+  fetch("trade_data.json").then(function(r){return r.json();}).then(function(json){
     state.data = json;
     renderAll();
   }).catch(function(err){
@@ -606,12 +570,12 @@
     exportBtn.addEventListener("click", function(){
       if(!state.data || typeof XLSX==="undefined") return;
       var item = itemByKey(state.currentItem);
-      var rows = [["年月","価格指数（2020年=100）"]];
-      (item.cpi_index_monthly||[]).forEach(function(p){ rows.push([p.ym, p.value]); });
+      var rows = [["年","輸入数量(kg)","輸入金額(円)","輸入単価(円/kg)"]];
+      item.yearly.forEach(function(r){ rows.push([r.year, r.quantity_kg, r.value_yen, Math.round(priceOf(r))]); });
       var ws = XLSX.utils.aoa_to_sheet(rows);
       var wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, item.key.slice(0,28));
-      XLSX.writeFile(wb, "vegetable_"+item.key+"_monthly.xlsx");
+      XLSX.writeFile(wb, "trade_"+item.key+"_yearly.xlsx");
     });
   }
 })();

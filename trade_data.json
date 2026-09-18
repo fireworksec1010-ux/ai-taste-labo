@@ -1,0 +1,366 @@
+﻿{
+    "meta":  {
+                 "generated_at":  "2026-09-18",
+                 "description":  "加工食品原材料5品目（小麦・大豆・輸入牛肉・とうもろこし・コーヒー生豆）の日本の輸入統計データセット。財務省「貿易統計」を基にした農林水産省の集計（年次、2014〜2023年）。数量はkg、金額は円に正規化済み。",
+                 "granularity_note":  "年次（暦年）データ。品目別の農水省公開データが品目×月ごとの個別ファイル配布のため、月次化には数百ファイルの追加収集が必要。今回は年次（2014〜2023年）で作成。",
+                 "sources":  [
+                                 {
+                                     "id":  "maff_sina_betu_wheat",
+                                     "name":  "品目別貿易実績（輸入）小麦（2014〜2023年、世界計・国別、Excel）",
+                                     "org":  "農林水産省（財務省「貿易統計」を基に集計）",
+                                     "url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/attach/xls/sina_betu-183.xlsx",
+                                     "page_url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/sina_betu.html",
+                                     "retrieved":  "2026-09-18",
+                                     "note":  "「品目別貿易実績」ページの輸入上位20品目リストから小麦(11位)のExcelを取得。年ごとに国別内訳＋世界計の表が2023年から2014年まで10年分、1シートに縦に並んでいる。"
+                                 },
+                                 {
+                                     "id":  "maff_sina_betu_soybean",
+                                     "name":  "品目別貿易実績（輸入）大豆（2014〜2023年、世界計・国別、Excel）",
+                                     "org":  "農林水産省（財務省「貿易統計」を基に集計）",
+                                     "url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/attach/xls/sina_betu-181.xlsx",
+                                     "page_url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/sina_betu.html",
+                                     "retrieved":  "2026-09-18",
+                                     "note":  "輸入上位20品目リストの大豆(9位)。構造はsina_betu_wheatと同じ。"
+                                 },
+                                 {
+                                     "id":  "maff_sina_betu_beef_import",
+                                     "name":  "品目別貿易実績（輸入）牛肉（2014〜2023年、世界計・国別、Excel）",
+                                     "org":  "農林水産省（財務省「貿易統計」を基に集計）",
+                                     "url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/attach/xls/sina_betu-176.xlsx",
+                                     "page_url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/sina_betu.html",
+                                     "retrieved":  "2026-09-18",
+                                     "note":  "輸入上位20品目リストの牛肉(4位、輸入側)。同じページに牛肉の輸出側(3位, sina_betu-153.xlsx)もあるが今回は輸入のみ使用。"
+                                 },
+                                 {
+                                     "id":  "maff_sina_betu_corn",
+                                     "name":  "品目別貿易実績（輸入）とうもろこし（2014〜2023年、世界計・国別、Excel）",
+                                     "org":  "農林水産省（財務省「貿易統計」を基に集計）",
+                                     "url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/attach/xls/sina_betu-173.xlsx",
+                                     "page_url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/sina_betu.html",
+                                     "retrieved":  "2026-09-18",
+                                     "note":  "輸入上位20品目リストのとうもろこし(1位＝輸入金額最大品目)。飼料用中心。"
+                                 },
+                                 {
+                                     "id":  "maff_sina_betu_coffee",
+                                     "name":  "品目別貿易実績（輸入）コーヒー生豆（2014〜2023年、世界計・国別、Excel）",
+                                     "org":  "農林水産省（財務省「貿易統計」を基に集計）",
+                                     "url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/attach/xls/sina_betu-186.xlsx",
+                                     "page_url":  "https://www.maff.go.jp/j/kokusai/kokusei/kaigai_nogyo/k_boeki_tokei/sina_betu.html",
+                                     "retrieved":  "2026-09-18",
+                                     "note":  "輸入上位20品目リストのコーヒー生豆(14位)。"
+                                 }
+                             ]
+             },
+    "items":  [
+                  {
+                      "key":  "wheat",
+                      "label_ja":  "小麦",
+                      "related_page_note":  "食パン・即席めんの上流（食品価格ページ参照）",
+                      "granularity":  "annual",
+                      "yearly":  [
+                                     {
+                                         "year":  2014,
+                                         "quantity_kg":  5759445000,
+                                         "value_yen":  208494127000
+                                     },
+                                     {
+                                         "year":  2015,
+                                         "quantity_kg":  5530613000,
+                                         "value_yen":  199964863000
+                                     },
+                                     {
+                                         "year":  2016,
+                                         "quantity_kg":  5446632000,
+                                         "value_yen":  148009329000
+                                     },
+                                     {
+                                         "year":  2017,
+                                         "quantity_kg":  5705950000,
+                                         "value_yen":  171466683000
+                                     },
+                                     {
+                                         "year":  2018,
+                                         "quantity_kg":  5652151000,
+                                         "value_yen":  181103410000
+                                     },
+                                     {
+                                         "year":  2019,
+                                         "quantity_kg":  5331434000,
+                                         "value_yen":  160592036000
+                                     },
+                                     {
+                                         "year":  2020,
+                                         "quantity_kg":  5373855000,
+                                         "value_yen":  162763547000
+                                     },
+                                     {
+                                         "year":  2021,
+                                         "quantity_kg":  5126074000,
+                                         "value_yen":  195838243000
+                                     },
+                                     {
+                                         "year":  2022,
+                                         "quantity_kg":  5346021000,
+                                         "value_yen":  329808387000
+                                     },
+                                     {
+                                         "year":  2023,
+                                         "quantity_kg":  5026285000,
+                                         "value_yen":  271121232000
+                                     }
+                                 ],
+                      "source_ids":  [
+                                         "maff_sina_betu_wheat"
+                                     ],
+                      "original_units_note":  "元データは世界計（全世界からの輸入合計）。数量:トン(MT)、金額:千円。1000倍・1000倍してkg・円に変換。"
+                  },
+                  {
+                      "key":  "soybean",
+                      "label_ja":  "大豆",
+                      "related_page_note":  "食用油・しょうゆの上流（食品価格ページ参照）",
+                      "granularity":  "annual",
+                      "yearly":  [
+                                     {
+                                         "year":  2014,
+                                         "quantity_kg":  2827681000,
+                                         "value_yen":  193865484000
+                                     },
+                                     {
+                                         "year":  2015,
+                                         "quantity_kg":  3242619000,
+                                         "value_yen":  206220864000
+                                     },
+                                     {
+                                         "year":  2016,
+                                         "quantity_kg":  3131329000,
+                                         "value_yen":  166041815000
+                                     },
+                                     {
+                                         "year":  2017,
+                                         "quantity_kg":  3218427000,
+                                         "value_yen":  173527201000
+                                     },
+                                     {
+                                         "year":  2018,
+                                         "quantity_kg":  3236413000,
+                                         "value_yen":  170089931000
+                                     },
+                                     {
+                                         "year":  2019,
+                                         "quantity_kg":  3392154000,
+                                         "value_yen":  167315776000
+                                     },
+                                     {
+                                         "year":  2020,
+                                         "quantity_kg":  3163360000,
+                                         "value_yen":  159160006000
+                                     },
+                                     {
+                                         "year":  2021,
+                                         "quantity_kg":  3271214000,
+                                         "value_yen":  227718464000
+                                     },
+                                     {
+                                         "year":  2022,
+                                         "quantity_kg":  3503253000,
+                                         "value_yen":  339089881000
+                                     },
+                                     {
+                                         "year":  2023,
+                                         "quantity_kg":  3155521000,
+                                         "value_yen":  309700814000
+                                     }
+                                 ],
+                      "source_ids":  [
+                                         "maff_sina_betu_soybean"
+                                     ],
+                      "original_units_note":  "元データは世界計。数量:トン(MT)、金額:千円。1000倍・1000倍してkg・円に変換。"
+                  },
+                  {
+                      "key":  "beef_import",
+                      "label_ja":  "輸入牛肉",
+                      "related_page_note":  "国産牛肉・加工品コストの参考（豚肉価格ページと合わせて畜産物の上流として参照）",
+                      "granularity":  "annual",
+                      "yearly":  [
+                                     {
+                                         "year":  2014,
+                                         "quantity_kg":  519777771,
+                                         "value_yen":  306512155000
+                                     },
+                                     {
+                                         "year":  2015,
+                                         "quantity_kg":  495419585,
+                                         "value_yen":  337863175000
+                                     },
+                                     {
+                                         "year":  2016,
+                                         "quantity_kg":  504383655,
+                                         "value_yen":  288764463000
+                                     },
+                                     {
+                                         "year":  2017,
+                                         "quantity_kg":  573978087,
+                                         "value_yen":  350476375000
+                                     },
+                                     {
+                                         "year":  2018,
+                                         "quantity_kg":  608551249,
+                                         "value_yen":  384715866000
+                                     },
+                                     {
+                                         "year":  2019,
+                                         "quantity_kg":  616434751,
+                                         "value_yen":  385119263000
+                                     },
+                                     {
+                                         "year":  2020,
+                                         "quantity_kg":  601132290,
+                                         "value_yen":  357371803000
+                                     },
+                                     {
+                                         "year":  2021,
+                                         "quantity_kg":  585275699,
+                                         "value_yen":  407862271000
+                                     },
+                                     {
+                                         "year":  2022,
+                                         "quantity_kg":  560789289,
+                                         "value_yen":  492511133000
+                                     },
+                                     {
+                                         "year":  2023,
+                                         "quantity_kg":  504645802,
+                                         "value_yen":  411160978000
+                                     }
+                                 ],
+                      "source_ids":  [
+                                         "maff_sina_betu_beef_import"
+                                     ],
+                      "original_units_note":  "元データは世界計。数量:キログラム(KG、変換不要)、金額:千円。1000倍して円に変換。"
+                  },
+                  {
+                      "key":  "corn",
+                      "label_ja":  "とうもろこし",
+                      "related_page_note":  "飼料用。豚肉・牛乳・鶏卵の上流（食品価格ページ参照）",
+                      "granularity":  "annual",
+                      "yearly":  [
+                                     {
+                                         "year":  2014,
+                                         "quantity_kg":  15034840000,
+                                         "value_yen":  408496204000
+                                     },
+                                     {
+                                         "year":  2015,
+                                         "quantity_kg":  14708190000,
+                                         "value_yen":  391643526000
+                                     },
+                                     {
+                                         "year":  2016,
+                                         "quantity_kg":  15341755000,
+                                         "value_yen":  333153835000
+                                     },
+                                     {
+                                         "year":  2017,
+                                         "quantity_kg":  15305664000,
+                                         "value_yen":  345799371000
+                                     },
+                                     {
+                                         "year":  2018,
+                                         "quantity_kg":  15801834000,
+                                         "value_yen":  372183030000
+                                     },
+                                     {
+                                         "year":  2019,
+                                         "quantity_kg":  15982824000,
+                                         "value_yen":  384108758000
+                                     },
+                                     {
+                                         "year":  2020,
+                                         "quantity_kg":  15772166000,
+                                         "value_yen":  351651969000
+                                     },
+                                     {
+                                         "year":  2021,
+                                         "quantity_kg":  15239624000,
+                                         "value_yen":  520096308000
+                                     },
+                                     {
+                                         "year":  2022,
+                                         "quantity_kg":  15270835000,
+                                         "value_yen":  764391547000
+                                     },
+                                     {
+                                         "year":  2023,
+                                         "quantity_kg":  14875691000,
+                                         "value_yen":  689010372000
+                                     }
+                                 ],
+                      "source_ids":  [
+                                         "maff_sina_betu_corn"
+                                     ],
+                      "original_units_note":  "元データは世界計。数量:トン(MT)、金額:千円。1000倍・1000倍してkg・円に変換。とうもろこしは輸入上位20品目の中で金額1位（飼料用需要が中心）。"
+                  },
+                  {
+                      "key":  "coffee",
+                      "label_ja":  "コーヒー生豆",
+                      "related_page_note":  "即席めん以外の加工食品・飲料の上流参考データ",
+                      "granularity":  "annual",
+                      "yearly":  [
+                                     {
+                                         "year":  2014,
+                                         "quantity_kg":  409371998,
+                                         "value_yen":  142015900000
+                                     },
+                                     {
+                                         "year":  2015,
+                                         "quantity_kg":  435261048,
+                                         "value_yen":  179987036000
+                                     },
+                                     {
+                                         "year":  2016,
+                                         "quantity_kg":  435140110,
+                                         "value_yen":  143353214000
+                                     },
+                                     {
+                                         "year":  2017,
+                                         "quantity_kg":  406329892,
+                                         "value_yen":  149169473000
+                                     },
+                                     {
+                                         "year":  2018,
+                                         "quantity_kg":  401144069,
+                                         "value_yen":  127636328000
+                                     },
+                                     {
+                                         "year":  2019,
+                                         "quantity_kg":  436545700,
+                                         "value_yen":  125289597000
+                                     },
+                                     {
+                                         "year":  2020,
+                                         "quantity_kg":  391611217,
+                                         "value_yen":  113346893000
+                                     },
+                                     {
+                                         "year":  2021,
+                                         "quantity_kg":  402099682,
+                                         "value_yen":  131503811000
+                                     },
+                                     {
+                                         "year":  2022,
+                                         "quantity_kg":  390032416,
+                                         "value_yen":  215149536000
+                                     },
+                                     {
+                                         "year":  2023,
+                                         "quantity_kg":  355651559,
+                                         "value_yen":  203017984000
+                                     }
+                                 ],
+                      "source_ids":  [
+                                         "maff_sina_betu_coffee"
+                                     ],
+                      "original_units_note":  "元データは世界計。数量:キログラム(KG、変換不要)、金額:千円。1000倍して円に変換。"
+                  }
+              ]
+}
