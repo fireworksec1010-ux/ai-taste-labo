@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "generated_at": "2026-09-19",
+    "description": "食品カテゴリー4分野（調理食品・調味料・菓子・清涼飲料）の市場規模データセット（生産・出荷ベース）。農林水産省「食品産業動態調査」および（一社）全国清涼飲料連合会「清涼飲料水統計」の無料公開データのみを用いて作成。",
+    "important_caveat": "本データセットは工場出荷・生産統計（サプライサイド）に基づくものであり、富士経済等の民間調査会社が公表する小売ベース・エンドユーザーベースの『市場規模』とは算出方法・対象範囲が異なる。ここでの数値は『市場規模の絶対額』ではなく、生産量・出荷量・指数の年次推移から読み取れる『トレンド（伸びているか縮んでいるか）』を把握するための参考値として利用すること。",
+    "category_specific_caveats": {
+      "cooked_food_seasoning_confectionery": "農林水産省「食品産業動態調査」の個票（品目別生産量表）には、調味料・菓子・調理食品それぞれの大分類について、品目ごとに単位（t、kl等）が異なる上、大分類の『合計』欄が原表に存在しない。そのため、これら3分野は農水省が算出・公表している『食品製造業生産指数（原指数、令和2年度=100）』の大分類別年度指数を採用した。指数のため実数量（トン数など）ではなく、また金額（生産者出荷額）データはこの調査には含まれていない。",
+      "soft_drink": "清涼飲料は全清飲「清涼飲料水統計」ダイジェスト版（無料公開PDF）に掲載されている、清涼飲料全体（8部門合計）の生産数量（kl）と生産金額（百万円）の実数を採用した。ただし無料ダイジェスト版に掲載されているのは直近5年分の表のみであり、より古い年（2021年版・2022年版・2023年版databook）はPDFのフォント埋め込み方式の問題でテキスト抽出ができず、2019年より前のデータは取得できなかった。"
+    },
+    "sources": [
+      {
+        "id": "maff_doutai_r7nendo_annual_xlsx",
+        "name": "食品産業動態調査 令和7年度年報 食品製造業統計表（生産指数シート）",
+        "org": "農林水産省",
+        "url": "https://www.maff.go.jp/j/zyukyu/jki/j_doutai/attach/xls/doutai_top-109.xlsx",
+        "page_url": "https://www.maff.go.jp/j/zyukyu/jki/j_doutai/doutai_top.html",
+        "retrieved": "2026-09-19",
+        "note": "Excelファイル内シート『生産指数』の大分類別・年度別『食品製造業生産指数（原指数）』表（昭和60年度～令和7年度、令和2年度=100）から、調味料・菓子・調理食品の列を取得。同ファイルの品目別生産量シート（生産量１～４）は品目単位で、大分類ごとの合計値・金額は含まれていない。"
+      },
+      {
+        "id": "jsda_databook_2024",
+        "name": "JAPAN SOFT DRINK STATISTICS 2024（清涼飲料水統計 ダイジェスト版）",
+        "org": "一般社団法人全国清涼飲料連合会（全清飲）",
+        "url": "https://www.j-sda.or.jp/statistically-information/pdf/2024jsda_databook.pdf",
+        "page_url": "https://www.j-sda.or.jp/statistically-information/",
+        "retrieved": "2026-09-19",
+        "note": "清涼飲料全体（8部門合計）の生産数量（kl）・生産金額（百万円）の2019～2023年分を取得。"
+      },
+      {
+        "id": "jsda_databook_2025",
+        "name": "JAPAN SOFT DRINK STATISTICS 2025（清涼飲料水統計 ダイジェスト版）",
+        "org": "一般社団法人全国清涼飲料連合会（全清飲）",
+        "url": "https://www.j-sda.or.jp/statistically-information/pdf/2025jsda_databook.pdf",
+        "page_url": "https://www.j-sda.or.jp/statistically-information/",
+        "retrieved": "2026-09-19",
+        "note": "2020～2024年分の数値を用いて2024databookとの整合性をクロスチェック。"
+      },
+      {
+        "id": "jsda_databook_2026",
+        "name": "JAPAN SOFT DRINK STATISTICS 2026（清涼飲料水統計 ダイジェスト版）",
+        "org": "一般社団法人全国清涼飲料連合会（全清飲）",
+        "url": "https://www.j-sda.or.jp/statistically-information/pdf/2026jsda_databook.pdf",
+        "page_url": "https://www.j-sda.or.jp/statistically-information/",
+        "retrieved": "2026-09-19",
+        "note": "清涼飲料全体の生産数量（kl）・生産金額（百万円）の2021～2025年分（最新年含む）を取得。"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "key": "cooked_food",
+      "label_ja": "調理食品（冷凍食品・レトルト等）",
+      "unit_quantity": "生産指数（令和2年度=100の指数値。実数量トンではない）",
+      "unit_value": null,
+      "yearly": [
+        {"year": 2015, "quantity": 87.7, "value": null},
+        {"year": 2016, "quantity": 87.1, "value": null},
+        {"year": 2017, "quantity": 93.2, "value": null},
+        {"year": 2018, "quantity": 96.7, "value": null},
+        {"year": 2019, "quantity": 99.0, "value": null},
+        {"year": 2020, "quantity": 100.0, "value": null},
+        {"year": 2021, "quantity": 100.7, "value": null},
+        {"year": 2022, "quantity": 105.0, "value": null},
+        {"year": 2023, "quantity": 107.2, "value": null},
+        {"year": 2024, "quantity": 117.3, "value": null},
+        {"year": 2025, "quantity": 115.2, "value": null}
+      ],
+      "source_ids": ["maff_doutai_r7nendo_annual_xlsx"],
+      "trend_note": "2015年度指数87.7→2025年度115.2と、10年間で約+31%の一貫した増加トレンド。中食・冷凍食品需要の拡大を反映し、4分野の中で最も明確な右肩上がりを示す。直近（2025年度）は前年度からやや減速（117.3→115.2）。"
+    },
+    {
+      "key": "seasoning",
+      "label_ja": "調味料",
+      "unit_quantity": "生産指数（令和2年度=100の指数値。実数量トンではない）",
+      "unit_value": null,
+      "yearly": [
+        {"year": 2015, "quantity": 104.3, "value": null},
+        {"year": 2016, "quantity": 104.3, "value": null},
+        {"year": 2017, "quantity": 104.8, "value": null},
+        {"year": 2018, "quantity": 103.3, "value": null},
+        {"year": 2019, "quantity": 102.1, "value": null},
+        {"year": 2020, "quantity": 100.0, "value": null},
+        {"year": 2021, "quantity": 101.1, "value": null},
+        {"year": 2022, "quantity": 98.0, "value": null},
+        {"year": 2023, "quantity": 99.9, "value": null},
+        {"year": 2024, "quantity": 100.9, "value": null},
+        {"year": 2025, "quantity": 100.1, "value": null}
+      ],
+      "source_ids": ["maff_doutai_r7nendo_annual_xlsx"],
+      "trend_note": "2015年度104.3から2025年度100.1へと、10年間でほぼ横ばい～緩やかな微減（-4%程度）。他の3分野と比べ変動幅が小さく、成熟市場らしい安定推移。"
+    },
+    {
+      "key": "confectionery",
+      "label_ja": "菓子",
+      "unit_quantity": "生産指数（令和2年度=100の指数値。実数量トンではない）",
+      "unit_value": null,
+      "yearly": [
+        {"year": 2015, "quantity": 101.4, "value": null},
+        {"year": 2016, "quantity": 100.6, "value": null},
+        {"year": 2017, "quantity": 100.4, "value": null},
+        {"year": 2018, "quantity": 101.8, "value": null},
+        {"year": 2019, "quantity": 100.3, "value": null},
+        {"year": 2020, "quantity": 100.0, "value": null},
+        {"year": 2021, "quantity": 100.0, "value": null},
+        {"year": 2022, "quantity": 97.9, "value": null},
+        {"year": 2023, "quantity": 95.7, "value": null},
+        {"year": 2024, "quantity": 95.3, "value": null},
+        {"year": 2025, "quantity": 95.1, "value": null}
+      ],
+      "source_ids": ["maff_doutai_r7nendo_annual_xlsx"],
+      "trend_note": "2015～2020年度は101前後で横ばいだったが、2021年度以降は一貫して低下し2025年度は95.1（2020年度比-4.9%）。原材料高・少子化等を背景に、直近5年で緩やかな縮小トレンドに転じている。"
+    },
+    {
+      "key": "soft_drink",
+      "label_ja": "清涼飲料",
+      "unit_quantity": "キロリットル（kl）",
+      "unit_value": "百万円（生産者出荷金額、原資料の単位のまま）",
+      "yearly": [
+        {"year": 2019, "quantity": 22684200, "value": 4098510},
+        {"year": 2020, "quantity": 21579000, "value": 3797844},
+        {"year": 2021, "quantity": 22124900, "value": 3890941},
+        {"year": 2022, "quantity": 22724500, "value": 4153659},
+        {"year": 2023, "quantity": 23234800, "value": 4446093},
+        {"year": 2024, "quantity": 23596300, "value": 4731390},
+        {"year": 2025, "quantity": 23110200, "value": 4982488}
+      ],
+      "source_ids": ["jsda_databook_2024", "jsda_databook_2025", "jsda_databook_2026"],
+      "trend_note": "生産数量は2020年（コロナ禍で減少）を底に緩やかに回復・微増（2020年21,579千kl→2025年23,110千kl、+7.1%）。一方で生産金額は2020年380億円台から2025年498億円台へ+31%超と数量以上に伸びており、単価上昇（内容量減・高付加価値化・値上げ）が金額ベースの成長を牽引している。2025年は数量が前年比-2.1%とやや減少した点に留意。"
+    }
+  ]
+}
