@@ -1,0 +1,276 @@
+{
+  "meta": {
+    "generated_at": "2026-09-19",
+    "description": "大手食品メーカー10社のPR TIMES新製品情報まとめ",
+    "companies": [
+      {
+        "key": "meiji",
+        "name": "株式会社明治（明治ホールディングスグループ）",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/25200"
+      },
+      {
+        "key": "ajinomoto",
+        "name": "味の素株式会社",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/59753"
+      },
+      {
+        "key": "yamazaki",
+        "name": "山崎製パン株式会社",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/92615"
+      },
+      {
+        "key": "maruha_nichiro",
+        "name": "マルハニチロ株式会社（2026年3月よりUmios株式会社に社名変更）",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/171897"
+      },
+      {
+        "key": "nisshin_seifun",
+        "name": "日清製粉ウェルナ株式会社／株式会社日清製粉グループ本社",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/152985"
+      },
+      {
+        "key": "nissui",
+        "name": "株式会社ニッスイ（日本水産株式会社）",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/19296"
+      },
+      {
+        "key": "meg_milk",
+        "name": "雪印メグミルク株式会社",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/17831"
+      },
+      {
+        "key": "morinaga_milk",
+        "name": "森永乳業株式会社",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/21580"
+      },
+      {
+        "key": "nichirei",
+        "name": "株式会社ニチレイフーズ",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/79554"
+      },
+      {
+        "key": "kewpie",
+        "name": "キユーピー株式会社",
+        "prtimes_url": "https://prtimes.jp/main/html/searchrlp/company_id/44559"
+      }
+    ]
+  },
+  "products": [
+    {
+      "company_key": "meiji",
+      "company_name": "株式会社明治",
+      "product_name": "AI発案 合体しちゃった！きたきたのこのこの山里",
+      "announced_date": "2026-04-14",
+      "summary": "AIが顔写真から好みを分析し「きのこの山」「たけのこの里」のどちらも好きな層向けに開発した、両菓子を砕いて組み合わせたバー型チョコ菓子。コンビニ・駅売店で数量・期間限定発売。",
+      "category": "菓子",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000072.000025200.html"
+    },
+    {
+      "company_key": "meiji",
+      "company_name": "株式会社明治",
+      "product_name": "ザバス BIOPRO ヨーグルト味",
+      "announced_date": "2026-06-30",
+      "summary": "乳酸菌による発酵でたんぱく質を低分子化した「発酵プロテイン」を配合したスポーツ栄養飲料の新シリーズ。常温保存が可能で、運動後から日常まで飲みやすい設計。",
+      "category": "飲料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000024.000038615.html"
+    },
+    {
+      "company_key": "meiji",
+      "company_name": "株式会社明治",
+      "product_name": "明治エッセル スーパーカップ 大人ラベル とことんショコラ／とことん珈琲",
+      "announced_date": "2026-01-27",
+      "summary": "深みと苦みを楽しむ大人向けの冬季限定カップアイス2種。ブランデー風味のソースを重ねた「とことんショコラ」と、4層で異なる風味を表現し2年ぶりに復活した「とことん珈琲」を順次発売。",
+      "category": "菓子（アイスクリーム）",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000005.000155982.html"
+    },
+    {
+      "company_key": "meiji",
+      "company_name": "株式会社明治",
+      "product_name": "チョコレート効果 カカオクランチ大袋",
+      "announced_date": "2024-10-01",
+      "summary": "高カカオポリフェノールと食物繊維を含むカカオ72%のクランチチョコレートを大袋タイプで発売。板チョコの苦味が苦手な人にも食べやすいよう約3年かけて開発された東日本エリア限定商品。",
+      "category": "菓子",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000047.000017745.html"
+    },
+    {
+      "company_key": "ajinomoto",
+      "company_name": "味の素株式会社",
+      "product_name": "2026年秋季家庭用新製品（TASTY PASTY 等13品種）",
+      "announced_date": "2026-07-09",
+      "summary": "洋風ペースト調味料「TASTY PASTY」などを含む家庭用新製品13品種とリニューアル品3品種をまとめて発表。多くは8月22日に全国発売、鍋キューブの新フレーバーは8月8日に先行発売。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000274.000059753.html"
+    },
+    {
+      "company_key": "ajinomoto",
+      "company_name": "味の素株式会社",
+      "product_name": "ピュアセレクト マヨネーズ ふわあま",
+      "announced_date": "2026-08-22",
+      "summary": "発売30周年を機に、酸味・塩味を抑えてはちみつを隠し味に加えた新しいタイプのマヨネーズ。独自のマスキング技術でまろやかな味わいに仕上げ、幅広い料理への活用を提案。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000177.000092524.html"
+    },
+    {
+      "company_key": "ajinomoto",
+      "company_name": "味の素株式会社",
+      "product_name": "Cook Do 極（プレミアム）華辣麻婆豆腐用",
+      "announced_date": "2026-08-22",
+      "summary": "花椒やシナモンなどを使った独自の香辣油と3種の中華醤をブレンドした、香り重視のプレミアム麻婆豆腐調味料。物価高の中でも伸びる本格志向の麻婆豆腐需要を狙った新商品。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000176.000092524.html"
+    },
+    {
+      "company_key": "ajinomoto",
+      "company_name": "味の素冷凍食品株式会社",
+      "product_name": "2026年秋季家庭用新製品（パクパクぎょうざ、黒毛アンガス牛100%ハンバーグ、黄金炒飯 等）",
+      "announced_date": "2026-08-09",
+      "summary": "羽根つき餃子「パクパクぎょうざ」、ブラックアンガス牛100%の冷凍ハンバーグ、名店監修の炒飯など、味の素冷凍食品が2026年秋の家庭用新製品ラインアップを発表。",
+      "category": "冷凍食品",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000098.000027220.html"
+    },
+    {
+      "company_key": "yamazaki",
+      "company_name": "山崎製パン株式会社",
+      "product_name": "ランチパック（バスクチーズケーキ風味／あんバター）",
+      "announced_date": "2024-10-01",
+      "summary": "イメージキャラクター小芝風花さんプロデュースによる期間限定ランチパック2品。チーズクリームとキャラメルソースの「バスクチーズケーキ風味」と、甘さ控えめの発酵バターマーガリンを使った「あんバター」を発売。ランチパック発売40周年記念商品。",
+      "category": "パン",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000003.000092615.html"
+    },
+    {
+      "company_key": "yamazaki",
+      "company_name": "山崎製パン株式会社",
+      "product_name": "ランチパック（粒ピーナッツとナッティチョコ／ポークたまご）",
+      "announced_date": "2022-04-01",
+      "summary": "小芝風花さんが企画に携わったランチパック2品。ピーナッツクリームとナッツ入りチョコクリームを組み合わせた品と、ボロニアソーセージとマスタード風味のスクランブルエッグを挟んだ品を期間限定発売。",
+      "category": "パン",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000002.000092615.html"
+    },
+    {
+      "company_key": "nissui",
+      "company_name": "株式会社ニッスイ",
+      "product_name": "今日のおかず レンジでできる さばの塩焼き／さわらの西京焼き／あじの梅しそフライ",
+      "announced_date": "2026-03-01",
+      "summary": "電子レンジで温めるだけで食べられる時短志向の冷凍魚惣菜3品。独自の漬け込み技術を用い、共働き・単身世帯の調理や後片付けの負担を軽くすることを狙った商品。",
+      "category": "水産加工品（冷凍食品）",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000135.000019296.html"
+    },
+    {
+      "company_key": "nissui",
+      "company_name": "株式会社ニッスイ",
+      "product_name": "魚活専科（うおかつせんか）カプセル／ドリンク",
+      "announced_date": "2025-10-10",
+      "summary": "不足しがちなEPA・DHAを手軽に摂取できる健康食品。国産イワシ油を使用し、通販サイト「海の元気倶楽部」限定でカプセルタイプとドリンクタイプを発売。",
+      "category": "水産加工品",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000129.000019296.html"
+    },
+    {
+      "company_key": "nissui",
+      "company_name": "株式会社ニッスイ",
+      "product_name": "シーフードカレー／あじと根菜の黒酢あん／ヤンニョムチキン",
+      "announced_date": "2024-09-01",
+      "summary": "キューディッシュ事業から発売された惣菜3品。多種スパイスのシーフードカレー、独自の漬け込み技術によるあじの竜田揚げ風メニュー、辛旨だれのから揚げを関東甲信越エリアで展開。",
+      "category": "水産加工品",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000088.000019296.html"
+    },
+    {
+      "company_key": "meg_milk",
+      "company_name": "雪印メグミルク株式会社",
+      "product_name": "The 発酵BUTTER",
+      "announced_date": "2025-09-01",
+      "summary": "「雪印北海道バター」から生まれた本格発酵バター。厚めに削って塗る新しい食べ方を提案し、専門家からはすっきりとした酸味とコクが評価された。東日本エリア限定発売。",
+      "category": "乳製品",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000003.000029707.html"
+    },
+    {
+      "company_key": "meg_milk",
+      "company_name": "雪印ビーンスターク株式会社（雪印メグミルクグループ）",
+      "product_name": "ハキラ 牧場の朝 ヨーグルト風味／いちごヨーグルト風味",
+      "announced_date": "2026-08-26",
+      "summary": "乳飲料ブランド「牧場の朝」とコラボした口中清涼菓子の新フレーバー2品。1歳半頃からのオーラルケア習慣づけを目的とした商品で、10月1日発売予定。",
+      "category": "菓子",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000199.000011145.html"
+    },
+    {
+      "company_key": "morinaga_milk",
+      "company_name": "森永乳業株式会社（森永乳業クリニコ）",
+      "product_name": "わのか（和の奏）",
+      "announced_date": "2025-07-18",
+      "summary": "森永乳業クリニコ初となる粘度可変型の流動食。摂取時は液体状で、体内の酸と反応して粘度が高まる独自設計を採用。まずは医療・介護施設向けに先行発売。",
+      "category": "その他（介護食）",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000001294.000021580.html"
+    },
+    {
+      "company_key": "morinaga_milk",
+      "company_name": "森永乳業株式会社",
+      "product_name": "森永あじわいソフト バニラ／バニラ＆チョコ",
+      "announced_date": "2026-04-20",
+      "summary": "発売22年で初のパッケージ刷新、11年ぶりに味を見直したロングセラーのソフトクリーム風アイス。バニラ感を強め、後味の甘さを控えめに調整した。",
+      "category": "菓子（アイスクリーム）",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000001450.000021580.html"
+    },
+    {
+      "company_key": "morinaga_milk",
+      "company_name": "森永乳業株式会社",
+      "product_name": "森永マミージュレ／マミージュレ マスカット味",
+      "announced_date": "2026-04-07",
+      "summary": "60年以上続く「森永マミー」シリーズから、1歳向けにカルシウム・鉄分・乳酸菌を配合したパウチ入りゼリー飲料を新発売。携帯しやすいゼリー飲料市場の拡大に対応した商品。",
+      "category": "飲料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000001435.000021580.html"
+    },
+    {
+      "company_key": "nichirei",
+      "company_name": "株式会社ニチレイフーズ",
+      "product_name": "2026年春季新商品（盛岡風冷麺、チーズメンチかつ、手仕込みえびフライ 等・全84品）",
+      "announced_date": "2026-01-09",
+      "summary": "氷を使った独自技術で電子レンジ調理のまま冷たい麺料理に仕上げる「レンジで冷たい」シリーズなど、家庭用・業務用合計84品の新商品・リニューアル品を発表。節約志向や猛暑対策、人手不足対応を意識したラインアップ。",
+      "category": "冷凍食品",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000116.000079554.html"
+    },
+    {
+      "company_key": "nichirei",
+      "company_name": "株式会社ニチレイフーズ",
+      "product_name": "2026年秋季新商品（ニチレイ鶏から、金胡麻担々麺 等・全91品）",
+      "announced_date": "2026-07-08",
+      "summary": "「食の外部化」の加速を踏まえ、鶏唐揚げ「ニチレイ鶏から」や濃厚スープの担々麺・ラーメン類など、家庭用・業務用合計91品の新商品・リニューアル品を発表。",
+      "category": "冷凍食品",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000136.000079554.html"
+    },
+    {
+      "company_key": "kewpie",
+      "company_name": "キユーピー株式会社",
+      "product_name": "キユーピー 免疫ケア 酢酸菌GK-1マヨネーズタイプ／ドレッシング まろやかごま",
+      "announced_date": "2026-02-19",
+      "summary": "独自素材「酢酸菌GK-1」を配合した機能性表示食品のマヨネーズタイプとドレッシングを発売。日常の野菜摂取を通じて手軽に免疫ケアできる商品として展開。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000672.000044559.html"
+    },
+    {
+      "company_key": "kewpie",
+      "company_name": "キユーピー株式会社",
+      "product_name": "あえるパスタソース トマト＆バジル 完熟トマト仕立て",
+      "announced_date": "2026-02-19",
+      "summary": "完熟トマトの酸味・うま味と国産バジルの香りを生かした温め不要のパスタソース。ゆでたパスタに和えるだけで本格的な一皿に仕上がる手軽さが特長。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000676.000044559.html"
+    },
+    {
+      "company_key": "kewpie",
+      "company_name": "キユーピー株式会社",
+      "product_name": "キユーピー マオンソース（業務用）",
+      "announced_date": "2025-02-07",
+      "summary": "マヨネーズ発売100周年を記念し、スペイン・マオン地方発祥のソースに着想を得た業務用調味料を発売。オリーブオイルやレモン、にんにくの風味で食材のおいしさを引き立てるなめらかな味わいが特長。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000580.000044559.html"
+    },
+    {
+      "company_key": "kewpie",
+      "company_name": "キユーピー株式会社",
+      "product_name": "キユーピー 具沢山ソース レモンタルタル（業務用）",
+      "announced_date": "2026-02-06",
+      "summary": "レモン果汁と果皮を使い、爽やかな風味とシャキシャキ食感の玉ねぎを楽しめる業務用タルタルソース。揚げ物をさっぱり食べたいというニーズに向けた新商品。",
+      "category": "調味料",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000677.000044559.html"
+    }
+  ]
+}
