@@ -237,16 +237,6 @@
   }
   function fmt1(v){ return (Math.round(v*10)/10).toLocaleString("ja-JP",{minimumFractionDigits:1,maximumFractionDigits:1}); }
   function fmtInt(v){ return Math.round(v).toLocaleString("ja-JP"); }
-  function niceMax(v){
-    if(v<=0) return 10;
-    var base = Math.pow(10, Math.floor(Math.log10(v)));
-    var f = v/base, niceF;
-    if(f<=1) niceF=1; else if(f<=1.2) niceF=1.2; else if(f<=1.5) niceF=1.5;
-    else if(f<=2) niceF=2; else if(f<=2.5) niceF=2.5; else if(f<=3) niceF=3;
-    else if(f<=4) niceF=4; else if(f<=5) niceF=5; else if(f<=6) niceF=6;
-    else if(f<=8) niceF=8; else niceF=10;
-    return niceF*base;
-  }
   function statBadge(pct){
     if(pct>=20) return {cls:"critical", label:"大幅拡大"};
     if(pct>=8) return {cls:"serious", label:"拡大"};
@@ -267,8 +257,12 @@
     var xs = points.map(function(p){return p.x;});
     var ys = points.filter(function(p){return p.y!==null && p.y!==undefined;}).map(function(p){return p.y;});
     var xMin = Math.min.apply(null,xs), xMax = Math.max.apply(null,xs);
-    var yMax = opts.yMax!==undefined ? opts.yMax : niceMax(Math.max.apply(null,ys)*1.12);
-    var yMin = opts.yMin!==undefined ? opts.yMin : 0;
+    var dataMin = Math.min.apply(null,ys), dataMax = Math.max.apply(null,ys);
+    // ズーム表示：0基準ではなく、データの変化幅に上下15%の余白を持たせた範囲を軸にする
+    var span = dataMax-dataMin;
+    var pad = span>0 ? span*0.15 : Math.abs(dataMax||1)*0.05;
+    var yMax = opts.yMax!==undefined ? opts.yMax : dataMax+pad;
+    var yMin = opts.yMin!==undefined ? opts.yMin : Math.max(0, dataMin-pad);
 
     function sx(x){ return m.left + (xMax===xMin?0:(x-xMin)/(xMax-xMin))*innerW; }
     function sy(y){ return m.top + innerH - (yMax===yMin?0:(y-yMin)/(yMax-yMin))*innerH; }
@@ -412,7 +406,7 @@
 
     if(hasValue){
       document.getElementById("primary-title").textContent = cat.label_ja+"：生産金額の推移（"+firstYear+"〜"+lastYear+"年）";
-      document.getElementById("primary-note").textContent = "生産者出荷金額（"+cat.unit_value+"）。市場規模の目安として最も近い指標です。";
+      document.getElementById("primary-note").textContent = "生産者出荷金額（"+cat.unit_value+"）。市場規模の目安として最も近い指標です。※縦軸は変化を見やすくするため0からではなく実際の数値幅にズームしています（軸の数値をご確認ください）。";
       var valPts = cat.yearly.map(function(r){ return {x:r.year, y:r.value}; });
       buildChart(document.getElementById("svg-primary"), valPts, {
         colorVar: COLOR_VAR[cat.key],
@@ -435,7 +429,7 @@
       });
     } else {
       document.getElementById("primary-title").textContent = cat.label_ja+"：生産指数の推移（"+firstYear+"〜"+lastYear+"年度）";
-      document.getElementById("primary-note").textContent = "食品製造業生産指数（"+cat.unit_quantity+"）。実数量・金額はこの調査には含まれていません。";
+      document.getElementById("primary-note").textContent = "食品製造業生産指数（"+cat.unit_quantity+"）。実数量・金額はこの調査には含まれていません。※縦軸は変化を見やすくするため0からではなく実際の数値幅にズームしています（軸の数値をご確認ください）。";
       var idxPts = cat.yearly.map(function(r){ return {x:r.year, y:r.quantity}; });
       buildChart(document.getElementById("svg-primary"), idxPts, {
         colorVar: COLOR_VAR[cat.key],
