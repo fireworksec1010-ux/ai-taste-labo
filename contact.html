@@ -1,0 +1,115 @@
+<title>お問い合わせ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --border:         rgba(11,11,11,0.10);
+    --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --accent: #2a78d6;
+  }
+  /* このページは常にライト配色に固定しています（ダーク配色は意図的に無効化） */
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--page-plane);
+    color:var(--text-primary);
+    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:680px; margin:0 auto; padding:0 20px; }
+  h1,h2{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; flex-wrap:wrap; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+
+  .hero{ padding:36px 0 8px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; letter-spacing:.08em;
+    color:var(--text-secondary); text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{ font-size:clamp(26px,5vw,34px); line-height:1.2; }
+  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:56ch; margin:16px 0 0; }
+
+  .card{
+    background:var(--surface-1); border:1px solid var(--border); border-radius:12px;
+    padding:26px 24px; box-shadow:var(--card-shadow); margin:24px 0;
+  }
+  .card h2{ font-size:16px; margin-bottom:10px; }
+  .card p{ font-size:13.5px; line-height:1.8; color:var(--text-secondary); margin:0 0 18px; }
+
+  .mail-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--text-primary); color:var(--surface-1);
+    text-decoration:none; font-weight:700; font-size:14px;
+    padding:12px 20px; border-radius:99px;
+  }
+  .mail-btn:hover{ opacity:.88; }
+
+  .checklist{ margin:0; padding:0; list-style:none; display:grid; gap:8px; }
+  .checklist li{ font-size:13px; color:var(--text-secondary); padding-left:20px; position:relative; line-height:1.6; }
+  .checklist li:before{ content:"・"; position:absolute; left:0; color:var(--accent); font-weight:900; }
+
+  footer{ padding:30px 0 60px; }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.8; }
+
+  @media (max-width:520px){
+    .hero{ padding:28px 0 8px; }
+    .card{ padding:20px 18px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <nav class="top-nav">
+    <a href="index.html">食品価格</a>
+    <a href="vegetables.html">野菜価格</a>
+    <a href="trade.html">輸入統計</a>
+    <a href="product_news.html">新製品情報</a>
+    <a href="market_size.html">市場規模</a>
+    <a href="contact.html" class="active">お問い合わせ</a>
+  </nav>
+
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span>Contact</div>
+    <h1>お問い合わせ</h1>
+    <p>本サイトの内容についてのご質問・修正のご要望・掲載してほしいデータのリクエストなどは、下記のメールアドレスまでお気軽にご連絡ください。</p>
+  </div>
+
+  <div class="card">
+    <h2>メールでのお問い合わせ</h2>
+    <p>ボタンを押すとお使いのメールソフトが開き、宛先・件名が自動で入力されます。</p>
+    <a class="mail-btn" href="mailto:fireworks.ec.1010@gmail.com?subject=%E3%80%90%E9%A3%9F%E5%93%81%E4%BE%A1%E6%A0%BC%E3%82%B5%E3%82%A4%E3%83%88%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">
+      ✉ fireworks.ec.1010@gmail.com へメールを送る
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>スムーズなご連絡のために</h2>
+    <ul class="checklist">
+      <li>どのページについてのお問い合わせか（食品価格／野菜価格／輸入統計／新製品情報／市場規模）</li>
+      <li>気になったデータ・グラフの箇所（品目名や年月など）</li>
+      <li>ご要望の内容（データの追加、表示の修正、新しいページの提案など）</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="disclaimer">
+      ・お問い合わせの内容によっては、回答にお時間をいただく場合があります。<br>
+      ・本サイトは社内外への説明・提案資料としての利用を想定した参考資料です。
+    </div>
+  </footer>
+
+</div>
