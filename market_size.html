@@ -42,9 +42,21 @@
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
 
-  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; flex-wrap:wrap; }
-  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; }
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+
+  .hero-stat{
+    display:inline-flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    margin-top:22px; padding:14px 18px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(208,59,59,0.08), rgba(208,59,59,0.02));
+    border:1px solid rgba(208,59,59,0.18);
+  }
+  .hero-stat .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:clamp(30px,6vw,42px); color:var(--status-critical); line-height:1; }
+  .hero-stat .num .unit{ font-size:14px; font-weight:700; color:var(--text-secondary); margin-left:3px; }
+  .hero-stat .meta{ display:flex; flex-direction:column; gap:2px; }
+  .hero-stat .meta .desc{ font-size:12.5px; font-weight:700; color:var(--text-primary); }
+  .hero-stat .meta .delta{ font-size:11.5px; color:var(--status-critical); font-weight:700; }
 
   .hero{ padding:32px 0 20px; }
   .eyebrow{
@@ -162,6 +174,13 @@
     <div class="eyebrow"><span class="dot"></span>生産・出荷統計ベースの参考値</div>
     <h1>食品市場のいま</h1>
     <p>調理食品・調味料・菓子・清涼飲料の4カテゴリーについて、農林水産省「食品産業動態調査」および全国清涼飲料連合会「清涼飲料水統計」の無料公開データから、市場の伸び縮みのトレンドをまとめました。</p>
+    <div class="hero-stat" id="hero-stat" hidden>
+      <div class="num" id="hero-stat-num"></div>
+      <div class="meta">
+        <div class="desc" id="hero-stat-desc"></div>
+        <div class="delta" id="hero-stat-delta"></div>
+      </div>
+    </div>
     <div class="meta-row">
       <span id="updated-at">データ取得日を読み込み中…</span>
       <span>出典：農林水産省／全国清涼飲料連合会（詳細は末尾）</span>
@@ -308,8 +327,25 @@
     }
 
     var color = cssVar(opts.colorVar || "--series-1");
-    var d = points.filter(function(p){return p.y!==null && p.y!==undefined;})
-      .map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
+    var validForArea = points.filter(function(p){return p.y!==null && p.y!==undefined;});
+
+    var gradId = (svg.id||"chart")+"-area";
+    var defs = el("defs",{});
+    var grad = el("linearGradient",{id:gradId, x1:"0", y1:"0", x2:"0", y2:"1"});
+    grad.appendChild(el("stop",{offset:"0%", "stop-color":color, "stop-opacity":"0.24"}));
+    grad.appendChild(el("stop",{offset:"100%", "stop-color":color, "stop-opacity":"0"}));
+    defs.appendChild(grad);
+    svg.appendChild(defs);
+
+    if(validForArea.length>1){
+      var baseY = sy(yMin);
+      var areaD = "M"+sx(validForArea[0].x).toFixed(2)+","+baseY.toFixed(2)+" "+
+        validForArea.map(function(p){ return "L"+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ")+
+        " L"+sx(validForArea[validForArea.length-1].x).toFixed(2)+","+baseY.toFixed(2)+" Z";
+      svg.appendChild(el("path",{d:areaD, fill:"url(#"+gradId+")", stroke:"none"}));
+    }
+
+    var d = validForArea.map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
     svg.appendChild(el("path",{class:"line-path", d:d, stroke:color}));
 
     var hitRect = el("rect",{class:"chart-hit", x:m.left, y:m.top, width:innerW, height:innerH});
@@ -462,6 +498,14 @@
     var top = withPct[0], bottom = withPct[withPct.length-1];
     var softDrink = categoryByKey("soft_drink");
     var softDrinkLast = softDrink.yearly[softDrink.yearly.length-1];
+
+    var heroStat = document.getElementById("hero-stat");
+    if(heroStat){
+      heroStat.hidden = false;
+      document.getElementById("hero-stat-num").innerHTML = (top.pct>=0?"+":"")+fmt1(top.pct)+'<span class="unit">%</span>';
+      document.getElementById("hero-stat-desc").textContent = top.cat.label_ja+"の拡大（"+top.cat.yearly[0].year+"〜"+top.cat.yearly[top.cat.yearly.length-1].year+"）";
+      document.getElementById("hero-stat-delta").textContent = "4カテゴリー中 最も拡大している市場";
+    }
 
     var tiles = [
       { label:top.cat.label_ja+"（"+top.cat.yearly[0].year+"〜"+top.cat.yearly[top.cat.yearly.length-1].year+"）", value:(top.pct>=0?"+":"")+fmt1(top.pct), unit:"%",

@@ -46,9 +46,21 @@
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
 
-  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; }
-  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; }
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+
+  .hero-stat{
+    display:inline-flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    margin-top:22px; padding:14px 18px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(208,59,59,0.08), rgba(208,59,59,0.02));
+    border:1px solid rgba(208,59,59,0.18);
+  }
+  .hero-stat .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:clamp(30px,6vw,42px); color:var(--status-critical); line-height:1; }
+  .hero-stat .num .unit{ font-size:14px; font-weight:700; color:var(--text-secondary); margin-left:3px; }
+  .hero-stat .meta{ display:flex; flex-direction:column; gap:2px; }
+  .hero-stat .meta .desc{ font-size:12.5px; font-weight:700; color:var(--text-primary); }
+  .hero-stat .meta .delta{ font-size:11.5px; color:var(--status-critical); font-weight:700; }
 
   .hero{ padding:32px 0 28px; }
   .eyebrow{
@@ -174,6 +186,13 @@
     <div class="eyebrow"><span class="dot"></span>公的統計で見る野菜の価格</div>
     <h1>野菜の物価</h1>
     <p>総務省統計局「消費者物価指数」の品目別価格指数（月次）をもとに、生鮮野菜8品目の価格推移をまとめました。野菜は天候や季節による変動が大きいため、月次のグラフで動きを追えるようにしています。</p>
+    <div class="hero-stat" id="hero-stat" hidden>
+      <div class="num" id="hero-stat-num"></div>
+      <div class="meta">
+        <div class="desc" id="hero-stat-desc"></div>
+        <div class="delta" id="hero-stat-delta"></div>
+      </div>
+    </div>
     <div class="meta-row">
       <span id="updated-at">データ取得日を読み込み中…</span>
       <span>出典：総務省統計局（詳細は末尾）</span>
@@ -357,6 +376,24 @@
       }
     });
     if(cur) segments.push(cur);
+
+    var gradId = (svg.id||"chart")+"-area";
+    var defs = el("defs",{});
+    var grad = el("linearGradient",{id:gradId, x1:"0", y1:"0", x2:"0", y2:"1"});
+    grad.appendChild(el("stop",{offset:"0%", "stop-color":color, "stop-opacity":"0.24"}));
+    grad.appendChild(el("stop",{offset:"100%", "stop-color":color, "stop-opacity":"0"}));
+    defs.appendChild(grad);
+    svg.appendChild(defs);
+
+    var baseY = sy(yMin);
+    segments.forEach(function(seg){
+      if(seg.pts.length>1){
+        var areaD = "M"+sx(seg.pts[0].x).toFixed(2)+","+baseY.toFixed(2)+" "+
+          seg.pts.map(function(p){ return "L"+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ")+
+          " L"+sx(seg.pts[seg.pts.length-1].x).toFixed(2)+","+baseY.toFixed(2)+" Z";
+        svg.appendChild(el("path",{d:areaD, fill:"url(#"+gradId+")", stroke:"none"}));
+      }
+    });
 
     segments.forEach(function(seg){
       var d = seg.pts.map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
@@ -547,6 +584,14 @@
     }).filter(function(r){ return r.pct!==null; });
     withPct.sort(function(a,b){ return b.pct-a.pct; });
     var top = withPct[0], bottom = withPct[withPct.length-1];
+
+    var heroStat = document.getElementById("hero-stat");
+    if(heroStat){
+      heroStat.hidden = false;
+      document.getElementById("hero-stat-num").innerHTML = fmt1(top.last.value)+'<span class="unit">（2020年=100）</span>';
+      document.getElementById("hero-stat-desc").textContent = top.item.label_ja+"の価格指数（"+monthLabel(top.last.ym)+"）";
+      document.getElementById("hero-stat-delta").textContent = "▲ "+(top.pct>=0?"+":"")+fmt1(top.pct)+"% 2019年平均比（8品目中 最も上昇）";
+    }
 
     var tiles = [
       { label:top.item.label_ja+"（"+monthLabel(top.last.ym)+"）", value:fmt1(top.last.value), unit:"（2020年=100）",
