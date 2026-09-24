@@ -45,7 +45,7 @@ description: 食品価格サイト（食品価格・野菜価格・輸入統計�
 - 生産・出荷ベースであり、富士経済等の小売ベース市場調査とは算出方法が異なる旨のバナーを維持する。チャートの縦軸はズーム表示（0基準にしない）で、その注記も残す。
 
 ### 6. お問い合わせ（contact.html）
-- 宛先はmailtoのみ（fireworks.ec.1010@gmail.com）。変更依頼があるときだけ編集。
+- 宛先はmailtoのみ（fireworks.fd.2020@gmail.com）。変更依頼があるときだけ編集。
 
 ## JSON編集の注意（Windows / PowerShell）
 - JSONの書き出しは `[System.IO.File]::WriteAllText(path, json, [System.Text.Encoding]::UTF8)`（BOM付き）。読み込みは `[System.IO.File]::ReadAllText(path, [System.Text.Encoding]::UTF8)`。BOMなしUTF-8（他エージェントやWriteツールが作ったファイル）を `Get-Content -Raw` で読むと文字化けする。
