@@ -145,6 +145,23 @@
   }
   .note-box b{ color:var(--text-primary); }
 
+  .drivers-card{
+    margin-top:14px; background:var(--surface-1); border:1px solid var(--border); border-radius:12px;
+    padding:18px 18px 12px; box-shadow:var(--card-shadow);
+  }
+  .drivers-card h3{ font-size:16px; line-height:1.5; margin-bottom:14px; }
+  .drivers-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+  .drivers-col h4{ margin:0 0 8px; font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:6px; }
+  .drivers-col.up h4{ color:var(--status-critical); }
+  .drivers-col.down h4{ color:#2a78d6; }
+  .drivers-col ul{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .drivers-col li{ font-size:13px; line-height:1.7; color:var(--text-secondary); padding-left:12px; border-left:2px solid var(--border); }
+  .drivers-col.up li{ border-left-color:rgba(208,59,59,0.35); }
+  .drivers-col.down li{ border-left-color:rgba(42,120,214,0.35); }
+  .drivers-col li .src{ display:block; font-size:11px; color:var(--text-muted); margin-top:3px; }
+  .drivers-col li .src a{ text-decoration:none; }
+  .drivers-foot{ font-size:11px; color:var(--text-muted); margin-top:12px; line-height:1.6; }
+
   #secondary-chart[hidden]{ display:none; }
 
   footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
@@ -230,6 +247,7 @@
     </div>
 
     <div class="note-box" id="trend-note"></div>
+    <div class="drivers-card" id="drivers-card" hidden></div>
   </section>
 
   <footer>
@@ -481,6 +499,26 @@
     }
 
     document.getElementById("trend-note").innerHTML = "<b>"+cat.label_ja+"の動き：</b>"+cat.trend_note;
+    renderDrivers(cat);
+  }
+
+  function renderDrivers(cat){
+    var box = document.getElementById("drivers-card");
+    var d = cat.drivers;
+    if(!d){ box.hidden = true; return; }
+    function list(items){
+      return "<ul>"+(items||[]).map(function(it){
+        return "<li>"+it.text+'<span class="src">出典：<a href="'+it.source_url+'" target="_blank" rel="noopener">'+it.source_name+"</a></span></li>";
+      }).join("")+"</ul>";
+    }
+    box.innerHTML =
+      "<h3>"+cat.label_ja+"｜"+d.headline+"</h3>"+
+      '<div class="drivers-grid">'+
+        '<div class="drivers-col up"><h4>▲ 押し上げ要因</h4>'+list(d.up)+"</div>"+
+        '<div class="drivers-col down"><h4>▼ 押し下げ要因</h4>'+list(d.down)+"</div>"+
+      "</div>"+
+      '<div class="drivers-foot">※要因は業界団体・報道等の公表内容に基づく要約です。上のグラフ（生産指数・生産統計）と対象期間や集計単位（年度／暦年）が異なる場合があります。</div>';
+    box.hidden = false;
   }
 
   function selectCategory(key){
