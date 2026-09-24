@@ -70,6 +70,29 @@
   .trend-item .src{ font-size:11.5px; color:var(--text-muted); }
   .trend-item .src a{ font-weight:700; text-decoration:none; }
 
+  .analysis-intro{ font-size:13.5px; line-height:1.8; color:var(--text-secondary); margin:0 0 14px; }
+  .theme{ border:1px solid var(--border); border-radius:12px; padding:16px 16px 12px; margin-bottom:12px; background:var(--surface-1); }
+  .theme h3{ font-size:15.5px; margin-bottom:12px; }
+  .flow{ display:grid; gap:0; }
+  .flow-step{ position:relative; padding:0 0 14px 22px; border-left:2px solid rgba(42,120,214,0.25); margin-left:6px; }
+  .flow-step:last-child{ border-left-color:transparent; padding-bottom:4px; }
+  .flow-step:before{ content:""; position:absolute; left:-6px; top:3px; width:10px; height:10px; border-radius:50%; background:var(--surface-1); border:2px solid var(--accent); }
+  .flow-step.market:before{ border-color:var(--status-critical); }
+  .flow-step.products:before{ border-color:#1baf7a; }
+  .flow-step.take:before{ background:var(--text-primary); border-color:var(--text-primary); }
+  .flow-step .k{ font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text-muted); margin-bottom:3px; }
+  .flow-step .v{ font-size:13px; line-height:1.75; color:var(--text-secondary); }
+  .flow-step .v a{ font-size:11.5px; font-weight:700; text-decoration:none; }
+  .flow-step.take .v{ color:var(--text-primary); font-weight:500; }
+  .prod-list{ list-style:none; margin:4px 0 0; padding:0; display:grid; gap:6px; }
+  .prod-list li{ font-size:12.5px; line-height:1.6; background:var(--page-plane); border:1px solid var(--border); border-radius:8px; padding:7px 10px; }
+  .prod-list .co{ font-weight:700; color:var(--text-primary); }
+  .prod-list .dt{ color:var(--text-muted); font-size:11px; margin-left:4px; }
+  .prod-list .pt{ display:block; color:var(--text-secondary); }
+  .prod-list a{ font-size:11px; font-weight:700; text-decoration:none; }
+  .analysis-src{ font-size:11px; color:var(--text-muted); line-height:1.7; margin-top:6px; }
+  .analysis-src a{ text-decoration:none; }
+
   .outlook-box{
     margin-top:6px; padding:14px 16px; border-radius:10px;
     background:linear-gradient(135deg, rgba(208,59,59,0.07), rgba(208,59,59,0.02));
@@ -129,6 +152,29 @@
     document.getElementById("updated-at").textContent = "データ取得日：" + parts[0]+"年"+(+parts[1])+"月"+(+parts[2])+"日";
   }
 
+  function renderAnalysis(a){
+    if(!a) return "";
+    var themes = (a.themes||[]).map(function(t){
+      var prods = (t.products||[]).map(function(p){
+        return '<li><span class="co">'+p.company+'</span>「'+p.name+'」<span class="dt">'+(p.date||"").replace(/-/g,"/")+'</span>'+
+          '<span class="pt">'+p.point+'　<a href="'+p.source_url+'" target="_blank" rel="noopener">PR TIMES →</a></span></li>';
+      }).join("");
+      return '<div class="theme"><h3>'+t.title+'</h3><div class="flow">'+
+        '<div class="flow-step needs"><div class="k">生活者ニーズの変化</div><div class="v">'+t.needs+'</div></div>'+
+        '<div class="flow-step market"><div class="k">市場の動き</div><div class="v">'+t.market+
+          (t.market_link ? '　<a href="'+t.market_link+'">市場規模ページ →</a>' : '')+'</div></div>'+
+        '<div class="flow-step products"><div class="k">各社の新製品</div><div class="v"><ul class="prod-list">'+prods+'</ul></div></div>'+
+        '<div class="flow-step take"><div class="k">読み取れること（当サイトの見立て）</div><div class="v">'+t.takeaway+'</div></div>'+
+      '</div></div>';
+    }).join("");
+    var srcs = (a.sources||[]).map(function(s){
+      return '<a href="'+s.url+'" target="_blank" rel="noopener">'+s.name+'</a>';
+    }).join("／");
+    return '<div class="section-label">市場・生活者ニーズ・新製品のつながり</div>'+
+      '<p class="analysis-intro">'+a.intro+'</p>'+themes+
+      '<div class="analysis-src">主な出典：'+srcs+'<br>'+(a.note||"")+'</div>';
+  }
+
   function renderMonths(data){
     var wrap = document.getElementById("months");
     wrap.innerHTML = "";
@@ -157,6 +203,7 @@
         '<h2>'+m.label_ja+'のトピックス</h2>'+
         '<div class="sub">食品価格サイト内データ＋国内トレンドニュースのまとめ</div>'+
         '<div class="highlight-grid">'+highlightsHtml+'</div>'+
+        renderAnalysis(m.analysis)+
         '<div class="section-label">国内トレンド</div>'+
         trendsHtml+
         (m.outlook ? '<div class="section-label">来月の注目ポイント</div><div class="outlook-box">'+m.outlook+'</div>' : '');
