@@ -5,7 +5,8 @@ description: 食品価格サイト（食品価格・野菜価格・輸入統計�
 
 # 食品価格サイト 更新手順
 
-対象リポジトリ：`C:\Users\firef\claude.foodinfomation.test2`（GitHub: fireworksec1010-ux/claude.foodinfomation.test2）
+対象リポジトリ：`C:\Users\firef\claude.foodinfomation.test2`（GitHub: fireworksec1010-ux/ai-taste-labo ※2026-09に旧名 claude.foodinfomation.test2 から改名。手元のフォルダ名は旧名のまま）
+公開サイト（GitHub Pages）：https://fireworksec1010-ux.github.io/ai-taste-labo/
 公開Artifact：https://claude.ai/artifact/SoNaobKEA1qt98Ej1aPu3w（同じURLに再公開して更新する）
 月次チェック用ルーティン：https://claude.ai/code/routines/trig_01J5CLqZRTjJPig8LZvPXYBB（毎月25日9:00 JST。確認と報告のみで、編集・pushはしない）
 
