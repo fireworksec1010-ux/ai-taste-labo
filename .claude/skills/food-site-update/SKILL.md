@@ -15,6 +15,7 @@ description: 食品価格サイト（食品価格・野菜価格・輸入統計�
 - 作業はリポジトリ内のファイルを直接編集する（作業用コピーを別に作らない）。
 - 各HTMLの先頭にある `<!doctype html>`・`<meta charset>`・`<meta name="viewport">`・`[hidden]{display:none!important}` はGitHub Pagesでの表示（特にスマホ）に必須なので消さない。新しいページを作るときも同じ4行を先頭に入れる。
 - 検索・SNS対策：各ページの `<title>`・`meta description`・`canonical`・OGP（`og:*`、`twitter:card`、共通画像 `ogp.png`）を維持する。ページを追加したら同じ一式を入れ、`sitemap.xml` にもURLを追加する。内容を更新したら `sitemap.xml` の該当ページの `lastmod` を更新日に書き換える。
+- アクセス解析：全ページの `<head>` 内にCloudflare Web Analyticsのコード（token `01b322e4ae7a468da9de43a282ff93f7`）が入っている。消さない。新しいページにも同じコードを入れる。閲覧数はCloudflareのダッシュボード（Analytics → Web 分析）で確認。Google Search Console（URLプレフィックス https://fireworksec1010-ux.github.io/ai-taste-labo/ 、所有権はトップページのmetaタグで確認済み。消さない）にsitemap.xmlを登録済み。
 - 全ページ共通：ライト配色固定、上部ナビ6タブ（食品価格／野菜価格／輸入統計／新製品情報／市場規模／お問い合わせ）、出典・取得日・注記を必ず明記。
 - 数値は推測で埋めない。取得できない年・品目は空欄のままにし、注記する。
 - ユーザーが「更新して」と言った場合のみ更新する。月次チェックは報告だけ。
