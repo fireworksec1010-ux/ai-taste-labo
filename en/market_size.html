@@ -1,19 +1,20 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>食品市場のいま｜冷凍食品・菓子・清涼飲料の市場動向｜AI Taste Labo</title>
-<meta name="description" content="調理食品（冷凍食品等）・調味料・菓子・清涼飲料の市場動向を、農林水産省や業界団体の統計でグラフ化。拡大・縮小の要因も出典付きで解説しています。">
-<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/market_size.html">
-<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/market_size.html">
+<title>Japan Food Market Size Trends | Frozen Foods, Seasonings, Confectionery & Soft Drinks | AI Taste Labo</title>
+<meta name="description" content="Market trends for prepared foods (frozen, retort), seasonings, confectionery and soft drinks in Japan, charted from government and industry statistics, with the key growth and decline drivers explained and sourced.">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/market_size.html">
 <link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/market_size.html">
+<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/market_size.html">
 <link rel="alternate" hreflang="x-default" href="https://fireworksec1010-ux.github.io/ai-taste-labo/market_size.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="食品市場のいま｜冷凍食品・菓子・清涼飲料の市場動向">
-<meta property="og:description" content="調理食品・調味料・菓子・清涼飲料の市場動向を公的統計でグラフ化。拡大・縮小の要因も解説。">
-<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/market_size.html">
+<meta property="og:site_name" content="AI Taste Labo">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Japan Food Market Size Trends | AI Taste Labo">
+<meta property="og:description" content="Japan's prepared foods, seasonings, confectionery and soft drink markets, charted from public statistics with growth and decline drivers.">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/en/market_size.html">
 <meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
@@ -21,7 +22,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   :root{
     color-scheme: light;
@@ -35,10 +35,10 @@
     --border:         rgba(11,11,11,0.10);
     --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
 
-    --series-1: #2a78d6; /* 調理食品 */
-    --series-2: #eb6834; /* 調味料 */
-    --series-3: #1baf7a; /* 菓子 */
-    --series-4: #eda100; /* 清涼飲料 */
+    --series-1: #2a78d6; /* prepared foods */
+    --series-2: #eb6834; /* seasonings */
+    --series-3: #1baf7a; /* confectionery */
+    --series-4: #eda100; /* soft drinks */
 
     --status-good:     #0ca30c;
     --status-warning:  #fab219;
@@ -47,7 +47,7 @@
 
     --accent: var(--series-1);
   }
-  /* このページは常にライト配色に固定しています（ダーク配色は意図的に無効化） */
+  /* Light theme only (dark theme intentionally disabled) */
 
   *{box-sizing:border-box;}
   body{
@@ -194,24 +194,30 @@
     .stat-tile .value{ font-size:22px; }
   }
 </style>
+<style>
+  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ margin-left:auto; color:#2a78d6; font-weight:700; }
+</style>
+</head>
+<body>
 
 <div class="wrap">
 
   <nav class="top-nav">
-    <a href="index.html">食品価格</a>
-    <a href="vegetables.html">野菜価格</a>
-    <a href="trade.html">輸入統計</a>
-    <a href="product_news.html">新製品情報</a>
-    <a href="market_size.html" class="active">市場規模</a>
-    <a href="monthly_digest.html">月次トピックス</a>
-    <a href="contact.html">お問い合わせ</a>
-    <a href="en/market_size.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
+    <a href="../index.html" class="ja-only">Food Prices</a>
+    <a href="../vegetables.html" class="ja-only">Vegetables</a>
+    <a href="../trade.html" class="ja-only">Imports</a>
+    <a href="../product_news.html" class="ja-only">New Products</a>
+    <a href="market_size.html" class="active">Market Size</a>
+    <a href="monthly_digest.html">Monthly Topics</a>
+    <a href="../contact.html" class="ja-only">Contact</a>
+    <a href="../market_size.html" class="lang" lang="ja">日本語</a>
   </nav>
 
   <div class="hero">
-    <div class="eyebrow"><span class="dot"></span>生産・出荷統計ベースの参考値</div>
-    <h1>食品市場のいま</h1>
-    <p>調理食品・調味料・菓子・清涼飲料の4カテゴリーについて、農林水産省「食品産業動態調査」および全国清涼飲料連合会「清涼飲料水統計」の無料公開データから、市場の伸び縮みのトレンドをまとめました。</p>
+    <div class="eyebrow"><span class="dot"></span>Based on production and shipment statistics</div>
+    <h1>Japan's Food Markets Today</h1>
+    <p>Trends for four categories in Japan (prepared foods, seasonings, confectionery and soft drinks), compiled from free public data: the Ministry of Agriculture, Forestry and Fisheries (MAFF) Food Industry Trend Survey and the Japan Soft Drink Association's soft drink statistics.</p>
     <div class="hero-stat" id="hero-stat" hidden>
       <div class="num" id="hero-stat-num"></div>
       <div class="meta">
@@ -220,19 +226,19 @@
       </div>
     </div>
     <div class="meta-row">
-      <span id="updated-at">データ取得日を読み込み中…</span>
-      <span>出典：農林水産省／全国清涼飲料連合会（詳細は末尾）</span>
+      <span id="updated-at">Loading…</span>
+      <span>Sources: MAFF / Japan Soft Drink Association (details below)</span>
     </div>
     <div class="caveat-banner">
-      <b>ご利用にあたっての注意：</b>ここでの数値は工場の生産・出荷統計（供給側の統計）であり、民間調査会社が公表する小売ベース・エンドユーザーベースの「市場規模」とは算出方法・対象範囲が異なります。金額の絶対値を他の市場調査と比較するのではなく、「伸びているか／縮んでいるか」というトレンド把握にご利用ください。
+      <b>Please note:</b> These figures come from factory production and shipment statistics (supply side). They are calculated differently from, and cover a different scope than, the retail-based or end-user "market size" estimates published by private research firms. Use them to see whether a market is growing or shrinking, not to compare absolute values with other market research.
     </div>
   </div>
 
   <section id="stats">
     <div class="section-head">
       <div>
-        <h2>4カテゴリーの動き</h2>
-        <div class="section-sub">直近の生産動向のハイライトです。</div>
+        <h2>How the four categories are moving</h2>
+        <div class="section-sub">Highlights of recent production trends.</div>
       </div>
     </div>
     <div class="stat-grid" id="stat-grid"></div>
@@ -241,15 +247,15 @@
   <section id="trend">
     <div class="section-head">
       <div>
-        <h2>カテゴリー別の推移</h2>
-        <div class="section-sub" id="trend-sub">カテゴリーを選ぶと、下のグラフが切り替わります。</div>
+        <h2>Trends by category</h2>
+        <div class="section-sub" id="trend-sub">Select a category to switch the charts below.</div>
       </div>
     </div>
 
-    <div class="chip-row" id="chip-row" role="group" aria-label="カテゴリーを選択"></div>
+    <div class="chip-row" id="chip-row" role="group" aria-label="Select a category"></div>
 
     <div class="chart-card">
-      <h3 id="primary-title">推移</h3>
+      <h3 id="primary-title">Trend</h3>
       <div class="chart-note" id="primary-note"></div>
       <div class="chart-svg-wrap">
         <svg class="chart" id="svg-primary" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
@@ -258,7 +264,7 @@
     </div>
 
     <div class="chart-card" id="secondary-chart" hidden>
-      <h3 id="secondary-title">生産数量</h3>
+      <h3 id="secondary-title">Production volume</h3>
       <div class="chart-note" id="secondary-note"></div>
       <div class="chart-svg-wrap">
         <svg class="chart" id="svg-secondary" viewBox="0 0 720 220" preserveAspectRatio="xMidYMid meet"></svg>
@@ -271,12 +277,13 @@
   </section>
 
   <footer>
-    <h2 style="font-size:18px;">出典・注記</h2>
+    <h2 style="font-size:18px;">Sources and notes</h2>
     <div class="sources" id="sources"></div>
     <div class="disclaimer">
-      ・調理食品・調味料・菓子は、農林水産省「食品産業動態調査」の生産指数（令和2年度＝100）を用いています。実数量（トン等）や金額（生産者出荷額）はこの調査に含まれていないため掲載していません。<br>
-      ・清涼飲料は全国清涼飲料連合会の無料ダイジェスト版に基づく生産数量・生産金額の実数です（8部門合計、2019年〜）。<br>
-      ・本ページは社内での企画検討・トレンド把握を想定した参考資料です。正式な市場規模の数値が必要な場合は、民間調査会社のレポートや各業界団体の公式統計をご確認ください。
+      - Prepared foods, seasonings and confectionery use the production index from MAFF's Food Industry Trend Survey (FY2020 = 100). The survey does not include actual volumes (tonnes) or values (producer shipment value), so they are not shown.<br>
+      - Soft drinks show actual production volume and value from the free digest edition of the Japan Soft Drink Association statistics (all 8 segments combined).<br>
+      - Japanese fiscal years (FY) run from April to March. Values are in Japanese yen (JPY); 1 trillion yen = 1,000,000 million yen.<br>
+      - This page is intended as a reference for planning and trend spotting. For official market size figures, please consult private research reports or the official statistics of each industry association. Source documents are in Japanese.
     </div>
     <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
   </footer>
@@ -291,18 +298,20 @@
     cooked_food:"--series-1", seasoning:"--series-2", confectionery:"--series-3", soft_drink:"--series-4"
   };
   var state = { currentCategory:"cooked_food", data:null };
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
+  function en(obj, key){ return obj[key+"_en"] || obj[key] || ""; }
   function cssVar(name){
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
-  function fmt1(v){ return (Math.round(v*10)/10).toLocaleString("ja-JP",{minimumFractionDigits:1,maximumFractionDigits:1}); }
-  function fmtInt(v){ return Math.round(v).toLocaleString("ja-JP"); }
+  function fmt1(v){ return (Math.round(v*10)/10).toLocaleString("en-US",{minimumFractionDigits:1,maximumFractionDigits:1}); }
+  function fmtInt(v){ return Math.round(v).toLocaleString("en-US"); }
   function statBadge(pct){
-    if(pct>=20) return {cls:"critical", label:"大幅拡大"};
-    if(pct>=8) return {cls:"serious", label:"拡大"};
-    if(pct>=2) return {cls:"warning", label:"やや拡大"};
-    if(pct> -2) return {cls:"good", label:"横ばい"};
-    return {cls:"good", label:"縮小"};
+    if(pct>=20) return {cls:"critical", label:"Strong growth"};
+    if(pct>=8) return {cls:"serious", label:"Growing"};
+    if(pct>=2) return {cls:"warning", label:"Slight growth"};
+    if(pct> -2) return {cls:"good", label:"Flat"};
+    return {cls:"good", label:"Shrinking"};
   }
 
   /* ---------------- generic SVG line chart ---------------- */
@@ -318,7 +327,7 @@
     var ys = points.filter(function(p){return p.y!==null && p.y!==undefined;}).map(function(p){return p.y;});
     var xMin = Math.min.apply(null,xs), xMax = Math.max.apply(null,xs);
     var dataMin = Math.min.apply(null,ys), dataMax = Math.max.apply(null,ys);
-    // ズーム表示：0基準ではなく、データの変化幅に上下15%の余白を持たせた範囲を軸にする
+    // Zoomed axis: not zero-based; data range plus 15% padding above and below
     var span = dataMax-dataMin;
     var pad = span>0 ? span*0.15 : Math.abs(dataMax||1)*0.05;
     var yMax = opts.yMax!==undefined ? opts.yMax : dataMax+pad;
@@ -340,7 +349,7 @@
       var yy = sy(yv);
       svg.appendChild(el("line",{class:"gridline", x1:m.left, x2:W-m.right, y1:yy, y2:yy}));
       var t = el("text",{class:"axis-label", x:m.left-8, y:yy+3, "text-anchor":"end"});
-      t.textContent = opts.yTickFormatter ? opts.yTickFormatter(yv) : Math.round(yv).toLocaleString("ja-JP");
+      t.textContent = opts.yTickFormatter ? opts.yTickFormatter(yv) : Math.round(yv).toLocaleString("en-US");
       svg.appendChild(t);
     }
     if(opts.refLine!==undefined){
@@ -421,7 +430,7 @@
       if(tooltipEl){
         var label = p.label || (opts.xTickFormatter?opts.xTickFormatter(p.x):p.x);
         var valTxt = opts.tooltipFormatter ? opts.tooltipFormatter(p) : fmt1(p.y);
-        tooltipEl.innerHTML = label+"：<b>"+valTxt+"</b>";
+        tooltipEl.innerHTML = label+": <b>"+valTxt+"</b>";
         var box = svg.getBoundingClientRect();
         var leftPx = box.width * (sx(p.x)/W);
         var topPx = box.height * (sy(p.y)/H);
@@ -457,6 +466,9 @@
     if(v0===null || v1===null || v0===undefined || v1===undefined) return null;
     return (v1-v0)/v0*100;
   }
+  function span(cat, fy){
+    return (fy?"FY":"")+cat.yearly[0].year+"–"+(fy?"FY":"")+cat.yearly[cat.yearly.length-1].year;
+  }
 
   function renderChips(){
     var row = document.getElementById("chip-row");
@@ -467,11 +479,13 @@
       btn.className = "chip"; btn.type="button";
       btn.style.color = color;
       btn.setAttribute("aria-pressed", c.key===state.currentCategory ? "true":"false");
-      btn.innerHTML = '<span class="sw" style="background:'+color+'"></span>'+c.label_ja;
+      btn.innerHTML = '<span class="sw" style="background:'+color+'"></span>'+en(c,"label");
       btn.addEventListener("click", function(){ selectCategory(c.key); });
       row.appendChild(btn);
     });
   }
+
+  var ZOOM_NOTE = " Note: the vertical axis is zoomed to the data range rather than starting at zero, to make changes easier to see. Please check the axis values.";
 
   function renderDetail(){
     var cat = categoryByKey(state.currentCategory);
@@ -479,47 +493,47 @@
     document.documentElement.style.setProperty("--accent", color);
 
     var hasValue = !!cat.unit_value;
-    var firstYear = cat.yearly[0].year, lastYear = cat.yearly[cat.yearly.length-1].year;
+    var label = en(cat,"label");
 
     if(hasValue){
-      document.getElementById("primary-title").textContent = cat.label_ja+"：生産金額の推移（"+firstYear+"〜"+lastYear+"年）";
-      document.getElementById("primary-note").textContent = "生産者出荷金額（"+cat.unit_value+"）。市場規模の目安として最も近い指標です。※縦軸は変化を見やすくするため0からではなく実際の数値幅にズームしています（軸の数値をご確認ください）。";
+      var uv = en(cat,"unit_value"), uq = en(cat,"unit_quantity");
+      var uvShort = "JPY mn", uqShort = "kl";
+      document.getElementById("primary-title").textContent = label+": production value ("+span(cat,false)+")";
+      document.getElementById("primary-note").textContent = uv+". The closest available proxy for market size."+ZOOM_NOTE;
       var valPts = cat.yearly.map(function(r){ return {x:r.year, y:r.value}; });
       buildChart(document.getElementById("svg-primary"), valPts, {
         colorVar: COLOR_VAR[cat.key],
         xTickEvery: 1,
         tooltipEl: document.getElementById("tip-primary"),
-        tooltipFormatter: function(p){ return fmtInt(p.y)+" "+cat.unit_value; },
-        xTickFormatter: function(x){ return x+"年"; }
+        tooltipFormatter: function(p){ return fmtInt(p.y)+" "+uvShort; }
       });
 
       document.getElementById("secondary-chart").hidden = false;
-      document.getElementById("secondary-title").textContent = cat.label_ja+"：生産数量の推移";
-      document.getElementById("secondary-note").textContent = "生産数量（"+cat.unit_quantity+"）。金額の伸びとの差が、単価変動（値上げ等）の目安になります。";
+      document.getElementById("secondary-title").textContent = label+": production volume";
+      document.getElementById("secondary-note").textContent = uq+". The gap between value growth and volume growth indicates unit price changes (price increases, premiumization).";
       var qtyPts = cat.yearly.map(function(r){ return {x:r.year, y:r.quantity}; });
       buildChart(document.getElementById("svg-secondary"), qtyPts, {
         colorVar: COLOR_VAR[cat.key],
         xTickEvery: 1,
         tooltipEl: document.getElementById("tip-secondary"),
-        tooltipFormatter: function(p){ return fmtInt(p.y)+" "+cat.unit_quantity; },
-        xTickFormatter: function(x){ return x+"年"; }
+        tooltipFormatter: function(p){ return fmtInt(p.y)+" "+uqShort; }
       });
     } else {
-      document.getElementById("primary-title").textContent = cat.label_ja+"：生産指数の推移（"+firstYear+"〜"+lastYear+"年度）";
-      document.getElementById("primary-note").textContent = "食品製造業生産指数（"+cat.unit_quantity+"）。実数量・金額はこの調査には含まれていません。※縦軸は変化を見やすくするため0からではなく実際の数値幅にズームしています（軸の数値をご確認ください）。";
+      document.getElementById("primary-title").textContent = label+": production index ("+span(cat,true)+")";
+      document.getElementById("primary-note").textContent = "Food manufacturing production index ("+en(cat,"unit_quantity")+"). Actual volumes and values are not part of this survey."+ZOOM_NOTE;
       var idxPts = cat.yearly.map(function(r){ return {x:r.year, y:r.quantity}; });
       buildChart(document.getElementById("svg-primary"), idxPts, {
         colorVar: COLOR_VAR[cat.key],
-        refLine: 100, refLineLabel:"令和2年度=100",
+        refLine: 100, refLineLabel:"FY2020 = 100",
         xTickEvery: 1,
         tooltipEl: document.getElementById("tip-primary"),
         tooltipFormatter: function(p){ return fmt1(p.y); },
-        xTickFormatter: function(x){ return x+"年度"; }
+        xTickFormatter: function(x){ return "FY"+x; }
       });
       document.getElementById("secondary-chart").hidden = true;
     }
 
-    document.getElementById("trend-note").innerHTML = "<b>"+cat.label_ja+"の動き：</b>"+cat.trend_note;
+    document.getElementById("trend-note").innerHTML = "<b>"+label+": </b>"+en(cat,"trend_note");
     renderDrivers(cat);
   }
 
@@ -529,16 +543,16 @@
     if(!d){ box.hidden = true; return; }
     function list(items){
       return "<ul>"+(items||[]).map(function(it){
-        return "<li>"+it.text+'<span class="src">出典：<a href="'+it.source_url+'" target="_blank" rel="noopener">'+it.source_name+"</a></span></li>";
+        return "<li>"+en(it,"text")+'<span class="src">Source: <a href="'+it.source_url+'" target="_blank" rel="noopener">'+en(it,"source_name")+"</a> (JA)</span></li>";
       }).join("")+"</ul>";
     }
     box.innerHTML =
-      "<h3>"+cat.label_ja+"｜"+d.headline+"</h3>"+
+      "<h3>"+en(cat,"label")+" | "+en(d,"headline")+"</h3>"+
       '<div class="drivers-grid">'+
-        '<div class="drivers-col up"><h4>▲ 押し上げ要因</h4>'+list(d.up)+"</div>"+
-        '<div class="drivers-col down"><h4>▼ 押し下げ要因</h4>'+list(d.down)+"</div>"+
+        '<div class="drivers-col up"><h4>▲ Growth drivers</h4>'+list(d.up)+"</div>"+
+        '<div class="drivers-col down"><h4>▼ Headwinds</h4>'+list(d.down)+"</div>"+
       "</div>"+
-      '<div class="drivers-foot">※要因は業界団体・報道等の公表内容に基づく要約です。上のグラフ（生産指数・生産統計）と対象期間や集計単位（年度／暦年）が異なる場合があります。</div>';
+      '<div class="drivers-foot">Drivers are summarized from industry association releases and news reports. Their period and basis (fiscal vs. calendar year) may differ from the charts above.</div>';
     box.hidden = false;
   }
 
@@ -558,25 +572,26 @@
     var top = withPct[0], bottom = withPct[withPct.length-1];
     var softDrink = categoryByKey("soft_drink");
     var softDrinkLast = softDrink.yearly[softDrink.yearly.length-1];
+    function periodOf(c){ return span(c, !c.unit_value); }
 
     var heroStat = document.getElementById("hero-stat");
     if(heroStat){
       heroStat.hidden = false;
       document.getElementById("hero-stat-num").innerHTML = (top.pct>=0?"+":"")+fmt1(top.pct)+'<span class="unit">%</span>';
-      document.getElementById("hero-stat-desc").textContent = top.cat.label_ja+"の拡大（"+top.cat.yearly[0].year+"〜"+top.cat.yearly[top.cat.yearly.length-1].year+"）";
-      document.getElementById("hero-stat-delta").textContent = "4カテゴリー中 最も拡大している市場";
+      document.getElementById("hero-stat-desc").textContent = en(top.cat,"label")+" growth ("+periodOf(top.cat)+")";
+      document.getElementById("hero-stat-delta").textContent = "Fastest-growing of the 4 categories";
     }
 
     var tiles = [
-      { label:top.cat.label_ja+"（"+top.cat.yearly[0].year+"〜"+top.cat.yearly[top.cat.yearly.length-1].year+"）", value:(top.pct>=0?"+":"")+fmt1(top.pct), unit:"%",
-        badge: statBadge(top.pct), badgeText:"4カテゴリー中 最も拡大",
-        foot:"生産統計ベースの推移（詳細は下の表参照）。" },
-      { label:bottom.cat.label_ja+"（"+bottom.cat.yearly[0].year+"〜"+bottom.cat.yearly[bottom.cat.yearly.length-1].year+"）", value:(bottom.pct>=0?"+":"")+fmt1(bottom.pct), unit:"%",
-        badge: statBadge(bottom.pct), badgeText:"4カテゴリー中 最も縮小",
-        foot:"生産統計ベースの推移（詳細は下の表参照）。" },
-      { label:"清涼飲料（生産金額・"+softDrinkLast.year+"年）", value:fmt1(softDrinkLast.value/1000000)+"", unit:"兆円",
-        badge:{cls:"serious", label:"金額は拡大"}, badgeText:"数量以上に金額が伸長",
-        foot:"単価上昇（値上げ・高付加価値化）が金額成長を牽引。" }
+      { label:en(top.cat,"label")+" ("+periodOf(top.cat)+")", value:(top.pct>=0?"+":"")+fmt1(top.pct), unit:"%",
+        badge: statBadge(top.pct), badgeText:"fastest growth of 4",
+        foot:"Change based on production statistics (see charts below)." },
+      { label:en(bottom.cat,"label")+" ("+periodOf(bottom.cat)+")", value:(bottom.pct>=0?"+":"")+fmt1(bottom.pct), unit:"%",
+        badge: statBadge(bottom.pct), badgeText:"weakest of 4",
+        foot:"Change based on production statistics (see charts below)." },
+      { label:"Soft drinks (production value, "+softDrinkLast.year+")", value:"JPY "+fmt1(softDrinkLast.value/1000000), unit:"trillion",
+        badge:{cls:"serious", label:"Value growing"}, badgeText:"value outpacing volume",
+        foot:"Higher unit prices (price increases, premiumization) are driving value growth." }
     ];
 
     tiles.forEach(function(t){
@@ -585,7 +600,7 @@
       div.innerHTML =
         '<div class="label">'+t.label+'</div>'+
         '<div class="value">'+t.value+'<span class="unit">'+t.unit+'</span></div>'+
-        '<div class="badge '+t.badge.cls+'">'+t.badge.label+'・'+t.badgeText+'</div>'+
+        '<div class="badge '+t.badge.cls+'">'+t.badge.label+' · '+t.badgeText+'</div>'+
         '<div class="foot">'+t.foot+'</div>';
       grid.appendChild(div);
     });
@@ -597,14 +612,14 @@
     state.data.meta.sources.forEach(function(s){
       var div = document.createElement("div");
       div.className = "source-item";
-      div.innerHTML = '<span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+ (s.page_url||s.url) +'" target="_blank" rel="noopener">出典を見る</a>'+(s.note? "　"+s.note : "");
+      div.innerHTML = '<span class="org">'+en(s,"org")+'</span>, "'+en(s,"name")+'"  <a href="'+ (s.page_url||s.url) +'" target="_blank" rel="noopener">View source (JA)</a>'+(s.note_en? "  "+s.note_en : "");
       wrap.appendChild(div);
     });
   }
 
   function renderUpdated(){
     var parts = state.data.meta.generated_at.split("-");
-    document.getElementById("updated-at").textContent = "データ取得日：" + parts[0]+"年"+(+parts[1])+"月"+(+parts[2])+"日";
+    document.getElementById("updated-at").textContent = "Data as of " + MONTHS[+parts[1]-1]+" "+(+parts[2])+", "+parts[0];
   }
 
   function renderAll(){
@@ -615,12 +630,14 @@
     renderSources();
   }
 
-  fetch("market_size_data.json").then(function(r){return r.json();}).then(function(json){
+  fetch("../market_size_data.json").then(function(r){return r.json();}).then(function(json){
     state.data = json;
     renderAll();
   }).catch(function(err){
-    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>Failed to load data. Please reload the page.</div>";
     console.error(err);
   });
 })();
 </script>
+</body>
+</html>

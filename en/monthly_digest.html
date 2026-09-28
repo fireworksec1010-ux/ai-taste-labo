@@ -1,19 +1,20 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>月次トピックス｜今月の食品価格・新製品・市場トレンド｜AI Taste Labo</title>
-<meta name="description" content="食品価格・新製品・市場動向を毎月まとめる月次トピックス。生活者ニーズの変化・市場の動き・各社の新製品のつながりをテーマ別に解説します。">
-<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/monthly_digest.html">
-<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/monthly_digest.html">
+<title>Japan Food Market Monthly Topics | Prices, New Products & Consumer Trends | AI Taste Labo</title>
+<meta name="description" content="A monthly briefing on Japan's food market for food marketers and companies entering Japan: consumer price trends, market size, and new products from major Japanese food makers, connected through shifting consumer needs.">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/monthly_digest.html">
 <link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/monthly_digest.html">
+<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/monthly_digest.html">
 <link rel="alternate" hreflang="x-default" href="https://fireworksec1010-ux.github.io/ai-taste-labo/monthly_digest.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="月次トピックス｜今月の食品価格・新製品・市場トレンド">
-<meta property="og:description" content="生活者ニーズの変化・市場の動き・各社の新製品のつながりを毎月まとめて解説。">
-<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/monthly_digest.html">
+<meta property="og:site_name" content="AI Taste Labo">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Japan Food Market Monthly Topics | AI Taste Labo">
+<meta property="og:description" content="How shifting Japanese consumer needs connect market trends to new product launches, every month.">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/en/monthly_digest.html">
 <meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
@@ -34,7 +35,6 @@
     --status-critical: #d03b3b;
     --accent: #2a78d6;
   }
-  /* このページは常にライト配色に固定しています（ダーク配色は意図的に無効化） */
 
   *{box-sizing:border-box;}
   body{
@@ -51,6 +51,8 @@
   .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
 
   .hero{ padding:32px 0 28px; }
   .eyebrow{
@@ -61,7 +63,7 @@
   }
   .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
   .hero h1{ font-size:clamp(28px,5vw,40px); line-height:1.2; }
-  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:62ch; margin:16px 0 0; }
+  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:64ch; margin:16px 0 0; }
   .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
 
   #months{ display:grid; gap:28px; }
@@ -99,7 +101,7 @@
   .flow-step.market:before{ border-color:var(--status-critical); }
   .flow-step.products:before{ border-color:#1baf7a; }
   .flow-step.take:before{ background:var(--text-primary); border-color:var(--text-primary); }
-  .flow-step .k{ font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text-muted); margin-bottom:3px; }
+  .flow-step .k{ font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text-muted); margin-bottom:3px; text-transform:uppercase; }
   .flow-step .v{ font-size:13px; line-height:1.75; color:var(--text-secondary); }
   .flow-step .v a{ font-size:11.5px; font-weight:700; text-decoration:none; }
   .flow-step.take .v{ color:var(--text-primary); font-weight:500; }
@@ -108,6 +110,7 @@
   .prod-list .co{ font-weight:700; color:var(--text-primary); }
   .prod-list .dt{ color:var(--text-muted); font-size:11px; margin-left:4px; }
   .prod-list .pt{ display:block; color:var(--text-secondary); }
+  .prod-list .jp{ display:block; color:var(--text-muted); font-size:11px; }
   .prod-list a{ font-size:11px; font-weight:700; text-decoration:none; }
   .analysis-src{ font-size:11px; color:var(--text-muted); line-height:1.7; margin-top:6px; }
   .analysis-src a{ text-decoration:none; }
@@ -118,7 +121,6 @@
     border:1px solid rgba(208,59,59,0.16);
     font-size:12.5px; line-height:1.75; color:var(--text-secondary);
   }
-  .outlook-box b{ color:var(--text-primary); }
 
   footer{ padding:34px 0 60px; border-top:1px solid var(--border); margin-top:10px; }
   .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.8; }
@@ -128,26 +130,28 @@
     .month-card{ padding:18px 16px; }
   }
 </style>
+</head>
+<body>
 
 <div class="wrap">
 
   <nav class="top-nav">
-    <a href="index.html">食品価格</a>
-    <a href="vegetables.html">野菜価格</a>
-    <a href="trade.html">輸入統計</a>
-    <a href="product_news.html">新製品情報</a>
-    <a href="market_size.html">市場規模</a>
-    <a href="monthly_digest.html" class="active">月次トピックス</a>
-    <a href="contact.html">お問い合わせ</a>
-    <a href="en/monthly_digest.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
+    <a href="../index.html" class="ja-only">Food Prices</a>
+    <a href="../vegetables.html" class="ja-only">Vegetables</a>
+    <a href="../trade.html" class="ja-only">Imports</a>
+    <a href="../product_news.html" class="ja-only">New Products</a>
+    <a href="market_size.html">Market Size</a>
+    <a href="monthly_digest.html" class="active">Monthly Topics</a>
+    <a href="../contact.html" class="ja-only">Contact</a>
+    <a href="../monthly_digest.html" class="lang" lang="ja">日本語</a>
   </nav>
 
   <div class="hero">
-    <div class="eyebrow"><span class="dot"></span>月次まとめ</div>
-    <h1>月次トピックス</h1>
-    <p>食品価格・野菜価格・輸入統計・新製品情報の4ページから今月の動きをハイライトし、あわせて食品業界の国内トレンドニュースをまとめています。過去分もこのページにアーカイブしていきます。</p>
+    <div class="eyebrow"><span class="dot"></span>Monthly briefing</div>
+    <h1>Japan Food Market: Monthly Topics</h1>
+    <p>Each month we summarize what moved in Japan's food market, from consumer prices and imported ingredients to new products from major Japanese food makers, and explain how shifting consumer needs connect market trends to product launches. Written for food marketers and companies considering the Japanese market.</p>
     <div class="meta-row">
-      <span id="updated-at">データ取得日を読み込み中…</span>
+      <span id="updated-at">Loading…</span>
     </div>
   </div>
 
@@ -155,9 +159,11 @@
 
   <footer>
     <div class="disclaimer">
-      ・ハイライト数値は各ページのデータ（総務省統計局・農林水産省の統計等）に基づきます。詳細は各ページをご確認ください。<br>
-      ・国内トレンドは報道発表・業界紙等を基にした要約です。詳細・正確な数値は出典元をご確認ください。<br>
-      ・本ページは社内での情報共有・企画検討を想定した参考資料です。
+      Reading notes for international readers:<br>
+      - "Price index" refers to the item-level Consumer Price Index (CPI) published by the Statistics Bureau of Japan. The September 2026 edition uses 2020 = 100; the site's price pages have since moved to the new 2025 = 100 base.<br>
+      - Japanese fiscal years (FY) run from April to March. Amounts are in Japanese yen (JPY).<br>
+      - Highlight figures are based on this site's data pages (Statistics Bureau of Japan, Ministry of Agriculture, Forestry and Fisheries, etc.). Pages marked "JA" are currently available in Japanese only.<br>
+      - Trend items are summaries of press releases and trade publications (sources in Japanese). Please check the original sources for exact figures.
     </div>
     <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
   </footer>
@@ -168,32 +174,39 @@
 (function(){
   "use strict";
 
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function en(obj, key){ return obj[key+"_en"] || obj[key] || ""; }
+  function fmtDate(iso){ if(!iso) return ""; var p = iso.split("-"); return MONTHS[+p[1]-1]+" "+(+p[2])+", "+p[0]; }
+  // Pages with an English version stay in /en/, others go to the Japanese page
+  var EN_PAGES = ["market_size.html","monthly_digest.html"];
+  function link(page){ return EN_PAGES.indexOf(page) >= 0 ? page : "../"+page; }
+
   function renderUpdated(meta){
-    var parts = meta.generated_at.split("-");
-    document.getElementById("updated-at").textContent = "データ取得日：" + parts[0]+"年"+(+parts[1])+"月"+(+parts[2])+"日";
+    document.getElementById("updated-at").textContent = "Data as of " + fmtDate(meta.generated_at);
   }
 
   function renderAnalysis(a){
     if(!a) return "";
     var themes = (a.themes||[]).map(function(t){
       var prods = (t.products||[]).map(function(p){
-        return '<li><span class="co">'+p.company+'</span>「'+p.name+'」<span class="dt">'+(p.date||"").replace(/-/g,"/")+'</span>'+
-          '<span class="pt">'+p.point+'　<a href="'+p.source_url+'" target="_blank" rel="noopener">PR TIMES →</a></span></li>';
+        return '<li><span class="co">'+en(p,"company")+'</span> "'+en(p,"name")+'"<span class="dt">'+fmtDate(p.date)+'</span>'+
+          '<span class="pt">'+en(p,"point")+'  <a href="'+p.source_url+'" target="_blank" rel="noopener">Press release (JA) →</a></span>'+
+          '<span class="jp" lang="ja">'+p.company+'「'+p.name+'」</span></li>';
       }).join("");
-      return '<div class="theme"><h3>'+t.title+'</h3><div class="flow">'+
-        '<div class="flow-step needs"><div class="k">生活者ニーズの変化</div><div class="v">'+t.needs+'</div></div>'+
-        '<div class="flow-step market"><div class="k">市場の動き</div><div class="v">'+t.market+
-          (t.market_link ? '　<a href="'+t.market_link+'">市場規模ページ →</a>' : '')+'</div></div>'+
-        '<div class="flow-step products"><div class="k">各社の新製品</div><div class="v"><ul class="prod-list">'+prods+'</ul></div></div>'+
-        '<div class="flow-step take"><div class="k">読み取れること（当サイトの見立て）</div><div class="v">'+t.takeaway+'</div></div>'+
+      return '<div class="theme"><h3>'+en(t,"title")+'</h3><div class="flow">'+
+        '<div class="flow-step needs"><div class="k">Shift in consumer needs</div><div class="v">'+en(t,"needs")+'</div></div>'+
+        '<div class="flow-step market"><div class="k">Market movement</div><div class="v">'+en(t,"market")+
+          (t.market_link ? '  <a href="'+link(t.market_link)+'">Market size page →</a>' : '')+'</div></div>'+
+        '<div class="flow-step products"><div class="k">New products from Japanese makers</div><div class="v"><ul class="prod-list">'+prods+'</ul></div></div>'+
+        '<div class="flow-step take"><div class="k">Takeaway (our interpretation)</div><div class="v">'+en(t,"takeaway")+'</div></div>'+
       '</div></div>';
     }).join("");
     var srcs = (a.sources||[]).map(function(s){
-      return '<a href="'+s.url+'" target="_blank" rel="noopener">'+s.name+'</a>';
-    }).join("／");
-    return '<div class="section-label">市場・生活者ニーズ・新製品のつながり</div>'+
-      '<p class="analysis-intro">'+a.intro+'</p>'+themes+
-      '<div class="analysis-src">主な出典：'+srcs+'<br>'+(a.note||"")+'</div>';
+      return '<a href="'+s.url+'" target="_blank" rel="noopener">'+en(s,"name")+'</a>';
+    }).join(" / ");
+    return '<div class="section-label">Consumer needs, market trends and new products</div>'+
+      '<p class="analysis-intro">'+en(a,"intro")+'</p>'+themes+
+      '<div class="analysis-src">Main sources: '+srcs+'<br>'+en(a,"note")+'</div>';
   }
 
   function renderMonths(data){
@@ -205,40 +218,42 @@
 
       var highlightsHtml = m.highlights.map(function(h){
         return '<div class="highlight-tile">'+
-          '<div class="cat">'+h.category+'</div>'+
-          '<div class="label">'+h.label+'</div>'+
-          '<div class="detail">'+h.detail+'</div>'+
-          (h.link_page ? '<a href="'+h.link_page+'">'+(h.link_label||"詳しく見る")+'</a>' : '')+
+          '<div class="cat">'+en(h,"category")+'</div>'+
+          '<div class="label">'+en(h,"label")+'</div>'+
+          '<div class="detail">'+en(h,"detail")+'</div>'+
+          (h.link_page ? '<a href="'+link(h.link_page)+'">'+(en(h,"link_label")||"Learn more")+'</a>' : '')+
           '</div>';
       }).join("");
 
       var trendsHtml = (m.domestic_trends||[]).map(function(t){
         return '<div class="trend-item">'+
-          '<h3>'+t.title+'</h3>'+
-          '<p>'+t.summary+'</p>'+
-          '<div class="src">出典：'+t.source_name+'　<a href="'+t.source_url+'" target="_blank" rel="noopener">記事を見る</a></div>'+
+          '<h3>'+en(t,"title")+'</h3>'+
+          '<p>'+en(t,"summary")+'</p>'+
+          '<div class="src">Source: '+en(t,"source_name")+'  <a href="'+t.source_url+'" target="_blank" rel="noopener">Read article (JA)</a></div>'+
           '</div>';
       }).join("");
 
       card.innerHTML =
-        '<h2>'+m.label_ja+'のトピックス</h2>'+
-        '<div class="sub">食品価格サイト内データ＋国内トレンドニュースのまとめ</div>'+
+        '<h2>'+(m.label_en||m.ym)+'</h2>'+
+        '<div class="sub">Highlights from this site\'s data plus Japanese food industry news</div>'+
         '<div class="highlight-grid">'+highlightsHtml+'</div>'+
         renderAnalysis(m.analysis)+
-        '<div class="section-label">国内トレンド</div>'+
+        '<div class="section-label">Industry news in Japan</div>'+
         trendsHtml+
-        (m.outlook ? '<div class="section-label">来月の注目ポイント</div><div class="outlook-box">'+m.outlook+'</div>' : '');
+        (en(m,"outlook") ? '<div class="section-label">What to watch next month</div><div class="outlook-box">'+en(m,"outlook")+'</div>' : '');
 
       wrap.appendChild(card);
     });
   }
 
-  fetch("monthly_digest_data.json").then(function(r){return r.json();}).then(function(json){
+  fetch("../monthly_digest_data.json").then(function(r){return r.json();}).then(function(json){
     renderUpdated(json.meta);
     renderMonths(json);
   }).catch(function(err){
-    document.getElementById("months").innerHTML = "<div class='month-card'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    document.getElementById("months").innerHTML = "<div class='month-card'>Failed to load data. Please reload the page.</div>";
     console.error(err);
   });
 })();
 </script>
+</body>
+</html>
