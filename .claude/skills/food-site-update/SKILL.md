@@ -23,6 +23,16 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
 ## 各ページの更新
 
 ### 1. 食品価格（index.html / data.json）・2. 野菜価格（vegetables.html / vegetables_data.json）
+**月次の数値更新はスクリプトで行う**（手作業でCSVを解析しない）：
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1 -DryRun   # まず確認
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1           # 反映
+```
+- e-Statから月次・年平均CSVを取得 → 品目コードで16品目を抽出 → 検証（最終月の一致・空値・データが古くないか）→ data.json / vegetables_data.json / sitemap.xml を更新。検証に失敗したら何も書き換えずに止まる。新しい月がなければ「更新不要」で終了。
+- statInfIdが変わった場合は `-MonthlyId` / `-AnnualId` で指定（探し方はスクリプト冒頭のコメントと下記）。
+- 実行後は、表示される「次に確認すること」（トレンドメモの整合・月次トピックス・commit/push）を行う。ページ側の米・食用油のタイルと米の「ピーク比」は自動計算なので編集不要。
+- 以下は仕組みの説明（スクリプトが動かない場合の手作業の参考）。
+
 - データ源：総務省統計局 CPI 品目別価格指数（**2025年基準＝2025年=100**、全国）。2026年8月分から基準改定（2020年基準→2025年基準）。2024年以前は統計局が2025年=100に換算した接続指数。旧2020年基準の表（statInfId 000032103844 / 000032103938）はもう使わない。
   - 月次CSV（1970年1月～最新月）：`https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040482945&fileKind=1`
   - 年平均CSV（1970年～最新年）：`https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040482831&fileKind=1`
