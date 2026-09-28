@@ -243,7 +243,7 @@
     <div class="section-head">
       <div>
         <h2 id="trend-heading">品目別・価格指数の推移</h2>
-        <div class="section-sub">指数は総務省統計局「消費者物価指数」品目別価格指数（2020年＝100、全国・月次）。</div>
+        <div class="section-sub">指数は総務省統計局「消費者物価指数」品目別価格指数（2025年＝100、全国・月次）。</div>
       </div>
     </div>
 
@@ -548,13 +548,13 @@
     });
     var firstYear = Math.floor(longPts[0].x/12), lastYear = Math.floor(longPts[longPts.length-1].x/12);
     document.getElementById("long-title").textContent = item.label_ja+"の長期推移（"+firstYear+"年〜"+lastYear+"年、月次）";
-    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2020年＝100、全国・月次）";
+    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2025年＝100、全国・月次）";
     buildChart(document.getElementById("svg-long"), longPts, {
       colorVar: COLOR_VAR[item.key],
-      refLine: 100, refLineLabel:"2020年=100",
+      refLine: 100, refLineLabel:"2025年=100",
       xTickEvery: 120,
       tooltipEl: document.getElementById("tip-long"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
       xTickFormatter: function(x){ return Math.floor(x/12)+"年"; }
     });
 
@@ -575,7 +575,7 @@
       refLineLabel: base===null ? "" : "2019年平均",
       xTickEvery: 12,
       tooltipEl: document.getElementById("tip-recent"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
       xTickFormatter: function(x){ return Math.floor(x/12)+"年"; }
     });
 
@@ -605,16 +605,16 @@
     var heroStat = document.getElementById("hero-stat");
     if(heroStat){
       heroStat.hidden = false;
-      document.getElementById("hero-stat-num").innerHTML = fmt1(top.last.value)+'<span class="unit">（2020年=100）</span>';
+      document.getElementById("hero-stat-num").innerHTML = fmt1(top.last.value)+'<span class="unit">（2025年=100）</span>';
       document.getElementById("hero-stat-desc").textContent = top.item.label_ja+"の価格指数（"+monthLabel(top.last.ym)+"）";
       document.getElementById("hero-stat-delta").textContent = "▲ "+(top.pct>=0?"+":"")+fmt1(top.pct)+"% 2019年平均比（8品目中 最も上昇）";
     }
 
     var tiles = [
-      { label:top.item.label_ja+"（"+monthLabel(top.last.ym)+"）", value:fmt1(top.last.value), unit:"（2020年=100）",
+      { label:top.item.label_ja+"（"+monthLabel(top.last.ym)+"）", value:fmt1(top.last.value), unit:"（2025年=100）",
         badge: statBadge(top.pct), badgeText:(top.pct>=0?"+":"")+fmt1(top.pct)+"%（2019年平均比）",
         foot:"野菜の中で最も上昇率が高い品目です。" },
-      { label:bottom.item.label_ja+"（"+monthLabel(bottom.last.ym)+"）", value:fmt1(bottom.last.value), unit:"（2020年=100）",
+      { label:bottom.item.label_ja+"（"+monthLabel(bottom.last.ym)+"）", value:fmt1(bottom.last.value), unit:"（2025年=100）",
         badge: statBadge(bottom.pct), badgeText:(bottom.pct>=0?"+":"")+fmt1(bottom.pct)+"%（2019年平均比）",
         foot:"野菜の中で最も上昇率が低い（または下落している）品目です。" }
     ];
@@ -671,7 +671,7 @@
     exportBtn.addEventListener("click", function(){
       if(!state.data || typeof XLSX==="undefined") return;
       var item = itemByKey(state.currentItem);
-      var rows = [["年月","価格指数（2020年=100）"]];
+      var rows = [["年月","価格指数（2025年=100）"]];
       (item.cpi_index_monthly||[]).forEach(function(p){ rows.push([p.ym, p.value]); });
       var ws = XLSX.utils.aoa_to_sheet(rows);
       var wb = XLSX.utils.book_new();

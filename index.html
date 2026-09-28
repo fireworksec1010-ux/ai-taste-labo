@@ -250,7 +250,7 @@
     <div class="section-head">
       <div>
         <h2>値上げの実感を数字で</h2>
-        <div class="section-sub">直近で特に変化が大きい指標のハイライトです。指数は2020年を100とした消費者物価指数（CPI）。</div>
+        <div class="section-sub">直近で特に変化が大きい指標のハイライトです。指数は2025年を100とした消費者物価指数（CPI、2024年以前は統計局の接続指数）。</div>
       </div>
     </div>
     <div class="stat-grid" id="stat-grid"></div>
@@ -285,7 +285,7 @@
     <div class="section-head">
       <div>
         <h2>品目別・価格指数の推移</h2>
-        <div class="section-sub">品目を選ぶと、下のグラフが切り替わります。指数は総務省統計局「消費者物価指数」品目別価格指数（2020年＝100、全国・年平均）。</div>
+        <div class="section-sub">品目を選ぶと、下のグラフが切り替わります。指数は総務省統計局「消費者物価指数」品目別価格指数（2025年＝100、全国・年平均）。</div>
       </div>
     </div>
 
@@ -576,7 +576,7 @@
     var tbl = document.getElementById("table-long");
     var rows = item.cpi_index.filter(function(p){return p.year % 5 === 0 || p.year===item.cpi_index[item.cpi_index.length-1].year;});
     var head = "<thead><tr><th>年</th>"+rows.map(function(r){return "<th>"+r.year+"</th>";}).join("")+"</tr></thead>";
-    var body = "<tbody><tr><th>指数(2020=100)</th>"+rows.map(function(r){return "<td>"+fmt1(r.value)+"</td>";}).join("")+"</tr></tbody>";
+    var body = "<tbody><tr><th>指数(2025=100)</th>"+rows.map(function(r){return "<td>"+fmt1(r.value)+"</td>";}).join("")+"</tr></tbody>";
     tbl.innerHTML = head+body;
   }
 
@@ -586,14 +586,14 @@
     document.documentElement.style.setProperty("--accent", color);
 
     document.getElementById("long-title").textContent = item.label_ja+"の長期推移（"+item.cpi_index[0].year+"年〜"+item.cpi_index[item.cpi_index.length-1].year+"年）";
-    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2020年＝100、全国・年平均）";
+    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2025年＝100、全国・年平均）";
 
     buildChart(document.getElementById("svg-long"), item.cpi_index.map(function(p){return {x:p.year,y:p.value};}), {
       colorVar: COLOR_VAR[item.key],
-      refLine: 100, refLineLabel:"2020年=100",
+      refLine: 100, refLineLabel:"2025年=100",
       xTickEvery: 10,
       tooltipEl: document.getElementById("tip-long"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
       xTickFormatter: function(x){ return x+"年"; }
     });
 
@@ -606,10 +606,10 @@
 
     buildChart(document.getElementById("svg-recent"), recent.map(function(p){return {x:p.year,y:p.value};}), {
       colorVar: COLOR_VAR[item.key],
-      refLine: 100, refLineLabel:"2020年=100",
+      refLine: 100, refLineLabel:"2025年=100",
       xTickEvery: 1,
       tooltipEl: document.getElementById("tip-recent"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
       xTickFormatter: function(x){ return x+"年"; }
     });
 
@@ -745,7 +745,7 @@
       refLineLabel: base===null ? "" : "2019年平均",
       xTickEvery: 12,
       tooltipEl: document.getElementById("tip-monthly"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2020年=100）"; },
+      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
       xTickFormatter: function(x){ return Math.floor(x/12)+"年"; }
     });
   }
@@ -754,8 +754,6 @@
     var grid = document.getElementById("stat-grid");
     grid.innerHTML = "";
     var rice = itemByKey("rice"), oil = itemByKey("cooking_oil"), egg = itemByKey("egg");
-    var riceLast = rice.cpi_index[rice.cpi_index.length-1];
-    var oilLast = oil.cpi_index[oil.cpi_index.length-1];
     var eggMonthly = egg.retail_price_yen_monthly_recent||[];
     var eggFirst = eggMonthly[0], eggLast = eggMonthly[eggMonthly.length-1];
     var eggPct = eggFirst ? ((eggLast.value-eggFirst.value)/eggFirst.value*100) : 0;
@@ -771,25 +769,38 @@
     monthlyRanked.sort(function(a,b){ return a.pct-b.pct; });
     var lowest = monthlyRanked[0];
 
+    function vs2020(item){
+      var last = item.cpi_index[item.cpi_index.length-1];
+      var b = item.cpi_index.find(function(p){ return p.year===2020; });
+      return (b && b.value) ? {pct:(last.value/b.value-1)*100, ratio:last.value/b.value, year:last.year} : null;
+    }
+    function sign(v){ return (v>=0?"+":"")+fmt1(v); }
+    var riceChg = vs2020(rice), oilChg = vs2020(oil);
+    var riceM = rice.cpi_index_monthly, riceLatest = riceM[riceM.length-1];
+    var ricePeak = riceM.reduce(function(a,p){ return (p.value!==null && p.value>a.value)?p:a; }, riceM[0]);
+    var riceFromPeak = (riceLatest.value/ricePeak.value-1)*100;
+    var riceNow = riceLatest.ym===ricePeak.ym ? "直近（"+monthLabel(riceLatest.ym)+"）が過去最高水準。"
+      : "月次では"+monthLabel(ricePeak.ym)+"がピークで、直近（"+monthLabel(riceLatest.ym)+"）はピーク比"+sign(riceFromPeak)+"%。";
+
     var heroStat = document.getElementById("hero-stat");
     if(heroStat){
       heroStat.hidden = false;
-      document.getElementById("hero-stat-num").innerHTML = fmt1(riceLast.value)+'<span class="unit">（2020年=100）</span>';
-      document.getElementById("hero-stat-desc").textContent = "米の価格指数（"+riceLast.year+"年）";
-      document.getElementById("hero-stat-delta").textContent = "▲ "+(riceLast.value-100>=0?"+":"")+fmt1(riceLast.value-100)+"pt 2020年比（令和の米騒動）";
+      document.getElementById("hero-stat-num").innerHTML = sign(riceChg.pct)+'<span class="unit">%</span>';
+      document.getElementById("hero-stat-desc").textContent = "米の価格（"+riceChg.year+"年・2020年比）";
+      document.getElementById("hero-stat-delta").textContent = "▲ 2020年の約"+riceChg.ratio.toFixed(1)+"倍に（令和の米騒動）";
     }
 
     var tiles = [
-      { label:"米（価格指数・"+riceLast.year+"年）", value:fmt1(riceLast.value), unit:"（2020年=100）",
-        badge: statBadge(riceLast.value-100), badgeText: (riceLast.value-100>=0?"+":"")+fmt1(riceLast.value-100)+"pt（2020年比）",
-        foot:"令和の米騒動と呼ばれる需給ひっ迫で急騰。" },
-      { label:"食用油（価格指数・"+oilLast.year+"年）", value:fmt1(oilLast.value), unit:"（2020年=100）",
-        badge: statBadge(oilLast.value-100), badgeText: (oilLast.value-100>=0?"+":"")+fmt1(oilLast.value-100)+"pt（2020年比）",
+      { label:"米（価格指数・"+riceChg.year+"年）", value:sign(riceChg.pct), unit:"%（2020年比）",
+        badge: statBadge(riceChg.pct), badgeText:"2020年の約"+riceChg.ratio.toFixed(1)+"倍",
+        foot:"令和の米騒動と呼ばれる需給ひっ迫で急騰。"+riceNow },
+      { label:"食用油（価格指数・"+oilChg.year+"年）", value:sign(oilChg.pct), unit:"%（2020年比）",
+        badge: statBadge(oilChg.pct), badgeText:"2020年の約"+oilChg.ratio.toFixed(1)+"倍",
         foot:"原料油脂の国際価格上昇が影響。" },
       { label:"鶏卵（実勢価格・全国平均）", value: eggLast?fmtInt(eggLast.value):"—", unit:"円/パック",
         badge: statBadge(eggPct), badgeText:(eggPct>=0?"+":"")+fmt1(eggPct)+"%（"+monthLabel(eggFirst.month)+"→"+monthLabel(eggLast.month)+"）",
         foot:"農林水産省「食品価格動向調査」より。" },
-      { label: lowest.item.label_ja+"（"+monthLabel(lowest.last.ym)+"）", value:fmt1(lowest.last.value), unit:"（2020年=100）",
+      { label: lowest.item.label_ja+"（"+monthLabel(lowest.last.ym)+"）", value:fmt1(lowest.last.value), unit:"（2025年=100）",
         badge: statBadge(lowest.pct), badgeText:(lowest.pct>=0?"+":"")+fmt1(lowest.pct)+"%（2019年平均比）",
         foot:"8品目の中で、2019年平均比の上昇率が最も低い品目です。" },
       { label:"エンゲル係数（"+engelLast.year+"年）", value: fmt1(engelLast.value), unit:"%",
@@ -864,7 +875,7 @@
     exportBtn.addEventListener("click", function(){
       if(!state.data || typeof XLSX==="undefined") return;
       var item = itemByKey(state.currentItem);
-      var rows = [["年月","価格指数（2020年=100）"]];
+      var rows = [["年月","価格指数（2025年=100）"]];
       (item.cpi_index_monthly||[]).forEach(function(p){ rows.push([p.ym, p.value]); });
       var ws = XLSX.utils.aoa_to_sheet(rows);
       var wb = XLSX.utils.book_new();

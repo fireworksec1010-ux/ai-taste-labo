@@ -1,6 +1,6 @@
 ---
 name: food-site-update
-description: 食品価格サイト（食品価格・野菜価格・輸入統計・新製品情報・市場規模・お問い合わせの6ページ）のデータ更新・公開手順。「更新して」「データを最新にして」「新製品を追加して」などの依頼、または月次更新チェック（毎月25日のルーティン）の結果を受けて実際に更新するときに使う。
+description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品価格・野菜価格・輸入統計・新製品情報・市場規模・月次トピックス・お問い合わせの7ページ、GitHub Pagesで公開中）のデータ更新・公開手順。「更新して」「データを最新にして」「新製品を追加して」などの依頼、または月次更新チェック（毎月25日のルーティン）の結果を受けて実際に更新するときに使う。
 ---
 
 # 食品価格サイト 更新手順
@@ -23,9 +23,12 @@ description: 食品価格サイト（食品価格・野菜価格・輸入統計�
 ## 各ページの更新
 
 ### 1. 食品価格（index.html / data.json）・2. 野菜価格（vegetables.html / vegetables_data.json）
-- データ源：総務省統計局 CPI 品目別価格指数（2020年=100、全国）。
-  - 月次CSV：`https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032103844&fileKind=1`（Shift-JIS。公表のたびにstatInfIdが変わる場合は https://www.e-stat.go.jp/stat-search/files?tclass=000001138368&cycle=0 で最新を確認）
-  - 年平均CSV：`statInfId=000032103938`（tclass=000001138366）
+- データ源：総務省統計局 CPI 品目別価格指数（**2025年基準＝2025年=100**、全国）。2026年8月分から基準改定（2020年基準→2025年基準）。2024年以前は統計局が2025年=100に換算した接続指数。旧2020年基準の表（statInfId 000032103844 / 000032103938）はもう使わない。
+  - 月次CSV（1970年1月～最新月）：`https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040482945&fileKind=1`
+  - 年平均CSV（1970年～最新年）：`https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040482831&fileKind=1`
+  - statInfIdが変わった場合の一覧ページ：月次 `https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00200573&tstat=000001243876&cycle=0&tclass1=000001243880&tclass2=000001243881&tclass3=000001243883&tclass4=000001243886&layout=datalist&tclass5val=0`（年平均は tclass4=000001243890）。表題「品目別価格指数（1970年1月～最新月）」を選ぶ。
+  - 年平均CSVの年の列は `1970  ` のように末尾に空白が入るので Trim() する。
+  - 指数は2025年=100なので、「2020年比」は `値÷2020年の値−1` で計算する（`値−100` は2025年比になる点に注意）。ページ側の米・食用油のタイルとヒーロー統計はこの計算済み。
   - `Invoke-WebRequest -UserAgent "Mozilla/5.0"` でダウンロードし、`[Text.Encoding]::GetEncoding("shift_jis")` でデコード。
 - CSV構造：行0=日本語品目名、行2=品目コード、行6以降=`YYYYMM,値...`（昇順、最新月が末尾）。列位置は基準改定でずれるので、**品目コードで列を特定**する。
   - 食品：米類=0004、食パン=1021、鶏卵=1341、牛乳=**1303**（同名の0018は上位分類なので使わない）、食用油=1601、カップ麺=1051、豚肉（国産品）=1211、しょう油=1621
@@ -56,11 +59,11 @@ description: 食品価格サイト（食品価格・野菜価格・輸入統計�
 - 大量の数値を手で打ち直さず、PowerShellのConvertFrom-Json／ConvertTo-Jsonで加工する。
 
 ## 公開・保存の手順
-1. 更新したJSON/HTMLをリポジトリ内で編集。
-2. Artifact再公開：`Artifact`ツールで `index.html` を `url=https://claude.ai/artifact/SoNaobKEA1qt98Ej1aPu3w` に公開。補助ファイル（`vegetables.html, trade.html, product_news.html, market_size.html, contact.html` と各 `*_data.json`）は `files` に指定。他ページが公開側で更新済みと判定された場合は `overwrite_unread` に列挙。`data.json` はindex.htmlの補助として同時に渡す。
-3. Git（`%ProgramFiles%\Git\bin\git.exe`、認証済み）：`git status` → `git add` → commit → push。コミットメッセージは日本語で要点を書き、末尾に `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` を付ける。
-4. 完了報告は「何を更新したか・データ取得日・URL」を簡潔に。
+1. **編集はリポジトリ（`C:\Users\firef\claude.foodinfomation.test2`）のファイルだけを直接行う**。スクラッチパッド等に作業コピーを作ってからコピーし直す運用はしない（食い違いの原因になるため。2026-09に一本化）。ダウンロードした生データなど一時ファイルだけはスクラッチパッドに置いてよい。
+2. （大きな変更のとき）Artifactでプレビュー：`Artifact`ツールで `file_path` にリポジトリの `index.html`、`url=https://claude.ai/artifact/SoNaobKEA1qt98Ej1aPu3w`、`files` に他のHTML・JSONをリポジトリのパスで指定して公開。以前の版と違うと判定されたら `overwrite_unread` に列挙。Artifactは非公開の確認用で、一般公開はGitHub Pages。
+3. Git（`%ProgramFiles%\Git\bin\git.exe`、認証済み）：`git status` → `git add` → commit → push。pushすると数分でGitHub Pages（公開サイト）に反映される。コミットメッセージは日本語で要点を書き、末尾にその時点のClaude Code既定のCo-Authored-By行を付ける。
+4. 完了報告は「何を更新したか・データ取得日・公開URL」を簡潔に。
 
 ## 既知の制約
-- Artifactのプレビュー内では、ExcelダウンロードやページのNav遷移（別HTMLへのリンク）が動かない場合がある。GitHub Pages等の通常ホスティング上では動作する（GitHub Pagesは未有効化）。
+- Artifactのプレビュー内では、ExcelダウンロードやページのNav遷移（別HTMLへのリンク）が動かない場合がある。公開サイト（GitHub Pages）では動作する。
 - 食品価格・野菜価格・輸入統計・新製品情報の月次確認は、上記ルーティンが毎月25日に報告する。
