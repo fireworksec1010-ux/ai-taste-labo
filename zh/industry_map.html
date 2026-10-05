@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="ja">
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>食品業界マップ｜主要食品メーカー20社の売上高・営業利益｜AI Taste Labo</title>
-<meta name="description" content="味の素、日清食品、明治、山崎製パンなど主要食品メーカー20社の最新決算（売上高・営業利益・前期比）を、調味料・冷凍食品・即席麺・菓子・乳業・製パンの分野別にまとめた業界マップ。各社の決算短信に基づきます。">
-<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
-<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
+<title>日本食品產業地圖｜20家主要食品廠商的營收與營業利益｜AI Taste Labo</title>
+<meta name="description" content="味之素、日清食品、明治、山崎麵包等日本20家主要食品廠商的最新財報（營收・營業利益・年增率），依調味料、冷凍食品、速食麵、糖果餅乾、乳品、麵包分類整理的產業地圖。資料依據各公司的決算短信。">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/zh/industry_map.html">
 <link rel="alternate" hreflang="zh-Hant" href="https://fireworksec1010-ux.github.io/ai-taste-labo/zh/industry_map.html">
+<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
 <link rel="alternate" hreflang="x-default" href="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="食品業界マップ｜主要食品メーカー20社の売上高・営業利益">
-<meta property="og:description" content="主要食品メーカー20社の最新決算を分野別に一覧。売上高・営業利益・前期比・資本関係。">
-<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
+<meta property="og:site_name" content="AI Taste Labo">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="日本食品產業地圖｜20家主要食品廠商的營收與營業利益">
+<meta property="og:description" content="依領域一覽日本20家主要食品廠商的最新財報：營收、營業利益、年增率與資本關係。">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/zh/industry_map.html">
 <meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
@@ -48,7 +48,7 @@
 
     --accent: var(--series-1);
   }
-  /* このページは常にライト配色に固定しています */
+  /* 本頁固定使用淺色配色 */
 
   *{box-sizing:border-box;}
   body{
@@ -65,6 +65,9 @@
   .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+  .top-nav a.ja-only:after{ content:"日文"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ color:#2a78d6; font-weight:700; }
+  .top-nav a.lang.first{ margin-left:auto; }
 
   .hero{ padding:32px 0 20px; }
   .eyebrow{
@@ -157,22 +160,22 @@
 <div class="wrap">
 
   <nav class="top-nav">
-    <a href="index.html">食品価格</a>
-    <a href="vegetables.html">野菜価格</a>
-    <a href="trade.html">輸入統計</a>
-    <a href="product_news.html">新製品情報</a>
-    <a href="market_size.html">市場規模</a>
-    <a href="industry_map.html" class="active">業界マップ</a>
-    <a href="monthly_digest.html">月次トピックス</a>
-    <a href="contact.html">お問い合わせ</a>
-    <a href="en/monthly_digest.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
-    <a href="zh/industry_map.html" lang="zh-Hant" style="color:#2a78d6;font-weight:700;">中文</a>
+    <a href="../index.html" class="ja-only">食品價格</a>
+    <a href="../vegetables.html" class="ja-only">蔬菜價格</a>
+    <a href="../trade.html" class="ja-only">進口統計</a>
+    <a href="../product_news.html" class="ja-only">新產品資訊</a>
+    <a href="../market_size.html" class="ja-only">市場規模</a>
+    <a href="industry_map.html" class="active">產業地圖</a>
+    <a href="monthly_digest.html">每月焦點</a>
+    <a href="../contact.html" class="ja-only">聯絡我們</a>
+    <a href="../industry_map.html" class="lang first" lang="ja">日本語</a>
+    <a href="../en/monthly_digest.html" class="lang" lang="en">English</a>
   </nav>
 
   <div class="hero">
-    <div class="eyebrow"><span class="dot"></span>各社の決算短信に基づく</div>
-    <h1>食品業界マップ</h1>
-    <p>主要な食品メーカー20社を、調味料・冷凍食品・即席麺・菓子・乳業・製パンの6分野に分け、最新の通期決算（連結の売上高・営業利益）を一覧にしました。業界の顔ぶれと規模感、伸びている会社をつかむのにご利用ください。</p>
+    <div class="eyebrow"><span class="dot"></span>依據各公司財報</div>
+    <h1>日本食品產業地圖</h1>
+    <p>將日本20家主要食品廠商分為調味料、冷凍食品、速食麵、糖果餅乾、乳品、麵包・製粉6個領域，一覽各公司最新年度財報（合併營收與營業利益）。可用來掌握日本食品業界的主要企業、規模，以及哪些公司正在成長。</p>
     <div class="hero-stat" id="hero-stat" hidden>
       <div class="num" id="hero-num"></div>
       <div class="meta">
@@ -181,16 +184,16 @@
       </div>
     </div>
     <div class="meta-row">
-      <span id="updated-at">データ取得日を読み込み中…</span>
-      <span>出典：各社 決算短信・有価証券報告書（詳細は末尾）</span>
+      <span id="updated-at">載入中…</span>
+      <span>來源：各公司決算短信・有價證券報告書（詳見頁尾）</span>
     </div>
   </div>
 
   <section id="stats">
     <div class="section-head">
       <div>
-        <h2>20社のハイライト</h2>
-        <div class="section-sub">最新の通期決算と前期の比較です。</div>
+        <h2>20家公司重點</h2>
+        <div class="section-sub">最新年度財報與前一年度的比較。</div>
       </div>
     </div>
     <div class="stat-grid" id="stat-grid"></div>
@@ -199,8 +202,8 @@
   <section id="map-sec">
     <div class="section-head">
       <div>
-        <h2>分野別マップ</h2>
-        <div class="section-sub">売上高・営業利益は億円。右の％は前期比（<span style="color:var(--up);font-weight:700;">▲増加</span>／<span style="color:var(--down);font-weight:700;">▼減少</span>）。各分野の中は売上高の大きい順です。</div>
+        <h2>領域別地圖</h2>
+        <div class="section-sub">營收與營業利益單位為億日圓。右側％為年增率（<span style="color:var(--up);font-weight:700;">▲增加</span>／<span style="color:var(--down);font-weight:700;">▼減少</span>）。各領域內依營收由大到小排列。</div>
       </div>
     </div>
     <div class="map" id="map"></div>
@@ -209,22 +212,22 @@
   <section id="rank-sec">
     <div class="section-head">
       <div>
-        <h2>ランキング</h2>
-        <div class="section-sub">並べ替えの基準を選べます。決算期が会社ごとに異なる点にご注意ください。</div>
+        <h2>排行榜</h2>
+        <div class="section-sub">可選擇排序基準。請注意各公司的財年結束月份不同。</div>
       </div>
-      <button type="button" class="dl-btn" id="dl-btn">Excelでダウンロード</button>
+      <button type="button" class="dl-btn" id="dl-btn">下載Excel</button>
     </div>
-    <div class="sort-row" id="sort-row" role="group" aria-label="並べ替え">
-      <button type="button" class="chip" data-sort="sales" aria-pressed="true">売上高</button>
-      <button type="button" class="chip" data-sort="sales_g" aria-pressed="false">増収率</button>
-      <button type="button" class="chip" data-sort="op" aria-pressed="false">営業利益</button>
-      <button type="button" class="chip" data-sort="margin" aria-pressed="false">営業利益率</button>
+    <div class="sort-row" id="sort-row" role="group" aria-label="排序">
+      <button type="button" class="chip" data-sort="sales" aria-pressed="true">營收</button>
+      <button type="button" class="chip" data-sort="sales_g" aria-pressed="false">營收成長率</button>
+      <button type="button" class="chip" data-sort="op" aria-pressed="false">營業利益</button>
+      <button type="button" class="chip" data-sort="margin" aria-pressed="false">營業利益率</button>
     </div>
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>順位</th><th class="l">会社名</th><th class="l">分野</th><th class="l">決算期</th>
-          <th>売上高（億円）</th><th>前期比</th><th>営業利益（億円）</th><th>前期比</th><th>営業利益率</th>
+          <th>排名</th><th class="l">公司名稱</th><th class="l">領域</th><th class="l">財年</th>
+          <th>營收（億日圓）</th><th>年增率</th><th>營業利益（億日圓）</th><th>年增率</th><th>營業利益率</th>
         </tr></thead>
         <tbody id="rank-body"></tbody>
       </table>
@@ -232,15 +235,15 @@
   </section>
 
   <footer>
-    <h2 style="font-size:18px;">出典・注記</h2>
+    <h2 style="font-size:18px;">資料來源與說明</h2>
     <div class="sources" id="sources"></div>
     <div class="disclaimer">
-      ・数値は各社の連結決算の実績値です（億円未満切り捨て）。IFRS（国際会計基準）を採用している会社は「売上収益」を売上高として掲載しています。<br>
-      ・決算期は会社ごとに異なります（3月期・11月期・12月期など）。同じ時期の比較ではない点にご注意ください。<br>
-      ・営業利益には、資産売却益など一時的な損益が含まれる場合があります。会社が独自に開示する「事業利益」などとは異なります。<br>
-      ・分野分け・紹介文・主なブランドは、当サイトが各社の公表情報をもとに独自に整理したものです。複数分野にまたがる会社は主な事業の分野に入れています。<br>
-      ・資本関係は、各社の公表資料で確認できたもののみ掲載しています。<br>
-      ・投資判断を目的としたものではありません。正式な数値は各社のIR資料をご確認ください。
+      ・數值為各公司合併財報的實績（億日圓以下無條件捨去）。採用IFRS（國際財務報導準則）的公司，以「營業收入」作為營收。<br>
+      ・各公司財年結束月份不同（3月、11月、12月等），並非同一期間的比較。<br>
+      ・營業利益可能包含出售資產等一次性損益，與公司自行揭露的「事業利益」等指標不同。<br>
+      ・領域分類、公司簡介與主要品牌由本站依各公司公開資訊自行整理；跨多個領域的公司歸入其主要事業領域。品牌名稱保留日文原名。<br>
+      ・資本關係僅刊登可在各公司公開資料中確認者。<br>
+      ・本頁並非投資建議。正式數字請以各公司投資人關係（IR）資料為準。資料來源皆為日文。
     </div>
     <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
   </footer>
@@ -254,7 +257,9 @@
   var state = { data:null, sort:"sales" };
 
   function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
-  function fmtOku(v){ // 億円 → 「1兆1,736」「7,455」
+  function zh(obj, key){ return obj[key+"_zh"] || obj[key] || ""; }
+  function fyZh(fy){ return "財年截至"+fy.replace("期",""); }
+  function fmtOku(v){ // 億日圓 → 「1兆1,736」「7,455」
     if(v >= 10000){ var cho = Math.floor(v/10000), rest = v%10000; return cho+"兆"+(rest ? rest.toLocaleString("ja-JP") : ""); }
     return v.toLocaleString("ja-JP");
   }
@@ -276,7 +281,7 @@
 
   function renderUpdated(){
     var p = state.data.meta.generated_at.split("-");
-    document.getElementById("updated-at").textContent = "データ取得日：" + p[0]+"年"+(+p[1])+"月"+(+p[2])+"日";
+    document.getElementById("updated-at").textContent = "資料取得日：" + p[0]+"年"+(+p[1])+"月"+(+p[2])+"日";
   }
 
   function renderStats(){
@@ -288,14 +293,14 @@
     var topM = cs.slice().sort(function(a,b){ return b.margin-a.margin; })[0];
 
     document.getElementById("hero-stat").hidden = false;
-    document.getElementById("hero-num").innerHTML = (Math.round(total/1000)/10).toFixed(1)+'<span class="unit">兆円</span>';
-    document.getElementById("hero-desc").textContent = "主要食品メーカー20社の売上高合計";
-    document.getElementById("hero-delta").textContent = "20社中 "+up+"社が増収、"+opUp+"社が営業増益";
+    document.getElementById("hero-num").innerHTML = (Math.round(total/1000)/10).toFixed(1)+'<span class="unit">兆日圓</span>';
+    document.getElementById("hero-desc").textContent = "日本20家主要食品廠商營收合計";
+    document.getElementById("hero-delta").textContent = "20家中 "+up+" 家營收成長、"+opUp+" 家營業利益成長";
 
     var tiles = [
-      { label:"増収した会社", value:up, unit:"社 / 20社", foot:"営業増益は "+opUp+" 社。売上は伸びても利益が減った会社もあります（下のランキング参照）。" },
-      { label:"増収率トップ："+topG.name, value:fmtPct(topG.sales_g), unit:"", foot:topG.fy+"。"+(topG.growth_note||"") },
-      { label:"営業利益率トップ："+topM.name, value:(Math.round(topM.margin*10)/10).toFixed(1), unit:"%", foot:topM.fy+"。売上高 "+fmtOku(topM.sales)+" 億円、営業利益 "+fmtOku(topM.op)+" 億円。" }
+      { label:"營收成長的公司", value:up, unit:"家 / 20家", foot:"營業利益成長 "+opUp+" 家。也有營收成長但利益減少的公司（見下方排行榜）。" },
+      { label:"營收成長率第一："+zh(topG,"name"), value:fmtPct(topG.sales_g), unit:"", foot:fyZh(topG.fy)+"。"+zh(topG,"growth_note") },
+      { label:"營業利益率第一："+zh(topM,"name"), value:(Math.round(topM.margin*10)/10).toFixed(1), unit:"%", foot:fyZh(topM.fy)+"。營收 "+fmtOku(topM.sales)+" 億日圓，營業利益 "+fmtOku(topM.op)+" 億日圓。" }
     ];
     var grid = document.getElementById("stat-grid");
     grid.innerHTML = "";
@@ -309,19 +314,19 @@
 
   function cardHtml(c){
     var brands = (c.brands||[]).map(function(b){ return "<span>"+b+"</span>"; }).join("");
-    var parent = c.parent ? '<div class="parent-tag">'+c.parent.name+'が '+c.parent.ratio+' 出資（'+c.parent.as_of+'現在）</div>' : "";
+    var parent = c.parent ? '<div class="parent-tag">'+zh(c.parent,"name")+' 持股 '+c.parent.ratio+'（截至'+c.parent.as_of+'）</div>' : "";
     return '<div class="co-card">'+
-      '<div class="co-head"><div class="co-name">'+c.name+'</div><div class="co-code">'+c.code+'</div></div>'+
-      '<div class="co-note">'+c.note+'</div>'+
+      '<div class="co-head"><div class="co-name">'+zh(c,"name")+'</div><div class="co-code">'+c.code+'</div></div>'+
+      '<div class="co-note">'+zh(c,"note")+'</div>'+
       '<div class="co-brands">'+brands+'</div>'+
       '<div class="fig">'+
-        '<span class="k">売上高</span><span class="v">'+fmtOku(c.sales)+'<small>億円</small></span>'+chgHtml(c.sales_g)+
-        '<span class="k">営業利益</span><span class="v">'+fmtOku(c.op)+'<small>億円</small></span>'+chgHtml(c.op_g)+
+        '<span class="k">營收</span><span class="v">'+fmtOku(c.sales)+'<small>億日圓</small></span>'+chgHtml(c.sales_g)+
+        '<span class="k">營業利益</span><span class="v">'+fmtOku(c.op)+'<small>億日圓</small></span>'+chgHtml(c.op_g)+
       '</div>'+
       parent+
-      '<div class="co-foot"><span>'+c.fy+'・連結</span>'+
-        '<span>'+(c.news ? '<a href="product_news.html">新製品情報 →</a>　' : '')+
-        '<a href="https://irbank.net/'+c.code+'/results" target="_blank" rel="noopener">業績推移 →</a></span></div>'+
+      '<div class="co-foot"><span>'+fyZh(c.fy)+'・合併</span>'+
+        '<span>'+(c.news ? '<a href="../product_news.html">新產品（日文）→</a>　' : '')+
+        '<a href="https://irbank.net/'+c.code+'/results" target="_blank" rel="noopener">業績走勢（日文）→</a></span></div>'+
     '</div>';
   }
 
@@ -334,7 +339,7 @@
       var block = document.createElement("div");
       block.className = "cat-block";
       block.style.setProperty("--c", cssVar(cat.color));
-      block.innerHTML = '<h3>'+cat.label+'<span class="n">'+list.length+'社</span></h3><div class="cards">'+list.map(cardHtml).join("")+'</div>';
+      block.innerHTML = '<h3>'+zh(cat,"label")+'<span class="n">'+list.length+'家</span></h3><div class="cards">'+list.map(cardHtml).join("")+'</div>';
       map.appendChild(block);
     });
   }
@@ -351,9 +356,9 @@
     body.innerHTML = rows.map(function(c,i){
       var cat = catOf(c.category);
       return '<tr><td class="rank">'+(i+1)+'</td>'+
-        '<td class="l"><b>'+c.name+'</b></td>'+
-        '<td class="l"><span class="cat-dot" style="background:'+cssVar(cat.color)+'"></span>'+cat.label+'</td>'+
-        '<td class="l">'+c.fy+'</td>'+
+        '<td class="l"><b>'+zh(c,"name")+'</b></td>'+
+        '<td class="l"><span class="cat-dot" style="background:'+cssVar(cat.color)+'"></span>'+zh(cat,"label")+'</td>'+
+        '<td class="l">'+fyZh(c.fy)+'</td>'+
         '<td>'+c.sales.toLocaleString("ja-JP")+'<span class="bar" style="width:'+Math.round(c.sales/maxSales*60)+'px"></span></td>'+
         '<td>'+chgHtml(c.sales_g)+'</td>'+
         '<td>'+c.op.toLocaleString("ja-JP")+'</td>'+
@@ -368,22 +373,22 @@
   function renderSources(){
     var wrap = document.getElementById("sources");
     wrap.innerHTML = state.data.meta.sources.map(function(s){
-      return '<div class="source-item"><span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+s.url+'" target="_blank" rel="noopener">出典を見る</a>'+(s.note ? "<br>"+s.note : "")+'</div>';
+      return '<div class="source-item"><span class="org">'+zh(s,"org")+'</span>〈'+zh(s,"name")+'〉　<a href="'+s.url+'" target="_blank" rel="noopener">查看來源（日文）</a>'+(zh(s,"note") ? "<br>"+zh(s,"note") : "")+'</div>';
     }).join("");
   }
 
   function download(){
-    if(typeof XLSX==="undefined"){ alert("ダウンロード機能の読み込みに失敗しました。"); return; }
+    if(typeof XLSX==="undefined"){ alert("下載功能載入失敗。"); return; }
     var rows = sortedRows().map(function(c,i){
-      return { "順位":i+1, "会社名":c.name, "証券コード":c.code, "分野":catOf(c.category).label, "決算期":c.fy,
-        "売上高（億円）":c.sales, "前期売上高（億円）":c.sales_prev, "増収率（%）":Math.round(c.sales_g*10)/10,
-        "営業利益（億円）":c.op, "前期営業利益（億円）":c.op_prev, "営業増益率（%）":Math.round(c.op_g*10)/10,
-        "営業利益率（%）":Math.round(c.margin*10)/10 };
+      return { "排名":i+1, "公司名稱":zh(c,"name"), "股票代碼":c.code, "領域":zh(catOf(c.category),"label"), "財年":fyZh(c.fy),
+        "營收（億日圓）":c.sales, "前期營收（億日圓）":c.sales_prev, "營收成長率（%）":Math.round(c.sales_g*10)/10,
+        "營業利益（億日圓）":c.op, "前期營業利益（億日圓）":c.op_prev, "營業利益成長率（%）":Math.round(c.op_g*10)/10,
+        "營業利益率（%）":Math.round(c.margin*10)/10 };
     });
     var ws = XLSX.utils.json_to_sheet(rows);
     var wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "食品業界マップ");
-    XLSX.writeFile(wb, "food_industry_map_"+state.data.meta.generated_at+".xlsx");
+    XLSX.utils.book_append_sheet(wb, ws, "日本食品產業地圖");
+    XLSX.writeFile(wb, "japan_food_industry_map_zh_"+state.data.meta.generated_at+".xlsx");
   }
 
   document.getElementById("sort-row").addEventListener("click", function(e){
@@ -393,7 +398,7 @@
   });
   document.getElementById("dl-btn").addEventListener("click", download);
 
-  fetch("industry_map_data.json").then(function(r){ return r.json(); }).then(function(json){
+  fetch("../industry_map_data.json").then(function(r){ return r.json(); }).then(function(json){
     json.companies.forEach(enrich);
     state.data = json;
     renderUpdated();
@@ -402,7 +407,7 @@
     renderRanking();
     renderSources();
   }).catch(function(err){
-    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>資料載入失敗，請重新整理頁面。</div>";
     console.error(err);
   });
 })();

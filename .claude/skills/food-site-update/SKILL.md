@@ -21,6 +21,9 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
   - **月次トピックス・市場規模を更新したら、追加・変更した項目の `_en` フィールドも必ず書く**（例：`label_en`・`detail_en`・`title_en`・`summary_en`・`trend_note_en`・`text_en`・`outlook_en` など）。英文は直訳ではなく海外読者向けに補足（FY＝4月〜3月、JPY、日本語固有の商品名は英訳＋原語）。
   - 日英ペアのページには `hreflang`（ja / en / x-default=日本語版）を入れる。英語版ナビで未翻訳のページは日本語版にリンクし「JA」マークを付ける。英語版ページを追加したら、日本語側のEnglishリンク先・英語版ナビ・`sitemap.xml` も更新する。
   - 英語化の優先順位（ユーザー合意）：月次トピックス＞市場規模（済）＞新製品情報＞輸入統計＞価格ページ。
+- 中国語版（繁体字、台湾・香港向け）：`zh/` 以下に `zh/monthly_digest.html`・`zh/industry_map.html` の2ページ。英語版と同じ仕組みで `_zh` フィールドを表示（無ければ日本語）。
+  - **月次トピックス・業界マップを更新したら `_zh` フィールドも書く**（月次トピックス：`label_zh`・`detail_zh`・`title_zh`・`needs_zh`・`market_zh`・`takeaway_zh`・`company_zh`・`point_zh`・`summary_zh`・`outlook_zh` など。業界マップ：`name_zh`・`note_zh`・`growth_note_zh`・分野の `label_zh`）。商品名・ブランド名は日本語の原名のまま。社名は各社の中国語表記（例：味之素、龜甲萬、丘比、可果美、江崎固力果、卡樂比）。
+  - 日本語版の各ページのナビには「English」「中文」リンクがある。中国語版のない日本語ページの「中文」は `zh/monthly_digest.html` へ。hreflang は `zh-Hant`。
 - 数値は推測で埋めない。取得できない年・品目は空欄のままにし、注記する。
 - ユーザーが「更新して」と言った場合のみ更新する。月次チェックは報告だけ。
 

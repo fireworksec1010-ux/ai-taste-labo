@@ -17,7 +17,11 @@
                                               "category_en":  "Food prices",
                                               "label_en":  "Rice",
                                               "detail_en":  "Price index 187.2 (2020 = 100), up 87.4% vs. the 2019 average: the largest rise among the 8 staple items tracked.",
-                                              "link_label_en":  "View food prices (Japanese)"
+                                              "link_label_en":  "View food prices (Japanese)",
+                                              "category_zh":  "食品價格",
+                                              "label_zh":  "米",
+                                              "detail_zh":  "價格指數187.2（2020年=100），較2019年平均上漲87.4%，為8項主要食品中漲幅最大。",
+                                              "link_label_zh":  "查看食品價格（日文）"
                                           },
                                           {
                                               "category":  "野菜価格",
@@ -28,7 +32,11 @@
                                               "category_en":  "Vegetable prices",
                                               "label_en":  "Potatoes",
                                               "detail_en":  "Price index 143.5 (2020 = 100), up 64.2% vs. the 2019 average: the largest rise among 8 vegetables.",
-                                              "link_label_en":  "View vegetable prices (Japanese)"
+                                              "link_label_en":  "View vegetable prices (Japanese)",
+                                              "category_zh":  "蔬菜價格",
+                                              "label_zh":  "馬鈴薯",
+                                              "detail_zh":  "價格指數143.5（2020年=100），較2019年平均上漲64.2%，為8種蔬菜中漲幅最大。",
+                                              "link_label_zh":  "查看蔬菜價格（日文）"
                                           },
                                           {
                                               "category":  "輸入統計",
@@ -39,7 +47,11 @@
                                               "category_en":  "Imports",
                                               "label_en":  "Soybeans",
                                               "detail_en":  "Import unit price JPY 98/kg (2023), up 99% vs. 2019: the largest rise among 5 imported ingredients.",
-                                              "link_label_en":  "View import statistics (Japanese)"
+                                              "link_label_en":  "View import statistics (Japanese)",
+                                              "category_zh":  "進口統計",
+                                              "label_zh":  "大豆",
+                                              "detail_zh":  "進口單價每公斤98日圓（2023年），較2019年上漲99%，為5項進口原料中漲幅最大。",
+                                              "link_label_zh":  "查看進口統計（日文）"
                                           },
                                           {
                                               "category":  "新製品情報",
@@ -50,7 +62,11 @@
                                               "category_en":  "New products",
                                               "label_en":  "24 releases tracked",
                                               "detail_en":  "Latest include Snow Brand Bean Stalk\u0027s \"Hakira Bokujo no Asa\" and Ajinomoto\u0027s \"Pure Select Mayonnaise Fuwa-ama\".",
-                                              "link_label_en":  "View new products (Japanese)"
+                                              "link_label_en":  "View new products (Japanese)",
+                                              "category_zh":  "新產品資訊",
+                                              "label_zh":  "累計收錄24件",
+                                              "detail_zh":  "最新包括雪印BeanStalk「ハキラ 牧場の朝」、味之素「ピュアセレクト マヨネーズ ふわあま」等。",
+                                              "link_label_zh":  "查看新產品資訊（日文）"
                                           }
                                       ],
                        "analysis":  {
@@ -70,7 +86,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000135.000019296.html",
                                                                                 "company_en":  "Nissui",
                                                                                 "name_en":  "Kyo no Okazu: Microwave-Ready (grilled salted mackerel, etc.)",
-                                                                                "point_en":  "Frozen fish side dishes ready after simply microwaving"
+                                                                                "point_en":  "Frozen fish side dishes ready after simply microwaving",
+                                                                                "company_zh":  "日本水產（Nissui）",
+                                                                                "point_zh":  "只需微波加熱的冷凍魚類配菜"
                                                                             },
                                                                             {
                                                                                 "company":  "ニチレイフーズ",
@@ -80,7 +98,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000116.000079554.html",
                                                                                 "company_en":  "Nichirei Foods",
                                                                                 "name_en":  "Spring 2026 new products (84 items, incl. \"cold noodles made in the microwave\")",
-                                                                                "point_en":  "Microwave-prepared chilled noodles; also foodservice items that address labor shortages"
+                                                                                "point_en":  "Microwave-prepared chilled noodles; also foodservice items that address labor shortages",
+                                                                                "company_zh":  "日冷食品（Nichirei Foods）",
+                                                                                "point_zh":  "微波即可完成的冷麵；也有因應人手不足的餐飲業用商品"
                                                                             },
                                                                             {
                                                                                 "company":  "キユーピー",
@@ -90,7 +110,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000676.000044559.html",
                                                                                 "company_en":  "Kewpie",
                                                                                 "name_en":  "Aeru Pasta Sauce Tomato \u0026 Basil",
-                                                                                "point_en":  "No heating needed: just toss with cooked pasta"
+                                                                                "point_en":  "No heating needed: just toss with cooked pasta",
+                                                                                "company_zh":  "丘比（Kewpie）",
+                                                                                "point_zh":  "免加熱，只要拌入煮好的義大利麵"
                                                                             },
                                                                             {
                                                                                 "company":  "味の素冷凍食品",
@@ -100,14 +122,20 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000098.000027220.html",
                                                                                 "company_en":  "Ajinomoto Frozen Foods",
                                                                                 "name_en":  "Fall 2026 retail new products (Paku Paku Gyoza, etc.)",
-                                                                                "point_en":  "Everyday mains and staples made easy with frozen food"
+                                                                                "point_en":  "Everyday mains and staples made easy with frozen food",
+                                                                                "company_zh":  "味之素冷凍食品",
+                                                                                "point_zh":  "用冷凍食品輕鬆搞定日常主菜與主食"
                                                                             }
                                                                         ],
                                                            "takeaway":  "「調理の手間を省く」に加えて「少しだけ手をかける余地を残す」商品が並んでいる。冷凍・常温ともに、レンジや“あえるだけ”で完結する設計が各社の共通項になっている。",
                                                            "title_en":  "Theme 1 | Convenience becomes an everyday habit",
                                                            "needs_en":  "The growing number of single-person and dual-income households has strengthened demand for time-saving convenience. Observers also note that consumers choose, depending on their mood and energy that day, between skipping cooking entirely and adding a small personal touch.",
                                                            "market_en":  "The production index for prepared foods (frozen, retort pouch, etc.) rose from 87.7 in FY2015 to 115.2 in FY2025 (about +31%), the fastest growth of the four categories we track. Japan\u0027s domestic frozen-food production value hit a record JPY 857.7 billion in 2025, and frozen foods are said to have become everyday staples even amid inflation.",
-                                                           "takeaway_en":  "Alongside products that remove cooking effort, many leave room for a small personal touch. Across frozen and shelf-stable categories, a common design principle is finishing a dish with just a microwave or a simple toss."
+                                                           "takeaway_en":  "Alongside products that remove cooking effort, many leave room for a small personal touch. Across frozen and shelf-stable categories, a common design principle is finishing a dish with just a microwave or a simple toss.",
+                                                           "title_zh":  "主題1｜省時便利成為「日常」",
+                                                           "needs_zh":  "單身家庭與雙薪家庭增加，使省時、便利的需求更加強烈。近來也有觀察指出，消費者會依當天的心情與「幹勁」，在完全省事與稍微花點工夫之間做選擇。",
+                                                           "market_zh":  "調理食品（冷凍食品、殺菌軟袋食品等）的生產指數從2015財年的87.7升至2025財年的115.2（約+31%），為本站追蹤的4個類別中成長最快。2025年日本冷凍食品國內生產額達8,577億日圓，創歷史新高；即使物價上漲，冷凍食品也已成為「日常食品」。",
+                                                           "takeaway_zh":  "除了「省去烹調的工夫」，也出現許多「保留一點親手料理空間」的商品。無論冷凍或常溫，只要微波或「拌一拌」就能完成，是各公司共同的設計方向。"
                                                        },
                                                        {
                                                            "title":  "テーマ2｜値上げの中の「価値」訴求（量より単価）",
@@ -123,7 +151,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000176.000092524.html",
                                                                                 "company_en":  "Ajinomoto",
                                                                                 "name_en":  "Cook Do Kiwami (Premium) Hot \u0026 Numbing Mapo Tofu sauce",
-                                                                                "point_en":  "Premium, aroma-focused authentic seasoning mix"
+                                                                                "point_en":  "Premium, aroma-focused authentic seasoning mix",
+                                                                                "company_zh":  "味之素",
+                                                                                "point_zh":  "重視香氣的道地高級複合調味料"
                                                                             },
                                                                             {
                                                                                 "company":  "明治",
@@ -133,7 +163,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000005.000155982.html",
                                                                                 "company_en":  "Meiji",
                                                                                 "name_en":  "Essel Super Cup \"Adult Label\"",
-                                                                                "point_en":  "Limited-edition ice cream for adults, featuring depth and bitterness"
+                                                                                "point_en":  "Limited-edition ice cream for adults, featuring depth and bitterness",
+                                                                                "company_zh":  "明治",
+                                                                                "point_zh":  "享受濃郁與苦味的成人取向限定冰淇淋"
                                                                             },
                                                                             {
                                                                                 "company":  "雪印メグミルク",
@@ -143,14 +175,20 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000003.000029707.html",
                                                                                 "company_en":  "Megmilk Snow Brand",
                                                                                 "name_en":  "The Hakko (Cultured) Butter",
-                                                                                "point_en":  "Authentic cultured butter, launched with a new way to enjoy it"
+                                                                                "point_en":  "Authentic cultured butter, launched with a new way to enjoy it",
+                                                                                "company_zh":  "雪印MEGMILK",
+                                                                                "point_zh":  "道地發酵奶油，並提出新的吃法"
                                                                             }
                                                                         ],
                                                            "takeaway":  "数量を追うより、1品あたりの価値（本格感・大人向け・限定感）で選ばれる商品づくりが目立つ。値上げ局面では「価格の理由」が伝わる商品ほど受け入れられやすいと考えられる。",
                                                            "title_en":  "Theme 2 | Selling value amid price hikes (unit price over volume)",
                                                            "needs_en":  "While inflation is leading consumers to cut back, they still spend on items that justify a higher price and on small indulgences: a more selective style of consumption.",
                                                            "market_en":  "Confectionery production volume fell 0.8% in 2025, yet production value reached a record JPY 2.94 trillion (+5.4%). Soft drinks likewise saw volume fall 2.1% while value hit a record of about JPY 4.98 trillion. In both, flat-to-declining volume is offset by rising unit prices.",
-                                                           "takeaway_en":  "Rather than chasing volume, products stand out through per-item value: authenticity, adult appeal and limited availability. In a period of price hikes, products that clearly communicate why they cost more appear to be more readily accepted."
+                                                           "takeaway_en":  "Rather than chasing volume, products stand out through per-item value: authenticity, adult appeal and limited availability. In a period of price hikes, products that clearly communicate why they cost more appear to be more readily accepted.",
+                                                           "title_zh":  "主題2｜漲價中的「價值」訴求（重單價而非數量）",
+                                                           "needs_zh":  "物價上漲使消費者減少購買，但對於「漲價也能接受的東西」和「小小的奢侈」仍願意花錢，消費變得更有選擇性。",
+                                                           "market_zh":  "糖果餅乾類2025年生產數量較前一年減少0.8%，但生產金額達2兆9,403億日圓（+5.4%），創歷史新高。清涼飲料數量減少2.1%，金額約4兆9,825億日圓，同樣創新高。兩者都是「數量持平或減少，靠單價上升推動金額成長」的結構。",
+                                                           "takeaway_zh":  "比起追求銷量，以單品價值（道地感、成人取向、限定感）取勝的商品更為突出。在漲價時期，越能清楚傳達「為什麼值這個價」的商品，越容易被接受。"
                                                        },
                                                        {
                                                            "title":  "テーマ3｜健康ニーズの変化（数値から「気分・日常のケア」へ）",
@@ -166,7 +204,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000672.000044559.html",
                                                                                 "company_en":  "Kewpie",
                                                                                 "name_en":  "Men\u0027eki Care (Lactobacillus LK-1) mayonnaise-type dressing / dressing",
-                                                                                "point_en":  "Food with Function Claims; supports wellness through everyday vegetable intake"
+                                                                                "point_en":  "Food with Function Claims; supports wellness through everyday vegetable intake",
+                                                                                "company_zh":  "丘比（Kewpie）",
+                                                                                "point_zh":  "機能性標示食品，透過日常攝取蔬菜來保養"
                                                                             },
                                                                             {
                                                                                 "company":  "明治",
@@ -176,7 +216,9 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000024.000038615.html",
                                                                                 "company_en":  "Meiji",
                                                                                 "name_en":  "SAVAS BIOPRO Yogurt Flavor",
-                                                                                "point_en":  "Fermented protein for everyday use, not just after workouts"
+                                                                                "point_en":  "Fermented protein for everyday use, not just after workouts",
+                                                                                "company_zh":  "明治",
+                                                                                "point_zh":  "發酵蛋白質，從運動後到日常都能飲用"
                                                                             },
                                                                             {
                                                                                 "company":  "味の素",
@@ -186,46 +228,59 @@
                                                                                 "source_url":  "https://prtimes.jp/main/html/rd/p/000000177.000092524.html",
                                                                                 "company_en":  "Ajinomoto",
                                                                                 "name_en":  "Pure Select Mayonnaise Fuwa-ama",
-                                                                                "point_en":  "Mild, mellow flavor with reduced sourness and saltiness"
+                                                                                "point_en":  "Mild, mellow flavor with reduced sourness and saltiness",
+                                                                                "company_zh":  "味之素",
+                                                                                "point_zh":  "降低酸味與鹹味的溫和口感"
                                                                             }
                                                                         ],
                                                            "takeaway":  "特別な健康食品ではなく、マヨネーズや飲料など「いつもの食品」に健康や心地よさを組み込む商品が増えている。無理なく続けられることが訴求の中心になりつつある。",
                                                            "title_en":  "Theme 3 | Health needs shift (from numbers to mood and daily care)",
                                                            "needs_en":  "Health messaging is reportedly shifting from numbers such as calories toward mood, daily habits and environment.",
                                                            "market_en":  "This site does not yet track market-size data for this theme (a candidate for future addition).",
-                                                           "takeaway_en":  "Instead of specialized health foods, more products build health and comfort into everyday items such as mayonnaise and drinks. Being easy to stick with is becoming the core message."
+                                                           "takeaway_en":  "Instead of specialized health foods, more products build health and comfort into everyday items such as mayonnaise and drinks. Being easy to stick with is becoming the core message.",
+                                                           "title_zh":  "主題3｜健康需求的變化（從數字轉向「心情與日常保養」）",
+                                                           "needs_zh":  "有觀點指出，健康訴求正從卡路里等「數字」，轉向重視「心情」與「日常習慣、環境」。",
+                                                           "market_zh":  "本站目前尚未收錄與此主題對應的市場規模數據（未來新增候選）。",
+                                                           "takeaway_zh":  "不是特別的健康食品，而是在美乃滋、飲料等「平常的食品」中加入健康與舒適感的商品正在增加。「能輕鬆持續」逐漸成為訴求重點。"
                                                        }
                                                    ],
                                         "sources":  [
                                                         {
                                                             "name":  "日本冷凍食品協会「令和7年 冷凍食品の生産・消費について」",
                                                             "url":  "https://www.reishokukyo.or.jp/wp-content/uploads/2026/04/pdf-data_21.pdf",
-                                                            "name_en":  "Japan Frozen Foods Association, 2025 frozen food production and consumption"
+                                                            "name_en":  "Japan Frozen Foods Association, 2025 frozen food production and consumption",
+                                                            "name_zh":  "日本冷凍食品協會〈2025年冷凍食品的生產與消費〉"
                                                         },
                                                         {
                                                             "name":  "農林水産省「食品産業動態調査」",
                                                             "url":  "https://www.maff.go.jp/j/zyukyu/jki/j_doutai/doutai_top.html",
-                                                            "name_en":  "MAFF, Food Industry Trend Survey"
+                                                            "name_en":  "MAFF, Food Industry Trend Survey",
+                                                            "name_zh":  "日本農林水產省〈食品產業動態調查〉"
                                                         },
                                                         {
                                                             "name":  "日本食糧新聞「月刊 食品新製品トレンド」2026年9月号",
                                                             "url":  "https://news.nissyoku.co.jp/news/foodtrend-magazine202609",
-                                                            "name_en":  "Nihon Shokuryo Shimbun, \"New Food Product Trends\" (Sept 2026 issue)"
+                                                            "name_en":  "Nihon Shokuryo Shimbun, \"New Food Product Trends\" (Sept 2026 issue)",
+                                                            "name_zh":  "日本食糧新聞〈月刊 食品新製品趨勢〉2026年9月號"
                                                         },
                                                         {
                                                             "name":  "日本食糧新聞（全日本菓子協会の2025年統計）",
                                                             "url":  "https://news.nissyoku.co.jp/news/aoyagi20260401092306312",
-                                                            "name_en":  "Nihon Shokuryo Shimbun (All Nippon Kashi Association 2025 statistics)"
+                                                            "name_en":  "Nihon Shokuryo Shimbun (All Nippon Kashi Association 2025 statistics)",
+                                                            "name_zh":  "日本食糧新聞（全日本菓子協會2025年統計）"
                                                         },
                                                         {
                                                             "name":  "日本食糧新聞「2025年清涼飲料業界重大ニュース」",
                                                             "url":  "https://news.nissyoku.co.jp/news/hasegawak20251202015206813",
-                                                            "name_en":  "Nihon Shokuryo Shimbun, top soft-drink industry news of 2025"
+                                                            "name_en":  "Nihon Shokuryo Shimbun, top soft-drink industry news of 2025",
+                                                            "name_zh":  "日本食糧新聞〈2025年清涼飲料業界重大新聞〉"
                                                         }
                                                     ],
                                         "note":  "「生活者ニーズ」「市場」は公表統計・報道に基づく事実、「読み取れること」は当サイトによる見立てです。個々の新製品が特定の市場動向を狙ったものと各社が公表しているわけではありません。",
                                         "intro_en":  "As prices keep rising, Japanese consumers are shifting in three directions: getting meals done with less effort, spending on items worth a higher price, and approaching health through mood and daily habits rather than numbers. Below, we look at how these shifts show up in market data and in new products from major Japanese food makers.",
-                                        "note_en":  "\"Consumer needs\" and \"market\" are facts based on published statistics and reports; \"takeaways\" are this site\u0027s interpretation. The companies have not stated that individual products target specific market trends. Sources are in Japanese."
+                                        "note_en":  "\"Consumer needs\" and \"market\" are facts based on published statistics and reports; \"takeaways\" are this site\u0027s interpretation. The companies have not stated that individual products target specific market trends. Sources are in Japanese.",
+                                        "intro_zh":  "在持續漲價之下，日本消費者正朝三個方向轉變：「希望省下做飯的工夫」、「即使漲價，也願意把錢花在值得的東西上」、「健康不再只看數字，而是重視心情與日常習慣」。以下分三個主題，整理這些變化如何反映在市場規模數據與日本主要食品廠商的新產品上。",
+                                        "note_zh":  "「消費者需求」與「市場動向」是根據公開統計與報導的事實；「觀察重點」則是本站的解讀。各公司並未表示個別新產品是針對特定市場趨勢而推出。資料來源均為日文。"
                                     },
                        "domestic_trends":  [
                                                {
@@ -235,7 +290,10 @@
                                                    "source_name":  "帝国データバンク（PR TIMES）",
                                                    "title_en":  "Food price hikes exceed 4,000 items in September, the most in about three years",
                                                    "summary_en":  "According to Teikoku Databank, 195 major food and beverage makers raised prices on more than 4,000 items in September 2026, the most for a single month in about three years. Higher raw-material costs account for over 90% of the reasons cited, while rising energy costs linked to the Middle East situation also appear to play a role.",
-                                                   "source_name_en":  "Teikoku Databank (via PR TIMES)"
+                                                   "source_name_en":  "Teikoku Databank (via PR TIMES)",
+                                                   "title_zh":  "9月食品漲價超過4,000項，約3年來最多",
+                                                   "summary_zh":  "根據帝國數據銀行（Teikoku Databank）調查，日本195家主要食品廠商在2026年9月調漲的飲食品項超過4,000項，為約3年來單月最多。漲價原因中「原料價格上漲」占九成以上，中東局勢等帶動的能源價格上漲也被認為有所影響。",
+                                                   "source_name_zh":  "帝國數據銀行（經由PR TIMES）"
                                                },
                                                {
                                                    "title":  "10月も値上げが継続、酒類・飲料と調味料が中心に",
@@ -244,7 +302,10 @@
                                                    "source_name":  "帝国データバンク",
                                                    "title_en":  "Price hikes continue in October, led by alcoholic beverages, soft drinks and seasonings",
                                                    "summary_en":  "October, the start of the second half of Japan\u0027s fiscal year (October to March), is when price revisions tend to cluster. Teikoku Databank\u0027s tally points to continued increases led by alcoholic beverages, soft drinks and seasonings.",
-                                                   "source_name_en":  "Teikoku Databank"
+                                                   "source_name_en":  "Teikoku Databank",
+                                                   "title_zh":  "10月持續漲價，以酒類・飲料與調味料為主",
+                                                   "summary_zh":  "10月是日本企業下半財年（10月至隔年3月）的開始，價格調整容易集中。根據帝國數據銀行的統計，預計將以酒類・飲料與調味料為中心持續漲價。",
+                                                   "source_name_zh":  "帝國數據銀行"
                                                },
                                                {
                                                    "title":  "簡便食品は「気分・環境」への健康訴求へシフト",
@@ -253,12 +314,17 @@
                                                    "source_name":  "日本食糧新聞・電子版",
                                                    "title_en":  "Convenience foods shift toward mood- and environment-based health appeals",
                                                    "summary_en":  "According to Nihon Shokuryo Shimbun\u0027s monthly trend magazine, convenience foods increasingly go beyond simple time-saving to fit consumers\u0027 mood on a given day. Health messaging is also shifting from numbers (calories, etc.) toward mood and environment. In frozen foods, everyday items such as one-plate meals are growing.",
-                                                   "source_name_en":  "Nihon Shokuryo Shimbun (digital edition)"
+                                                   "source_name_en":  "Nihon Shokuryo Shimbun (digital edition)",
+                                                   "title_zh":  "便利食品的健康訴求轉向「心情與環境」",
+                                                   "summary_zh":  "根據日本食糧新聞的月刊趨勢雜誌，便利食品不只追求省時，配合「當天心情」的提案也在增加。健康訴求也正從「數字（卡路里等）」轉向重視「心情與環境」。冷凍食品中，一盤式餐點等日常型商品持續成長。",
+                                                   "source_name_zh":  "日本食糧新聞（電子版）"
                                                }
                                            ],
                        "outlook":  "10月は下期入りに伴う価格改定が例年集中する時期。酒類・飲料や調味料を中心に、値上げ品目数がさらに増える可能性がある。当サイトの食品価格・輸入統計ページも、10月分のデータが公開され次第あわせて確認したい。",
                        "label_en":  "September 2026",
-                       "outlook_en":  "October typically sees a cluster of price revisions as Japanese companies enter the second half of the fiscal year. The number of items with price increases may rise further, led by alcoholic beverages, soft drinks and seasonings. We will review the food price and import data once October figures are released."
+                       "outlook_en":  "October typically sees a cluster of price revisions as Japanese companies enter the second half of the fiscal year. The number of items with price increases may rise further, led by alcoholic beverages, soft drinks and seasonings. We will review the food price and import data once October figures are released.",
+                       "label_zh":  "2026年9月",
+                       "outlook_zh":  "10月是日本企業進入下半財年、價格調整往年最集中的時期。以酒類・飲料和調味料為中心，漲價品項數可能進一步增加。本站的食品價格與進口統計頁面，也將在10月份資料公布後一併確認。"
                    }
                ]
 }
