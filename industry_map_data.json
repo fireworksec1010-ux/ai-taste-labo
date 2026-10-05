@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generated_at": "2026-10-01",
+    "unit": "億円（億円未満切り捨て）",
+    "description": "主要食品メーカー20社の最新通期決算（連結）。売上高（IFRS採用企業は売上収益）と営業利益。分野分けと紹介文は当サイト独自。",
+    "sources": [
+      { "name": "各社 決算短信・有価証券報告書（連結）", "org": "各社", "url": "https://disclosure2.edinet-fsa.go.jp/", "note": "数値はIR BANK（決算短信・EDINETの集計サイト）で取得し、味の素・亀田製菓・江崎グリコは決算短信・報道と照合。" },
+      { "name": "株式情報（大株主の状況）", "org": "株式会社湖池屋", "url": "https://koike-ya.com/ir/stock.html", "note": "日清食品ホールディングスの持株比率45.10%（2026年3月31日現在）。" }
+    ]
+  },
+  "categories": [
+    { "key": "seasoning", "label": "調味料・加工食品", "color": "--series-2" },
+    { "key": "frozen", "label": "水産・冷凍食品", "color": "--series-1" },
+    { "key": "noodle", "label": "即席麺", "color": "--series-5" },
+    { "key": "confectionery", "label": "菓子・スナック", "color": "--series-3" },
+    { "key": "dairy", "label": "乳業", "color": "--series-6" },
+    { "key": "bakery", "label": "製パン・製粉", "color": "--series-4" }
+  ],
+  "companies": [
+    { "name": "味の素", "code": "2802", "category": "seasoning", "fy": "2026年3月期", "sales": 15837, "sales_prev": 15305, "op": 1994, "op_prev": 1139,
+      "brands": ["味の素", "ほんだし", "Cook Do", "ギョーザ"],
+      "note": "うま味調味料を起点に、調味料・冷凍食品から半導体向け電子材料まで手がける。今期の営業利益には資産売却など一時的な利益を含む。", "news": true },
+    { "name": "キッコーマン", "code": "2801", "category": "seasoning", "fy": "2026年3月期", "sales": 7455, "sales_prev": 7089, "op": 759, "op_prev": 736,
+      "brands": ["キッコーマンしょうゆ", "いつでも新鮮", "キッコーマン豆乳"],
+      "note": "しょうゆを中心に、海外（特に北米）での販売と食品卸売が収益の大きな柱。" },
+    { "name": "キユーピー", "code": "2809", "category": "seasoning", "fy": "2025年11月期", "sales": 5134, "sales_prev": 4839, "op": 346, "op_prev": 343,
+      "brands": ["キユーピー マヨネーズ", "キユーピー ドレッシング", "キユーピー ハーフ"],
+      "note": "マヨネーズ・ドレッシングが主力。サラダ・総菜、液卵などの業務用、海外にも展開。", "news": true },
+    { "name": "ハウス食品グループ本社", "code": "2810", "category": "seasoning", "fy": "2026年3月期", "sales": 3169, "sales_prev": 3154, "op": 182, "op_prev": 200,
+      "brands": ["バーモントカレー", "ジャワカレー", "とんがりコーン"],
+      "note": "カレールウ・スパイスが主力。米国の豆腐事業や中国でのカレー普及など海外にも力を入れる。" },
+    { "name": "カゴメ", "code": "2811", "category": "seasoning", "fy": "2025年12月期", "sales": 2942, "sales_prev": 3068, "op": 223, "op_prev": 362,
+      "brands": ["カゴメトマトジュース", "野菜生活100", "カゴメトマトケチャップ"],
+      "note": "トマト加工品と野菜飲料が主力。海外ではトマトペースト等の加工・販売も行う。" },
+
+    { "name": "ニッスイ", "code": "1332", "category": "frozen", "fy": "2026年3月期", "sales": 9312, "sales_prev": 8861, "op": 404, "op_prev": 317,
+      "brands": ["大きな大きな焼きおにぎり", "今日のおかず"],
+      "note": "旧日本水産。漁業・養殖から冷凍食品・練り製品まで。今期は売上・利益とも過去最高。", "news": true },
+    { "name": "ニチレイ", "code": "2871", "category": "frozen", "fy": "2026年3月期", "sales": 7161, "sales_prev": 7020, "op": 389, "op_prev": 383,
+      "brands": ["本格炒め炒飯", "特から", "今川焼"],
+      "note": "家庭用・業務用の冷凍食品に加え、冷蔵倉庫などの低温物流も大きな事業。", "news": true },
+    { "name": "Umios", "code": "1333", "category": "frozen", "fy": "2026年3月期", "sales": 11058, "sales_prev": 10786, "op": 311, "op_prev": 303,
+      "brands": ["あけぼの", "WILDish", "金のどんぶり"],
+      "note": "旧マルハニチロ（2026年3月に社名変更）。水産物の調達・加工から冷凍食品・缶詰まで手がける。", "news": true },
+
+    { "name": "日清食品ホールディングス", "code": "2897", "category": "noodle", "fy": "2026年3月期", "sales": 7881, "sales_prev": 7765, "op": 623, "op_prev": 743,
+      "brands": ["カップヌードル", "チキンラーメン", "日清のどん兵衛", "明星 一平ちゃん"],
+      "note": "即席麺の大手。明星食品を傘下に持ち、海外展開も積極的。湖池屋の筆頭株主。" },
+    { "name": "東洋水産", "code": "2875", "category": "noodle", "fy": "2026年3月期", "sales": 5366, "sales_prev": 5122, "op": 857, "op_prev": 765,
+      "brands": ["マルちゃん 赤いきつね", "マルちゃん正麺", "マルちゃん焼そば"],
+      "note": "「マルちゃん」ブランド。米国・メキシコでの即席麺販売が利益の大きな柱。" },
+
+    { "name": "江崎グリコ", "code": "2206", "category": "confectionery", "fy": "2025年12月期", "sales": 3613, "sales_prev": 3311, "op": 87, "op_prev": 110,
+      "brands": ["ポッキー", "プリッツ", "パピコ", "ビスコ"],
+      "note": "菓子に加え、アイスや乳製品も手がける。ポッキーなどで海外展開も進める。" },
+    { "name": "森永製菓", "code": "2201", "category": "confectionery", "fy": "2026年3月期", "sales": 2366, "sales_prev": 2289, "op": 223, "op_prev": 212,
+      "brands": ["ハイチュウ", "inゼリー", "森永ミルクキャラメル"],
+      "note": "菓子・冷菓に加え、ゼリー飲料などの健康分野が成長。ハイチュウは米国でも展開。" },
+    { "name": "カルビー", "code": "2229", "category": "confectionery", "fy": "2026年3月期", "sales": 3401, "sales_prev": 3225, "op": 261, "op_prev": 290,
+      "brands": ["ポテトチップス", "じゃがりこ", "フルグラ"],
+      "note": "ポテト系スナックが主力。シリアルのフルグラ、北米・アジアなど海外事業も持つ。" },
+    { "name": "湖池屋", "code": "2226", "category": "confectionery", "fy": "2026年3月期", "sales": 611, "sales_prev": 593, "op": 38, "op_prev": 40,
+      "brands": ["湖池屋ポテトチップス", "カラムーチョ", "PRIDE POTATO"],
+      "note": "ポテトチップス・スナックが主力。日清食品ホールディングスの連結子会社。",
+      "parent": { "name": "日清食品ホールディングス", "ratio": "45.10%", "as_of": "2026年3月31日" } },
+    { "name": "亀田製菓", "code": "2220", "category": "confectionery", "fy": "2026年3月期", "sales": 1380, "sales_prev": 1032, "op": 75, "op_prev": 55,
+      "brands": ["亀田の柿の種", "ハッピーターン", "亀田のつまみ種"],
+      "note": "米菓が主力。2025年6月に米国の菓子メーカーTH FOODSを完全子会社化し、海外売上が大きく伸びた。",
+      "growth_note": "米国TH FOODSの完全子会社化（2025年6月）による海外売上の拡大が主因。" },
+
+    { "name": "明治ホールディングス", "code": "2269", "category": "dairy", "fy": "2026年3月期", "sales": 11736, "sales_prev": 11540, "op": 933, "op_prev": 847,
+      "brands": ["明治ブルガリアヨーグルト", "明治おいしい牛乳", "チョコレート効果"],
+      "note": "乳製品・菓子・栄養食品の食品事業に、医薬品事業を併せ持つ。", "news": true },
+    { "name": "雪印メグミルク", "code": "2270", "category": "dairy", "fy": "2026年3月期", "sales": 6157, "sales_prev": 6158, "op": 182, "op_prev": 191,
+      "brands": ["雪印北海道100", "恵 megumi", "雪印コーヒー"],
+      "note": "チーズ・バター・ヨーグルトなどの乳製品が主力。酪農・飼料関連の事業も持つ。", "news": true },
+    { "name": "森永乳業", "code": "2264", "category": "dairy", "fy": "2026年3月期", "sales": 5714, "sales_prev": 5611, "op": 344, "op_prev": 296,
+      "brands": ["ビヒダス", "マウントレーニア", "PINO"],
+      "note": "牛乳・ヨーグルト・アイス・チルドコーヒーなど。ビフィズス菌など素材の海外展開も。", "news": true },
+
+    { "name": "山崎製パン", "code": "2212", "category": "bakery", "fy": "2025年12月期", "sales": 13114, "sales_prev": 12444, "op": 611, "op_prev": 518,
+      "brands": ["ランチパック", "ロイヤルブレッド", "超芳醇"],
+      "note": "パン・和洋菓子が主力。不二家やヤマザキビスケットなどをグループに持ち、コンビニ事業も展開。", "news": true },
+    { "name": "日清製粉グループ本社", "code": "2002", "category": "bakery", "fy": "2026年3月期", "sales": 8650, "sales_prev": 8514, "op": 466, "op_prev": 463,
+      "brands": ["日清 フラワー", "マ・マー", "日清 天ぷら粉"],
+      "note": "製粉が主力。家庭用の小麦粉・パスタ（日清製粉ウェルナ）や中食・総菜事業も持つ。", "news": true }
+  ],
+  "relations": [
+    { "from": "日清食品ホールディングス", "to": "湖池屋", "ratio": "45.10%", "as_of": "2026年3月31日", "source_url": "https://koike-ya.com/ir/stock.html" }
+  ]
+}

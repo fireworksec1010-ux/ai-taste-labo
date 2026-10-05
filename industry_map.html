@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>食品業界マップ｜主要食品メーカー20社の売上高・営業利益｜AI Taste Labo</title>
+<meta name="description" content="味の素、日清食品、明治、山崎製パンなど主要食品メーカー20社の最新決算（売上高・営業利益・前期比）を、調味料・冷凍食品・即席麺・菓子・乳業・製パンの分野別にまとめた業界マップ。各社の決算短信に基づきます。">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="食品業界マップ｜主要食品メーカー20社の売上高・営業利益">
+<meta property="og:description" content="主要食品メーカー20社の最新決算を分野別に一覧。売上高・営業利益・前期比・資本関係。">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/industry_map.html">
+<meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
+<style>[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --border:         rgba(11,11,11,0.10);
+    --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --series-5: #d03b3b;
+    --series-6: #8a5cd1;
+
+    --status-good:     #0ca30c;
+    --status-critical: #d03b3b;
+    --up:   #d03b3b;
+    --down: #2a78d6;
+
+    --accent: var(--series-1);
+  }
+  /* このページは常にライト配色に固定しています */
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--page-plane);
+    color:var(--text-primary);
+    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+
+  .hero{ padding:32px 0 20px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; letter-spacing:.08em;
+    color:var(--text-secondary); margin-bottom:14px;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{ font-size:clamp(28px,5vw,40px); line-height:1.2; }
+  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:64ch; margin:16px 0 0; }
+  .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
+
+  .hero-stat{
+    display:inline-flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    margin-top:22px; padding:14px 18px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(42,120,214,0.09), rgba(42,120,214,0.02));
+    border:1px solid rgba(42,120,214,0.2);
+  }
+  .hero-stat .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:clamp(30px,6vw,42px); color:var(--series-1); line-height:1; }
+  .hero-stat .num .unit{ font-size:14px; font-weight:700; color:var(--text-secondary); margin-left:3px; }
+  .hero-stat .meta{ display:flex; flex-direction:column; gap:2px; }
+  .hero-stat .desc{ font-size:12.5px; font-weight:700; }
+  .hero-stat .delta{ font-size:11.5px; color:var(--text-secondary); font-weight:700; }
+
+  section{ padding:30px 0; border-top:1px solid var(--border); }
+  .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+  .section-head h2{ font-size:22px; }
+  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:4px; max-width:62ch; line-height:1.7; }
+
+  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+  .stat-tile{ background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:16px 16px 14px; box-shadow:var(--card-shadow); }
+  .stat-tile .label{ font-size:12px; color:var(--text-secondary); margin-bottom:8px; }
+  .stat-tile .value{ font-size:24px; font-weight:900; line-height:1.15; }
+  .stat-tile .value .unit{ font-size:13px; font-weight:500; color:var(--text-secondary); margin-left:2px; }
+  .stat-tile .foot{ font-size:11.5px; color:var(--text-muted); margin-top:8px; line-height:1.5; }
+
+  /* ---- map ---- */
+  .map{ display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:16px; align-items:start; }
+  .cat-block{ border-radius:14px; padding:12px; background:color-mix(in srgb, var(--c) 7%, var(--surface-1)); border:1px solid color-mix(in srgb, var(--c) 28%, transparent); }
+  .cat-block h3{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:14px; font-weight:900; color:#fff; background:var(--c); display:inline-block; padding:4px 12px; border-radius:99px; margin:0 0 10px; }
+  .cat-block h3 .n{ font-weight:500; opacity:.85; margin-left:4px; font-size:12px; }
+  .cards{ display:grid; gap:10px; }
+  .co-card{ background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:12px 13px; box-shadow:0 1px 2px rgba(11,11,11,0.04); }
+  .co-head{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+  .co-name{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16.5px; line-height:1.3; }
+  .co-code{ font-size:11px; color:var(--text-muted); font-weight:700; flex:none; }
+  .co-note{ font-size:12px; line-height:1.65; color:var(--text-secondary); margin:6px 0 6px; }
+  .co-brands{ display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
+  .co-brands span{ font-size:10.5px; color:color-mix(in srgb, var(--c) 75%, #000); background:color-mix(in srgb, var(--c) 10%, transparent); border-radius:4px; padding:1px 6px; }
+  .fig{ display:grid; grid-template-columns:auto 1fr auto; gap:2px 10px; align-items:baseline; border-top:1px dashed var(--border); padding-top:7px; }
+  .fig .k{ font-size:11px; color:var(--text-muted); font-weight:700; }
+  .fig .v{ font-size:17px; font-weight:900; text-align:right; font-variant-numeric:tabular-nums; }
+  .fig .v small{ font-size:11px; font-weight:500; color:var(--text-secondary); margin-left:1px; }
+  .chg{ font-size:11.5px; font-weight:700; min-width:58px; text-align:right; font-variant-numeric:tabular-nums; }
+  .chg.up{ color:var(--up); } .chg.down{ color:var(--down); } .chg.flat{ color:var(--text-muted); }
+  .co-foot{ display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-top:7px; font-size:10.5px; color:var(--text-muted); }
+  .co-foot a{ font-weight:700; text-decoration:none; }
+  .parent-tag{ margin-top:7px; font-size:11px; font-weight:700; color:var(--text-primary); background:var(--page-plane); border:1px solid var(--border); border-radius:6px; padding:4px 8px; }
+  .parent-tag:before{ content:"⇐ "; color:var(--series-5); }
+
+  /* ---- ranking ---- */
+  .sort-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ padding:7px 12px; border-radius:99px; border:1px solid var(--border); background:var(--surface-1); color:var(--text-primary); font-size:12.5px; font-weight:500; cursor:pointer; font-family:inherit; }
+  .chip[aria-pressed="true"]{ border-color:var(--series-1); color:var(--series-1); font-weight:700; box-shadow:0 0 0 1px var(--series-1) inset; }
+  .dl-btn{ padding:7px 12px; border-radius:8px; border:1px solid var(--border); background:var(--surface-1); font-size:12.5px; font-weight:700; cursor:pointer; font-family:inherit; color:var(--text-primary); }
+  .table-wrap{ overflow-x:auto; margin-top:12px; background:var(--surface-1); border:1px solid var(--border); border-radius:12px; box-shadow:var(--card-shadow); }
+  table{ border-collapse:collapse; width:100%; font-size:12.5px; min-width:720px; }
+  th,td{ padding:9px 10px; border-bottom:1px solid var(--border); text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  th{ font-size:11.5px; color:var(--text-secondary); font-weight:700; background:var(--page-plane); }
+  td.l, th.l{ text-align:left; }
+  tr:last-child td{ border-bottom:none; }
+  .rank{ color:var(--text-muted); font-weight:700; }
+  .cat-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:1px; }
+  .bar{ display:inline-block; height:6px; border-radius:3px; background:var(--series-1); opacity:.35; vertical-align:middle; margin-left:6px; }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  .sources{ display:grid; gap:10px; margin-top:14px; }
+  .source-item{ font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
+  .source-item .org{ font-weight:700; color:var(--text-primary); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:74ch; }
+
+  @media (max-width:520px){
+    .hero{ padding:28px 0 20px; }
+    .map{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="top-nav">
+    <a href="index.html">食品価格</a>
+    <a href="vegetables.html">野菜価格</a>
+    <a href="trade.html">輸入統計</a>
+    <a href="product_news.html">新製品情報</a>
+    <a href="market_size.html">市場規模</a>
+    <a href="industry_map.html" class="active">業界マップ</a>
+    <a href="monthly_digest.html">月次トピックス</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="en/monthly_digest.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
+  </nav>
+
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span>各社の決算短信に基づく</div>
+    <h1>食品業界マップ</h1>
+    <p>主要な食品メーカー20社を、調味料・冷凍食品・即席麺・菓子・乳業・製パンの6分野に分け、最新の通期決算（連結の売上高・営業利益）を一覧にしました。業界の顔ぶれと規模感、伸びている会社をつかむのにご利用ください。</p>
+    <div class="hero-stat" id="hero-stat" hidden>
+      <div class="num" id="hero-num"></div>
+      <div class="meta">
+        <div class="desc" id="hero-desc"></div>
+        <div class="delta" id="hero-delta"></div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span id="updated-at">データ取得日を読み込み中…</span>
+      <span>出典：各社 決算短信・有価証券報告書（詳細は末尾）</span>
+    </div>
+  </div>
+
+  <section id="stats">
+    <div class="section-head">
+      <div>
+        <h2>20社のハイライト</h2>
+        <div class="section-sub">最新の通期決算と前期の比較です。</div>
+      </div>
+    </div>
+    <div class="stat-grid" id="stat-grid"></div>
+  </section>
+
+  <section id="map-sec">
+    <div class="section-head">
+      <div>
+        <h2>分野別マップ</h2>
+        <div class="section-sub">売上高・営業利益は億円。右の％は前期比（<span style="color:var(--up);font-weight:700;">▲増加</span>／<span style="color:var(--down);font-weight:700;">▼減少</span>）。各分野の中は売上高の大きい順です。</div>
+      </div>
+    </div>
+    <div class="map" id="map"></div>
+  </section>
+
+  <section id="rank-sec">
+    <div class="section-head">
+      <div>
+        <h2>ランキング</h2>
+        <div class="section-sub">並べ替えの基準を選べます。決算期が会社ごとに異なる点にご注意ください。</div>
+      </div>
+      <button type="button" class="dl-btn" id="dl-btn">Excelでダウンロード</button>
+    </div>
+    <div class="sort-row" id="sort-row" role="group" aria-label="並べ替え">
+      <button type="button" class="chip" data-sort="sales" aria-pressed="true">売上高</button>
+      <button type="button" class="chip" data-sort="sales_g" aria-pressed="false">増収率</button>
+      <button type="button" class="chip" data-sort="op" aria-pressed="false">営業利益</button>
+      <button type="button" class="chip" data-sort="margin" aria-pressed="false">営業利益率</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>順位</th><th class="l">会社名</th><th class="l">分野</th><th class="l">決算期</th>
+          <th>売上高（億円）</th><th>前期比</th><th>営業利益（億円）</th><th>前期比</th><th>営業利益率</th>
+        </tr></thead>
+        <tbody id="rank-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <h2 style="font-size:18px;">出典・注記</h2>
+    <div class="sources" id="sources"></div>
+    <div class="disclaimer">
+      ・数値は各社の連結決算の実績値です（億円未満切り捨て）。IFRS（国際会計基準）を採用している会社は「売上収益」を売上高として掲載しています。<br>
+      ・決算期は会社ごとに異なります（3月期・11月期・12月期など）。同じ時期の比較ではない点にご注意ください。<br>
+      ・営業利益には、資産売却益など一時的な損益が含まれる場合があります。会社が独自に開示する「事業利益」などとは異なります。<br>
+      ・分野分け・紹介文・主なブランドは、当サイトが各社の公表情報をもとに独自に整理したものです。複数分野にまたがる会社は主な事業の分野に入れています。<br>
+      ・資本関係は、各社の公表資料で確認できたもののみ掲載しています。<br>
+      ・投資判断を目的としたものではありません。正式な数値は各社のIR資料をご確認ください。
+    </div>
+    <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var state = { data:null, sort:"sales" };
+
+  function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function fmtOku(v){ // 億円 → 「1兆1,736」「7,455」
+    if(v >= 10000){ var cho = Math.floor(v/10000), rest = v%10000; return cho+"兆"+(rest ? rest.toLocaleString("ja-JP") : ""); }
+    return v.toLocaleString("ja-JP");
+  }
+  function pct(cur, prev){ return prev ? (cur-prev)/prev*100 : null; }
+  function fmtPct(p){ return (p>=0?"+":"")+(Math.round(p*10)/10).toFixed(1)+"%"; }
+  function chgHtml(p){
+    if(p===null) return '<span class="chg flat">—</span>';
+    var cls = p>=0.5 ? "up" : (p<=-0.5 ? "down" : "flat");
+    var mark = cls==="up" ? "▲" : (cls==="down" ? "▼" : "→");
+    return '<span class="chg '+cls+'">'+mark+fmtPct(p).replace("+","").replace("-","")+'</span>';
+  }
+  function catOf(key){ return state.data.categories.find(function(c){ return c.key===key; }); }
+  function enrich(c){
+    c.sales_g = pct(c.sales, c.sales_prev);
+    c.op_g = pct(c.op, c.op_prev);
+    c.margin = c.op / c.sales * 100;
+    return c;
+  }
+
+  function renderUpdated(){
+    var p = state.data.meta.generated_at.split("-");
+    document.getElementById("updated-at").textContent = "データ取得日：" + p[0]+"年"+(+p[1])+"月"+(+p[2])+"日";
+  }
+
+  function renderStats(){
+    var cs = state.data.companies;
+    var total = cs.reduce(function(s,c){ return s+c.sales; }, 0);
+    var up = cs.filter(function(c){ return c.sales > c.sales_prev; }).length;
+    var opUp = cs.filter(function(c){ return c.op > c.op_prev; }).length;
+    var topG = cs.slice().sort(function(a,b){ return b.sales_g-a.sales_g; })[0];
+    var topM = cs.slice().sort(function(a,b){ return b.margin-a.margin; })[0];
+
+    document.getElementById("hero-stat").hidden = false;
+    document.getElementById("hero-num").innerHTML = (Math.round(total/1000)/10).toFixed(1)+'<span class="unit">兆円</span>';
+    document.getElementById("hero-desc").textContent = "主要食品メーカー20社の売上高合計";
+    document.getElementById("hero-delta").textContent = "20社中 "+up+"社が増収、"+opUp+"社が営業増益";
+
+    var tiles = [
+      { label:"増収した会社", value:up, unit:"社 / 20社", foot:"営業増益は "+opUp+" 社。売上は伸びても利益が減った会社もあります（下のランキング参照）。" },
+      { label:"増収率トップ："+topG.name, value:fmtPct(topG.sales_g), unit:"", foot:topG.fy+"。"+(topG.growth_note||"") },
+      { label:"営業利益率トップ："+topM.name, value:(Math.round(topM.margin*10)/10).toFixed(1), unit:"%", foot:topM.fy+"。売上高 "+fmtOku(topM.sales)+" 億円、営業利益 "+fmtOku(topM.op)+" 億円。" }
+    ];
+    var grid = document.getElementById("stat-grid");
+    grid.innerHTML = "";
+    tiles.forEach(function(t){
+      var d = document.createElement("div");
+      d.className = "stat-tile";
+      d.innerHTML = '<div class="label">'+t.label+'</div><div class="value">'+t.value+'<span class="unit">'+t.unit+'</span></div><div class="foot">'+t.foot+'</div>';
+      grid.appendChild(d);
+    });
+  }
+
+  function cardHtml(c){
+    var brands = (c.brands||[]).map(function(b){ return "<span>"+b+"</span>"; }).join("");
+    var parent = c.parent ? '<div class="parent-tag">'+c.parent.name+'が '+c.parent.ratio+' 出資（'+c.parent.as_of+'現在）</div>' : "";
+    return '<div class="co-card">'+
+      '<div class="co-head"><div class="co-name">'+c.name+'</div><div class="co-code">'+c.code+'</div></div>'+
+      '<div class="co-note">'+c.note+'</div>'+
+      '<div class="co-brands">'+brands+'</div>'+
+      '<div class="fig">'+
+        '<span class="k">売上高</span><span class="v">'+fmtOku(c.sales)+'<small>億円</small></span>'+chgHtml(c.sales_g)+
+        '<span class="k">営業利益</span><span class="v">'+fmtOku(c.op)+'<small>億円</small></span>'+chgHtml(c.op_g)+
+      '</div>'+
+      parent+
+      '<div class="co-foot"><span>'+c.fy+'・連結</span>'+
+        '<span>'+(c.news ? '<a href="product_news.html">新製品情報 →</a>　' : '')+
+        '<a href="https://irbank.net/'+c.code+'/results" target="_blank" rel="noopener">業績推移 →</a></span></div>'+
+    '</div>';
+  }
+
+  function renderMap(){
+    var map = document.getElementById("map");
+    map.innerHTML = "";
+    state.data.categories.forEach(function(cat){
+      var list = state.data.companies.filter(function(c){ return c.category===cat.key; })
+        .sort(function(a,b){ return b.sales-a.sales; });
+      var block = document.createElement("div");
+      block.className = "cat-block";
+      block.style.setProperty("--c", cssVar(cat.color));
+      block.innerHTML = '<h3>'+cat.label+'<span class="n">'+list.length+'社</span></h3><div class="cards">'+list.map(cardHtml).join("")+'</div>';
+      map.appendChild(block);
+    });
+  }
+
+  function sortedRows(){
+    var k = state.sort;
+    return state.data.companies.slice().sort(function(a,b){ return b[k]-a[k]; });
+  }
+
+  function renderRanking(){
+    var rows = sortedRows();
+    var maxSales = Math.max.apply(null, rows.map(function(c){ return c.sales; }));
+    var body = document.getElementById("rank-body");
+    body.innerHTML = rows.map(function(c,i){
+      var cat = catOf(c.category);
+      return '<tr><td class="rank">'+(i+1)+'</td>'+
+        '<td class="l"><b>'+c.name+'</b></td>'+
+        '<td class="l"><span class="cat-dot" style="background:'+cssVar(cat.color)+'"></span>'+cat.label+'</td>'+
+        '<td class="l">'+c.fy+'</td>'+
+        '<td>'+c.sales.toLocaleString("ja-JP")+'<span class="bar" style="width:'+Math.round(c.sales/maxSales*60)+'px"></span></td>'+
+        '<td>'+chgHtml(c.sales_g)+'</td>'+
+        '<td>'+c.op.toLocaleString("ja-JP")+'</td>'+
+        '<td>'+chgHtml(c.op_g)+'</td>'+
+        '<td>'+(Math.round(c.margin*10)/10).toFixed(1)+'%</td></tr>';
+    }).join("");
+    Array.prototype.forEach.call(document.querySelectorAll("#sort-row .chip"), function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-sort")===state.sort ? "true" : "false");
+    });
+  }
+
+  function renderSources(){
+    var wrap = document.getElementById("sources");
+    wrap.innerHTML = state.data.meta.sources.map(function(s){
+      return '<div class="source-item"><span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+s.url+'" target="_blank" rel="noopener">出典を見る</a>'+(s.note ? "<br>"+s.note : "")+'</div>';
+    }).join("");
+  }
+
+  function download(){
+    if(typeof XLSX==="undefined"){ alert("ダウンロード機能の読み込みに失敗しました。"); return; }
+    var rows = sortedRows().map(function(c,i){
+      return { "順位":i+1, "会社名":c.name, "証券コード":c.code, "分野":catOf(c.category).label, "決算期":c.fy,
+        "売上高（億円）":c.sales, "前期売上高（億円）":c.sales_prev, "増収率（%）":Math.round(c.sales_g*10)/10,
+        "営業利益（億円）":c.op, "前期営業利益（億円）":c.op_prev, "営業増益率（%）":Math.round(c.op_g*10)/10,
+        "営業利益率（%）":Math.round(c.margin*10)/10 };
+    });
+    var ws = XLSX.utils.json_to_sheet(rows);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "食品業界マップ");
+    XLSX.writeFile(wb, "food_industry_map_"+state.data.meta.generated_at+".xlsx");
+  }
+
+  document.getElementById("sort-row").addEventListener("click", function(e){
+    var b = e.target.closest(".chip"); if(!b) return;
+    state.sort = b.getAttribute("data-sort");
+    renderRanking();
+  });
+  document.getElementById("dl-btn").addEventListener("click", download);
+
+  fetch("industry_map_data.json").then(function(r){ return r.json(); }).then(function(json){
+    json.companies.forEach(enrich);
+    state.data = json;
+    renderUpdated();
+    renderStats();
+    renderMap();
+    renderRanking();
+    renderSources();
+  }).catch(function(err){
+    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    console.error(err);
+  });
+})();
+</script>
+</body>
+</html>

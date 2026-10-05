@@ -1,6 +1,6 @@
 ---
 name: food-site-update
-description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品価格・野菜価格・輸入統計・新製品情報・市場規模・月次トピックス・お問い合わせの7ページ、GitHub Pagesで公開中）のデータ更新・公開手順。「更新して」「データを最新にして」「新製品を追加して」などの依頼、または月次更新チェック（毎月25日のルーティン）の結果を受けて実際に更新するときに使う。
+description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品価格・野菜価格・輸入統計・新製品情報・市場規模・業界マップ・月次トピックス・お問い合わせの8ページ＋英語版、GitHub Pagesで公開中）のデータ更新・公開手順。「更新して」「データを最新にして」「新製品を追加して」などの依頼、または月次更新チェック（毎月25日のルーティン）の結果を受けて実際に更新するときに使う。
 ---
 
 # 食品価格サイト 更新手順
@@ -16,7 +16,7 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
 - 各HTMLの先頭にある `<!doctype html>`・`<meta charset>`・`<meta name="viewport">`・`[hidden]{display:none!important}` はGitHub Pagesでの表示（特にスマホ）に必須なので消さない。新しいページを作るときも同じ4行を先頭に入れる。
 - 検索・SNS対策：各ページの `<title>`・`meta description`・`canonical`・OGP（`og:*`、`twitter:card`、共通画像 `ogp.png`）を維持する。ページを追加したら同じ一式を入れ、`sitemap.xml` にもURLを追加する。内容を更新したら `sitemap.xml` の該当ページの `lastmod` を更新日に書き換える。
 - アクセス解析：全ページの `<head>` 内にCloudflare Web Analyticsのコード（token `01b322e4ae7a468da9de43a282ff93f7`）が入っている。消さない。新しいページにも同じコードを入れる。閲覧数はCloudflareのダッシュボード（Analytics → Web 分析）で確認。Google Search Console（URLプレフィックス https://fireworksec1010-ux.github.io/ai-taste-labo/ 、所有権はトップページのmetaタグで確認済み。消さない）にsitemap.xmlを登録済み。
-- 全ページ共通：ライト配色固定、上部ナビ7タブ（食品価格／野菜価格／輸入統計／新製品情報／市場規模／月次トピックス／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
+- 全ページ共通：ライト配色固定、上部ナビ8タブ（食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／月次トピックス／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
 - 英語版（海外の食品マーケター・日本市場参入検討者向け）：`en/` 以下に置く。現在は `en/monthly_digest.html`・`en/market_size.html` の2ページ。データは日本語版と同じJSON（`../*.json`）を読み、項目名の末尾に `_en` が付いた英語フィールドを表示（無ければ日本語にフォールバック）。
   - **月次トピックス・市場規模を更新したら、追加・変更した項目の `_en` フィールドも必ず書く**（例：`label_en`・`detail_en`・`title_en`・`summary_en`・`trend_note_en`・`text_en`・`outlook_en` など）。英文は直訳ではなく海外読者向けに補足（FY＝4月〜3月、JPY、日本語固有の商品名は英訳＋原語）。
   - 日英ペアのページには `hreflang`（ja / en / x-default=日本語版）を入れる。英語版ナビで未翻訳のページは日本語版にリンクし「JA」マークを付ける。英語版ページを追加したら、日本語側のEnglishリンク先・英語版ナビ・`sitemap.xml` も更新する。
@@ -65,7 +65,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 - 調理食品・調味料・菓子：農水省「食品産業動態調査」年報Excel（生産指数シート、令和2年度=100）。清涼飲料：全国清涼飲料連合会「清涼飲料水統計」ダイジェストPDF（数量kl・金額百万円）。
 - 生産・出荷ベースであり、富士経済等の小売ベース市場調査とは算出方法が異なる旨のバナーを維持する。チャートの縦軸はズーム表示（0基準にしない）で、その注記も残す。
 
-### 6. お問い合わせ（contact.html）
+### 6. 業界マップ（industry_map.html / industry_map_data.json）
+- 主要食品メーカー20社の最新通期決算（連結の売上高・営業利益と前期値、億円未満切り捨て）を6分野で表示。**更新は年1回、6月ごろ**（3月期決算の有価証券報告書が出たあと。11月期・12月期の会社はその時点の最新期）。
+- 取得：`https://irbank.net/{証券コード}/results` をWebFetchで読むと直近期の売上高・営業利益が取れる（決算短信・EDINETの集計）。前期比が±15%を超える会社は、決算短信や報道で理由（買収など）を確認し、必要なら `growth_note` に書く。
+- 資本関係（`parent`・`relations`）は、子会社側の「株式情報（大株主の状況）」や有価証券報告書で確認できたものだけ。
+- 分野分け・紹介文（`note`）・ブランドは当サイト独自。市販の業界地図の文言・配置は真似しない（著作権配慮）。
+- 会社を追加するときも同じ項目で `companies` に追記する。
+
+### 7. お問い合わせ（contact.html）
 - 宛先はmailtoのみ（fireworks.fd.2020@gmail.com）。変更依頼があるときだけ編集。
 
 ## JSON編集の注意（Windows / PowerShell）
