@@ -111,6 +111,7 @@ if($DryRun){ Write-Host ""; Write-Host "DryRun のためファイルは書き換
 
 $smPath = Join-Path $repo 'sitemap.xml'
 $sm = [IO.File]::ReadAllText($smPath, $utf8)
+$sm = $sm -replace '(food_prices\.html</loc><lastmod>)[0-9-]+', ('${1}' + $today)
 $sm = $sm -replace '(ai-taste-labo/</loc><lastmod>)[0-9-]+', ('${1}' + $today)
 $sm = $sm -replace '(vegetables\.html</loc><lastmod>)[0-9-]+', ('${1}' + $today)
 [IO.File]::WriteAllText($smPath, $sm, (New-Object System.Text.UTF8Encoding($false)))

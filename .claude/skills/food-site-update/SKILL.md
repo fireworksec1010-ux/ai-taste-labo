@@ -16,7 +16,7 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
 - 各HTMLの先頭にある `<!doctype html>`・`<meta charset>`・`<meta name="viewport">`・`[hidden]{display:none!important}` はGitHub Pagesでの表示（特にスマホ）に必須なので消さない。新しいページを作るときも同じ4行を先頭に入れる。
 - 検索・SNS対策：各ページの `<title>`・`meta description`・`canonical`・OGP（`og:*`、`twitter:card`、共通画像 `ogp.png`）を維持する。ページを追加したら同じ一式を入れ、`sitemap.xml` にもURLを追加する。内容を更新したら `sitemap.xml` の該当ページの `lastmod` を更新日に書き換える。
 - アクセス解析：全ページの `<head>` 内にCloudflare Web Analyticsのコード（token `01b322e4ae7a468da9de43a282ff93f7`）が入っている。消さない。新しいページにも同じコードを入れる。閲覧数はCloudflareのダッシュボード（Analytics → Web 分析）で確認。Google Search Console（URLプレフィックス https://fireworksec1010-ux.github.io/ai-taste-labo/ 、所有権はトップページのmetaタグで確認済み。消さない）にsitemap.xmlを登録済み。
-- 全ページ共通：ライト配色固定、上部ナビ8タブ（食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／月次トピックス／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
+- 全ページ共通：ライト配色固定、上部ナビ9タブ（ホーム／食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／月次トピックス／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
 - 英語版（海外の食品マーケター・日本市場参入検討者向け）：`en/` 以下に置く。現在は `en/monthly_digest.html`・`en/market_size.html` の2ページ。データは日本語版と同じJSON（`../*.json`）を読み、項目名の末尾に `_en` が付いた英語フィールドを表示（無ければ日本語にフォールバック）。
   - **月次トピックス・市場規模を更新したら、追加・変更した項目の `_en` フィールドも必ず書く**（例：`label_en`・`detail_en`・`title_en`・`summary_en`・`trend_note_en`・`text_en`・`outlook_en` など）。英文は直訳ではなく海外読者向けに補足（FY＝4月〜3月、JPY、日本語固有の商品名は英訳＋原語）。
   - 日英ペアのページには `hreflang`（ja / en / x-default=日本語版）を入れる。英語版ナビで未翻訳のページは日本語版にリンクし「JA」マークを付ける。英語版ページを追加したら、日本語側のEnglishリンク先・英語版ナビ・`sitemap.xml` も更新する。
@@ -29,7 +29,13 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
 
 ## 各ページの更新
 
-### 1. 食品価格（index.html / data.json）・2. 野菜価格（vegetables.html / vegetables_data.json）
+### 0. TOPページ（index.html）
+- 2026-10-07 開設。サイト紹介（AI Taste Labo について・名前の由来・方針）、サイトメニュー、更新スケジュール、これまでの歩みを掲載。食品価格ページは `food_prices.html` に移動済み（旧 index.html）。
+- サイトメニューの「最新データ」は各JSONから自動表示されるので、月次更新では編集不要。
+- ページ追加・言語追加・大きな出来事があったら「これまでの歩み」とサイトメニューのカード、上部の数字（データページ数・対応言語数）を更新する。更新日（毎月25日ごろ）を変えるときはTOPの「更新」表示と更新スケジュールも直す。
+- Search Consoleの所有権確認metaタグはこの index.html にある。消さない。
+
+### 1. 食品価格（food_prices.html / data.json）・2. 野菜価格（vegetables.html / vegetables_data.json）
 **月次の数値更新はスクリプトで行う**（手作業でCSVを解析しない）：
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1 -DryRun   # まず確認
@@ -84,7 +90,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 
 ## 公開・保存の手順
 1. **編集はリポジトリ（`C:\Users\firef\claude.foodinfomation.test2`）のファイルだけを直接行う**。スクラッチパッド等に作業コピーを作ってからコピーし直す運用はしない（食い違いの原因になるため。2026-09に一本化）。ダウンロードした生データなど一時ファイルだけはスクラッチパッドに置いてよい。
-2. （大きな変更のとき）Artifactでプレビュー：`Artifact`ツールで `file_path` にリポジトリの `index.html`、`url=https://claude.ai/artifact/SoNaobKEA1qt98Ej1aPu3w`、`files` に他のHTML・JSONをリポジトリのパスで指定して公開。以前の版と違うと判定されたら `overwrite_unread` に列挙。Artifactは非公開の確認用で、一般公開はGitHub Pages。
+2. （大きな変更のとき）Artifactでプレビュー：`Artifact`ツールで `file_path` にリポジトリの `index.html`（TOP）、`url=https://claude.ai/artifact/SoNaobKEA1qt98Ej1aPu3w`、`files` に他のHTML・JSONをリポジトリのパスで指定して公開。以前の版と違うと判定されたら `overwrite_unread` に列挙。Artifactは非公開の確認用で、一般公開はGitHub Pages。
 3. Git（`%ProgramFiles%\Git\bin\git.exe`、認証済み）：`git status` → `git add` → commit → push。pushすると数分でGitHub Pages（公開サイト）に反映される。コミットメッセージは日本語で要点を書き、末尾にその時点のClaude Code既定のCo-Authored-By行を付ける。
 4. 完了報告は「何を更新したか・データ取得日・公開URL」を簡潔に。
 

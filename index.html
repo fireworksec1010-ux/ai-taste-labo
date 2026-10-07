@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>食卓の物価｜食品価格の推移と値上げランキング｜AI Taste Labo</title>
-<meta name="description" content="米・鶏卵・食パン・牛乳・食用油など生活必需品8品目の価格推移を、総務省統計局の消費者物価指数（1970年〜）でグラフ化。値上げランキングやエンゲル係数から家計への影響も分かります。">
+<title>AI Taste Labo｜食品マーケターのための公的データまとめ「食卓の物価」</title>
+<meta name="description" content="マーケターが、食品価格・野菜価格・輸入統計・新製品・市場規模・業界マップを、総務省・農林水産省などの公的統計と各社の公表資料からまとめたサイトです。毎月25日ごろ更新。">
 <link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/">
 <meta name="google-site-verification" content="fs4pzqn-PEB5CU2Tk-8sGQ1IGu6DF8ow7R-UFAU2M9Y">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="食卓の物価｜食品価格の推移と値上げランキング">
-<meta property="og:description" content="米・鶏卵・食パン・牛乳・食用油など生活必需品8品目の価格推移を、公的統計でグラフ化。値上げランキングやエンゲル係数から家計への影響も分かります。">
+<meta property="og:title" content="AI Taste Labo｜食品マーケターのための公的データまとめ">
+<meta property="og:description" content="食品価格・野菜価格・輸入統計・新製品・市場規模・業界マップを公的統計からまとめて、毎月更新しています。">
 <meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/">
 <meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,28 +28,21 @@
     --text-primary:   #0b0b0b;
     --text-secondary: #52514e;
     --text-muted:     #898781;
-    --gridline:       #e1e0d9;
-    --baseline:       #c3c2b7;
     --border:         rgba(11,11,11,0.10);
     --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
 
-    --series-1: #2a78d6; /* 米 */
-    --series-2: #eb6834; /* 食パン */
-    --series-3: #1baf7a; /* 鶏卵 */
-    --series-4: #eda100; /* 牛乳 */
-    --series-5: #e87ba4; /* 食用油 */
-    --series-6: #008300; /* 即席めん */
-    --series-7: #4a3aa7; /* 豚肉 */
-    --series-8: #e34948; /* しょうゆ */
-
-    --status-good:     #0ca30c;
-    --status-warning:  #fab219;
-    --status-serious:  #ec835a;
-    --status-critical: #d03b3b;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --series-5: #d03b3b;
+    --series-6: #8a5cd1;
+    --series-7: #13a3b8;
+    --series-8: #6b6a64;
 
     --accent: var(--series-1);
   }
-  /* このページは常にライト配色に固定しています（ダーク配色は意図的に無効化） */
+  /* このページは常にライト配色に固定しています */
 
   *{box-sizing:border-box;}
   body{
@@ -59,160 +52,104 @@
     font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{ max-width:920px; margin:0 auto; padding:0 20px; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
-
-  /* ---------- hero ---------- */
-  .hero{ padding:48px 0 28px; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:12px; font-weight:700; letter-spacing:.08em;
-    color:var(--text-secondary); text-transform:uppercase;
-    margin-bottom:14px;
-  }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
-  .hero h1{ font-size:clamp(30px,5.2vw,44px); line-height:1.2; }
-  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:62ch; margin:16px 0 0; }
-  .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
-  .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
-
-  /* ---------- section shell ---------- */
-  section{ padding:34px 0; border-top:1px solid var(--border); }
-  .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px;}
-  .section-head h2{ font-size:22px; }
-  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:4px; max-width:60ch; line-height:1.7;}
-
-  /* ---------- stat tiles ---------- */
-  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
-  .stat-tile{
-    background:var(--surface-1); border:1px solid var(--border); border-radius:10px;
-    padding:16px 16px 14px; box-shadow:var(--card-shadow);
-  }
-  .stat-tile .label{ font-size:12px; color:var(--text-secondary); margin-bottom:8px; }
-  .stat-tile .value{ font-size:28px; font-weight:900; line-height:1.1; }
-  .stat-tile .value .unit{ font-size:13px; font-weight:500; color:var(--text-secondary); margin-left:2px;}
-  .badge{
-    display:inline-flex; align-items:center; gap:5px; margin-top:9px;
-    font-size:11.5px; font-weight:700; padding:3px 8px; border-radius:99px;
-  }
-  .badge.critical{ color:#fff; background:var(--status-critical); }
-  .badge.serious{ color:#fff; background:var(--status-serious); }
-  .badge.warning{ color:#3a2a00; background:var(--status-warning); }
-  .badge.good{ color:#fff; background:var(--status-good); }
-  .stat-tile .foot{ font-size:11.5px; color:var(--text-muted); margin-top:8px; line-height:1.5;}
-
-  /* ---------- chips ---------- */
-  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
-  .chip{
-    display:inline-flex; align-items:center; gap:7px;
-    padding:8px 13px; border-radius:99px; border:1px solid var(--border);
-    background:var(--surface-1); color:var(--text-primary);
-    font-size:13px; font-weight:500; cursor:pointer; font-family:inherit;
-  }
-  .chip .sw{ width:9px; height:9px; border-radius:50%; flex:none; }
-  .chip[aria-pressed="true"]{ border-color:currentColor; font-weight:700; box-shadow:0 0 0 1px currentColor inset; }
-  .chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
-
-  /* ---------- ranking list ---------- */
-  .rank-row{
-    display:grid; grid-template-columns:28px 15px 1fr 78px 92px; align-items:center; gap:10px;
-    padding:9px 10px; border-radius:8px; border:none; background:none; width:100%;
-    font-family:inherit; text-align:left; cursor:pointer; color:var(--text-primary);
-  }
-  .rank-row:hover{ background:var(--page-plane); }
-  .rank-row[aria-pressed="true"]{ background:var(--page-plane); box-shadow:0 0 0 1px var(--border) inset; }
-  .rank-row + .rank-row{ border-top:1px solid var(--gridline); }
-  .rank-num{ font-size:12px; font-weight:900; color:var(--text-muted); font-variant-numeric:tabular-nums; }
-  .rank-sw{ width:10px; height:10px; border-radius:50%; flex:none; }
-  .rank-label{ font-size:13.5px; font-weight:700; }
-  .rank-spark{ width:78px; height:26px; display:block; }
-  .rank-val{ text-align:right; font-size:12.5px; }
-  .rank-val .idx{ font-variant-numeric:tabular-nums; color:var(--text-secondary); display:block; }
-  .rank-val .pct{ font-weight:900; font-variant-numeric:tabular-nums; }
-  @media (max-width:560px){
-    .rank-row{ grid-template-columns:22px 12px 1fr 60px; }
-    .rank-val{ display:none; }
-  }
-
-  /* ---------- chart card ---------- */
-  .chart-card{
-    background:var(--surface-1); border:1px solid var(--border); border-radius:12px;
-    padding:18px 18px 8px; box-shadow:var(--card-shadow); position:relative;
-  }
-  .chart-card + .chart-card{ margin-top:14px; }
-  .chart-card h3{ font-size:15px; font-weight:700; font-family:"Zen Kaku Gothic New",sans-serif; }
-  .chart-card .chart-note{ font-size:12px; color:var(--text-secondary); margin-top:2px; line-height:1.6;}
-  .chart-svg-wrap{ position:relative; margin-top:10px; }
-  svg.chart{ width:100%; height:auto; display:block; overflow:visible; }
-  .axis-label{ fill:var(--text-muted); font-size:10.5px; font-family:"Zen Kaku Gothic New",sans-serif; }
-  .gridline{ stroke:var(--gridline); stroke-width:1; }
-  .baseline{ stroke:var(--baseline); stroke-width:1; stroke-dasharray:3 3; }
-  .line-path{ fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-  .line-path.dashed{ stroke-dasharray:5 4; }
-  .hover-dot{ fill:var(--surface-1); stroke-width:2; r:4.5; display:none; }
-  .hover-line{ stroke:var(--text-muted); stroke-width:1; stroke-dasharray:2 3; display:none; }
-  .chart-hit{ fill:transparent; cursor:crosshair; }
-
-  .tooltip{
-    position:absolute; pointer-events:none; z-index:5;
-    background:var(--text-primary); color:var(--page-plane);
-    font-size:12px; line-height:1.5; padding:6px 9px; border-radius:6px;
-    transform:translate(-50%,-115%); white-space:nowrap; opacity:0; transition:opacity .08s;
-    font-family:"Zen Kaku Gothic New",sans-serif; font-variant-numeric:tabular-nums;
-  }
-  .tooltip b{ font-weight:900; }
-
-  .note-box{
-    margin-top:14px; padding:12px 14px; border-radius:10px;
-    background:var(--page-plane); border:1px solid var(--border);
-    font-size:12.5px; color:var(--text-secondary); line-height:1.7;
-  }
-  .note-box b{ color:var(--text-primary); }
-
-  details.table-toggle{ margin-top:10px; }
-  details.table-toggle summary{
-    cursor:pointer; font-size:12.5px; color:var(--text-secondary); font-weight:700;
-    padding:6px 0;
-  }
-  .data-table-scroll{ overflow-x:auto; margin-top:6px; }
-  table.data-table{ border-collapse:collapse; width:100%; font-size:12px; font-variant-numeric:tabular-nums; }
-  table.data-table th, table.data-table td{ padding:5px 9px; text-align:right; border-bottom:1px solid var(--gridline); white-space:nowrap; }
-  table.data-table th:first-child, table.data-table td:first-child{ text-align:left; }
-
-  #egg-panel[hidden]{ display:none; }
-
-  .legend-tier{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; font-size:11.5px; color:var(--text-secondary); }
-  .legend-tier span{ display:inline-flex; align-items:center; gap:6px; }
-  .legend-tier i{ width:16px; height:0; border-top:2px solid var(--text-muted); display:inline-block; }
-  .legend-tier i.dashed{ border-top-style:dashed; }
-
-  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
-  .sources{ display:grid; gap:10px; margin-top:14px; }
-  .source-item{ font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
-  .source-item .org{ font-weight:700; color:var(--text-primary); }
-  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:70ch; }
-
-  @media (max-width:520px){
-    .hero{ padding:36px 0 22px; }
-    .stat-tile .value{ font-size:24px; }
-  }
 
   .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
 
-  .hero-stat{
-    display:inline-flex; align-items:baseline; gap:10px; flex-wrap:wrap;
-    margin-top:22px; padding:14px 18px; border-radius:12px;
-    background:linear-gradient(135deg, rgba(208,59,59,0.08), rgba(208,59,59,0.02));
-    border:1px solid rgba(208,59,59,0.18);
+  /* ---- hero ---- */
+  .hero{ padding:44px 0 34px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--text-secondary); margin-bottom:14px; }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{ font-size:clamp(36px,7vw,58px); line-height:1.1; letter-spacing:.01em; }
+  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(16px,2.6vw,20px); color:var(--text-secondary); margin-top:10px; }
+  .hero p{ font-size:15px; line-height:1.9; color:var(--text-secondary); max-width:62ch; margin:18px 0 0; }
+  .facts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:26px; max-width:760px; }
+  .fact{ background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:13px 14px; box-shadow:var(--card-shadow); }
+  .fact .k{ font-size:11px; font-weight:700; color:var(--text-muted); letter-spacing:.04em; }
+  .fact .v{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:21px; margin-top:4px; line-height:1.2; }
+  .fact .v small{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:12px; font-weight:700; color:var(--text-secondary); margin-left:2px; }
+
+  section{ padding:34px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:18px; }
+  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; }
+  .section-head h2{ font-size:24px; margin-top:4px; }
+  .section-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:6px; line-height:1.75; max-width:64ch; }
+
+  /* ---- site menu ---- */
+  .menu{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+  .menu-card{
+    position:relative; display:flex; flex-direction:column; gap:8px;
+    background:var(--surface-1); border:1px solid var(--border); border-radius:14px;
+    padding:18px 18px 16px; box-shadow:var(--card-shadow);
+    text-decoration:none; color:inherit; transition:transform .12s, box-shadow .12s, border-color .12s;
   }
-  .hero-stat .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:clamp(30px,6vw,42px); color:var(--status-critical); line-height:1; }
-  .hero-stat .num .unit{ font-size:14px; font-weight:700; color:var(--text-secondary); margin-left:3px; }
-  .hero-stat .meta{ display:flex; flex-direction:column; gap:2px; }
-  .hero-stat .meta .desc{ font-size:12.5px; font-weight:700; color:var(--text-primary); }
-  .hero-stat .meta .delta{ font-size:11.5px; color:var(--status-critical); font-weight:700; }
+  .menu-card:hover{ transform:translateY(-2px); border-color:color-mix(in srgb, var(--c) 45%, transparent); box-shadow:0 2px 4px rgba(11,11,11,0.06), 0 14px 30px rgba(11,11,11,0.08); }
+  .menu-card:focus-within{ outline:2px solid var(--c); outline-offset:2px; }
+  .menu-card h3 a.stretch{ color:inherit; text-decoration:none; }
+  .menu-card h3 a.stretch:after{ content:""; position:absolute; inset:0; border-radius:14px; z-index:1; }
+  .menu-card h3 a.stretch:focus-visible{ outline:none; }
+  .menu-card:before{ content:""; position:absolute; left:18px; right:18px; top:0; height:3px; border-radius:0 0 3px 3px; background:var(--c); }
+  .mc-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .mc-no{ font-size:11px; font-weight:900; color:var(--c); letter-spacing:.08em; }
+  .mc-freq{ font-size:10.5px; font-weight:700; color:var(--text-secondary); background:var(--page-plane); border:1px solid var(--border); border-radius:99px; padding:2px 8px; white-space:nowrap; }
+  .menu-card h3{ font-size:19px; line-height:1.35; }
+  .menu-card h3 .arrow{ color:var(--c); font-family:"Zen Kaku Gothic New",sans-serif; font-size:15px; margin-left:4px; }
+  .mc-desc{ font-size:12.5px; line-height:1.75; color:var(--text-secondary); }
+  .mc-src{ font-size:11px; color:var(--text-muted); line-height:1.6; }
+  .mc-latest{ margin-top:auto; padding-top:9px; border-top:1px dashed var(--border); font-size:11.5px; font-weight:700; color:var(--text-primary); min-height:1.6em; }
+  .mc-latest .lbl{ color:var(--text-muted); font-weight:500; margin-right:4px; }
+  .mc-langs{ display:flex; gap:6px; flex-wrap:wrap; }
+  .mc-langs a{ font-size:10.5px; font-weight:700; text-decoration:none; color:var(--c); border:1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius:4px; padding:1px 6px; position:relative; z-index:2; }
+
+  .menu-card.feature{ grid-column:1 / -1; background:linear-gradient(135deg, color-mix(in srgb, var(--c) 9%, var(--surface-1)), var(--surface-1) 70%); }
+  .menu-card.feature h3{ font-size:23px; }
+  .menu-card.feature .mc-desc{ font-size:13.5px; max-width:70ch; }
+
+  /* ---- about ---- */
+  .about-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:18px; align-items:start; }
+  .about-text p{ font-size:14px; line-height:1.95; color:var(--text-secondary); margin:0 0 14px; }
+  .about-text p b{ color:var(--text-primary); }
+  .name-box{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px 18px; box-shadow:var(--card-shadow); }
+  .name-box h3{ font-size:15px; margin-bottom:10px; }
+  .name-row{ display:grid; grid-template-columns:62px 1fr; gap:10px; padding:9px 0; border-top:1px solid var(--border); font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
+  .name-row:first-of-type{ border-top:none; }
+  .name-row b{ font-family:"Zen Old Mincho",serif; font-size:16px; color:var(--accent); }
+  .policy{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:18px; }
+  .policy div{ background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:12px 14px; font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
+  .policy div b{ display:block; color:var(--text-primary); font-size:13px; margin-bottom:3px; }
+
+  /* ---- schedule & history ---- */
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+  .sched{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; box-shadow:var(--card-shadow); overflow:hidden; }
+  .sched-row{ display:grid; grid-template-columns:118px 1fr; gap:12px; padding:13px 16px; border-top:1px solid var(--border); }
+  .sched-row:first-child{ border-top:none; }
+  .sched-row .when{ font-weight:900; font-size:13px; color:var(--accent); }
+  .sched-row .what{ font-size:12.5px; line-height:1.75; color:var(--text-secondary); }
+  .sched-row .what b{ color:var(--text-primary); }
+  .timeline{ list-style:none; margin:0; padding:0 0 0 4px; }
+  .timeline li{ position:relative; padding:0 0 14px 22px; border-left:2px solid rgba(42,120,214,0.25); font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
+  .timeline li:last-child{ border-left-color:transparent; padding-bottom:0; }
+  .timeline li:before{ content:""; position:absolute; left:-6px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--surface-1); border:2px solid var(--accent); }
+  .timeline .d{ display:block; font-weight:900; color:var(--text-primary); font-size:12px; }
+
+  .lang-band{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; padding:16px 18px; border-radius:14px; background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--card-shadow); font-size:13px; color:var(--text-secondary); }
+  .lang-band b{ color:var(--text-primary); }
+  .lang-band a{ font-weight:700; text-decoration:none; padding:5px 12px; border-radius:99px; border:1px solid rgba(42,120,214,0.35); }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.85; max-width:76ch; }
+
+  @media (max-width:720px){
+    .about-grid, .two-col{ grid-template-columns:1fr; }
+  }
+  @media (max-width:520px){
+    .hero{ padding:32px 0 26px; }
+    .sched-row{ grid-template-columns:1fr; gap:2px; }
+  }
 </style>
 </head>
 <body>
@@ -220,7 +157,8 @@
 <div class="wrap">
 
   <nav class="top-nav">
-    <a href="index.html" class="active">食品価格</a>
+    <a href="index.html" class="active">ホーム</a>
+    <a href="food_prices.html">食品価格</a>
     <a href="vegetables.html">野菜価格</a>
     <a href="trade.html">輸入統計</a>
     <a href="product_news.html">新製品情報</a>
@@ -232,666 +170,211 @@
     <a href="zh/monthly_digest.html" lang="zh-Hant" style="color:#2a78d6;font-weight:700;">中文</a>
   </nav>
 
-  <div class="hero">
-    <div class="eyebrow"><span class="dot"></span>公的統計で見る食品価格</div>
-    <h1>食卓の物価</h1>
-    <p>総務省統計局「消費者物価指数」「小売物価統計調査」「家計調査」、農林水産省「食品価格動向調査」など公的統計をもとに、生活必需品の価格推移と家計への影響をまとめました。営業・商品提案の説明資料としてご利用いただけます。</p>
-    <div class="hero-stat" id="hero-stat" hidden>
-      <div class="num" id="hero-stat-num"></div>
-      <div class="meta">
-        <div class="desc" id="hero-stat-desc"></div>
-        <div class="delta" id="hero-stat-delta"></div>
-      </div>
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>食品マーケターのための公的データまとめ</div>
+    <h1>AI Taste Labo</h1>
+    <div class="sub">食卓の物価 ― 食品の「いま」を、公的データで。</div>
+    <p>マーケターが、企画書や営業資料づくりで毎回探していた公的な数字を、1か所にまとめたサイトです。総務省・農林水産省などの統計や各社の公表資料をもとに、食品の価格、原材料の輸入、市場規模、新製品、業界の顔ぶれをグラフと一覧で確認できます。</p>
+    <div class="facts">
+      <div class="fact"><div class="k">スタート</div><div class="v">2026年9月</div></div>
+      <div class="fact"><div class="k">更新</div><div class="v">毎月25日<small>ごろ</small></div></div>
+      <div class="fact"><div class="k">データページ</div><div class="v">7<small>ページ</small></div></div>
+      <div class="fact"><div class="k">対応言語</div><div class="v">3<small>言語</small></div></div>
     </div>
-    <div class="meta-row">
-      <span id="updated-at">データ取得日を読み込み中…</span>
-      <span>出典：総務省統計局／農林水産省（詳細は末尾）</span>
-    </div>
-  </div>
+  </header>
 
-  <section id="stats">
+  <section id="menu">
     <div class="section-head">
-      <div>
-        <h2>値上げの実感を数字で</h2>
-        <div class="section-sub">直近で特に変化が大きい指標のハイライトです。指数は2025年を100とした消費者物価指数（CPI、2024年以前は統計局の接続指数）。</div>
-      </div>
+      <div class="en">Site Menu</div>
+      <h2>サイトメニュー</h2>
+      <div class="section-sub">知りたいテーマから選んでください。各ページに出典・データ取得日を明記しています。</div>
     </div>
-    <div class="stat-grid" id="stat-grid"></div>
+    <div class="menu" id="menu-grid">
+
+      <div class="menu-card feature" style="--c:var(--series-5)">
+        <div class="mc-top"><span class="mc-no">まずはここから ｜ 月次トピックス</span><span class="mc-freq">毎月更新</span></div>
+        <h3><a class="stretch" href="monthly_digest.html">今月の食品市場を3分でつかむ<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">価格・輸入・新製品の今月の動きをまとめ、「生活者ニーズの変化 → 市場の動き → 各社の新製品」のつながりをテーマ別に解説。国内の業界ニュースと来月の注目ポイントも。</div>
+        <div class="mc-langs"><a href="en/monthly_digest.html" lang="en">English</a><a href="zh/monthly_digest.html" lang="zh-Hant">中文</a></div>
+        <div class="mc-latest" data-latest="digest"><span class="lbl">最新号</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-1)">
+        <div class="mc-top"><span class="mc-no">01 ｜ 食品価格</span><span class="mc-freq">毎月更新</span></div>
+        <h3><a class="stretch" href="food_prices.html">米・卵・パンの値上がりを長期で見る<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">米・食パン・鶏卵・牛乳・食用油など8品目の価格推移（1970年〜）、値上げランキング、エンゲル係数。</div>
+        <div class="mc-src">出典：総務省統計局 消費者物価指数</div>
+        <div class="mc-latest" data-latest="food"><span class="lbl">最新データ</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-3)">
+        <div class="mc-top"><span class="mc-no">02 ｜ 野菜価格</span><span class="mc-freq">毎月更新</span></div>
+        <h3><a class="stretch" href="vegetables.html">野菜の高騰・値下がりをチェック<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">キャベツ・トマト・じゃがいもなど主要8品目の月次価格推移と、上がった・下がった野菜のランキング。</div>
+        <div class="mc-src">出典：総務省統計局 消費者物価指数</div>
+        <div class="mc-latest" data-latest="veg"><span class="lbl">最新データ</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-4)">
+        <div class="mc-top"><span class="mc-no">03 ｜ 輸入統計</span><span class="mc-freq">年1回更新</span></div>
+        <h3><a class="stretch" href="trade.html">原材料コストの上流を追う<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">小麦・大豆・とうもろこし・輸入牛肉・コーヒー生豆の輸入量・金額・単価の推移。</div>
+        <div class="mc-src">出典：農林水産省 品目別貿易実績</div>
+        <div class="mc-latest" data-latest="trade"><span class="lbl">最新データ</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-7)">
+        <div class="mc-top"><span class="mc-no">04 ｜ 新製品情報</span><span class="mc-freq">毎月更新</span></div>
+        <h3><a class="stretch" href="product_news.html">大手食品メーカーの新商品を一覧で<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">売上上位の食品メーカーの新製品発表を、会社別に絞り込んで確認できます。</div>
+        <div class="mc-src">出典：各社のプレスリリース（PR TIMES）</div>
+        <div class="mc-latest" data-latest="news"><span class="lbl">掲載</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-2)">
+        <div class="mc-top"><span class="mc-no">05 ｜ 市場規模</span><span class="mc-freq">年1回更新</span></div>
+        <h3><a class="stretch" href="market_size.html">伸びている食品カテゴリーは？<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">調理食品（冷凍食品等）・調味料・菓子・清涼飲料の生産推移と、拡大・縮小の要因。</div>
+        <div class="mc-src">出典：農林水産省 食品産業動態調査、全国清涼飲料連合会</div>
+        <div class="mc-langs"><a href="en/market_size.html" lang="en">English</a></div>
+        <div class="mc-latest" data-latest="market"><span class="lbl">最新データ</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-6)">
+        <div class="mc-top"><span class="mc-no">06 ｜ 業界マップ</span><span class="mc-freq">年1回更新</span></div>
+        <h3><a class="stretch" href="industry_map.html">主要食品メーカー20社の規模と勢い<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">調味料・冷凍食品・即席麺・菓子・乳業・製パンの6分野で、売上高・営業利益・前期比をマップとランキングで。</div>
+        <div class="mc-src">出典：各社の決算短信・有価証券報告書</div>
+        <div class="mc-langs"><a href="zh/industry_map.html" lang="zh-Hant">中文</a></div>
+        <div class="mc-latest" data-latest="industry"><span class="lbl">掲載</span>…</div>
+      </div>
+
+      <div class="menu-card" style="--c:var(--series-8)">
+        <div class="mc-top"><span class="mc-no">07 ｜ お問い合わせ</span></div>
+        <h3><a class="stretch" href="contact.html">ご意見・掲載データのご要望<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">「この品目も見たい」「数字が違うのでは」などのご意見はこちらから。</div>
+      </div>
+
+    </div>
   </section>
 
-  <section id="ranking">
+  <section id="about">
     <div class="section-head">
+      <div class="en">About</div>
+      <h2>AI Taste Labo について</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>AI Taste Labo は、<b>マーケターが運営</b>している、食品市場の公的データまとめサイトです。</p>
+        <p>「米はコロナ前から何％上がった？」「冷凍食品の市場は伸びている？」「あの会社の売上は？」――企画や商談のたびに、統計サイトや決算資料を一つずつ探していた経験から、<b>マーケターが本当に使う数字</b>を集め、グラフと一覧で見られるようにしました。</p>
+        <p>データの収集・整理・グラフ化には<b>AI（Claude）を活用</b>しています。そのぶん、数値は推測で埋めず、すべてのページに<b>出典とデータ取得日を明記</b>しています。</p>
+      </div>
+      <div class="name-box">
+        <h3>名前の由来</h3>
+        <div class="name-row"><b>AI</b><span>データの収集・整理にAIを活用していること。</span></div>
+        <div class="name-row"><b>Taste</b><span>食と味。食卓や売り場の「いま」を扱うこと。</span></div>
+        <div class="name-row"><b>Labo</b><span>研究所のように、数字から食品市場を読み解く場所でありたいという思い。</span></div>
+      </div>
+    </div>
+    <div class="policy">
+      <div><b>公的情報だけを使う</b>官公庁の統計、業界団体の統計、各社の公表資料など、誰でも確認できる情報に限っています。</div>
+      <div><b>出典と取得日を明記</b>すべての数値に出典を付け、元の資料をたどれるようにしています。</div>
+      <div><b>数字を推測で埋めない</b>取得できない年・品目は空欄のままにし、注記しています。</div>
+      <div><b>事実と解釈を分ける</b>月次トピックスでは、統計・報道の事実と当サイトの見立てを分けて書いています。</div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="two-col">
       <div>
-        <h2>月次価格ランキング</h2>
-        <div class="section-sub" id="ranking-sub">品目をコロナ禍前（2019年平均）比の上昇率が高い順に並べています。行をクリックすると下のグラフが切り替わります。</div>
+        <div class="section-head">
+          <div class="en">Update</div>
+          <h2>更新スケジュール</h2>
+          <div class="section-sub">元データの公表時期に合わせて更新しています。</div>
+        </div>
+        <div class="sched">
+          <div class="sched-row"><div class="when">毎月25日ごろ</div><div class="what"><b>食品価格・野菜価格</b>（消費者物価指数は毎月20日前後に公表）、<b>新製品情報</b>、<b>月次トピックス</b></div></div>
+          <div class="sched-row"><div class="when">年1回（6月ごろ）</div><div class="what"><b>業界マップ</b>（3月決算企業の有価証券報告書の公表後）</div></div>
+          <div class="sched-row"><div class="when">年1回</div><div class="what"><b>輸入統計</b>・<b>市場規模</b>（農林水産省・業界団体の年報の公表後）</div></div>
+        </div>
       </div>
-    </div>
-
-    <div class="chart-card" style="padding:6px 6px 6px;">
-      <div id="ranking-list"></div>
-    </div>
-
-    <div class="chart-card">
-      <div class="section-head" style="margin-bottom:6px;">
-        <h3 id="monthly-title">月次推移</h3>
-        <button type="button" class="chip" id="btn-export-xlsx" style="cursor:pointer;">Excelでダウンロード</button>
-      </div>
-      <div class="chart-note" id="monthly-note"></div>
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-monthly" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-monthly"></div>
+      <div>
+        <div class="section-head">
+          <div class="en">History</div>
+          <h2>これまでの歩み</h2>
+          <div class="section-sub">2026年9月に食品価格ページからスタートしました。</div>
+        </div>
+        <ul class="timeline">
+          <li><span class="d">2026年9月17日</span>食品価格・野菜価格ページを作成</li>
+          <li><span class="d">2026年9月18〜23日</span>輸入統計・新製品情報・市場規模・月次トピックスを追加</li>
+          <li><span class="d">2026年9月27日</span>サイトを一般公開</li>
+          <li><span class="d">2026年9月28日</span>英語版（月次トピックス・市場規模）を公開</li>
+          <li><span class="d">2026年10月5日</span>業界マップと中国語版（繁体字）を公開</li>
+          <li><span class="d">2026年10月7日</span>トップページを開設</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="trend">
-    <div class="section-head">
-      <div>
-        <h2>品目別・価格指数の推移</h2>
-        <div class="section-sub">品目を選ぶと、下のグラフが切り替わります。指数は総務省統計局「消費者物価指数」品目別価格指数（2025年＝100、全国・年平均）。</div>
-      </div>
+  <section id="langs">
+    <div class="lang-band">
+      <b>For international readers / 國際讀者</b>
+      <span>海外の食品企業・日本市場への参入を検討している方向けに、一部ページを英語・中国語（繁体字）で公開しています。</span>
+      <a href="en/monthly_digest.html" lang="en">English</a>
+      <a href="zh/monthly_digest.html" lang="zh-Hant">中文（繁體）</a>
     </div>
-
-    <div class="chip-row" id="chip-row" role="group" aria-label="品目を選択"></div>
-
-    <div class="chart-card">
-      <h3 id="long-title">長期推移（1970年〜2025年）</h3>
-      <div class="chart-note" id="long-note"></div>
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-long" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-long"></div>
-      </div>
-      <details class="table-toggle"><summary>年ごとの数値を表で見る</summary>
-        <div class="data-table-scroll"><table class="data-table" id="table-long"></table></div>
-      </details>
-    </div>
-
-    <div class="chart-card">
-      <h3 id="recent-title">直近10年のズーム（2015年〜2025年）</h3>
-      <div class="chart-note" id="recent-note"></div>
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-recent" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-recent"></div>
-      </div>
-    </div>
-
-    <div id="egg-panel" class="chart-card" hidden>
-      <h3>鶏卵の実勢価格（参考・円ベース）</h3>
-      <div class="chart-note">東京都区部の年平均小売価格（2018〜2023年）と、農林水産省「食品価格動向調査」の全国平均月次価格（2024年4月〜2025年9月）をつないだ参考系列です。</div>
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-egg" viewBox="0 0 720 260" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-egg"></div>
-      </div>
-    </div>
-
-    <div class="note-box" id="trend-item-note" style="display:none;"></div>
-  </section>
-
-  <section id="engel">
-    <div class="section-head">
-      <div>
-        <h2>家計への影響：エンゲル係数</h2>
-        <div class="section-sub">消費支出に占める食料費の割合（二人以上の世帯）。総務省統計局「家計調査」ベース。</div>
-      </div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-svg-wrap">
-        <svg class="chart" id="svg-engel" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tip-engel"></div>
-      </div>
-      <div class="legend-tier">
-        <span><i></i>総務省統計局 一次資料</span>
-        <span><i class="dashed"></i>二次情報（総務省データを基に集計・要確認）</span>
-      </div>
-    </div>
-    <div class="note-box" id="engel-note"></div>
   </section>
 
   <footer>
-    <h2 style="font-size:18px;">出典・注記</h2>
-    <div class="sources" id="sources"></div>
     <div class="disclaimer">
-      ・指数は各年の年平均値です。実勢価格（円）は特定の調査地域・時点のサンプルであり、全国のすべての店舗の価格を代表するものではありません。<br>
-      ・エンゲル係数の2018年は公表値を確認できず欠測、2019〜2022年は二次情報のため参考値としています（グラフ上は破線）。<br>
-      ・月次価格ランキングの「コロナ禍前比」は2019年（1〜12月）の月次指数の平均値を基準にした上昇率です。<br>
-      ・本ページは社内外への説明・提案資料としての利用を想定した参考資料です。引用の際は各統計の一次資料をご確認ください。
+      ・掲載データは各ページに記載の出典に基づきます。正式な数値は必ず元の資料をご確認ください。投資判断を目的としたものではありません。<br>
+      ・データの誤りやご要望は <a href="contact.html">お問い合わせ</a> からお知らせください。
     </div>
     <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
   </footer>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 (function(){
   "use strict";
 
-  var COLOR_VAR = {
-    rice:"--series-1", bread:"--series-2", egg:"--series-3", milk:"--series-4",
-    cooking_oil:"--series-5", instant_noodles:"--series-6", pork:"--series-7", soy_sauce:"--series-8"
-  };
-  var state = { currentItem:"rice", data:null };
-
-  function cssVar(name){
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  function ymJa(ym){ var p = ym.split("-"); return p[0]+"年"+(+p[1])+"月"; }
+  function dateJa(d){ var p = d.split("-"); return p[0]+"年"+(+p[1])+"月"+(+p[2])+"日"; }
+  function setLatest(key, label, text){
+    var el = document.querySelector('[data-latest="'+key+'"]');
+    if(el) el.innerHTML = '<span class="lbl">'+label+'</span>'+text;
   }
-  function fmt1(v){ return (Math.round(v*10)/10).toLocaleString("ja-JP",{minimumFractionDigits:1,maximumFractionDigits:1}); }
-  function fmtInt(v){ return Math.round(v).toLocaleString("ja-JP"); }
-  function niceMax(v){
-    if(v<=0) return 10;
-    var base = Math.pow(10, Math.floor(Math.log10(v)));
-    var f = v/base, niceF;
-    if(f<=1) niceF=1; else if(f<=1.2) niceF=1.2; else if(f<=1.5) niceF=1.5;
-    else if(f<=2) niceF=2; else if(f<=2.5) niceF=2.5; else if(f<=3) niceF=3;
-    else if(f<=4) niceF=4; else if(f<=5) niceF=5; else if(f<=6) niceF=6;
-    else if(f<=8) niceF=8; else niceF=10;
-    return niceF*base;
+  function load(url, fn){
+    fetch(url).then(function(r){ return r.json(); }).then(fn).catch(function(err){ console.error(url, err); });
+  }
+  function lastMonth(items){
+    var arr = items[0].cpi_index_monthly;
+    return arr[arr.length-1].ym;
   }
 
-  /* ---------------- generic SVG line chart ---------------- */
-  function buildChart(svg, points, opts){
-    // points: [{x:Number, y:Number|null, tier:'primary'|'secondary'|..., label:String(optional)}]
-    opts = opts || {};
-    while(svg.firstChild) svg.removeChild(svg.firstChild);
-    var vb = svg.viewBox.baseVal;
-    var W = vb.width || 720, H = vb.height || 300;
-    var m = {top:14, right:14, bottom:26, left:44};
-    var innerW = W-m.left-m.right, innerH = H-m.top-m.bottom;
-
-    var xs = points.map(function(p){return p.x;});
-    var ys = points.filter(function(p){return p.y!==null && p.y!==undefined;}).map(function(p){return p.y;});
-    var xMin = Math.min.apply(null,xs), xMax = Math.max.apply(null,xs);
-    var yMax = opts.yMax!==undefined ? opts.yMax : niceMax(Math.max.apply(null,ys)*1.12);
-    var yMin = opts.yMin!==undefined ? opts.yMin : 0;
-
-    function sx(x){ return m.left + (xMax===xMin?0:(x-xMin)/(xMax-xMin))*innerW; }
-    function sy(y){ return m.top + innerH - (yMax===yMin?0:(y-yMin)/(yMax-yMin))*innerH; }
-
-    var svgns = "http://www.w3.org/2000/svg";
-    function el(tag,attrs){
-      var e = document.createElementNS(svgns,tag);
-      for(var k in attrs) e.setAttribute(k, attrs[k]);
-      return e;
-    }
-
-    // y gridlines
-    var yTickCount = 4;
-    for(var i=0;i<=yTickCount;i++){
-      var yv = yMin + (yMax-yMin)*i/yTickCount;
-      var yy = sy(yv);
-      svg.appendChild(el("line",{class:"gridline", x1:m.left, x2:W-m.right, y1:yy, y2:yy}));
-      var t = el("text",{class:"axis-label", x:m.left-8, y:yy+3, "text-anchor":"end"});
-      t.textContent = opts.yTickFormatter ? opts.yTickFormatter(yv) : fmtInt(yv);
-      svg.appendChild(t);
-    }
-    // reference line (e.g. index=100)
-    if(opts.refLine!==undefined){
-      var ry = sy(opts.refLine);
-      svg.appendChild(el("line",{class:"baseline", x1:m.left, x2:W-m.right, y1:ry, y2:ry}));
-      var rt = el("text",{class:"axis-label", x:W-m.right, y:ry-4, "text-anchor":"end"});
-      rt.textContent = opts.refLineLabel || "";
-      svg.appendChild(rt);
-    }
-    // x ticks
-    var tickEvery = opts.xTickEvery || Math.max(1, Math.round((xMax-xMin)/6));
-    var lastTickDrawn = null;
-    for(var xv=Math.ceil(xMin/tickEvery)*tickEvery; xv<=xMax; xv+=tickEvery){
-      var xx = sx(xv);
-      var xt = el("text",{class:"axis-label", x:xx, y:H-m.bottom+16, "text-anchor":"middle"});
-      xt.textContent = opts.xTickFormatter ? opts.xTickFormatter(xv) : String(Math.round(xv));
-      svg.appendChild(xt);
-      lastTickDrawn = xv;
-    }
-    if(points.length && xMax!==xMin && (lastTickDrawn===null || (xMax-lastTickDrawn) > tickEvery*0.4)){
-      var lastLabel = opts.xTickFormatter ? opts.xTickFormatter(xMax) : String(Math.round(xMax));
-      var lt = el("text",{class:"axis-label", x:sx(xMax), y:H-m.bottom+16, "text-anchor":"middle"});
-      lt.textContent = lastLabel;
-      svg.appendChild(lt);
-    }
-
-    // build contiguous segments (break on null, style-split on tier change)
-    var color = cssVar(opts.colorVar || "--series-1");
-    var segments = [];
-    var cur = null;
-    points.forEach(function(p, idx){
-      if(p.y===null || p.y===undefined){
-        if(cur){ segments.push(cur); cur=null; }
-        return;
-      }
-      var tier = p.tier || "primary";
-      if(!cur){ cur = {tier:tier, pts:[p]}; return; }
-      if(cur.tier!==tier){
-        cur.pts.push(p);
-        segments.push(cur);
-        cur = {tier:tier, pts:[p]};
-      } else {
-        cur.pts.push(p);
-      }
-    });
-    if(cur) segments.push(cur);
-
-    var gradId = (svg.id||"chart")+"-area";
-    var defs = el("defs",{});
-    var grad = el("linearGradient",{id:gradId, x1:"0", y1:"0", x2:"0", y2:"1"});
-    grad.appendChild(el("stop",{offset:"0%", "stop-color":color, "stop-opacity":"0.24"}));
-    grad.appendChild(el("stop",{offset:"100%", "stop-color":color, "stop-opacity":"0"}));
-    defs.appendChild(grad);
-    svg.appendChild(defs);
-
-    var baseY = sy(yMin);
-    segments.forEach(function(seg){
-      if(seg.pts.length>1){
-        var areaD = "M"+sx(seg.pts[0].x).toFixed(2)+","+baseY.toFixed(2)+" "+
-          seg.pts.map(function(p){ return "L"+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ")+
-          " L"+sx(seg.pts[seg.pts.length-1].x).toFixed(2)+","+baseY.toFixed(2)+" Z";
-        svg.appendChild(el("path",{d:areaD, fill:"url(#"+gradId+")", stroke:"none"}));
-      }
-    });
-
-    segments.forEach(function(seg){
-      var d = seg.pts.map(function(p,i){ return (i===0?"M":"L")+sx(p.x).toFixed(2)+","+sy(p.y).toFixed(2); }).join(" ");
-      var path = el("path",{class:"line-path"+(seg.tier!=="primary"?" dashed":""), d:d, stroke:color});
-      svg.appendChild(path);
-    });
-
-    // hover interaction
-    var hitRect = el("rect",{class:"chart-hit", x:m.left, y:m.top, width:innerW, height:innerH});
-    var hoverLineEl = el("line",{class:"hover-line", x1:0,x2:0,y1:m.top,y2:m.top+innerH});
-    var hoverDotEl = el("circle",{class:"hover-dot", stroke:color, r:4.5});
-    svg.appendChild(hitRect);
-    svg.appendChild(hoverLineEl);
-    svg.appendChild(hoverDotEl);
-
-    var validPts = points.filter(function(p){return p.y!==null && p.y!==undefined;});
-    var tooltipEl = opts.tooltipEl;
-
-    function pointFromEvent(evt){
-      var pt = svg.createSVGPoint();
-      pt.x = evt.clientX; pt.y = evt.clientY;
-      var ctm = svg.getScreenCTM();
-      if(!ctm) return null;
-      return pt.matrixTransform(ctm.inverse());
-    }
-    function nearest(userX){
-      var best=null,bestD=Infinity;
-      validPts.forEach(function(p){
-        var d = Math.abs(sx(p.x)-userX);
-        if(d<bestD){bestD=d;best=p;}
-      });
-      return best;
-    }
-    function showAt(p){
-      hoverLineEl.setAttribute("x1", sx(p.x)); hoverLineEl.setAttribute("x2", sx(p.x));
-      hoverLineEl.style.display="block";
-      hoverDotEl.setAttribute("cx", sx(p.x)); hoverDotEl.setAttribute("cy", sy(p.y));
-      hoverDotEl.style.display="block";
-      if(tooltipEl){
-        var label = p.label || (opts.xTickFormatter?opts.xTickFormatter(p.x):p.x);
-        var valTxt = opts.tooltipFormatter ? opts.tooltipFormatter(p) : fmt1(p.y);
-        tooltipEl.innerHTML = label+"：<b>"+valTxt+"</b>";
-        var box = svg.getBoundingClientRect();
-        var leftPx = box.width * (sx(p.x)/W);
-        var topPx = box.height * (sy(p.y)/H);
-        tooltipEl.style.left = leftPx+"px";
-        tooltipEl.style.top = topPx+"px";
-        tooltipEl.style.opacity = "1";
-      }
-    }
-    function hide(){
-      hoverLineEl.style.display="none";
-      hoverDotEl.style.display="none";
-      if(tooltipEl) tooltipEl.style.opacity="0";
-    }
-    hitRect.addEventListener("mousemove", function(evt){
-      var p = pointFromEvent(evt); if(!p || !validPts.length) return;
-      showAt(nearest(p.x));
-    });
-    hitRect.addEventListener("mouseleave", hide);
-    hitRect.addEventListener("touchstart", function(evt){
-      var t = evt.touches[0]; if(!t || !validPts.length) return;
-      var p = pointFromEvent(t); if(!p) return;
-      showAt(nearest(p.x));
-    }, {passive:true});
-    hitRect.addEventListener("touchend", hide);
-  }
-
-  /* ---------------- rendering ---------------- */
-  function itemByKey(key){ return state.data.items.find(function(it){return it.key===key;}); }
-
-  function renderChips(){
-    var row = document.getElementById("chip-row");
-    row.innerHTML = "";
-    state.data.items.forEach(function(it){
-      var color = cssVar(COLOR_VAR[it.key]);
-      var btn = document.createElement("button");
-      btn.className = "chip"; btn.type="button";
-      btn.style.color = color;
-      btn.setAttribute("aria-pressed", it.key===state.currentItem ? "true":"false");
-      var last = it.cpi_index[it.cpi_index.length-1];
-      btn.innerHTML = '<span class="sw" style="background:'+color+'"></span>'+it.label_ja+
-        '<span style="color:var(--text-muted);font-weight:400;">'+fmt1(last.value)+'</span>';
-      btn.addEventListener("click", function(){ selectItem(it.key); });
-      row.appendChild(btn);
-    });
-  }
-
-  function renderTable(item){
-    var tbl = document.getElementById("table-long");
-    var rows = item.cpi_index.filter(function(p){return p.year % 5 === 0 || p.year===item.cpi_index[item.cpi_index.length-1].year;});
-    var head = "<thead><tr><th>年</th>"+rows.map(function(r){return "<th>"+r.year+"</th>";}).join("")+"</tr></thead>";
-    var body = "<tbody><tr><th>指数(2025=100)</th>"+rows.map(function(r){return "<td>"+fmt1(r.value)+"</td>";}).join("")+"</tr></tbody>";
-    tbl.innerHTML = head+body;
-  }
-
-  function renderDetail(){
-    var item = itemByKey(state.currentItem);
-    var color = cssVar(COLOR_VAR[item.key]);
-    document.documentElement.style.setProperty("--accent", color);
-
-    document.getElementById("long-title").textContent = item.label_ja+"の長期推移（"+item.cpi_index[0].year+"年〜"+item.cpi_index[item.cpi_index.length-1].year+"年）";
-    document.getElementById("long-note").textContent = "消費者物価指数 品目別価格指数（2025年＝100、全国・年平均）";
-
-    buildChart(document.getElementById("svg-long"), item.cpi_index.map(function(p){return {x:p.year,y:p.value};}), {
-      colorVar: COLOR_VAR[item.key],
-      refLine: 100, refLineLabel:"2025年=100",
-      xTickEvery: 10,
-      tooltipEl: document.getElementById("tip-long"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
-      xTickFormatter: function(x){ return x+"年"; }
-    });
-
-    var recent = item.cpi_index.filter(function(p){return p.year>=2015;});
-    document.getElementById("recent-title").textContent = item.label_ja+"：直近10年のズーム（2015年〜"+recent[recent.length-1].year+"年）";
-    var first = recent[0].value, lastR = recent[recent.length-1].value;
-    var pct = ((lastR-first)/first*100);
-    document.getElementById("recent-note").textContent =
-      "2015年（"+fmt1(first)+"）→"+recent[recent.length-1].year+"年（"+fmt1(lastR)+"）："+(pct>=0?"+":"")+fmt1(pct)+"%";
-
-    buildChart(document.getElementById("svg-recent"), recent.map(function(p){return {x:p.year,y:p.value};}), {
-      colorVar: COLOR_VAR[item.key],
-      refLine: 100, refLineLabel:"2025年=100",
-      xTickEvery: 1,
-      tooltipEl: document.getElementById("tip-recent"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
-      xTickFormatter: function(x){ return x+"年"; }
-    });
-
-    renderTable(item);
-    renderMonthlyChart(item);
-
-    // egg-only yen panel
-    var eggPanel = document.getElementById("egg-panel");
-    if(item.key === "egg"){
-      eggPanel.hidden = false;
-      var series = [];
-      (item.retail_price_yen||[]).forEach(function(p){ series.push({x:p.year*12, y:p.value, label:p.year+"年（年平均）"}); });
-      (item.retail_price_yen_monthly_recent||[]).forEach(function(p){
-        var parts = p.month.split("-"); var yv=+parts[0], mv=+parts[1];
-        series.push({x:yv*12+mv, y:p.value, label:p.month.replace("-","年")+"月"});
-      });
-      series.sort(function(a,b){return a.x-b.x;});
-      buildChart(document.getElementById("svg-egg"), series, {
-        colorVar: COLOR_VAR.egg,
-        xTickEvery: 12,
-        tooltipEl: document.getElementById("tip-egg"),
-        tooltipFormatter: function(p){ return fmtInt(p.y)+"円/パック"; },
-        xTickFormatter: function(x){ return Math.floor(x/12)+""; }
-      });
-    } else {
-      eggPanel.hidden = true;
-    }
-
-    // contextual note
-    var NOTE_KEY = { rice:"米", cooking_oil:"食用油", egg:"鶏卵", pork:"豚肉" };
-    var noteBox = document.getElementById("trend-item-note");
-    var noteKey = NOTE_KEY[item.key];
-    var note = noteKey ? (state.data.recent_trend_notes||[]).find(function(n){ return n.item.indexOf(noteKey)!==-1; }) : null;
-    if(note){
-      noteBox.style.display = "block";
-      noteBox.innerHTML = "<b>"+note.item+"の動き：</b>"+note.note;
-    } else {
-      noteBox.style.display = "none";
-    }
-  }
-
-  function selectItem(key){
-    state.currentItem = key;
-    Array.prototype.forEach.call(document.querySelectorAll("#chip-row .chip"), function(btn,idx){
-      btn.setAttribute("aria-pressed", state.data.items[idx].key===key ? "true":"false");
-    });
-    renderDetail();
-    renderRanking();
-  }
-
-  function monthLabel(m){ var p=m.split("-"); return (+p[0])+"年"+(+p[1])+"月"; }
-  function statBadge(pct){
-    if(pct>=50) return {cls:"critical", label:"大幅上昇"};
-    if(pct>=20) return {cls:"serious", label:"上昇"};
-    if(pct>=5) return {cls:"warning", label:"やや上昇"};
-    if(pct> -5) return {cls:"good", label:"横ばい"};
-    return {cls:"good", label:"下落"};
-  }
-
-  function baseline2019Avg(item){
-    var pts = (item.cpi_index_monthly||[]).filter(function(p){ return p.ym.indexOf("2019-")===0; });
-    var sum=0, n=0;
-    pts.forEach(function(p){ if(p.value!==null && p.value!==undefined){ sum+=p.value; n++; } });
-    return n ? sum/n : null;
-  }
-
-  function sparklinePath(values, w, h){
-    var vals = values.filter(function(v){ return v!==null && v!==undefined; });
-    if(!vals.length) return "";
-    var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
-    if(min===max){ min-=1; max+=1; }
-    var n = values.length;
-    var pts = values.map(function(v,i){
-      var x = n<=1 ? 0 : (i/(n-1))*w;
-      var y = h - ((v-min)/(max-min))*h;
-      return x.toFixed(1)+","+y.toFixed(1);
-    });
-    return "M"+pts.join(" L");
-  }
-
-  function renderRanking(){
-    var wrap = document.getElementById("ranking-list");
-    wrap.innerHTML = "";
-    var rows = state.data.items.map(function(it){
-      var base = baseline2019Avg(it);
-      var last = it.cpi_index_monthly[it.cpi_index_monthly.length-1];
-      var pct = base ? ((last.value-base)/base*100) : null;
-      return {item:it, base:base, last:last, pct:pct};
-    }).filter(function(r){ return r.pct!==null; });
-    rows.sort(function(a,b){ return b.pct-a.pct; });
-
-    if(rows.length){
-      document.getElementById("ranking-sub").textContent =
-        "品目を2019年平均比の上昇率が高い順に並べています（"+monthLabel(rows[0].last.ym)+"時点）。行をクリックすると下のグラフが切り替わります。";
-    }
-
-    rows.forEach(function(r, idx){
-      var color = cssVar(COLOR_VAR[r.item.key]);
-      var vals = r.item.cpi_index_monthly.map(function(p){ return p.value; });
-      var path = sparklinePath(vals, 78, 26);
-      var up = r.pct>=0;
-      var btn = document.createElement("button");
-      btn.type = "button"; btn.className = "rank-row";
-      btn.setAttribute("aria-pressed", r.item.key===state.currentItem ? "true":"false");
-      btn.innerHTML =
-        '<span class="rank-num">'+(idx+1)+'</span>'+
-        '<span class="rank-sw" style="background:'+color+'"></span>'+
-        '<span class="rank-label">'+r.item.label_ja+'</span>'+
-        '<svg class="rank-spark" viewBox="0 0 78 26" preserveAspectRatio="none"><path d="'+path+'" fill="none" stroke="'+color+'" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'+
-        '<span class="rank-val"><span class="idx">'+fmt1(r.last.value)+'</span><span class="pct" style="color:'+(up?"var(--status-critical)":"var(--status-good)")+'">'+(up?"+":"")+fmt1(r.pct)+'%</span></span>';
-      btn.addEventListener("click", function(){ selectItem(r.item.key); });
-      wrap.appendChild(btn);
-    });
-  }
-
-  function renderMonthlyChart(item){
-    var base = baseline2019Avg(item);
-    var pts = (item.cpi_index_monthly||[]).map(function(p){
-      var parts = p.ym.split("-"); var yv=+parts[0], mv=+parts[1];
-      return {x:yv*12+mv, y:p.value, label:monthLabel(p.ym)};
-    });
-    if(!pts.length) return;
-    var lastPt = pts[pts.length-1];
-    document.getElementById("monthly-title").textContent =
-      item.label_ja+"の月次推移（2019年〜"+Math.floor(lastPt.x/12)+"年）";
-    var pct = base ? ((lastPt.y-base)/base*100) : null;
-    document.getElementById("monthly-note").textContent = base ?
-      ("2019年平均（"+fmt1(base)+"）を基準に、直近（"+lastPt.label+"）は"+(pct>=0?"+":"")+fmt1(pct)+"%。") : "";
-
-    buildChart(document.getElementById("svg-monthly"), pts, {
-      colorVar: COLOR_VAR[item.key],
-      refLine: base===null ? undefined : base,
-      refLineLabel: base===null ? "" : "2019年平均",
-      xTickEvery: 12,
-      tooltipEl: document.getElementById("tip-monthly"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"（2025年=100）"; },
-      xTickFormatter: function(x){ return Math.floor(x/12)+"年"; }
-    });
-  }
-
-  function renderStats(){
-    var grid = document.getElementById("stat-grid");
-    grid.innerHTML = "";
-    var rice = itemByKey("rice"), oil = itemByKey("cooking_oil"), egg = itemByKey("egg");
-    var eggMonthly = egg.retail_price_yen_monthly_recent||[];
-    var eggFirst = eggMonthly[0], eggLast = eggMonthly[eggMonthly.length-1];
-    var eggPct = eggFirst ? ((eggLast.value-eggFirst.value)/eggFirst.value*100) : 0;
-    var engel = state.data.engel_coefficient;
-    var engelLast = engel[engel.length-1], engelPrev = engel[engel.length-2];
-
-    var monthlyRanked = state.data.items.map(function(it){
-      var base = baseline2019Avg(it);
-      var lastM = it.cpi_index_monthly[it.cpi_index_monthly.length-1];
-      var pct = base ? ((lastM.value-base)/base*100) : null;
-      return {item:it, last:lastM, pct:pct};
-    }).filter(function(r){ return r.pct!==null; });
-    monthlyRanked.sort(function(a,b){ return a.pct-b.pct; });
-    var lowest = monthlyRanked[0];
-
-    function vs2020(item){
-      var last = item.cpi_index[item.cpi_index.length-1];
-      var b = item.cpi_index.find(function(p){ return p.year===2020; });
-      return (b && b.value) ? {pct:(last.value/b.value-1)*100, ratio:last.value/b.value, year:last.year} : null;
-    }
-    function sign(v){ return (v>=0?"+":"")+fmt1(v); }
-    var riceChg = vs2020(rice), oilChg = vs2020(oil);
-    var riceM = rice.cpi_index_monthly, riceLatest = riceM[riceM.length-1];
-    var ricePeak = riceM.reduce(function(a,p){ return (p.value!==null && p.value>a.value)?p:a; }, riceM[0]);
-    var riceFromPeak = (riceLatest.value/ricePeak.value-1)*100;
-    var riceNow = riceLatest.ym===ricePeak.ym ? "直近（"+monthLabel(riceLatest.ym)+"）が過去最高水準。"
-      : "月次では"+monthLabel(ricePeak.ym)+"がピークで、直近（"+monthLabel(riceLatest.ym)+"）はピーク比"+sign(riceFromPeak)+"%。";
-
-    var heroStat = document.getElementById("hero-stat");
-    if(heroStat){
-      heroStat.hidden = false;
-      document.getElementById("hero-stat-num").innerHTML = sign(riceChg.pct)+'<span class="unit">%</span>';
-      document.getElementById("hero-stat-desc").textContent = "米の価格（"+riceChg.year+"年・2020年比）";
-      document.getElementById("hero-stat-delta").textContent = "▲ 2020年の約"+riceChg.ratio.toFixed(1)+"倍に（令和の米騒動）";
-    }
-
-    var tiles = [
-      { label:"米（価格指数・"+riceChg.year+"年）", value:sign(riceChg.pct), unit:"%（2020年比）",
-        badge: statBadge(riceChg.pct), badgeText:"2020年の約"+riceChg.ratio.toFixed(1)+"倍",
-        foot:"令和の米騒動と呼ばれる需給ひっ迫で急騰。"+riceNow },
-      { label:"食用油（価格指数・"+oilChg.year+"年）", value:sign(oilChg.pct), unit:"%（2020年比）",
-        badge: statBadge(oilChg.pct), badgeText:"2020年の約"+oilChg.ratio.toFixed(1)+"倍",
-        foot:"原料油脂の国際価格上昇が影響。" },
-      { label:"鶏卵（実勢価格・全国平均）", value: eggLast?fmtInt(eggLast.value):"—", unit:"円/パック",
-        badge: statBadge(eggPct), badgeText:(eggPct>=0?"+":"")+fmt1(eggPct)+"%（"+monthLabel(eggFirst.month)+"→"+monthLabel(eggLast.month)+"）",
-        foot:"農林水産省「食品価格動向調査」より。" },
-      { label: lowest.item.label_ja+"（"+monthLabel(lowest.last.ym)+"）", value:fmt1(lowest.last.value), unit:"（2025年=100）",
-        badge: statBadge(lowest.pct), badgeText:(lowest.pct>=0?"+":"")+fmt1(lowest.pct)+"%（2019年平均比）",
-        foot:"8品目の中で、2019年平均比の上昇率が最も低い品目です。" },
-      { label:"エンゲル係数（"+engelLast.year+"年）", value: fmt1(engelLast.value), unit:"%",
-        badge: {cls:"serious", label:"43年ぶりの高さ"},
-        badgeText:"前年比"+(engelLast.value-engelPrev.value>=0?"+":"")+fmt1(engelLast.value-engelPrev.value)+"pt",
-        foot:"1981年（昭和56年）以来の水準。総務省「家計調査」より。" }
-    ];
-
-    tiles.forEach(function(t){
-      var div = document.createElement("div");
-      div.className = "stat-tile";
-      div.innerHTML =
-        '<div class="label">'+t.label+'</div>'+
-        '<div class="value">'+t.value+'<span class="unit">'+t.unit+'</span></div>'+
-        '<div class="badge '+t.badge.cls+'">'+t.badge.label+' '+t.badgeText+'</div>'+
-        '<div class="foot">'+t.foot+'</div>';
-      grid.appendChild(div);
-    });
-  }
-
-  function renderEngel(){
-    var engel = state.data.engel_coefficient;
-    var pts = engel.map(function(e){ return {x:e.year, y:e.value, tier: e.tier==="primary"?"primary":"secondary"}; });
-    buildChart(document.getElementById("svg-engel"), pts, {
-      colorVar: "--series-1",
-      xTickEvery: 10,
-      tooltipEl: document.getElementById("tip-engel"),
-      tooltipFormatter: function(p){ return fmt1(p.y)+"%"; },
-      xTickFormatter: function(x){ return x+"年"; }
-    });
-    var last = engel[engel.length-1];
-    document.getElementById("engel-note").innerHTML =
-      "<b>2024年のエンゲル係数は"+fmt1(last.value)+"%。</b>1981年（昭和56年）以来43年ぶりの高水準で、食料価格の高騰が家計を圧迫していることを示しています。2019〜2022年は総務省公表資料での一次確認ができていない参考値、2018年は欠測として扱っています。";
-  }
-
-  function renderSources(){
-    var wrap = document.getElementById("sources");
-    wrap.innerHTML = "";
-    state.data.meta.sources.forEach(function(s){
-      var div = document.createElement("div");
-      div.className = "source-item";
-      div.innerHTML = '<span class="org">'+s.org+'</span>「'+s.name+'」　<a href="'+ (s.url||s.file_url||s.mirror_url) +'" target="_blank" rel="noopener">出典を見る</a>'+(s.note? "　"+s.note : "");
-      wrap.appendChild(div);
-    });
-  }
-
-  function renderUpdated(){
-    var parts = state.data.meta.generated_at.split("-");
-    document.getElementById("updated-at").textContent = "データ取得日：" + parts[0]+"年"+(+parts[1])+"月"+(+parts[2])+"日";
-  }
-
-  function renderAll(){
-    renderUpdated();
-    renderStats();
-    renderChips();
-    renderDetail();
-    renderRanking();
-    renderEngel();
-    renderSources();
-  }
-
-  fetch("data.json").then(function(r){return r.json();}).then(function(json){
-    state.data = json;
-    renderAll();
-  }).catch(function(err){
-    document.getElementById("stat-grid").innerHTML = "<div class='stat-tile'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
-    console.error(err);
+  load("monthly_digest_data.json", function(d){
+    var m = d.months[0];
+    var themes = (m.analysis && m.analysis.themes) ? m.analysis.themes.length : 0;
+    setLatest("digest", "最新号", m.label_ja + "号" + (themes ? "（テーマ "+themes+" 本）" : ""));
   });
-
-  var exportBtn = document.getElementById("btn-export-xlsx");
-  if(exportBtn){
-    exportBtn.addEventListener("click", function(){
-      if(!state.data || typeof XLSX==="undefined") return;
-      var item = itemByKey(state.currentItem);
-      var rows = [["年月","価格指数（2025年=100）"]];
-      (item.cpi_index_monthly||[]).forEach(function(p){ rows.push([p.ym, p.value]); });
-      var ws = XLSX.utils.aoa_to_sheet(rows);
-      var wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, item.key.slice(0,28));
-      XLSX.writeFile(wb, "price_"+item.key+"_monthly.xlsx");
-    });
-  }
-
-  if(window.matchMedia){
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){
-      if(state.data) renderAll();
-    });
-  }
+  load("data.json", function(d){ setLatest("food", "最新データ", ymJa(lastMonth(d.items))+"分まで"); });
+  load("vegetables_data.json", function(d){ setLatest("veg", "最新データ", ymJa(lastMonth(d.items))+"分まで"); });
+  load("trade_data.json", function(d){
+    var y = d.items[0].yearly; setLatest("trade", "最新データ", y[y.length-1].year+"年まで");
+  });
+  load("product_news.json", function(d){
+    var latest = d.products.map(function(p){ return p.announced_date; }).sort().pop();
+    setLatest("news", "掲載", d.products.length+"件 ／ 最新の発表 "+dateJa(latest));
+  });
+  load("market_size_data.json", function(d){
+    var maxY = 0;
+    d.categories.forEach(function(c){ c.yearly.forEach(function(r){ if(r.year>maxY) maxY = r.year; }); });
+    setLatest("market", "最新データ", maxY+"年（度）まで");
+  });
+  load("industry_map_data.json", function(d){
+    setLatest("industry", "掲載", d.companies.length+"社 ／ データ取得 "+dateJa(d.meta.generated_at));
+  });
 })();
 </script>
 </body>
