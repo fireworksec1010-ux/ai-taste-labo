@@ -1,6 +1,6 @@
 ---
 name: food-site-update
-description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品価格・野菜価格・輸入統計・新製品情報・市場規模・業界マップ・月次トピックス・お問い合わせの8ページ＋英語版、GitHub Pagesで公開中）のデータ更新・公開手順。「更新して」「データを最新にして」「新製品を追加して」などの依頼、または月次更新チェック（毎月25日のルーティン）の結果を受けて実際に更新するときに使う。
+description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品価格・野菜価格・輸入統計・新製品情報・市場規模・業界マップ・OEMメーカー・月次トピックス・お問い合わせの9ページ＋英語版、GitHub Pagesで公開中）のデータ更新・公開手順。「更新して」「データを最新にして」「新製品を追加して」などの依頼、または月次更新チェック（毎月25日のルーティン）の結果を受けて実際に更新するときに使う。
 ---
 
 # 食品価格サイト 更新手順
@@ -16,7 +16,7 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
 - 各HTMLの先頭にある `<!doctype html>`・`<meta charset>`・`<meta name="viewport">`・`[hidden]{display:none!important}` はGitHub Pagesでの表示（特にスマホ）に必須なので消さない。新しいページを作るときも同じ4行を先頭に入れる。
 - 検索・SNS対策：各ページの `<title>`・`meta description`・`canonical`・OGP（`og:*`、`twitter:card`、共通画像 `ogp.png`）を維持する。ページを追加したら同じ一式を入れ、`sitemap.xml` にもURLを追加する。内容を更新したら `sitemap.xml` の該当ページの `lastmod` を更新日に書き換える。
 - アクセス解析：全ページの `<head>` 内にCloudflare Web Analyticsのコード（token `01b322e4ae7a468da9de43a282ff93f7`）が入っている。消さない。新しいページにも同じコードを入れる。閲覧数はCloudflareのダッシュボード（Analytics → Web 分析）で確認。Google Search Console（URLプレフィックス https://fireworksec1010-ux.github.io/ai-taste-labo/ 、所有権はトップページのmetaタグで確認済み。消さない）にsitemap.xmlを登録済み。
-- 全ページ共通：ライト配色固定、上部ナビ9タブ（ホーム／食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／月次トピックス／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
+- 全ページ共通：ライト配色固定、上部ナビ10タブ（ホーム／月次トピックス／食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／OEMメーカー／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
 - 英語版（海外の食品マーケター・日本市場参入検討者向け）：`en/` 以下に置く。現在は `en/monthly_digest.html`・`en/market_size.html` の2ページ。データは日本語版と同じJSON（`../*.json`）を読み、項目名の末尾に `_en` が付いた英語フィールドを表示（無ければ日本語にフォールバック）。
   - **月次トピックス・市場規模を更新したら、追加・変更した項目の `_en` フィールドも必ず書く**（例：`label_en`・`detail_en`・`title_en`・`summary_en`・`trend_note_en`・`text_en`・`outlook_en` など）。英文は直訳ではなく海外読者向けに補足（FY＝4月〜3月、JPY、日本語固有の商品名は英訳＋原語）。
   - 日英ペアのページには `hreflang`（ja / en / x-default=日本語版）を入れる。英語版ナビで未翻訳のページは日本語版にリンクし「JA」マークを付ける。英語版ページを追加したら、日本語側のEnglishリンク先・英語版ナビ・`sitemap.xml` も更新する。
@@ -80,6 +80,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 - 資本関係（`parent`・`relations`）は、子会社側の「株式情報（大株主の状況）」や有価証券報告書で確認できたものだけ。
 - 分野分け・紹介文（`note`）・ブランドは当サイト独自。市販の業界地図の文言・配置は真似しない（著作権配慮）。
 - 会社を追加するときも同じ項目で `companies` に追記する。
+- **OEMメーカー（oem_makers.html / oem_makers_data.json）**：業界マップとは別タブの独立ページ（2026-10-18追加）。データは `oem_makers_data.json`（2026-10-18作成、15社・5分野）。各社の**公式サイトに書かれていること**（社名・所在地・得意製品・最小ロット・認証）だけを載せ、売上など非公表の数字は載せない。年1回、業界マップ更新時に各社公式サイトを開き、OEMの受付停止・ロット変更がないか確認して `meta.generated_at` を更新。新規受付を停止した会社は外す（例：たにぐちは2026-10時点で停止中のため不掲載）。中国語版には未掲載。
 
 ### 7. お問い合わせ（contact.html）
 - 宛先はmailtoのみ（fireworks.fd.2020@gmail.com）。変更依頼があるときだけ編集。

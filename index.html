@@ -158,13 +158,14 @@
 
   <nav class="top-nav">
     <a href="index.html" class="active">ホーム</a>
+    <a href="monthly_digest.html">月次トピックス</a>
     <a href="food_prices.html">食品価格</a>
     <a href="vegetables.html">野菜価格</a>
     <a href="trade.html">輸入統計</a>
     <a href="product_news.html">新製品情報</a>
     <a href="market_size.html">市場規模</a>
     <a href="industry_map.html">業界マップ</a>
-    <a href="monthly_digest.html">月次トピックス</a>
+    <a href="oem_makers.html">OEMメーカー</a>
     <a href="contact.html">お問い合わせ</a>
     <a href="en/monthly_digest.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
     <a href="zh/monthly_digest.html" lang="zh-Hant" style="color:#2a78d6;font-weight:700;">中文</a>
@@ -178,7 +179,7 @@
     <div class="facts">
       <div class="fact"><div class="k">スタート</div><div class="v">2026年9月</div></div>
       <div class="fact"><div class="k">更新</div><div class="v">毎月25日<small>ごろ</small></div></div>
-      <div class="fact"><div class="k">データページ</div><div class="v">7<small>ページ</small></div></div>
+      <div class="fact"><div class="k">データページ</div><div class="v">8<small>ページ</small></div></div>
       <div class="fact"><div class="k">対応言語</div><div class="v">3<small>言語</small></div></div>
     </div>
   </header>
@@ -249,8 +250,15 @@
         <div class="mc-latest" data-latest="industry"><span class="lbl">掲載</span>…</div>
       </div>
 
+      <div class="menu-card" style="--c:var(--series-4)">
+        <div class="mc-top"><span class="mc-no">07 ｜ OEMメーカー</span><span class="mc-freq">年1回更新</span></div>
+        <h3><a class="stretch" href="oem_makers.html">小ロットで頼める受託製造メーカー<span class="arrow">→</span></a></h3>
+        <div class="mc-desc">調味料・惣菜・麺・菓子・飲料のOEMを受ける中小・中堅メーカーを、得意な製品・最小ロットとともに一覧で。</div>
+        <div class="mc-src">出典：各社の公式サイト</div>
+        <div class="mc-latest" data-latest="oem"><span class="lbl">掲載</span>…</div>
+      </div>
       <div class="menu-card" style="--c:var(--series-8)">
-        <div class="mc-top"><span class="mc-no">07 ｜ お問い合わせ</span></div>
+        <div class="mc-top"><span class="mc-no">08 ｜ お問い合わせ</span></div>
         <h3><a class="stretch" href="contact.html">ご意見・掲載データのご要望<span class="arrow">→</span></a></h3>
         <div class="mc-desc">「この品目も見たい」「数字が違うのでは」などのご意見はこちらから。</div>
       </div>
@@ -294,7 +302,7 @@
         </div>
         <div class="sched">
           <div class="sched-row"><div class="when">毎月25日ごろ</div><div class="what"><b>食品価格・野菜価格</b>（消費者物価指数は毎月20日前後に公表）、<b>新製品情報</b>、<b>月次トピックス</b></div></div>
-          <div class="sched-row"><div class="when">年1回（6月ごろ）</div><div class="what"><b>業界マップ</b>（3月決算企業の有価証券報告書の公表後）</div></div>
+          <div class="sched-row"><div class="when">年1回（6月ごろ）</div><div class="what"><b>業界マップ</b>（3月決算企業の有価証券報告書の公表後）、<b>OEMメーカー</b></div></div>
           <div class="sched-row"><div class="when">年1回</div><div class="what"><b>輸入統計</b>・<b>市場規模</b>（農林水産省・業界団体の年報の公表後）</div></div>
         </div>
       </div>
@@ -311,6 +319,7 @@
           <li><span class="d">2026年9月28日</span>英語版（月次トピックス・市場規模）を公開</li>
           <li><span class="d">2026年10月5日</span>業界マップと中国語版（繁体字）を公開</li>
           <li><span class="d">2026年10月7日</span>トップページを開設</li>
+          <li><span class="d">2026年10月18日</span>OEMメーカーのページを追加</li>
         </ul>
       </div>
     </div>
@@ -371,6 +380,9 @@
     var maxY = 0;
     d.categories.forEach(function(c){ c.yearly.forEach(function(r){ if(r.year>maxY) maxY = r.year; }); });
     setLatest("market", "最新データ", maxY+"年（度）まで");
+  });
+  load("oem_makers_data.json", function(d){
+    setLatest("oem", "掲載", d.companies.length+"社 ／ "+d.categories.length+"分野 ／ 情報確認 "+dateJa(d.meta.generated_at));
   });
   load("industry_map_data.json", function(d){
     setLatest("industry", "掲載", d.companies.length+"社 ／ データ取得 "+dateJa(d.meta.generated_at));
