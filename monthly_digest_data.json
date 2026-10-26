@@ -1,9 +1,254 @@
 ﻿{
     "meta":  {
-                 "generated_at":  "2026-09-23",
+                 "generated_at":  "2026-10-26",
                  "description":  "食品価格サイト内の4ページ（食品価格・野菜価格・輸入統計・新製品情報）から集計したハイライトと、食品業界の国内トレンドをまとめた月次アーカイブ。"
              },
     "months":  [
+                   {
+                       "ym":  "2026-10",
+                       "label_ja":  "2026年10月",
+                       "label_en":  "October 2026",
+                       "label_zh":  "2026年10月",
+                       "highlights":  [
+                                          {
+                                              "category":  "食品価格",
+                                              "category_en":  "Food prices",
+                                              "category_zh":  "食品價格",
+                                              "label":  "食用油",
+                                              "label_en":  "Cooking oil",
+                                              "label_zh":  "食用油",
+                                              "detail":  "2026年9月の価格指数117.2（2025年=100）。前年同月比 +19.0%で、8品目中最大の上昇。当サイト収録の2015年以降で最も高い水準。",
+                                              "detail_en":  "Price index 117.2 in September 2026 (2025 = 100), up 19.0% year on year: the largest rise among the 8 staple items, and the highest level since 2015 in our data.",
+                                              "detail_zh":  "2026年9月價格指數117.2（2025年=100），年增19.0%，為8項主要食品中漲幅最大，也是本站收錄2015年以來的最高水準。",
+                                              "link_page":  "food_prices.html",
+                                              "link_label":  "食品価格ページを見る",
+                                              "link_label_en":  "View food prices (Japanese)",
+                                              "link_label_zh":  "查看食品價格（日文）"
+                                          },
+                                          {
+                                              "category":  "食品価格",
+                                              "category_en":  "Food prices",
+                                              "category_zh":  "食品價格",
+                                              "label":  "米（うるち米・米類）",
+                                              "label_en":  "Rice",
+                                              "label_zh":  "米",
+                                              "detail":  "価格指数80.3。前月比 -5.5%、前年同月比 -20.6%と下落が続き、2025年11月のピーク（108.7）から約26%低下。",
+                                              "detail_en":  "Price index 80.3: down 5.5% from August and 20.6% year on year, about 26% below the November 2025 peak (108.7).",
+                                              "detail_zh":  "價格指數80.3，月減5.5%、年減20.6%，持續下跌，較2025年11月高峰（108.7）低約26%。",
+                                              "link_page":  "food_prices.html",
+                                              "link_label":  "食品価格ページを見る",
+                                              "link_label_en":  "View food prices (Japanese)",
+                                              "link_label_zh":  "查看食品價格（日文）"
+                                          },
+                                          {
+                                              "category":  "野菜価格",
+                                              "category_en":  "Vegetable prices",
+                                              "category_zh":  "蔬菜價格",
+                                              "label":  "レタス",
+                                              "label_en":  "Lettuce",
+                                              "label_zh":  "萵苣",
+                                              "detail":  "価格指数119.3。前月比 +42.9%と8品目中最大の上昇。一方キャベツは前月比 -14.9%、たまねぎは -15.1%と値下がり。",
+                                              "detail_en":  "Price index 119.3, up 42.9% month on month, the biggest jump among 8 vegetables. Cabbage (-14.9%) and onions (-15.1%) fell.",
+                                              "detail_zh":  "價格指數119.3，月增42.9%，為8種蔬菜中漲幅最大；高麗菜（-14.9%）與洋蔥（-15.1%）則下跌。",
+                                              "link_page":  "vegetables.html",
+                                              "link_label":  "野菜価格ページを見る",
+                                              "link_label_en":  "View vegetable prices (Japanese)",
+                                              "link_label_zh":  "查看蔬菜價格（日文）"
+                                          },
+                                          {
+                                              "category":  "新製品情報",
+                                              "category_en":  "New products",
+                                              "category_zh":  "新產品資訊",
+                                              "label":  "6件を追加（累計30件）",
+                                              "label_en":  "6 new releases (30 in total)",
+                                              "label_zh":  "新增6件（累計30件）",
+                                              "detail":  "森永乳業「クラフト ひとくちフレッシュモッツァレラ30g」、キユーピー「満足サラダボウル」など。",
+                                              "detail_en":  "Including Morinaga Milk\u0027s \"Kraft Hitokuchi Fresh Mozzarella 30g\" and Kewpie\u0027s \"Manzoku Salad Bowl\".",
+                                              "detail_zh":  "包括森永乳業「クラフト ひとくちフレッシュモッツァレラ30g」、丘比「満足サラダボウル」等。",
+                                              "link_page":  "product_news.html",
+                                              "link_label":  "新製品情報ページを見る",
+                                              "link_label_en":  "View new products (Japanese)",
+                                              "link_label_zh":  "查看新產品資訊（日文）"
+                                          }
+                                      ],
+                       "analysis":  {
+                                        "intro":  "10月は飲食料品の値上げが3千品目を超える一方、米は新米の流通で値下がりが続くなど、品目によって値動きが大きく分かれた月でした。各社の新製品からは「少人数・ひと手間未満」と「季節限定のちょっとした贅沢」という2つの流れが読み取れます。",
+                                        "intro_en":  "In October, price increases exceeded 3,000 food and beverage items, while rice kept getting cheaper as the new harvest reached stores: price movements diverged sharply by item. New products from major makers point to two currents: smaller portions with less-than-minimal effort, and seasonal limited-edition small indulgences.",
+                                        "intro_zh":  "10月飲食品漲價超過3,000項，另一方面米價因新米上市持續下跌，不同品項的價格走勢明顯分歧。從各公司新產品可看出兩個趨勢：「少人數・比一點工夫還省事」，以及「季節限定的小奢侈」。",
+                                        "note":  "「生活者ニーズ」「市場」は公表統計・報道に基づく事実、「読み取れること」は当サイトによる見立てです。個々の新製品が特定の市場動向を狙ったものと各社が公表しているわけではありません。",
+                                        "note_en":  "\"Consumer needs\" and \"market\" are facts based on published statistics and reports; \"takeaways\" are this site\u0027s interpretation. The companies have not stated that individual products target specific market trends. Sources are in Japanese.",
+                                        "note_zh":  "「消費者需求」與「市場動向」是根據公開統計與報導的事實；「觀察重點」則是本站的解讀。各公司並未表示個別新產品是針對特定市場趨勢而推出。資料來源均為日文。",
+                                        "sources":  [
+                                                        {
+                                                            "name":  "帝国データバンク「食品主要195社」価格改定動向調査 ― 2026年10月",
+                                                            "name_en":  "Teikoku Databank, price revision survey of 195 major food makers (October 2026)",
+                                                            "name_zh":  "帝國數據銀行〈主要195家食品公司價格調整動向調查－2026年10月〉",
+                                                            "url":  "https://www.tdb.co.jp/report/economic/20260930-pricepass-on202609/"
+                                                        },
+                                                        {
+                                                            "name":  "総務省統計局「消費者物価指数」（当サイト食品価格・野菜価格ページ）",
+                                                            "name_en":  "Statistics Bureau of Japan, Consumer Price Index (this site\u0027s price pages)",
+                                                            "name_zh":  "日本總務省統計局〈消費者物價指數〉（本站價格頁面）",
+                                                            "url":  "https://www.e-stat.go.jp/stat-search/files?page=1\u0026toukei=00200573"
+                                                        },
+                                                        {
+                                                            "name":  "農林水産省「食品産業動態調査」（当サイト市場規模ページ）",
+                                                            "name_en":  "MAFF, Food Industry Trend Survey (this site\u0027s market size page)",
+                                                            "name_zh":  "日本農林水產省〈食品產業動態調查〉（本站市場規模頁面）",
+                                                            "url":  "https://www.maff.go.jp/j/zyukyu/jki/j_doutai/doutai_top.html"
+                                                        }
+                                                    ],
+                                        "themes":  [
+                                                       {
+                                                           "title":  "テーマ1｜少人数・「ひと手間未満」の食卓",
+                                                           "title_en":  "Theme 1 | Smaller households, less-than-minimal effort",
+                                                           "title_zh":  "主題1｜少人數・「比一點工夫還省事」的餐桌",
+                                                           "needs":  "単身・2人世帯が増え、使い切れる量や、疲れた日でも手間をかけずに整う食事へのニーズが強まっている。",
+                                                           "needs_en":  "As single- and two-person households increase, demand is growing for portions that can be used up and for meals that come together with almost no effort, even on tiring days.",
+                                                           "needs_zh":  "單身與兩人家庭增加，對「用得完的份量」以及「疲累時也能不費工夫備好一餐」的需求日益增強。",
+                                                           "market":  "調理食品（冷凍食品・レトルト等）の生産指数は2015年度87.7→2025年度115.2（約+31%）で、当サイトが追う4カテゴリー中で最も拡大している。",
+                                                           "market_en":  "The production index for prepared foods (frozen, retort pouch, etc.) rose from 87.7 in FY2015 to 115.2 in FY2025 (about +31%), the fastest growth of the four categories we track.",
+                                                           "market_zh":  "調理食品（冷凍食品、殺菌軟袋食品等）的生產指數從2015財年的87.7升至2025財年的115.2（約+31%），為本站追蹤的4個類別中成長最快。",
+                                                           "market_link":  "market_size.html",
+                                                           "products":  [
+                                                                            {
+                                                                                "company":  "森永乳業",
+                                                                                "company_en":  "Morinaga Milk",
+                                                                                "company_zh":  "森永乳業",
+                                                                                "name":  "クラフト ひとくちフレッシュモッツァレラ30g",
+                                                                                "name_en":  "Kraft Hitokuchi Fresh Mozzarella 30g",
+                                                                                "date":  "2026-09-24",
+                                                                                "point":  "少人数世帯向けに、定番プレーンで初めての小容量タイプ",
+                                                                                "point_en":  "First small-size version of the plain classic, aimed at smaller households",
+                                                                                "point_zh":  "針對少人數家庭，經典原味首度推出的小容量包裝",
+                                                                                "source_url":  "https://prtimes.jp/main/html/rd/p/000001519.000021580.html"
+                                                                            },
+                                                                            {
+                                                                                "company":  "キユーピー",
+                                                                                "company_en":  "Kewpie",
+                                                                                "company_zh":  "丘比（Kewpie）",
+                                                                                "name":  "満足サラダボウル（Qummy）",
+                                                                                "name_en":  "Manzoku Salad Bowl (Qummy)",
+                                                                                "date":  "2026-10-13",
+                                                                                "point":  "疲れた夜に、好きな具材をワンボウルで楽しむ「ひと手間未満」のごちそう",
+                                                                                "point_en":  "A one-bowl meal with your favorite toppings for tired evenings: less than minimal effort",
+                                                                                "point_zh":  "疲累的夜晚，把喜歡的食材放進一碗就完成的「比一點工夫還省事」的美味",
+                                                                                "source_url":  "https://prtimes.jp/main/html/rd/p/000000755.000044559.html"
+                                                                            },
+                                                                            {
+                                                                                "company":  "キユーピー",
+                                                                                "company_en":  "Kewpie",
+                                                                                "company_zh":  "丘比（Kewpie）",
+                                                                                "name":  "キユーピーのたまご「炒卵（チャーラン）」ほか2品",
+                                                                                "name_en":  "Kewpie no Tamago \"Charan\" (egg for fried rice) and 2 more",
+                                                                                "date":  "2026-10-01",
+                                                                                "point":  "炒飯用・料理用・プリン用に加工した卵で、理想の卵料理を手軽に",
+                                                                                "point_en":  "Eggs processed for fried rice, cooking and pudding, making ideal egg dishes easy",
+                                                                                "point_zh":  "針對炒飯、料理、布丁加工的蛋品，輕鬆做出理想的蛋料理",
+                                                                                "source_url":  "https://prtimes.jp/main/html/rd/p/000000756.000044559.html"
+                                                                            }
+                                                                        ],
+                                                           "takeaway":  "量を減らす（小容量）、工程を減らす（ワンボウル・用途別の卵）という2方向で、「使い切れる」「失敗しない」を約束する商品が並んだ。調理食品市場の拡大と同じ方向の動きと考えられる。",
+                                                           "takeaway_en":  "Products promise \"easy to use up\" and \"hard to get wrong\" in two ways: less quantity (small packs) and fewer steps (one-bowl meals, purpose-processed eggs). This appears to move in the same direction as the growing prepared-food market.",
+                                                           "takeaway_zh":  "以「減少份量」（小容量）與「減少步驟」（一碗完成、依用途加工的蛋）兩個方向，承諾「用得完」「不會失敗」的商品並列登場，被認為與調理食品市場擴大的方向一致。"
+                                                       },
+                                                       {
+                                                           "title":  "テーマ2｜値上げの波と「季節限定のちょっとした贅沢」",
+                                                           "title_en":  "Theme 2 | A wave of price hikes and seasonal small indulgences",
+                                                           "title_zh":  "主題2｜漲價潮與「季節限定的小奢侈」",
+                                                           "needs":  "値上げが続くなかで日常品は節約しつつ、季節感のある限定品など「ちょっとした楽しみ」にはお金を使う、メリハリ型の消費が続いている。",
+                                                           "needs_en":  "With prices still rising, consumers economize on everyday items while still spending on small pleasures such as seasonal limited editions: a selective style of spending.",
+                                                           "needs_zh":  "在持續漲價下，消費者在日常用品上節省，但仍願意為季節限定等「小小的樂趣」花錢，呈現有張有弛的消費型態。",
+                                                           "market":  "帝国データバンクによると10月の飲食料品値上げは3,153品目で、2か月連続の3千品目超え。当サイトのCPIでも食用油は前年同月比+19.0%、しょうゆは+4.4%（前月比+6.3%）と上昇した。",
+                                                           "market_en":  "According to Teikoku Databank, 3,153 food and beverage items rose in price in October, the second straight month above 3,000. In our CPI data, cooking oil rose 19.0% year on year and soy sauce 4.4% (up 6.3% from August).",
+                                                           "market_zh":  "根據帝國數據銀行，10月飲食品漲價3,153項，連續2個月超過3,000項。本站CPI資料中，食用油年增19.0%，醬油年增4.4%（月增6.3%）。",
+                                                           "market_link":  "",
+                                                           "products":  [
+                                                                            {
+                                                                                "company":  "森永乳業",
+                                                                                "company_en":  "Morinaga Milk",
+                                                                                "company_zh":  "森永乳業",
+                                                                                "name":  "MOW PRIME ストロベリーラバーズ",
+                                                                                "name_en":  "MOW PRIME Strawberry Lovers",
+                                                                                "date":  "2026-10-22",
+                                                                                "point":  "いちごクッキーをのせた高価格帯アイス、数量限定",
+                                                                                "point_en":  "Premium ice cream topped with strawberry cookies, limited quantity",
+                                                                                "point_zh":  "加上草莓餅乾的高價位冰淇淋，數量限定",
+                                                                                "source_url":  "https://prtimes.jp/main/html/rd/p/000001538.000021580.html"
+                                                                            },
+                                                                            {
+                                                                                "company":  "森永乳業",
+                                                                                "company_en":  "Morinaga Milk",
+                                                                                "company_zh":  "森永乳業",
+                                                                                "name":  "リプトン 蜜芋ミルクティー",
+                                                                                "name_en":  "Lipton Honey Sweet Potato Milk Tea",
+                                                                                "date":  "2026-09-29",
+                                                                                "point":  "蜜芋の甘さを合わせた秋限定のミルクティー",
+                                                                                "point_en":  "Autumn-only milk tea with the sweetness of honey-glazed sweet potato",
+                                                                                "point_zh":  "結合蜜芋甜味的秋季限定奶茶",
+                                                                                "source_url":  "https://prtimes.jp/main/html/rd/p/000001520.000021580.html"
+                                                                            },
+                                                                            {
+                                                                                "company":  "森永乳業",
+                                                                                "company_en":  "Morinaga Milk",
+                                                                                "company_zh":  "森永乳業",
+                                                                                "name":  "ドラゴンフルーツボウル＆ヨーグルト Powered by 森永アロエ",
+                                                                                "name_en":  "Dragon Fruit Bowl \u0026 Yogurt Powered by Morinaga Aloe",
+                                                                                "date":  "2026-09-29",
+                                                                                "point":  "スーパーフルーツ×アロエの新しい組み合わせ",
+                                                                                "point_en":  "A new pairing of superfruit and aloe",
+                                                                                "point_zh":  "超級水果×蘆薈的新組合",
+                                                                                "source_url":  "https://prtimes.jp/main/html/rd/p/000001522.000021580.html"
+                                                                            }
+                                                                        ],
+                                                           "takeaway":  "値上げの多い月でも、各社は「期間限定」「数量限定」「季節の素材」で選ぶ理由をつくっている。価格が上がる局面ほど、価格以外の「今買う理由」が重要になっていると考えられる。",
+                                                           "takeaway_en":  "Even in a month of widespread price hikes, makers create reasons to buy through limited periods, limited quantities and seasonal ingredients. The more prices rise, the more a reason to buy now, beyond price, seems to matter.",
+                                                           "takeaway_zh":  "即使在漲價眾多的月份，各公司仍以「期間限定」「數量限定」「季節食材」創造購買理由。價格越上漲，價格以外的「現在就買的理由」似乎越重要。"
+                                                       }
+                                                   ]
+                                    },
+                       "domestic_trends":  [
+                                               {
+                                                   "title":  "10月の食品値上げは3,153品目、2か月連続で3千品目超え",
+                                                   "title_en":  "Food price hikes hit 3,153 items in October, above 3,000 for a second month",
+                                                   "title_zh":  "10月食品漲價3,153項，連續2個月超過3,000項",
+                                                   "summary":  "帝国データバンクによると、主要食品メーカー195社の10月の値上げは3,153品目で、分野別では酒類・飲料（1,399品目）と調味料（820品目）が多かった。値上げ要因は「原材料高」が9割超、「エネルギー」も6割超。11月は9月末時点で1,469品目が判明しており、同社は年内の値上げは10月がピークとみている。",
+                                                   "summary_en":  "Teikoku Databank reports that 195 major food makers raised prices on 3,153 items in October, led by alcoholic beverages and soft drinks (1,399) and seasonings (820). Raw-material costs were cited in over 90% of cases and energy in over 60%. As of the end of September, 1,469 items were set to rise in November, and the firm sees October as this year\u0027s peak.",
+                                                   "summary_zh":  "根據帝國數據銀行，日本主要195家食品廠商10月漲價3,153項，以酒類・飲料（1,399項）與調味料（820項）最多。漲價原因中「原料價格上漲」超過九成、「能源」超過六成。截至9月底，11月已確定漲價1,469項，該公司認為今年的漲價以10月為高峰。",
+                                                   "source_url":  "https://www.tdb.co.jp/report/economic/20260930-pricepass-on202609/",
+                                                   "source_name":  "帝国データバンク",
+                                                   "source_name_en":  "Teikoku Databank",
+                                                   "source_name_zh":  "帝國數據銀行"
+                                               },
+                                               {
+                                                   "title":  "コメの店頭価格は10週連続の値下がり",
+                                                   "title_en":  "Rice retail prices fall for a 10th straight week",
+                                                   "title_zh":  "米的店頭價格連續10週下跌",
+                                                   "summary":  "農林水産省が10月23日に公表したスーパーの販売価格（10月12〜18日販売分）は、コメ5キロ平均で2,821円と前週から16円下がり、10週連続の値下がりとなった。2026年産の新米が本格的に出回り始めたことが背景とされる。",
+                                                   "summary_en":  "Supermarket sales data released by MAFF on October 23 (for October 12 to 18) showed an average of JPY 2,821 per 5 kg of rice, down JPY 16 from the previous week and the 10th consecutive weekly decline, as the cheaper 2026 harvest reached stores in earnest.",
+                                                   "summary_zh":  "日本農林水產省10月23日公布的超市售價（10月12日至18日）顯示，米每5公斤平均2,821日圓，比前週低16日圓，連續10週下跌。背景是2026年產新米開始大量上市。",
+                                                   "source_url":  "https://www.niigata-nippo.co.jp/articles/-/930052",
+                                                   "source_name":  "新潟日報（共同通信）",
+                                                   "source_name_en":  "Niigata Nippo (Kyodo News)",
+                                                   "source_name_zh":  "新潟日報（共同社）"
+                                               },
+                                               {
+                                                   "title":  "食用油は6月に再値上げ、CPIでも上昇が続く",
+                                                   "title_en":  "Cooking oil makers raised prices again in June; CPI keeps climbing",
+                                                   "title_zh":  "食用油6月再度漲價，CPI持續上升",
+                                                   "summary":  "日清オイリオグループは6月1日納入分から、家庭用食用油を11〜15%、業務用・加工用を17〜21%引き上げた。バイオ燃料需要の増加と中東情勢による植物油価格の高騰が理由。当サイトのCPIでも食用油は9月に前年同月比+19.0%となっている。",
+                                                   "summary_en":  "Nisshin OilliO Group raised household cooking oil prices by 11-15% and foodservice/industrial oil by 17-21% for deliveries from June 1, citing higher biofuel demand and vegetable oil prices pushed up by the Middle East situation. In our CPI data, cooking oil was up 19.0% year on year in September.",
+                                                   "summary_zh":  "日清OilliO集團自6月1日交貨起，家庭用食用油調漲11～15%，業務用與加工用調漲17～21%，原因是生質燃料需求增加以及中東局勢導致植物油價格高漲。本站CPI資料中，9月食用油年增19.0%。",
+                                                   "source_url":  "https://shokuhin.net/143275/2026/04/22/kakou/yushi/",
+                                                   "source_name":  "食品産業新聞社",
+                                                   "source_name_en":  "Shokuhin Sangyo Shimbun",
+                                                   "source_name_zh":  "食品產業新聞社"
+                                               }
+                                           ],
+                       "outlook":  "11月の値上げは判明分で1,469品目と10月から大きく減る見通しで、値上げの勢いが落ち着くかが焦点。米は新米の流通で値下がりが続くかに注目したい。10月分の消費者物価指数は11月下旬に公表予定で、当サイトの食品価格・野菜価格も更新する。",
+                       "outlook_en":  "November price hikes are expected to fall sharply to 1,469 items (known so far), so the question is whether the wave of increases eases. For rice, watch whether prices keep falling as the new harvest spreads. October CPI data is due in late November, and we will update our price pages then.",
+                       "outlook_zh":  "11月已確定的漲價為1,469項，預計較10月大幅減少，焦點在於漲價潮是否趨緩。米價則關注新米上市後是否持續下跌。10月份消費者物價指數預定於11月下旬公布，本站食品價格與蔬菜價格頁面也將隨之更新。"
+                   },
                    {
                        "ym":  "2026-09",
                        "label_ja":  "2026年9月",
