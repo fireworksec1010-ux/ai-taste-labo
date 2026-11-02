@@ -1,0 +1,65 @@
+﻿{
+  "meta": {
+    "description": "週次SNS投稿用のデータ。値は農林水産省の公表資料（PDF）から転記。",
+    "updated_at": "2026-11-02",
+    "sources": {
+      "rice": { "name": "農林水産省「スーパーでの販売数量・価格の推移（POSデータに基づき作成、全国・週次）」", "page": "https://www.maff.go.jp/j/nousan/kokumotu/kome_kakaku.html", "pdf": "https://www.maff.go.jp/j/nousan/kokumotu/ksppos.pdf", "note": "KSP-SP社POSデータ、全国約1,000店舗のスーパー、5kg税込。毎週原則金曜公表。" },
+      "veggie": { "name": "農林水産省「食品価格動向調査（野菜）」", "page": "https://www.maff.go.jp/j/zyukyu/anpo/kouri/k_yasai/h22index.html", "note": "全国470店舗の訪問調査、特売除く税込の全国平均（円/kg）。平年比は過去5か年（令和3〜7年度）平均比。原則火〜水曜公表。" }
+    }
+  },
+  "rice_weekly": [
+    { "week_start": "2026-02-02", "avg": 4204, "brand": 4294, "blend": 3947 },
+    { "week_start": "2026-02-09", "avg": 4122, "brand": 4209, "blend": 3878 },
+    { "week_start": "2026-02-16", "avg": 4118, "brand": 4221, "blend": 3859 },
+    { "week_start": "2026-02-23", "avg": 4073, "brand": 4179, "blend": 3795 },
+    { "week_start": "2026-03-02", "avg": 4013, "brand": 4114, "blend": 3755 },
+    { "week_start": "2026-03-09", "avg": 3980, "brand": 4089, "blend": 3701 },
+    { "week_start": "2026-03-16", "avg": 3978, "brand": 4088, "blend": 3676 },
+    { "week_start": "2026-03-23", "avg": 3935, "brand": 4005, "blend": 3703 },
+    { "week_start": "2026-03-30", "avg": 3933, "brand": 3983, "blend": 3736 },
+    { "week_start": "2026-04-06", "avg": 3873, "brand": 3941, "blend": 3659 },
+    { "week_start": "2026-04-13", "avg": 3883, "brand": 3947, "blend": 3676 },
+    { "week_start": "2026-04-20", "avg": 3842, "brand": 3945, "blend": 3568 },
+    { "week_start": "2026-04-27", "avg": 3796, "brand": 3857, "blend": 3600 },
+    { "week_start": "2026-05-04", "avg": 3742, "brand": 3809, "blend": 3534 },
+    { "week_start": "2026-05-11", "avg": 3768, "brand": 3841, "blend": 3541 },
+    { "week_start": "2026-05-18", "avg": 3692, "brand": 3758, "blend": 3464 },
+    { "week_start": "2026-05-25", "avg": 3673, "brand": 3764, "blend": 3418 },
+    { "week_start": "2026-06-01", "avg": 3644, "brand": 3715, "blend": 3427 },
+    { "week_start": "2026-06-08", "avg": 3588, "brand": 3644, "blend": 3399 },
+    { "week_start": "2026-06-15", "avg": 3590, "brand": 3655, "blend": 3371 },
+    { "week_start": "2026-06-22", "avg": 3554, "brand": 3608, "blend": 3343 },
+    { "week_start": "2026-06-29", "avg": 3458, "brand": 3521, "blend": 3237 },
+    { "week_start": "2026-07-06", "avg": 3403, "brand": 3455, "blend": 3216 },
+    { "week_start": "2026-07-13", "avg": 3373, "brand": 3450, "blend": 3128 },
+    { "week_start": "2026-07-20", "avg": 3311, "brand": 3363, "blend": 3130 },
+    { "week_start": "2026-07-27", "avg": 3198, "brand": 3230, "blend": 3068 },
+    { "week_start": "2026-08-03", "avg": 3220, "brand": 3255, "blend": 3079 },
+    { "week_start": "2026-08-10", "avg": 3191, "brand": 3211, "blend": 3094 },
+    { "week_start": "2026-08-17", "avg": 3156, "brand": 3175, "blend": 3061 },
+    { "week_start": "2026-08-24", "avg": 3112, "brand": 3129, "blend": 3023 },
+    { "week_start": "2026-08-31", "avg": 3003, "brand": 3023, "blend": 2900 },
+    { "week_start": "2026-09-07", "avg": 2971, "brand": 2988, "blend": 2866 },
+    { "week_start": "2026-09-14", "avg": 2934, "brand": 2966, "blend": 2783 },
+    { "week_start": "2026-09-21", "avg": 2926, "brand": 2948, "blend": 2805 },
+    { "week_start": "2026-09-28", "avg": 2860, "brand": 2882, "blend": 2733 },
+    { "week_start": "2026-10-05", "avg": 2837, "brand": 2878, "blend": 2682 },
+    { "week_start": "2026-10-12", "avg": 2821, "brand": 2872, "blend": 2609 },
+    { "week_start": "2026-10-19", "avg": 2788, "brand": 2811, "blend": 2678, "yoy_prev_avg": 4208, "published": "2026-10-30" }
+  ],
+  "rice_peak": { "week_start": "2025-12-29", "avg": 4416 },
+  "veggie_weekly": [
+    { "week_start": "2026-10-19", "survey_days": "10/19-10/21",
+      "items": [
+        { "key": "cabbage", "ja": "キャベツ", "en": "Cabbage", "price": 387, "wow": 103, "vs_normal": 194 },
+        { "key": "green_onion", "ja": "ねぎ", "en": "Green onion", "price": 910, "wow": 95, "vs_normal": 98 },
+        { "key": "lettuce", "ja": "レタス", "en": "Lettuce", "price": 989, "wow": 82, "vs_normal": 176 },
+        { "key": "onion", "ja": "たまねぎ", "en": "Onion", "price": 312, "wow": 99, "vs_normal": 96 },
+        { "key": "tomato", "ja": "トマト", "en": "Tomato", "price": 1100, "wow": 100, "vs_normal": 102 },
+        { "key": "carrot", "ja": "にんじん", "en": "Carrot", "price": 465, "wow": 98, "vs_normal": 98 },
+        { "key": "napa_cabbage", "ja": "はくさい", "en": "Napa cabbage", "price": 462, "wow": 88, "vs_normal": 159 },
+        { "key": "daikon", "ja": "だいこん", "en": "Daikon radish", "price": 276, "wow": 101, "vs_normal": 110 }
+      ] }
+  ],
+  "news_weekly": []
+}

@@ -82,6 +82,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 - 会社を追加するときも同じ項目で `companies` に追記する。
 - **OEMメーカー（oem_makers.html / oem_makers_data.json）**：業界マップとは別タブの独立ページ（2026-10-18追加）。データは `oem_makers_data.json`（2026-10-18作成、15社・5分野）。各社の**公式サイトに書かれていること**（社名・所在地・得意製品・最小ロット・認証）だけを載せ、売上など非公表の数字は載せない。年1回、業界マップ更新時に各社公式サイトを開き、OEMの受付停止・ロット変更がないか確認して `meta.generated_at` を更新。新規受付を停止した会社は外す（例：たにぐちは2026-10時点で停止中のため不掲載）。中国語版には未掲載。
 
+### 8. 週次SNS投稿（Threads・Instagram、英語）
+- 手順の全文は `sns/weekly/WEEKLY_PROMPT.md`。「週次投稿して」と言われたらこの手順どおりに進める（ユーザーは確認なしの予約まで了承済み）。
+- テーマ（投稿日＝金曜の「日」で判定）：1〜7日 Rice Price Watch／8〜14日 Veggie Price Check／15〜21日 New in Japan／22〜28日 月次投稿があればスキップ、無ければ Rice／29〜31日 Veggie。毎週金曜21:00 JST に予約。
+- データ源：米＝農水省 KSP-POS 週次PDF `https://www.maff.go.jp/j/nousan/kokumotu/ksppos.pdf`（原則金曜公表）、野菜＝農水省 食品価格動向調査（野菜）`https://www.maff.go.jp/j/zyukyu/anpo/kouri/k_yasai/h22index.html` の最新PDF（原則火〜水曜公表、8品目・平年比）、新製品＝PR TIMES RSS `https://prtimes.jp/companyrdf.php?company_id=<id>`（一覧ページはJS描画で読めないのでRSSを使う）。
+- PDFは `scripts/pdf_to_png.ps1`（Windows標準のPDFエンジンで画像化）→ Readで目視。値は `sns/weekly/data.json` に追記。
+- 画像：`scripts/make_weekly_card.ps1 -Theme rice|veggie|news -Date yyyy-MM-dd` → `sns/weekly/<日付>/card.png` を push して公開URLにし、Metricool（blogId 7491183）で threads と instagram に別々に予約。Threadsは500文字以内、Instagramは画像必須・本文URLは押せないので「link in bio」。
+- 月次の画像は `scripts/make_instagram.ps1 -Month <YYYY-MM> -Label "<Month YYYY>"`（4枚カルーセル）。
+
 ### 7. お問い合わせ（contact.html）
 - 宛先はmailtoのみ（fireworks.fd.2020@gmail.com）。変更依頼があるときだけ編集。
 
