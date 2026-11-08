@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>郷土料理マップ｜47都道府県の伝統料理（わんこそば・ぼたん鍋・味噌煮込みうどん）｜AI Taste Labo</title>
+<meta name="description" content="わんこそば、ぼたん鍋（いのしし鍋）、味噌煮込みうどん、しもつかれ、あんもち雑煮など、47都道府県の個性的な郷土料理を日本地図で紹介。農林水産省「うちの郷土料理」を参考にまとめています。">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/food_culture.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="郷土料理マップ｜47都道府県の伝統料理">
+<meta property="og:description" content="わんこそば、ぼたん鍋、味噌煮込みうどん…日本各地の面白い郷土料理を地図で紹介。">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/food_culture.html">
+<meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
+<style>[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --border:         rgba(11,11,11,0.10);
+    --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --accent: #d03b3b;
+  }
+  /* このページは常にライト配色に固定しています */
+
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary); font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:#2a78d6; }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+
+  .hero{ padding:32px 0 20px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--text-secondary); margin-bottom:14px; }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero h1{ font-size:clamp(28px,5vw,40px); line-height:1.2; }
+  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:64ch; margin:16px 0 0; }
+
+  section{ padding:30px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:16px; }
+  .section-head h2{ font-size:22px; }
+  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:4px; max-width:64ch; line-height:1.7; }
+
+  /* ---- featured ---- */
+  .fun-row{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; }
+  .fun-card{ background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:14px 15px; box-shadow:var(--card-shadow); border-top:4px solid var(--c); cursor:pointer; text-align:left; font-family:inherit; color:inherit; }
+  .fun-card:focus-visible{ outline:2px solid var(--c); outline-offset:2px; }
+  .fun-card .p{ font-size:11.5px; font-weight:700; color:var(--c); }
+  .fun-card .d{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:19px; margin:3px 0 6px; line-height:1.35; }
+  .fun-card .t{ font-size:12px; line-height:1.7; color:var(--text-secondary); }
+
+  /* ---- map ---- */
+  .map-layout{ display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:18px; align-items:start; }
+  .map-card{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:14px; box-shadow:var(--card-shadow); }
+  svg.jmap{ width:100%; height:auto; display:block; }
+  .tile{ cursor:pointer; }
+  .tile rect{ transition:opacity .1s; }
+  .tile:hover rect, .tile.sel rect{ stroke:#0b0b0b; stroke-width:3; }
+  .tile.dim rect{ opacity:.18; }
+  .tile text{ pointer-events:none; font-family:"Zen Kaku Gothic New",sans-serif; }
+  .legend{ display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .chip{ display:inline-flex; align-items:center; gap:6px; padding:6px 11px; border-radius:99px; border:1px solid var(--border); background:var(--surface-1); font-size:12.5px; font-weight:500; cursor:pointer; font-family:inherit; color:var(--text-primary); }
+  .chip .sw{ width:9px; height:9px; border-radius:50%; }
+  .chip[aria-pressed="true"]{ font-weight:700; border-color:var(--text-primary); box-shadow:0 0 0 1px var(--text-primary) inset; }
+
+  .detail{ position:sticky; top:12px; background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:20px; box-shadow:var(--card-shadow); border-top:6px solid var(--c, #898781); }
+  .detail .p{ font-size:13px; font-weight:700; color:var(--c); }
+  .detail h3{ font-size:26px; line-height:1.3; margin:6px 0 2px; }
+  .detail .en{ font-size:12.5px; color:var(--text-muted); font-weight:700; }
+  .detail .cat{ display:inline-block; margin-top:10px; font-size:11.5px; font-weight:700; color:#fff; background:var(--c); border-radius:99px; padding:2px 10px; }
+  .detail .fun{ display:inline-block; margin-left:6px; font-size:11.5px; font-weight:700; color:#5c4813; background:#fff1c9; border-radius:99px; padding:2px 10px; }
+  .detail p{ font-size:14px; line-height:1.85; color:var(--text-secondary); margin:12px 0 0; }
+  .detail .hint{ font-size:12px; color:var(--text-muted); margin-top:14px; }
+
+  /* ---- list ---- */
+  .region{ margin-top:18px; }
+  .region h3{ font-size:16px; margin-bottom:8px; }
+  .list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:8px; }
+  .item{ display:grid; grid-template-columns:62px 1fr; gap:8px; align-items:baseline; background:var(--surface-1); border:1px solid var(--border); border-left:4px solid var(--c); border-radius:8px; padding:9px 11px; font-size:12.5px; cursor:pointer; text-align:left; font-family:inherit; color:inherit; }
+  .item .pp{ font-weight:700; color:var(--text-muted); font-size:11.5px; }
+  .item .dd{ font-weight:700; color:var(--text-primary); font-size:13.5px; }
+  .item .dd small{ font-weight:500; color:var(--text-muted); font-size:11px; margin-left:4px; }
+
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
+  .ico-badge{ display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:var(--c); margin-bottom:8px; }
+  .fun-card .head{ display:flex; align-items:center; gap:10px; }
+  .fun-card .head .ib{ display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:var(--c); flex:none; }
+  .item{ grid-template-columns:26px 62px 1fr !important; }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.8; max-width:74ch; }
+
+  @media (max-width:760px){
+    .map-layout{ grid-template-columns:1fr; }
+    .detail{ position:static; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="top-nav">
+    <a href="index.html">ホーム</a>
+    <a href="monthly_digest.html">月次トピックス</a>
+    <a href="food_prices.html">食品価格</a>
+    <a href="vegetables.html">野菜価格</a>
+    <a href="trade.html">輸入統計</a>
+    <a href="product_news.html">新製品情報</a>
+    <a href="market_size.html">市場規模</a>
+    <a href="industry_map.html">業界マップ</a>
+    <a href="oem_makers.html">OEMメーカー</a>
+    <a href="food_culture.html" class="active">郷土料理</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="en/monthly_digest.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
+    <a href="zh/monthly_digest.html" lang="zh-Hant" style="color:#2a78d6;font-weight:700;">中文</a>
+  </nav>
+
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span>日本の食文化</div>
+    <h1>郷土料理マップ</h1>
+    <p>わんこそば、ぼたん鍋（いのしし鍋）、味噌煮込みうどん――。日本には、その土地の気候や産物、行事から生まれた個性的な料理があります。47都道府県から1品ずつ選び、地図で紹介します。都道府県をタップすると料理の説明が出ます。</p>
+  </div>
+
+  <section id="fun">
+    <div class="section-head">
+      <h2>ちょっと驚く、おもしろ郷土料理</h2>
+      <div class="section-sub">食べ方や見た目、名前の由来がユニークな料理を集めました。</div>
+    </div>
+    <div class="fun-row" id="fun-row"></div>
+  </section>
+
+  <section id="map-sec">
+    <div class="section-head">
+      <h2>地図で見る47都道府県</h2>
+      <div class="section-sub">色は料理の種類です。下のボタンで種類を絞り込めます。★はおもしろ郷土料理。</div>
+    </div>
+    <div class="map-layout">
+      <div class="map-card">
+        <svg class="jmap" id="jmap" viewBox="0 0 900 840" role="img" aria-label="都道府県別の郷土料理の地図"></svg>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="detail" id="detail"></div>
+    </div>
+  </section>
+
+  <section id="list-sec">
+    <div class="section-head">
+      <h2>地方別の一覧</h2>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <footer>
+    <h2 style="font-size:18px;">出典・注記</h2>
+    <div class="disclaimer" style="margin-top:12px;">
+      ・料理の選定と紹介文は、農林水産省「<a href="https://www.maff.go.jp/j/keikaku/syokubunka/k_ryouri/" target="_blank" rel="noopener">うちの郷土料理</a>」などを参考に、当サイトが要約したものです。<br>
+      ・各都道府県の料理は代表例の1つです。ほかにも多くの郷土料理があり、作り方や具材、呼び名は地域や家庭によって異なります。<br>
+      ・地図は都道府県の位置関係をマス目で表した模式図で、実際の形や面積とは異なります。<br>
+      ・「ここの料理も載せてほしい」などのご意見は <a href="contact.html">お問い合わせ</a> からお知らせください。
+    </div>
+    <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var state = { data:null, cat:"all", sel:null };
+  var SIZE = 60, GAP = 4, PAD = 2;
+  var svgns = "http://www.w3.org/2000/svg";
+
+  function catOf(key){ return state.data.categories.find(function(c){ return c.key===key; }); }
+  function el(tag, attrs){ var e = document.createElementNS(svgns, tag); for(var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function short(p){ return p; }
+
+  // 料理の種類ごとのアイコン（24x24の線画）
+  var ICONS = {
+    nabe:   '<path d="M3 11h18v1.5a7.5 7.5 0 0 1-7.5 7.5h-3A7.5 7.5 0 0 1 3 12.5z"/><path d="M1.5 11h21"/><path d="M8 7.5c0-1.6 1.2-1.6 1.2-3.3M12 7.5c0-1.6 1.2-1.6 1.2-3.3M16 7.5c0-1.6 1.2-1.6 1.2-3.3"/>',
+    soup:   '<path d="M3 11h18c0 4.4-4 8-9 8s-9-3.6-9-8z"/><path d="M8 21.5h8"/><path d="M10 7.5c0-1.6 1.2-1.6 1.2-3.3M14 7.5c0-1.6 1.2-1.6 1.2-3.3"/>',
+    noodle: '<path d="M3 12h18c0 4.4-4 8-9 8s-9-3.6-9-8z"/><path d="M14.5 2.5L10.5 12M20 3.5l-6.5 8.5"/><path d="M6 15.5c1-1.4 2 1.4 3 0s2 1.4 3 0 2 1.4 3 0 2 1.4 3 0"/>',
+    rice:   '<path d="M12 3c-2.2 0-8 10.5-8 13.8A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2C20 13.5 14.2 3 12 3z"/><path d="M8.5 14h7v6h-7z"/>',
+    dish:   '<ellipse cx="12" cy="15.5" rx="10" ry="4"/><path d="M5.5 13.5c2.2-3.2 7.6-3.2 9.8 0-2.2 3.2-7.6 3.2-9.8 0z"/><path d="M15.3 13.5l3.2-2.2v4.4z"/><circle cx="8.3" cy="13" r=".6"/>',
+    sweet:  '<path d="M3.5 20.5L20.5 3.5"/><circle cx="8" cy="16" r="2.7"/><circle cx="12" cy="12" r="2.7"/><circle cx="16" cy="8" r="2.7"/>'
+  };
+  function icon(cat, size, color){
+    return '<svg class="ico" viewBox="0 0 24 24" width="'+size+'" height="'+size+'" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS[cat]||"")+'</svg>';
+  }
+
+  function renderMap(){
+    var svg = document.getElementById("jmap");
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    state.data.dishes.forEach(function(d){
+      var cat = catOf(d.cat);
+      var x = PAD + d.c*(SIZE+GAP), y = PAD + d.r*(SIZE+GAP);
+      var g = el("g", { "class":"tile", "tabindex":"0", "role":"button", "aria-label": d.pref+"："+d.dish });
+      if(state.cat!=="all" && d.cat!==state.cat) g.classList.add("dim");
+      if(state.sel===d.pref) g.classList.add("sel");
+      g.appendChild(el("rect", { x:x, y:y, width:SIZE, height:SIZE, rx:8, fill:cat.color }));
+      var ic = el("svg", { x:x+SIZE/2-12, y:y+6, width:24, height:24, viewBox:"0 0 24 24", fill:"none", stroke:"#fff", "stroke-width":"1.9", "stroke-linecap":"round", "stroke-linejoin":"round" });
+      ic.innerHTML = ICONS[d.cat] || ""; g.appendChild(ic);
+      var t = el("text", { x:x+SIZE/2, y:y+SIZE-9, "text-anchor":"middle", "font-size": d.pref.length>2 ? 13 : 15, "font-weight":"700", fill:"#fff" });
+      t.textContent = short(d.pref); g.appendChild(t);
+      if(d.fun){ var s = el("text", { x:x+SIZE-9, y:y+14, "text-anchor":"middle", "font-size":12, fill:"#fff2b3" }); s.textContent = "★"; g.appendChild(s); }
+      g.addEventListener("click", function(){ select(d.pref); });
+      g.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(d.pref); } });
+      svg.appendChild(g);
+    });
+  }
+
+  function renderLegend(){
+    var row = document.getElementById("legend");
+    var items = [{ key:"all", label:"すべて", color:"#898781" }].concat(state.data.categories);
+    row.innerHTML = items.map(function(c){
+      var n = c.key==="all" ? state.data.dishes.length : state.data.dishes.filter(function(d){ return d.cat===c.key; }).length;
+      return '<button type="button" class="chip" data-key="'+c.key+'" aria-pressed="'+(state.cat===c.key)+'">'+(c.key==="all" ? '<span class="sw" style="background:'+c.color+'"></span>' : icon(c.key, 18, c.color))+c.label+'（'+n+'）</button>';
+    }).join("");
+  }
+
+  function renderDetail(){
+    var box = document.getElementById("detail");
+    var d = state.data.dishes.find(function(x){ return x.pref===state.sel; });
+    if(!d){
+      box.style.setProperty("--c", "#898781");
+      box.innerHTML = '<div class="p">都道府県を選んでください</div><h3>地図のマスを<br>タップ</h3><p>各都道府県の代表的な郷土料理を1品ずつ紹介しています。★の付いた県は、とくにユニークな料理です。</p>';
+      return;
+    }
+    var cat = catOf(d.cat);
+    box.style.setProperty("--c", cat.color);
+    box.innerHTML = '<span class="ico-badge">'+icon(d.cat, 38, "#fff")+'</span>'+
+      '<div class="p">'+d.pref+'（'+d.region+'）</div>'+
+      '<h3>'+d.dish+'</h3><div class="en">'+d.en+'</div>'+
+      '<span class="cat">'+cat.label+'</span>'+(d.fun ? '<span class="fun">★ おもしろ郷土料理</span>' : '')+
+      '<p>'+d.desc+'</p>'+
+      '<div class="hint">詳しい作り方や由来は、農林水産省「うちの郷土料理」でも紹介されています。</div>';
+  }
+
+  function select(pref){
+    state.sel = pref;
+    renderMap(); renderDetail();
+    if(window.innerWidth <= 760){ document.getElementById("detail").scrollIntoView({ behavior:"smooth", block:"nearest" }); }
+  }
+
+  function renderFun(){
+    document.getElementById("fun-row").innerHTML = state.data.dishes.filter(function(d){ return d.fun; }).map(function(d){
+      var cat = catOf(d.cat);
+      return '<button type="button" class="fun-card" data-pref="'+d.pref+'" style="--c:'+cat.color+'"><div class="head"><span class="ib">'+icon(d.cat, 24, "#fff")+'</span><div><div class="p">'+d.pref+' ｜ '+cat.label+'</div><div class="d">'+d.dish+'</div></div></div><div class="t">'+d.desc+'</div></button>';
+    }).join("");
+  }
+
+  function renderList(){
+    var html = state.data.regions.map(function(r){
+      var items = state.data.dishes.filter(function(d){ return d.region===r; });
+      return '<div class="region"><h3>'+r+'</h3><div class="list">'+items.map(function(d){
+        var cat = catOf(d.cat);
+        return '<button type="button" class="item" data-pref="'+d.pref+'" style="--c:'+cat.color+'">'+icon(d.cat, 22, cat.color)+'<span class="pp">'+d.pref+'</span><span class="dd">'+d.dish+(d.fun?' <small>★</small>':'')+'</span></button>';
+      }).join("")+'</div></div>';
+    }).join("");
+    document.getElementById("list").innerHTML = html;
+  }
+
+  document.getElementById("legend").addEventListener("click", function(e){
+    var b = e.target.closest(".chip"); if(!b) return;
+    state.cat = b.getAttribute("data-key"); renderLegend(); renderMap();
+  });
+  function jump(e){
+    var b = e.target.closest("[data-pref]"); if(!b) return;
+    select(b.getAttribute("data-pref"));
+    document.getElementById("map-sec").scrollIntoView({ behavior:"smooth" });
+  }
+  document.getElementById("fun-row").addEventListener("click", jump);
+  document.getElementById("list").addEventListener("click", jump);
+
+  fetch("food_culture_data.json").then(function(r){ return r.json(); }).then(function(json){
+    state.data = json;
+    state.sel = "岩手";
+    renderFun(); renderLegend(); renderMap(); renderDetail(); renderList();
+  }).catch(function(err){
+    document.getElementById("fun-row").innerHTML = "<div>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    console.error(err);
+  });
+})();
+</script>
+</body>
+</html>

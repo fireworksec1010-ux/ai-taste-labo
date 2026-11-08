@@ -16,7 +16,7 @@ description: 食品価格サイト「食卓の物価」（AI Taste Labo。食品
 - 各HTMLの先頭にある `<!doctype html>`・`<meta charset>`・`<meta name="viewport">`・`[hidden]{display:none!important}` はGitHub Pagesでの表示（特にスマホ）に必須なので消さない。新しいページを作るときも同じ4行を先頭に入れる。
 - 検索・SNS対策：各ページの `<title>`・`meta description`・`canonical`・OGP（`og:*`、`twitter:card`、共通画像 `ogp.png`）を維持する。ページを追加したら同じ一式を入れ、`sitemap.xml` にもURLを追加する。内容を更新したら `sitemap.xml` の該当ページの `lastmod` を更新日に書き換える。
 - アクセス解析：全ページの `<head>` 内にCloudflare Web Analyticsのコード（token `01b322e4ae7a468da9de43a282ff93f7`）が入っている。消さない。新しいページにも同じコードを入れる。閲覧数はCloudflareのダッシュボード（Analytics → Web 分析）で確認。Google Search Console（URLプレフィックス https://fireworksec1010-ux.github.io/ai-taste-labo/ 、所有権はトップページのmetaタグで確認済み。消さない）にsitemap.xmlを登録済み。
-- 全ページ共通：ライト配色固定、上部ナビ10タブ（ホーム／月次トピックス／食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／OEMメーカー／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
+- 全ページ共通：ライト配色固定、上部ナビ11タブ（ホーム／月次トピックス／食品価格／野菜価格／輸入統計／新製品情報／市場規模／業界マップ／OEMメーカー／郷土料理／お問い合わせ）＋右端に「English」リンク、出典・取得日・注記を必ず明記。
 - 英語版（海外の食品マーケター・日本市場参入検討者向け）：`en/` 以下に置く。現在は `en/monthly_digest.html`・`en/market_size.html` の2ページ。データは日本語版と同じJSON（`../*.json`）を読み、項目名の末尾に `_en` が付いた英語フィールドを表示（無ければ日本語にフォールバック）。
   - **月次トピックス・市場規模を更新したら、追加・変更した項目の `_en` フィールドも必ず書く**（例：`label_en`・`detail_en`・`title_en`・`summary_en`・`trend_note_en`・`text_en`・`outlook_en` など）。英文は直訳ではなく海外読者向けに補足（FY＝4月〜3月、JPY、日本語固有の商品名は英訳＋原語）。
   - 日英ペアのページには `hreflang`（ja / en / x-default=日本語版）を入れる。英語版ナビで未翻訳のページは日本語版にリンクし「JA」マークを付ける。英語版ページを追加したら、日本語側のEnglishリンク先・英語版ナビ・`sitemap.xml` も更新する。
@@ -89,6 +89,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 - PDFは `scripts/pdf_to_png.ps1`（Windows標準のPDFエンジンで画像化）→ Readで目視。値は `sns/weekly/data.json` に追記。
 - 画像：`scripts/make_weekly_card.ps1 -Theme rice|veggie|news -Date yyyy-MM-dd` → `sns/weekly/<日付>/card.png` を push して公開URLにし、Metricool（blogId 7491183）で threads と instagram に別々に予約。Threadsは500文字以内、Instagramは画像必須・本文URLは押せないので「link in bio」。
 - 月次の画像は `scripts/make_instagram.ps1 -Month <YYYY-MM> -Label "<Month YYYY>"`（4枚カルーセル）。
+
+### 9. 郷土料理（food_culture.html / food_culture_data.json）
+- 2026-11-08追加。47都道府県×1品をタイル型の日本地図（c=列, r=行）と一覧で表示。fun=true は「おもしろ郷土料理」に出る。定期更新なし。料理を差し替えるときは農水省「うちの郷土料理」で確認し、紹介文は自分の言葉で書く。
 
 ### 7. お問い合わせ（contact.html）
 - 宛先はmailtoのみ（fireworks.fd.2020@gmail.com）。変更依頼があるときだけ編集。

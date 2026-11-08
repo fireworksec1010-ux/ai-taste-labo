@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "generated_at": "2026-11-08",
+    "description": "47都道府県の代表的な郷土料理を1品ずつ。紹介文は当サイトが要約したもので、作り方や具材は地域・家庭によって異なります。",
+    "sources": [
+      { "name": "うちの郷土料理（次世代に伝え継ぐ日本の家庭料理）", "org": "農林水産省", "url": "https://www.maff.go.jp/j/keikaku/syokubunka/k_ryouri/" }
+    ]
+  },
+  "categories": [
+    { "key": "nabe", "label": "鍋もの", "en": "Hot pot", "color": "#D03B3B" },
+    { "key": "soup", "label": "汁もの", "en": "Soup", "color": "#EB6834" },
+    { "key": "noodle", "label": "麺", "en": "Noodles", "color": "#EDA100" },
+    { "key": "rice", "label": "ご飯・寿司", "en": "Rice & sushi", "color": "#2A78D6" },
+    { "key": "dish", "label": "おかず", "en": "Side dish", "color": "#1BAF7A" },
+    { "key": "sweet", "label": "おやつ", "en": "Snack", "color": "#8A5CD1" }
+  ],
+  "regions": ["北海道・東北", "関東", "中部", "近畿", "中国・四国", "九州・沖縄"],
+  "dishes": [
+    { "pref": "北海道", "region": "北海道・東北", "c": 13, "r": 0, "dish": "ちゃんちゃん焼き", "en": "Chan-chan yaki", "cat": "dish", "fun": false, "desc": "鮭と野菜を鉄板にのせ、味噌だれをかけて蒸し焼きにする漁師町生まれの料理。" },
+    { "pref": "青森", "region": "北海道・東北", "c": 13, "r": 2, "dish": "せんべい汁", "en": "Senbei-jiru", "cat": "soup", "fun": true, "desc": "鍋用の南部せんべいを割り入れて煮込む八戸周辺の汁もの。煮えたせんべいがもちもちの食感になる。" },
+    { "pref": "秋田", "region": "北海道・東北", "c": 12, "r": 3, "dish": "きりたんぽ鍋", "en": "Kiritanpo nabe", "cat": "nabe", "fun": false, "desc": "つぶしたご飯を杉の棒に巻いて焼いた「きりたんぽ」を、鶏だしで野菜と煮込む鍋。" },
+    { "pref": "岩手", "region": "北海道・東北", "c": 13, "r": 3, "dish": "わんこそば", "en": "Wanko soba", "cat": "noodle", "fun": true, "desc": "給仕が一口分のそばを次々とお椀に入れ、お客がふたを閉めるまで続く盛岡・花巻のもてなし。" },
+    { "pref": "山形", "region": "北海道・東北", "c": 12, "r": 4, "dish": "芋煮", "en": "Imoni", "cat": "soup", "fun": true, "desc": "里芋と牛肉（地域により豚肉）を煮る汁もの。秋には河原で大鍋を囲む「芋煮会」が開かれる。" },
+    { "pref": "宮城", "region": "北海道・東北", "c": 13, "r": 4, "dish": "はらこ飯", "en": "Harako-meshi", "cat": "rice", "fun": false, "desc": "鮭の煮汁で炊いたご飯に、鮭の身といくら（はらこ）をのせる亘理町の秋の味。" },
+    { "pref": "福島", "region": "北海道・東北", "c": 12, "r": 5, "dish": "こづゆ", "en": "Kozuyu", "cat": "soup", "fun": false, "desc": "会津の祝い膳に欠かせない汁もの。貝柱のだしに里芋や豆麩などを入れ、朱塗りの小さな椀で何杯もおかわりする。" },
+
+    { "pref": "茨城", "region": "関東", "c": 13, "r": 6, "dish": "あんこう鍋", "en": "Anko nabe (monkfish hot pot)", "cat": "nabe", "fun": false, "desc": "冬が旬のあんこうを使う鍋。あん肝を炒って溶かし込む濃厚な「どぶ汁」は漁師流。" },
+    { "pref": "栃木", "region": "関東", "c": 12, "r": 6, "dish": "しもつかれ", "en": "Shimotsukare", "cat": "dish", "fun": true, "desc": "鮭の頭、大豆、酒粕、粗くおろした大根などを煮る初午の行事食。見た目は独特だが栄養たっぷり。" },
+    { "pref": "群馬", "region": "関東", "c": 11, "r": 6, "dish": "おっきりこみ", "en": "Okkirikomi", "cat": "noodle", "fun": false, "desc": "幅広の生麺を下ゆでせず、野菜たっぷりの汁で煮込む。小麦どころ群馬の家庭料理。" },
+    { "pref": "埼玉", "region": "関東", "c": 11, "r": 7, "dish": "冷汁うどん", "en": "Hiyashiru udon", "cat": "noodle", "fun": false, "desc": "すりごまと味噌の冷たい汁にきゅうりや大葉を入れ、うどんをつけて食べる夏の料理。" },
+    { "pref": "東京", "region": "関東", "c": 12, "r": 7, "dish": "深川めし", "en": "Fukagawa-meshi", "cat": "rice", "fun": false, "desc": "あさりを味噌などで煮た汁をご飯にかける（または炊き込む）、江戸の漁師町・深川の名物。" },
+    { "pref": "千葉", "region": "関東", "c": 13, "r": 7, "dish": "なめろう", "en": "Namero", "cat": "dish", "fun": true, "desc": "アジなどの魚を味噌や薬味と一緒に包丁でたたいた房総の漁師料理。皿までなめたくなるうまさが名の由来とも。" },
+    { "pref": "神奈川", "region": "関東", "c": 11, "r": 8, "dish": "けんちん汁", "en": "Kenchin-jiru", "cat": "soup", "fun": false, "desc": "豆腐と根菜をごま油で炒めてから煮る汁もの。鎌倉の建長寺が発祥という説がある。" },
+
+    { "pref": "新潟", "region": "中部", "c": 11, "r": 5, "dish": "のっぺ", "en": "Noppe", "cat": "dish", "fun": false, "desc": "里芋のとろみが特徴の煮もの。正月やお祭りに大鍋で作り、冷やして食べることも多い。" },
+    { "pref": "富山", "region": "中部", "c": 10, "r": 5, "dish": "ます寿司", "en": "Masu-zushi (trout sushi)", "cat": "rice", "fun": false, "desc": "塩漬けしたマスを酢飯にのせ、笹の葉で包んで押した押し寿司。駅弁としても有名。" },
+    { "pref": "石川", "region": "中部", "c": 9, "r": 5, "dish": "治部煮", "en": "Jibuni", "cat": "dish", "fun": false, "desc": "小麦粉をまぶした鴨肉と麩、野菜を煮て、とろみのある汁ごといただく金沢の料理。" },
+    { "pref": "福井", "region": "中部", "c": 8, "r": 6, "dish": "越前おろしそば", "en": "Echizen oroshi soba", "cat": "noodle", "fun": false, "desc": "冷たいそばに、辛味の効いた大根おろしとつゆをかけて食べる。" },
+    { "pref": "山梨", "region": "中部", "c": 10, "r": 7, "dish": "ほうとう", "en": "Hoto", "cat": "noodle", "fun": false, "desc": "平たい太麺を、かぼちゃなどの野菜と一緒に味噌仕立ての汁で煮込む。" },
+    { "pref": "長野", "region": "中部", "c": 10, "r": 6, "dish": "おやき", "en": "Oyaki", "cat": "sweet", "fun": false, "desc": "小麦粉などの生地で野沢菜や野菜のおかずを包み、焼いたり蒸したりしたもの。" },
+    { "pref": "岐阜", "region": "中部", "c": 9, "r": 6, "dish": "朴葉味噌", "en": "Hoba miso", "cat": "dish", "fun": true, "desc": "大きな朴（ほお）の葉に味噌とねぎ、きのこをのせ、こんろで焼きながら食べる飛騨の料理。" },
+    { "pref": "静岡", "region": "中部", "c": 10, "r": 8, "dish": "静岡おでん", "en": "Shizuoka oden", "cat": "dish", "fun": true, "desc": "牛すじだしの黒いつゆで煮込み、だし粉と青のりをかけるおでん。駄菓子屋でも食べられる。" },
+    { "pref": "愛知", "region": "中部", "c": 9, "r": 7, "dish": "味噌煮込みうどん", "en": "Miso nikomi udon", "cat": "noodle", "fun": true, "desc": "豆味噌のつゆでコシの強い生麺を土鍋で煮込む。固めの麺と、ふたを取り皿に使う食べ方が名古屋流。" },
+
+    { "pref": "三重", "region": "近畿", "c": 8, "r": 7, "dish": "伊勢うどん", "en": "Ise udon", "cat": "noodle", "fun": true, "desc": "極太でやわらかい麺に、たまり醤油ベースの黒く濃いたれを絡めて食べる。" },
+    { "pref": "滋賀", "region": "近畿", "c": 7, "r": 7, "dish": "鮒ずし", "en": "Funa-zushi", "cat": "rice", "fun": true, "desc": "琵琶湖のニゴロブナを塩漬けにし、ご飯と一緒に長期間発酵させた「なれずし」。独特の香りで知られる。" },
+    { "pref": "京都", "region": "近畿", "c": 6, "r": 7, "dish": "にしんそば", "en": "Nishin soba", "cat": "noodle", "fun": false, "desc": "甘辛く煮た身欠きにしんを、温かいそばにのせた京都の名物。" },
+    { "pref": "兵庫", "region": "近畿", "c": 5, "r": 7, "dish": "ぼたん鍋（いのしし鍋）", "en": "Botan nabe (wild boar hot pot)", "cat": "nabe", "fun": true, "desc": "猪肉を味噌仕立ての鍋で煮る丹波篠山の冬の名物。肉を牡丹の花のように盛り付けることが名の由来。" },
+    { "pref": "大阪", "region": "近畿", "c": 5, "r": 8, "dish": "箱寿司", "en": "Hako-zushi (box sushi)", "cat": "rice", "fun": false, "desc": "木の箱に酢飯と具を詰めて押した、大阪の押し寿司。切り口の美しさも楽しむ。" },
+    { "pref": "奈良", "region": "近畿", "c": 6, "r": 8, "dish": "柿の葉寿司", "en": "Kakinoha-zushi", "cat": "rice", "fun": false, "desc": "塩サバなどをのせた一口大の寿司を柿の葉で包んだ押し寿司。山あいで魚を保存する知恵から生まれた。" },
+    { "pref": "和歌山", "region": "近畿", "c": 6, "r": 9, "dish": "めはり寿司", "en": "Mehari-zushi", "cat": "rice", "fun": true, "desc": "高菜の浅漬けの葉で大きなおにぎりを包んだもの。目を見張るほど大きいことが名の由来とも。" },
+
+    { "pref": "鳥取", "region": "中国・四国", "c": 4, "r": 7, "dish": "豆腐ちくわ", "en": "Tofu chikuwa", "cat": "dish", "fun": false, "desc": "豆腐と魚のすり身を合わせて蒸したちくわ。江戸時代の倹約令から生まれたといわれる。" },
+    { "pref": "島根", "region": "中国・四国", "c": 3, "r": 7, "dish": "出雲そば（割子そば）", "en": "Izumo soba", "cat": "noodle", "fun": false, "desc": "殻ごと挽いた色の濃いそばを、丸い三段の器（割子）に盛り、つゆを直接かけて食べる。" },
+    { "pref": "岡山", "region": "中国・四国", "c": 4, "r": 8, "dish": "ばら寿司", "en": "Bara-zushi", "cat": "rice", "fun": false, "desc": "酢飯に魚介や野菜を混ぜ込み、上にも彩りよく並べる祭り寿司。" },
+    { "pref": "広島", "region": "中国・四国", "c": 3, "r": 8, "dish": "牡蠣の土手鍋", "en": "Kaki no dote nabe (oyster hot pot)", "cat": "nabe", "fun": true, "desc": "鍋のふちに味噌を土手のように塗り、少しずつ溶かしながら牡蠣と野菜を煮る。" },
+    { "pref": "山口", "region": "中国・四国", "c": 2, "r": 7, "dish": "ふく料理", "en": "Fuku (blowfish) dishes", "cat": "dish", "fun": false, "desc": "下関ではふぐを縁起のよい「ふく（福）」と呼び、薄造りのふく刺しや鍋で味わう。" },
+    { "pref": "徳島", "region": "中国・四国", "c": 4, "r": 10, "dish": "そば米雑炊", "en": "Sobagome zosui", "cat": "soup", "fun": false, "desc": "そばの実を殻のままゆでて乾かした「そば米」を、野菜と一緒に煮た雑炊。" },
+    { "pref": "香川", "region": "中国・四国", "c": 4, "r": 9, "dish": "あんもち雑煮", "en": "An-mochi zoni", "cat": "soup", "fun": true, "desc": "白味噌の雑煮に、あんこ入りの丸もちを入れる。甘じょっぱさがくせになる正月の味。" },
+    { "pref": "愛媛", "region": "中国・四国", "c": 3, "r": 9, "dish": "宇和島鯛めし", "en": "Uwajima tai-meshi", "cat": "rice", "fun": false, "desc": "鯛の刺身を卵入りのたれに絡め、ご飯にのせて食べる宇和島の漁師めし。" },
+    { "pref": "高知", "region": "中国・四国", "c": 3, "r": 10, "dish": "かつおのたたき", "en": "Katsuo no tataki", "cat": "dish", "fun": false, "desc": "かつおの表面だけを藁の強い火であぶり、薬味とたれで食べる。" },
+
+    { "pref": "福岡", "region": "九州・沖縄", "c": 1, "r": 8, "dish": "がめ煮", "en": "Gameni", "cat": "dish", "fun": false, "desc": "鶏肉と根菜を炒めてから甘辛く煮る、いわゆる筑前煮。博多の正月料理。" },
+    { "pref": "佐賀", "region": "九州・沖縄", "c": 0, "r": 9, "dish": "呼子のいかの活き造り", "en": "Yobuko squid sashimi", "cat": "dish", "fun": true, "desc": "透き通ったいかを新鮮なまま刺身にする呼子の名物。残ったゲソは天ぷらにしてもらうのが定番。" },
+    { "pref": "長崎", "region": "九州・沖縄", "c": 0, "r": 10, "dish": "卓袱料理", "en": "Shippoku cuisine", "cat": "dish", "fun": true, "desc": "和・中・洋がまじった料理を円卓の大皿から取り分ける宴会料理。海外との窓口だった長崎ならでは。" },
+    { "pref": "熊本", "region": "九州・沖縄", "c": 1, "r": 9, "dish": "からし蓮根", "en": "Karashi renkon", "cat": "dish", "fun": true, "desc": "れんこんの穴に辛子味噌を詰め、衣をつけて揚げたもの。切り口の黄色が目を引く。" },
+    { "pref": "大分", "region": "九州・沖縄", "c": 2, "r": 9, "dish": "やせうま", "en": "Yaseuma", "cat": "sweet", "fun": true, "desc": "平たくのばした小麦粉の麺をゆで、きな粉と砂糖をまぶしたおやつ。" },
+    { "pref": "宮崎", "region": "九州・沖縄", "c": 2, "r": 10, "dish": "冷や汁", "en": "Hiyajiru", "cat": "soup", "fun": false, "desc": "焼いた魚とごま、味噌をすって冷たいだしでのばし、豆腐やきゅうりを入れてご飯にかける。" },
+    { "pref": "鹿児島", "region": "九州・沖縄", "c": 1, "r": 10, "dish": "鶏飯", "en": "Keihan", "cat": "rice", "fun": false, "desc": "ご飯に鶏肉、錦糸卵、しいたけなどをのせ、熱い鶏スープをかけて食べる奄美の料理。" },
+    { "pref": "沖縄", "region": "九州・沖縄", "c": 0, "r": 12, "dish": "ゴーヤーチャンプルー", "en": "Goya champuru", "cat": "dish", "fun": false, "desc": "ゴーヤーと豆腐、豚肉や卵を炒め合わせる。「チャンプルー」は混ぜこぜという意味。" }
+  ]
+}
