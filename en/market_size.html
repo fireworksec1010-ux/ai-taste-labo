@@ -193,7 +193,11 @@
     .hero{ padding:28px 0 20px; }
     .stat-tile .value{ font-size:22px; }
   }
-</style>
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center; }
+  .hero-art{ width:100%; height:auto; display:block; }
+  .top-nav a.lang2{ color:var(--accent); font-weight:700; }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } .hero-art{ max-width:400px; margin:0 auto; } }</style>
 <style>
   .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
   .top-nav a.lang{ margin-left:auto; color:#2a78d6; font-weight:700; }
@@ -205,7 +209,7 @@
 <div class="wrap">
 
   <nav class="top-nav">
-    <a href="../index.html" class="ja-only">Home</a>
+    <a href="index.html">Home</a>
     <a href="monthly_digest.html">Monthly Topics</a>
     <a href="../food_prices.html" class="ja-only">Food Prices</a>
     <a href="../vegetables.html" class="ja-only">Vegetables</a>
@@ -214,13 +218,12 @@
     <a href="market_size.html" class="active">Market Size</a>
     <a href="../industry_map.html" class="ja-only">Industry Map</a>
     <a href="../oem_makers.html" class="ja-only">OEM Makers</a>
-    <a href="../food_culture.html" class="ja-only">Regional Dishes</a>
+    <a href="food_culture.html">Regional Dishes</a>
     <a href="../contact.html" class="ja-only">Contact</a>
     <a href="../market_size.html" class="lang" lang="ja">日本語</a>
     <a href="../zh/monthly_digest.html" class="lang2" lang="zh-Hant">中文</a>
   </nav>
-
-  <div class="hero">
+  <div class="hero"><div class="hero-grid"><div>
     <div class="eyebrow"><span class="dot"></span>Based on production and shipment statistics</div>
     <h1>Japan's Food Markets Today</h1>
     <p>Trends for four categories in Japan (prepared foods, seasonings, confectionery and soft drinks), compiled from free public data: the Ministry of Agriculture, Forestry and Fisheries (MAFF) Food Industry Trend Survey and the Japan Soft Drink Association's soft drink statistics.</p>
@@ -235,6 +238,7 @@
       <span id="updated-at">Loading…</span>
       <span>Sources: MAFF / Japan Soft Drink Association (details below)</span>
     </div>
+    </div><div id="hero-art"></div></div>
     <div class="caveat-banner">
       <b>Please note:</b> These figures come from factory production and shipment statistics (supply side). They are calculated differently from, and cover a different scope than, the retail-based or end-user "market size" estimates published by private research firms. Use them to see whether a market is growing or shrinking, not to compare absolute values with other market research.
     </div>
@@ -296,6 +300,7 @@
 
 </div>
 
+<script src="icons.js"></script>
 <script>
 (function(){
   "use strict";
@@ -304,6 +309,8 @@
     cooked_food:"--series-1", seasoning:"--series-2", confectionery:"--series-3", soft_drink:"--series-4"
   };
   var state = { currentCategory:"cooked_food", data:null };
+  var CAT_ICON = { cooked_food:"frozen", seasoning:"soy", confectionery:"candy", soft_drink:"bottle" };
+  document.getElementById("hero-art").innerHTML = JL.marketArt();
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   function en(obj, key){ return obj[key+"_en"] || obj[key] || ""; }
@@ -485,7 +492,7 @@
       btn.className = "chip"; btn.type="button";
       btn.style.color = color;
       btn.setAttribute("aria-pressed", c.key===state.currentCategory ? "true":"false");
-      btn.innerHTML = '<span class="sw" style="background:'+color+'"></span>'+en(c,"label");
+      btn.innerHTML = JL.icon(CAT_ICON[c.key]||"chart", 18, color)+en(c,"label");
       btn.addEventListener("click", function(){ selectCategory(c.key); });
       row.appendChild(btn);
     });
@@ -555,7 +562,7 @@
     box.innerHTML =
       "<h3>"+en(cat,"label")+" | "+en(d,"headline")+"</h3>"+
       '<div class="drivers-grid">'+
-        '<div class="drivers-col up"><h4>▲ Growth drivers</h4>'+list(d.up)+"</div>"+
+        '<div class="drivers-col up"><h4>'+JL.icon("chart",16,"#d03b3b")+' Growth drivers</h4>'+list(d.up)+"</div>"+
         '<div class="drivers-col down"><h4>▼ Headwinds</h4>'+list(d.down)+"</div>"+
       "</div>"+
       '<div class="drivers-foot">Drivers are summarized from industry association releases and news reports. Their period and basis (fiscal vs. calendar year) may differ from the charts above.</div>';

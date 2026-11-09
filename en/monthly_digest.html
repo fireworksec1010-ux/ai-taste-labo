@@ -78,13 +78,14 @@
 
   .highlight-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:22px; }
   .highlight-tile{ background:var(--page-plane); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+  .highlight-tile .ti{ display:flex; align-items:center; gap:8px; }  .highlight-tile .ib{ width:34px; height:34px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:rgba(42,120,214,.12); flex:none; }
   .highlight-tile .cat{ font-size:11px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.04em; }
   .highlight-tile .label{ font-size:14px; font-weight:700; margin-top:4px; }
   .highlight-tile .detail{ font-size:12px; color:var(--text-secondary); margin-top:4px; line-height:1.6; }
   .highlight-tile a{ display:inline-block; margin-top:6px; font-size:11.5px; font-weight:700; text-decoration:none; }
   .highlight-tile a:after{ content:" →"; }
 
-  .section-label{ font-size:13px; font-weight:700; color:var(--text-primary); margin:20px 0 10px; border-top:1px solid var(--border); padding-top:18px; }
+  .section-label{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text-primary); margin:20px 0 10px; border-top:1px solid var(--border); padding-top:18px; }
 
   .trend-item{ padding:12px 0; border-bottom:1px solid var(--border); }
   .trend-item:last-child{ border-bottom:none; }
@@ -103,7 +104,7 @@
   .flow-step.market:before{ border-color:var(--status-critical); }
   .flow-step.products:before{ border-color:#1baf7a; }
   .flow-step.take:before{ background:var(--text-primary); border-color:var(--text-primary); }
-  .flow-step .k{ font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text-muted); margin-bottom:3px; text-transform:uppercase; }
+  .flow-step .k{ display:flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text-muted); margin-bottom:3px; text-transform:uppercase; }
   .flow-step .v{ font-size:13px; line-height:1.75; color:var(--text-secondary); }
   .flow-step .v a{ font-size:11.5px; font-weight:700; text-decoration:none; }
   .flow-step.take .v{ color:var(--text-primary); font-weight:500; }
@@ -131,14 +132,18 @@
     .hero{ padding:28px 0 20px; }
     .month-card{ padding:18px 16px; }
   }
-</style>
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center; }
+  .hero-art{ width:100%; height:auto; display:block; }
+  .top-nav a.lang2{ color:var(--accent); font-weight:700; }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } .hero-art{ max-width:400px; margin:0 auto; } }</style>
 </head>
 <body>
 
 <div class="wrap">
 
   <nav class="top-nav">
-    <a href="../index.html" class="ja-only">Home</a>
+    <a href="index.html">Home</a>
     <a href="monthly_digest.html" class="active">Monthly Topics</a>
     <a href="../food_prices.html" class="ja-only">Food Prices</a>
     <a href="../vegetables.html" class="ja-only">Vegetables</a>
@@ -147,19 +152,19 @@
     <a href="market_size.html">Market Size</a>
     <a href="../industry_map.html" class="ja-only">Industry Map</a>
     <a href="../oem_makers.html" class="ja-only">OEM Makers</a>
-    <a href="../food_culture.html" class="ja-only">Regional Dishes</a>
+    <a href="food_culture.html">Regional Dishes</a>
     <a href="../contact.html" class="ja-only">Contact</a>
     <a href="../monthly_digest.html" class="lang" lang="ja">日本語</a>
     <a href="../zh/monthly_digest.html" class="lang2" lang="zh-Hant">中文</a>
   </nav>
-
-  <div class="hero">
+  <div class="hero"><div class="hero-grid"><div>
     <div class="eyebrow"><span class="dot"></span>Monthly briefing</div>
     <h1>Japan Food Market: Monthly Topics</h1>
     <p>Each month we summarize what moved in Japan's food market, from consumer prices and imported ingredients to new products from major Japanese food makers, and explain how shifting consumer needs connect market trends to product launches. Written for food marketers and companies considering the Japanese market.</p>
     <div class="meta-row">
       <span id="updated-at">Loading…</span>
     </div>
+    </div><div id="hero-art"></div></div>
   </div>
 
   <div id="months"></div>
@@ -177,6 +182,7 @@
 
 </div>
 
+<script src="icons.js"></script>
 <script>
 (function(){
   "use strict";
@@ -187,6 +193,9 @@
   // Pages with an English version stay in /en/, others go to the Japanese page
   var EN_PAGES = ["market_size.html","monthly_digest.html"];
   function link(page){ return EN_PAGES.indexOf(page) >= 0 ? page : "../"+page; }
+
+  var TILE_ICON = { "food_prices.html":"bowl", "vegetables.html":"veggie", "trade.html":"ship", "product_news.html":"box", "market_size.html":"chart" };
+  document.getElementById("hero-art").innerHTML = JL.heroArt();
 
   function renderUpdated(meta){
     document.getElementById("updated-at").textContent = "Data as of " + fmtDate(meta.generated_at);
@@ -201,17 +210,17 @@
           '<span class="jp" lang="ja">'+p.company+'「'+p.name+'」</span></li>';
       }).join("");
       return '<div class="theme"><h3>'+en(t,"title")+'</h3><div class="flow">'+
-        '<div class="flow-step needs"><div class="k">Shift in consumer needs</div><div class="v">'+en(t,"needs")+'</div></div>'+
-        '<div class="flow-step market"><div class="k">Market movement</div><div class="v">'+en(t,"market")+
+        '<div class="flow-step needs"><div class="k">'+JL.icon("heart",16,"#2a78d6")+'Shift in consumer needs</div><div class="v">'+en(t,"needs")+'</div></div>'+
+        '<div class="flow-step market"><div class="k">'+JL.icon("chart",16,"#d03b3b")+'Market movement</div><div class="v">'+en(t,"market")+
           (t.market_link ? '  <a href="'+link(t.market_link)+'">Market size page →</a>' : '')+'</div></div>'+
-        '<div class="flow-step products"><div class="k">New products from Japanese makers</div><div class="v"><ul class="prod-list">'+prods+'</ul></div></div>'+
-        '<div class="flow-step take"><div class="k">Takeaway (our interpretation)</div><div class="v">'+en(t,"takeaway")+'</div></div>'+
+        '<div class="flow-step products"><div class="k">'+JL.icon("box",16,"#1baf7a")+'New products from Japanese makers</div><div class="v"><ul class="prod-list">'+prods+'</ul></div></div>'+
+        '<div class="flow-step take"><div class="k">'+JL.icon("bulb",16,"#eda100")+'Takeaway (our interpretation)</div><div class="v">'+en(t,"takeaway")+'</div></div>'+
       '</div></div>';
     }).join("");
     var srcs = (a.sources||[]).map(function(s){
       return '<a href="'+s.url+'" target="_blank" rel="noopener">'+en(s,"name")+'</a>';
     }).join(" / ");
-    return '<div class="section-label">Consumer needs, market trends and new products</div>'+
+    return '<div class="section-label">'+JL.icon("bulb",20,"#eda100")+'Consumer needs, market trends and new products</div>'+
       '<p class="analysis-intro">'+en(a,"intro")+'</p>'+themes+
       '<div class="analysis-src">Main sources: '+srcs+'<br>'+en(a,"note")+'</div>';
   }
@@ -225,7 +234,7 @@
 
       var highlightsHtml = m.highlights.map(function(h){
         return '<div class="highlight-tile">'+
-          '<div class="cat">'+en(h,"category")+'</div>'+
+          '<div class="ti"><span class="ib">'+JL.icon(TILE_ICON[h.link_page]||"bowl",20,"#2a78d6")+'</span><div class="cat">'+en(h,"category")+'</div></div>'+
           '<div class="label">'+en(h,"label")+'</div>'+
           '<div class="detail">'+en(h,"detail")+'</div>'+
           (h.link_page ? '<a href="'+link(h.link_page)+'">'+(en(h,"link_label")||"Learn more")+'</a>' : '')+
@@ -245,9 +254,9 @@
         '<div class="sub">Highlights from this site\'s data plus Japanese food industry news</div>'+
         '<div class="highlight-grid">'+highlightsHtml+'</div>'+
         renderAnalysis(m.analysis)+
-        '<div class="section-label">Industry news in Japan</div>'+
+        '<div class="section-label">'+JL.icon("paper",20,"#d03b3b")+'Industry news in Japan</div>'+
         trendsHtml+
-        (en(m,"outlook") ? '<div class="section-label">What to watch next month</div><div class="outlook-box">'+en(m,"outlook")+'</div>' : '');
+        (en(m,"outlook") ? '<div class="section-label">'+JL.icon("chart",20,"#2a78d6")+'What to watch next month</div><div class="outlook-box">'+en(m,"outlook")+'</div>' : '');
 
       wrap.appendChild(card);
     });

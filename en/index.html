@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japan Labo | Japan's Food Market in Public Data</title>
+<meta name="description" content="Japan's food market explained with public data: food prices, market size, monthly trends, new products from major Japanese food makers, and a map of regional dishes. Run by a food marketer living in Japan.">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/">
+<link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/">
+<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/">
+<link rel="alternate" hreflang="x-default" href="https://fireworksec1010-ux.github.io/ai-taste-labo/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI Taste Labo">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Japan Labo | Japan's Food Market in Public Data">
+<meta property="og:description" content="Food prices, market trends, new products and regional dishes of Japan, from public data.">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/en/">
+<meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
+<style>[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page-plane:#f9f9f7; --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
+    --border:rgba(11,11,11,0.10); --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --accent:#2a78d6;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary); font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
+  .top-nav a.lang2{ color:var(--accent); font-weight:700; }
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
+
+  .hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center; padding:40px 0 30px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--text-secondary); margin-bottom:14px; text-transform:uppercase; }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:#d03b3b; }
+  .hero h1{ font-size:clamp(34px,6vw,54px); line-height:1.1; }
+  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(16px,2.4vw,20px); color:var(--text-secondary); margin-top:10px; }
+  .hero p{ font-size:15px; line-height:1.85; color:var(--text-secondary); margin:16px 0 0; max-width:56ch; }
+  .hero-art{ width:100%; height:auto; display:block; }
+  .facts{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  .fact{ display:flex; align-items:center; gap:10px; background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:10px 14px; box-shadow:var(--card-shadow); font-size:12.5px; color:var(--text-secondary); }
+  .fact b{ display:block; font-size:16px; color:var(--text-primary); font-family:"Zen Old Mincho",serif; }
+
+  section{ padding:32px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:18px; }
+  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.14em; color:#d03b3b; text-transform:uppercase; }
+  .section-head h2{ font-size:26px; margin-top:4px; }
+  .section-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:6px; line-height:1.75; max-width:64ch; }
+
+  .menu{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:14px; }
+  .card{ position:relative; display:flex; gap:14px; align-items:flex-start; background:var(--surface-1); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:var(--card-shadow); transition:transform .12s, box-shadow .12s; }
+  .card:hover{ transform:translateY(-2px); box-shadow:0 2px 4px rgba(11,11,11,.06), 0 14px 30px rgba(11,11,11,.08); }
+  .card .badge{ flex:none; width:58px; height:58px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--c) 14%, #fff); }
+  .card h3{ font-size:19px; line-height:1.3; }
+  .card h3 a{ color:inherit; text-decoration:none; }
+  .card h3 a:after{ content:""; position:absolute; inset:0; border-radius:16px; }
+  .card p{ font-size:12.8px; line-height:1.7; color:var(--text-secondary); margin:6px 0 0; }
+  .card .tag{ display:inline-block; margin-top:8px; font-size:10.5px; font-weight:700; border-radius:99px; padding:2px 9px; background:color-mix(in srgb, var(--c) 12%, #fff); color:color-mix(in srgb, var(--c) 80%, #000); }
+  .card .tag.ja{ background:#f1efea; color:var(--text-muted); }
+  .card.feature{ grid-column:1 / -1; background:linear-gradient(120deg, color-mix(in srgb, var(--c) 10%, #fff), var(--surface-1) 65%); }
+  .card.feature h3{ font-size:24px; }
+
+  .about{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+  .about div{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px; font-size:13px; line-height:1.75; color:var(--text-secondary); }
+  .about b{ display:flex; align-items:center; gap:8px; color:var(--text-primary); font-size:14.5px; margin-bottom:6px; }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.85; max-width:76ch; }
+  @media (max-width:760px){ .hero{ grid-template-columns:1fr; } .hero-art{ max-width:420px; margin:0 auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="top-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="monthly_digest.html">Monthly Topics</a>
+    <a href="../food_prices.html" class="ja-only">Food Prices</a>
+    <a href="../vegetables.html" class="ja-only">Vegetables</a>
+    <a href="../trade.html" class="ja-only">Imports</a>
+    <a href="../product_news.html" class="ja-only">New Products</a>
+    <a href="market_size.html">Market Size</a>
+    <a href="../industry_map.html" class="ja-only">Industry Map</a>
+    <a href="../oem_makers.html" class="ja-only">OEM Makers</a>
+    <a href="food_culture.html">Regional Dishes</a>
+    <a href="../contact.html" class="ja-only">Contact</a>
+    <a href="../index.html" class="lang" lang="ja">日本語</a>
+    <a href="../zh/monthly_digest.html" class="lang2" lang="zh-Hant">中文</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Japan's food market, in public data</div>
+      <h1>Japan Labo</h1>
+      <div class="sub">Real Japan, from a food marketer living in Japan</div>
+      <p>What do Japanese shoppers pay for rice this month? Which food categories are growing, and what are the big makers launching? I collect official statistics and company reports and turn them into charts and short explainers, for food marketers and anyone curious about the Japanese market.</p>
+      <div class="facts" id="facts">
+        <div class="fact"><span data-icon="paper" data-c="#d03b3b"></span><div><b>Monthly</b>updated around the 25th</div></div>
+        <div class="fact"><span data-icon="chart" data-c="#2a78d6"></span><div><b>Public data</b>with sources on every page</div></div>
+        <div class="fact"><span data-icon="globe" data-c="#1baf7a"></span><div><b>3 languages</b>English, Japanese, Chinese</div></div>
+      </div>
+    </div>
+    <div id="hero-art"></div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <div class="en">Explore</div>
+      <h2>What you can find here</h2>
+      <div class="section-sub">Pages marked "Japanese" are currently available in Japanese only. Your browser's translate feature works well on them.</div>
+    </div>
+    <div class="menu" id="menu"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="en">About</div>
+      <h2>How this site works</h2>
+    </div>
+    <div class="about" id="about">
+      <div><b><span data-icon="chart" data-c="#2a78d6"></span>Public data only</b>Government statistics (Statistics Bureau of Japan, Ministry of Agriculture), industry associations and company filings.</div>
+      <div><b><span data-icon="paper" data-c="#d03b3b"></span>Sources on every page</b>Every number links back to its source so you can check it yourself.</div>
+      <div><b><span data-icon="bulb" data-c="#eda100"></span>Facts vs. views</b>In the monthly topics, data and news are kept separate from my own interpretation.</div>
+      <div><b><span data-icon="heart" data-c="#8a5cd1"></span>Made with AI help</b>AI (Claude) helps collect and chart the data; numbers are never filled in by guesswork.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="disclaimer">
+      - Figures are based on the sources stated on each page. Please check the original sources for official numbers. Not investment advice.<br>
+      - Japanese fiscal years (FY) run from April to March. Amounts are in Japanese yen (JPY).
+    </div>
+    <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:.02em;">© 2026 AI Taste Labo</div>
+  </footer>
+</div>
+
+<script src="icons.js"></script>
+<script>
+(function(){
+  "use strict";
+  var MENU = [
+    { href:"monthly_digest.html", icon:"paper", c:"#d03b3b", title:"Monthly Topics", text:"Japan's food market in 3 minutes: what moved in prices, which consumer needs are shifting, and the new products that answer them.", tag:"English", feature:true },
+    { href:"market_size.html", icon:"chart", c:"#2a78d6", title:"Market Size", text:"Prepared foods, seasonings, confectionery and soft drinks: which categories are growing, and why.", tag:"English" },
+    { href:"food_culture.html", icon:"nabe", c:"#eb6834", title:"Regional Dishes Map", text:"Wanko soba, wild boar hot pot, miso udon: one traditional dish from each of Japan's 47 prefectures.", tag:"English" },
+    { href:"../food_prices.html", icon:"bowl", c:"#1baf7a", title:"Food Prices", text:"Rice, eggs, bread, milk and cooking oil: consumer price trends since 1970.", tag:"Japanese" },
+    { href:"../vegetables.html", icon:"veggie", c:"#1baf7a", title:"Vegetable Prices", text:"Monthly prices of cabbage, tomatoes, onions and more.", tag:"Japanese" },
+    { href:"../trade.html", icon:"ship", c:"#eda100", title:"Imports", text:"Wheat, soybeans, corn, beef and coffee: what Japan imports and at what price.", tag:"Japanese" },
+    { href:"../product_news.html", icon:"box", c:"#13a3b8", title:"New Products", text:"New launches from Japan's leading food makers, with links to the original releases.", tag:"Japanese" },
+    { href:"../industry_map.html", icon:"factory", c:"#8a5cd1", title:"Industry Map", text:"Japan's 20 biggest food makers: sales, profits and growth by category.", tag:"Japanese" },
+    { href:"../oem_makers.html", icon:"box", c:"#eda100", title:"OEM Makers", text:"Small and mid-sized contract food manufacturers and what they make best.", tag:"Japanese" }
+  ];
+  document.getElementById("hero-art").innerHTML = JL.heroArt();
+  document.getElementById("menu").innerHTML = MENU.map(function(m){
+    return '<div class="card'+(m.feature?' feature':'')+'" style="--c:'+m.c+'">'+
+      '<div class="badge">'+JL.icon(m.icon, 32, m.c)+'</div>'+
+      '<div><h3><a href="'+m.href+'">'+m.title+' →</a></h3><p>'+m.text+'</p>'+
+      '<span class="tag'+(m.tag==="Japanese"?' ja':'')+'">'+m.tag+'</span></div></div>';
+  }).join("");
+  Array.prototype.forEach.call(document.querySelectorAll("[data-icon]"), function(e){
+    e.outerHTML = JL.icon(e.getAttribute("data-icon"), 22, e.getAttribute("data-c"));
+  });
+})();
+</script>
+</body>
+</html>
