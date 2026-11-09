@@ -288,7 +288,7 @@
   document.getElementById("fun-row").addEventListener("click", jump);
   document.getElementById("list").addEventListener("click", jump);
 
-  fetch("food_culture_data.json").then(function(r){ return r.json(); }).then(function(json){
+  fetch("food_culture_data.json?v=20261109", { cache:"no-cache" }).then(function(r){ return r.json(); }).then(function(json){
     state.data = json;
     state.sel = "岩手";
     renderFun(); renderLegend(); renderMap(); renderDetail(); renderList();

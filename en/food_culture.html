@@ -226,8 +226,8 @@
       g.appendChild(el("rect", { x:x, y:y, width:SIZE, height:SIZE, rx:8, fill:cat.color }));
       var ic = el("svg", { x:x+SIZE/2-12, y:y+6, width:24, height:24, viewBox:"0 0 24 24", fill:"none", stroke:"#fff", "stroke-width":"1.9", "stroke-linecap":"round", "stroke-linejoin":"round" });
       ic.innerHTML = ICONS[d.cat] || ""; g.appendChild(ic);
-      var t = el("text", { x:x+SIZE/2, y:y+SIZE-9, "text-anchor":"middle", "font-size": d.pref_en.length>7 ? 10.5 : 12.5, "font-weight":"700", fill:"#fff" });
-      t.textContent = d.pref_en; g.appendChild(t);
+      var t = el("text", { x:x+SIZE/2, y:y+SIZE-9, "text-anchor":"middle", "font-size": (d.pref_en||d.pref).length>7 ? 10.5 : 12.5, "font-weight":"700", fill:"#fff" });
+      t.textContent = d.pref_en || d.pref; g.appendChild(t);
       if(d.fun){ var s = el("text", { x:x+SIZE-9, y:y+14, "text-anchor":"middle", "font-size":12, fill:"#fff2b3" }); s.textContent = "★"; g.appendChild(s); }
       g.addEventListener("click", function(){ select(d.pref); });
       g.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(d.pref); } });
@@ -299,8 +299,9 @@
   document.getElementById("list").addEventListener("click", jump);
 
   document.getElementById("hero-art").innerHTML = JL.dishArt();
-  fetch("../food_culture_data.json").then(function(r){ return r.json(); }).then(function(json){
-    state.data = json;
+  function fill(d){ d.pref_en = d.pref_en || d.pref; d.region_en = d.region_en || d.region; d.desc_en = d.desc_en || d.desc; }
+  fetch("../food_culture_data.json?v=20261109", { cache:"no-cache" }).then(function(r){ return r.json(); }).then(function(json){
+    state.data = json; json.dishes.forEach(fill); json.regions_en = json.regions_en || json.regions;
     state.sel = "岩手";
     renderFun(); renderLegend(); renderMap(); renderDetail(); renderList();
   }).catch(function(err){
