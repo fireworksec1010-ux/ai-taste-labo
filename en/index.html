@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Japan Labo | Japan's Food Market in Public Data</title>
-<meta name="description" content="Japan's food market explained with public data: food prices, market size, monthly trends, new products from major Japanese food makers, and a map of regional dishes. Run by a food marketer living in Japan.">
+<meta name="description" content="Japan's food market explained with public data: live price movements for rice, eggs and vegetables, market size, monthly trends, new products from major Japanese food makers, and a map of regional dishes. By a food marketer living in Japan.">
 <link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/">
 <link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/">
 <link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/">
@@ -27,61 +27,171 @@
     color-scheme: light;
     --surface-1:#fcfcfb; --page-plane:#f9f9f7; --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
     --border:rgba(11,11,11,0.10); --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --up:#d03b3b; --down:#2a78d6;
     --accent:#2a78d6;
   }
+  /* Light theme only */
   *{box-sizing:border-box;}
-  body{ margin:0; background:var(--page-plane); color:var(--text-primary); font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
-  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary); font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; position:relative; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
-  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; position:relative; z-index:2; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
   .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
   .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
   .top-nav a.lang2{ color:var(--accent); font-weight:700; }
-  .ico{ display:inline-block; vertical-align:middle; flex:none; }
 
-  .hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center; padding:40px 0 30px; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--text-secondary); margin-bottom:14px; text-transform:uppercase; }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:#d03b3b; }
-  .hero h1{ font-size:clamp(34px,6vw,54px); line-height:1.1; }
-  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(16px,2.4vw,20px); color:var(--text-secondary); margin-top:10px; }
-  .hero p{ font-size:15px; line-height:1.85; color:var(--text-secondary); margin:16px 0 0; max-width:56ch; }
-  .hero-art{ width:100%; height:auto; display:block; }
-  .facts{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
-  .fact{ display:flex; align-items:center; gap:10px; background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:10px 14px; box-shadow:var(--card-shadow); font-size:12.5px; color:var(--text-secondary); }
-  .fact b{ display:block; font-size:16px; color:var(--text-primary); font-family:"Zen Old Mincho",serif; }
+  /* ---- background: seigaiha waves + soft color pools ---- */
+  .bg-deco{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .bg-deco .wave{ position:absolute; left:0; right:0; top:0; height:720px; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23d9d3c7' stroke-width='1'%3E%3Cpath d='M0 40a40 40 0 0 1 80 0M10 40a30 30 0 0 1 60 0M20 40a20 20 0 0 1 40 0M30 40a10 10 0 0 1 20 0'/%3E%3Cpath d='M-40 40a40 40 0 0 1 80 0M-30 40a30 30 0 0 1 60 0M-20 40a20 20 0 0 1 40 0M-10 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3Cpath d='M40 40a40 40 0 0 1 80 0M50 40a30 30 0 0 1 60 0M60 40a20 20 0 0 1 40 0M70 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); }
+  .bg-deco .blob{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.55; }
+  .bg-deco .b1{ width:520px; height:520px; right:-160px; top:-120px; background:radial-gradient(circle, rgba(42,120,214,.3), rgba(42,120,214,0) 70%); }
+  .bg-deco .b2{ width:460px; height:460px; left:-200px; top:260px; background:radial-gradient(circle, rgba(237,161,0,.3), rgba(237,161,0,0) 70%); }
+  .bg-deco .b3{ width:380px; height:380px; right:12%; top:520px; background:radial-gradient(circle, rgba(208,59,59,.2), rgba(208,59,59,0) 70%); }
 
-  section{ padding:32px 0; border-top:1px solid var(--border); }
-  .section-head{ margin-bottom:18px; }
-  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.14em; color:#d03b3b; text-transform:uppercase; }
+  /* ---- hero ---- */
+  .hero{ position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center; padding:46px 0 26px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--text-secondary); margin-bottom:16px; background:var(--surface-1); border:1px solid var(--border); border-radius:99px; padding:6px 12px 6px 8px; box-shadow:var(--card-shadow); text-transform:uppercase; }
+  .eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:#d03b3b; box-shadow:0 0 0 4px rgba(208,59,59,.15); }
+  .hero h1{ font-size:clamp(40px,7.5vw,66px); line-height:1.05; letter-spacing:.01em; position:relative; display:inline-block; }
+  .hero h1 .brush{ position:absolute; left:-4px; right:-4px; bottom:4px; height:.32em; z-index:-1; border-radius:4px;
+    background:linear-gradient(90deg, rgba(42,120,214,.4), rgba(237,161,0,.45) 55%, rgba(208,59,59,.35)); transform:skewX(-8deg); }
+  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(17px,2.6vw,22px); color:var(--text-secondary); margin-top:14px; }
+  .hero p{ font-size:15px; line-height:1.95; color:var(--text-secondary); max-width:56ch; margin:16px 0 0; }
+  .cta{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:99px; font-size:13.5px; font-weight:700; text-decoration:none; transition:transform .15s, box-shadow .15s; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn.primary{ background:var(--text-primary); color:#fff; box-shadow:0 8px 20px rgba(11,11,11,.18); }
+  .btn.ghost{ background:var(--surface-1); color:var(--text-primary); border:1px solid var(--border); box-shadow:var(--card-shadow); }
+  .facts{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:22px; font-size:12.5px; color:var(--text-muted); }
+  .facts b{ color:var(--text-primary); font-family:"Zen Old Mincho",serif; font-size:15px; margin-right:3px; }
+
+  /* the meal scene with floating price tags */
+  .scene{ position:relative; aspect-ratio:1/1; max-width:520px; margin:0 auto; width:100%; }
+  .scene svg.tray{ width:100%; height:100%; display:block; overflow:visible; }
+  .tag{ position:absolute; display:flex; flex-direction:column; gap:1px; background:#fff; border:2px solid var(--tc); border-radius:12px; padding:7px 11px 7px 10px; box-shadow:0 10px 24px rgba(11,11,11,.14); font-size:11px; font-weight:700; color:var(--text-secondary); white-space:nowrap; animation:bob 4.2s ease-in-out infinite; transform-origin:center; }
+  .tag:after{ content:""; position:absolute; left:50%; bottom:-9px; width:14px; height:14px; background:#fff; border-right:2px solid var(--tc); border-bottom:2px solid var(--tc); transform:translateX(-50%) rotate(45deg); }
+  .tag .v{ font-family:"Zen Old Mincho",serif; font-size:22px; line-height:1; color:var(--tc); letter-spacing:.01em; }
+  .tag.t1{ left:4%; top:12%; animation-delay:0s; }
+  .tag.t2{ right:0; top:4%; animation-delay:1.3s; }
+  .tag.t3{ right:6%; bottom:20%; animation-delay:2.4s; }
+  .tag.t4{ left:0; bottom:26%; animation-delay:.7s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-1deg);} 50%{ transform:translateY(-9px) rotate(1deg);} }
+  .steam{ fill:none; stroke:#b9b2a7; stroke-width:4; stroke-linecap:round; opacity:0; animation:steam 3.2s ease-in-out infinite; }
+  .steam.s2{ animation-delay:.9s; } .steam.s3{ animation-delay:1.8s; }
+  @keyframes steam{ 0%{ opacity:0; transform:translateY(8px);} 30%{ opacity:.9;} 100%{ opacity:0; transform:translateY(-26px);} }
+  .scene .caption{ position:absolute; left:50%; bottom:-6px; transform:translateX(-50%); font-size:11px; color:var(--text-muted); white-space:nowrap; }
+
+  /* ---- this month's dashboard ---- */
+  .dash{ position:relative; z-index:1; margin-top:10px; background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:16px 18px 14px; }
+  .dash-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+  .dash-head h2{ font-size:18px; display:flex; align-items:center; gap:8px; }
+  .dash-head .note{ font-size:11.5px; color:var(--text-muted); }
+  .dash-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
+  .kpi{ position:relative; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto auto auto; column-gap:8px; align-items:end; border:1px solid var(--border); border-radius:12px; padding:10px 12px 9px; background:#fff; overflow:hidden; transition:transform .15s, box-shadow .15s; }
+  .kpi:hover{ transform:translateY(-2px); box-shadow:var(--card-shadow); }
+  .kpi .n{ grid-column:1 / -1; font-size:11.5px; font-weight:700; color:var(--text-secondary); display:flex; align-items:center; gap:6px; }
+  .kpi .val{ grid-column:1; font-family:"Zen Old Mincho",serif; font-size:25px; line-height:1.1; margin-top:4px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .kpi .val.up{ color:var(--up);} .kpi .val.down{ color:var(--down);} .kpi .val.flat{ color:var(--text-secondary); }
+  .kpi .lbl{ grid-column:1; font-size:10.5px; color:var(--text-muted); margin-top:2px; }
+  .kpi svg{ grid-column:2; grid-row:2 / span 2; width:72px; height:34px; opacity:.95; align-self:center; }
+  .dash-foot{ margin-top:10px; font-size:11px; color:var(--text-muted); display:flex; flex-wrap:wrap; gap:6px 14px; }
+  .dash-foot a{ font-weight:700; text-decoration:none; }
+
+  section{ position:relative; z-index:1; padding:40px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:20px; }
+  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.16em; color:#d03b3b; text-transform:uppercase; }
   .section-head h2{ font-size:26px; margin-top:4px; }
   .section-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:6px; line-height:1.75; max-width:64ch; }
 
+  /* ---- menu cards ---- */
   .menu{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:14px; }
-  .card{ position:relative; display:flex; gap:14px; align-items:flex-start; background:var(--surface-1); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:var(--card-shadow); transition:transform .12s, box-shadow .12s; }
-  .card:hover{ transform:translateY(-2px); box-shadow:0 2px 4px rgba(11,11,11,.06), 0 14px 30px rgba(11,11,11,.08); }
-  .card .badge{ flex:none; width:58px; height:58px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--c) 14%, #fff); }
-  .card h3{ font-size:19px; line-height:1.3; }
-  .card h3 a{ color:inherit; text-decoration:none; }
-  .card h3 a:after{ content:""; position:absolute; inset:0; border-radius:16px; }
-  .card p{ font-size:12.8px; line-height:1.7; color:var(--text-secondary); margin:6px 0 0; }
-  .card .tag{ display:inline-block; margin-top:8px; font-size:10.5px; font-weight:700; border-radius:99px; padding:2px 9px; background:color-mix(in srgb, var(--c) 12%, #fff); color:color-mix(in srgb, var(--c) 80%, #000); }
-  .card .tag.ja{ background:#f1efea; color:var(--text-muted); }
-  .card.feature{ grid-column:1 / -1; background:linear-gradient(120deg, color-mix(in srgb, var(--c) 10%, #fff), var(--surface-1) 65%); }
-  .card.feature h3{ font-size:24px; }
+  .card{
+    position:relative; display:flex; flex-direction:column; gap:8px;
+    background:var(--surface-1); border:1px solid var(--border); border-radius:16px;
+    padding:18px 18px 16px; box-shadow:var(--card-shadow); overflow:hidden;
+    color:inherit; transition:transform .16s, box-shadow .16s, border-color .16s;
+  }
+  .card:before{ content:""; position:absolute; right:-40px; top:-40px; width:150px; height:150px; border-radius:50%; background:color-mix(in srgb, var(--c) 12%, transparent); transition:transform .3s; }
+  .card:hover{ transform:translateY(-3px); border-color:color-mix(in srgb, var(--c) 45%, transparent); box-shadow:0 2px 4px rgba(11,11,11,0.06), 0 16px 34px rgba(11,11,11,0.10); }
+  .card:hover:before{ transform:scale(1.5); }
+  .card:hover .arrow{ transform:translateX(4px); }
+  .card:focus-within{ outline:2px solid var(--c); outline-offset:2px; }
+  .card h3 a.stretch{ color:inherit; text-decoration:none; }
+  .card h3 a.stretch:after{ content:""; position:absolute; inset:0; border-radius:16px; z-index:1; }
+  .card h3 a.stretch:focus-visible{ outline:none; }
+  .c-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; position:relative; }
+  .c-left{ display:flex; align-items:center; gap:10px; }
+  .c-badge{ width:46px; height:46px; border-radius:14px; display:inline-flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--c) 14%, #fff); border:1px solid color-mix(in srgb, var(--c) 25%, transparent); }
+  .c-no{ font-size:11px; font-weight:900; color:var(--c); letter-spacing:.08em; }
+  .c-tag{ font-size:10.5px; font-weight:700; border-radius:99px; padding:2px 9px; white-space:nowrap; background:color-mix(in srgb, var(--c) 12%, #fff); color:color-mix(in srgb, var(--c) 80%, #000); }
+  .c-tag.ja{ background:var(--page-plane); border:1px solid var(--border); color:var(--text-muted); }
+  .card h3{ font-size:19px; line-height:1.35; position:relative; }
+  .card h3 .arrow{ display:inline-block; color:var(--c); font-family:"Zen Kaku Gothic New",sans-serif; font-size:15px; margin-left:4px; transition:transform .16s; }
+  .c-desc{ font-size:12.5px; line-height:1.75; color:var(--text-secondary); position:relative; }
+  .c-latest{ margin-top:auto; padding-top:9px; border-top:1px dashed var(--border); font-size:11.5px; font-weight:700; color:var(--text-primary); min-height:1.6em; }
+  .c-latest .lbl{ color:var(--text-muted); font-weight:500; margin-right:4px; }
 
+  .card.feature{ grid-column:1 / -1; display:grid; grid-template-columns:1fr auto; gap:6px 24px; background:linear-gradient(120deg, color-mix(in srgb, var(--c) 12%, var(--surface-1)), var(--surface-1) 60%); }
+  .card.feature > *{ grid-column:1; }
+  .card.feature h3{ font-size:24px; }
+  .card.feature .c-desc{ font-size:13.5px; max-width:70ch; }
+  .card.feature .feat-art{ grid-column:2; grid-row:1 / span 4; align-self:center; width:150px; height:150px; }
+  .card.feature .feat-art svg{ width:100%; height:100%; }
+
+  /* ---- regional dishes teaser ---- */
+  .culture{ display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; background:linear-gradient(135deg, #fff6e9, #fcfcfb 60%); border:1px solid var(--border); border-radius:20px; padding:24px; box-shadow:var(--card-shadow); }
+  .culture h2{ font-size:26px; margin-top:6px; }
+  .culture p{ font-size:13.5px; line-height:1.85; color:var(--text-secondary); margin:10px 0 0; }
+  .culture .dishes{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .culture .dishes span{ font-size:11.5px; font-weight:700; background:#fff; border:1px solid var(--border); border-radius:99px; padding:4px 10px; color:var(--text-secondary); }
+  .minimap{ display:block; text-decoration:none; }
+  .minimap svg{ width:100%; height:auto; display:block; }
+  .minimap rect{ transition:transform .15s; transform-box:fill-box; transform-origin:center; }
+  .minimap g:hover rect{ transform:scale(1.25); stroke:#0b0b0b; stroke-width:1.5; }
+  .minimap .hint{ text-align:center; font-size:11.5px; color:var(--text-muted); margin-top:6px; }
+
+  /* ---- about ---- */
   .about{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
   .about div{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px; font-size:13px; line-height:1.75; color:var(--text-secondary); }
   .about b{ display:flex; align-items:center; gap:8px; color:var(--text-primary); font-size:14.5px; margin-bottom:6px; }
 
-  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  footer{ position:relative; z-index:1; padding:34px 0 60px; border-top:1px solid var(--border); }
   .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.85; max-width:76ch; }
-  @media (max-width:760px){ .hero{ grid-template-columns:1fr; } .hero-art{ max-width:420px; margin:0 auto; } }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .tag, .steam{ animation:none; } .steam{ opacity:.6; }
+    html{ scroll-behavior:auto; }
+  }
+
+  @media (max-width:820px){
+    .hero{ grid-template-columns:1fr; gap:14px; }
+    .scene{ max-width:440px; }
+    .card.feature{ grid-template-columns:1fr; }
+    .card.feature .feat-art{ display:none; }
+    .culture{ grid-template-columns:1fr; }
+  }
+  @media (max-width:520px){
+    .hero{ padding:30px 0 20px; }
+    .tag .v{ font-size:18px; }
+  }
 </style>
 </head>
 <body>
+
+<div class="bg-deco" aria-hidden="true"><div class="wave"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
 <div class="wrap">
 
   <nav class="top-nav">
@@ -103,33 +213,129 @@
   <header class="hero">
     <div>
       <div class="eyebrow"><span class="dot"></span>Japan's food market, in public data</div>
-      <h1>Japan Labo</h1>
+      <h1>Japan Labo<span class="brush"></span></h1>
       <div class="sub">Real Japan, from a food marketer living in Japan</div>
       <p>What do Japanese shoppers pay for rice this month? Which food categories are growing, and what are the big makers launching? I collect official statistics and company reports and turn them into charts and short explainers, for food marketers and anyone curious about the Japanese market.</p>
-      <div class="facts" id="facts">
-        <div class="fact"><span data-icon="paper" data-c="#d03b3b"></span><div><b>Monthly</b>updated around the 25th</div></div>
-        <div class="fact"><span data-icon="chart" data-c="#2a78d6"></span><div><b>Public data</b>with sources on every page</div></div>
-        <div class="fact"><span data-icon="globe" data-c="#1baf7a"></span><div><b>3 languages</b>English, Japanese, Chinese</div></div>
+      <div class="cta">
+        <a class="btn primary" href="monthly_digest.html">Read this month's digest →</a>
+        <a class="btn ghost" href="#menu">Explore the site</a>
+      </div>
+      <div class="facts">
+        <span><b>Monthly</b>updated around the 25th</span>
+        <span><b>Public data</b>sources on every page</span>
+        <span><b>3</b>languages</span>
       </div>
     </div>
-    <div id="hero-art"></div>
+
+    <div class="scene" id="scene">
+      <svg class="tray" viewBox="0 0 420 420" role="img" aria-label="Illustration of a Japanese meal set: rice, miso soup, grilled fish, pickles and green tea, with live price tags floating around it">
+        <defs>
+          <radialGradient id="g-tray" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#d9a06a"/><stop offset="1" stop-color="#a86b3c"/></radialGradient>
+          <linearGradient id="g-rice" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ece6da"/></linearGradient>
+          <linearGradient id="g-bowl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f8de6"/><stop offset="1" stop-color="#1f5fb0"/></linearGradient>
+          <linearGradient id="g-miso" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e04a4a"/><stop offset="1" stop-color="#9e2626"/></linearGradient>
+          <linearGradient id="g-fish" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f3b640"/><stop offset="1" stop-color="#d98a12"/></linearGradient>
+          <linearGradient id="g-tea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f9f6e"/><stop offset="1" stop-color="#1d6b45"/></linearGradient>
+        </defs>
+        <!-- shadow & tray -->
+        <ellipse cx="210" cy="392" rx="178" ry="16" fill="rgba(11,11,11,.08)"/>
+        <ellipse cx="210" cy="250" rx="190" ry="126" fill="url(#g-tray)"/>
+        <ellipse cx="210" cy="244" rx="176" ry="112" fill="none" stroke="#8a5530" stroke-opacity=".35" stroke-width="2"/>
+        <ellipse cx="210" cy="246" rx="160" ry="98" fill="none" stroke="#f1c99d" stroke-opacity=".35" stroke-width="1.5"/>
+        <!-- grilled fish plate -->
+        <ellipse cx="226" cy="190" rx="86" ry="26" fill="#ffffff" stroke="#e1e0d9" stroke-width="2"/>
+        <ellipse cx="226" cy="190" rx="70" ry="17" fill="none" stroke="#2a78d6" stroke-opacity=".35" stroke-width="2"/>
+        <path d="M168 186c16-22 70-22 88 0-18 20-72 20-88 0z" fill="url(#g-fish)"/>
+        <path d="M256 186l26-14v28z" fill="#d98a12"/>
+        <path d="M190 180c5 5 5 9 0 14M204 177c5 6 5 10 0 16M218 178c5 6 5 10 0 16" fill="none" stroke="#9a5e05" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="178" cy="184" r="2.8" fill="#0b0b0b"/>
+        <path d="M246 204c10-3 18-3 26 0" fill="none" stroke="#1baf7a" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="166" cy="204" r="6" fill="#f2d6a0"/>
+        <!-- rice bowl -->
+        <path d="M70 262h100c0 32-22 56-50 56s-50-24-50-56z" fill="url(#g-bowl)"/>
+        <path d="M78 270h84" stroke="#ffffff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round"/>
+        <path d="M70 262c3-26 22-40 50-40s47 14 50 40z" fill="url(#g-rice)"/>
+        <ellipse cx="120" cy="262" rx="50" ry="8" fill="#fff"/>
+        <circle cx="100" cy="246" r="3" fill="#e6dfd2"/><circle cx="124" cy="238" r="3" fill="#e6dfd2"/><circle cx="140" cy="250" r="3" fill="#e6dfd2"/>
+        <circle cx="120" cy="233" r="7" fill="#c23b3b"/>
+        <!-- miso soup -->
+        <path d="M250 272h94c0 28-20 50-47 50s-47-22-47-50z" fill="url(#g-miso)"/>
+        <ellipse cx="297" cy="272" rx="47" ry="11" fill="#c4874a"/>
+        <ellipse cx="297" cy="272" rx="40" ry="8" fill="#d99a5a"/>
+        <rect x="282" y="266" width="12" height="7" rx="1.5" fill="#f8f3e8"/>
+        <rect x="302" y="268" width="10" height="6" rx="1.5" fill="#f8f3e8"/>
+        <path d="M312 262l9 5" stroke="#1baf7a" stroke-width="4" stroke-linecap="round"/>
+        <path d="M268 266c6-2 10-1 14 2" stroke="#2f5d3a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <g class="steam-g">
+          <path class="steam s1" d="M280 250c-8-10 8-14 0-28"/>
+          <path class="steam s2" d="M298 246c-8-10 8-14 0-28"/>
+          <path class="steam s3" d="M316 250c-8-10 8-14 0-28"/>
+        </g>
+        <!-- pickles -->
+        <ellipse cx="150" cy="332" rx="36" ry="13" fill="#fff" stroke="#e1e0d9" stroke-width="2"/>
+        <rect x="128" y="320" width="16" height="12" rx="3" fill="#e9d34a" transform="rotate(-12 136 326)"/>
+        <rect x="146" y="318" width="16" height="12" rx="3" fill="#f0dc6a" transform="rotate(8 154 324)"/>
+        <ellipse cx="166" cy="326" rx="8" ry="6" fill="#7a3fb0"/>
+        <!-- green tea -->
+        <path d="M258 318h40v30a8 8 0 0 1-8 8h-24a8 8 0 0 1-8-8z" fill="url(#g-tea)"/>
+        <ellipse cx="278" cy="318" rx="20" ry="6" fill="#8fd0ad"/>
+        <path d="M262 318h32" stroke="#fff" stroke-opacity=".5" stroke-width="2"/>
+        <!-- chopsticks -->
+        <ellipse cx="215" cy="366" rx="12" ry="5" fill="#8a5cd1"/>
+        <path d="M110 372l200-18M112 380l200-14" stroke="#4a3328" stroke-width="5" stroke-linecap="round"/>
+        <path d="M110 372l60-5M112 380l60-4" stroke="#d03b3b" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+
+      <div class="tag t1" id="tag-rice" style="--tc:var(--down)"><span>Rice</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="tag t2" id="tag-oil" style="--tc:var(--up)"><span>Cooking oil</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="tag t3" id="tag-egg" style="--tc:var(--up)"><span>Eggs</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="tag t4" id="tag-lettuce" style="--tc:var(--up)"><span>Lettuce</span><span class="v">…</span><span>vs. last month</span></div>
+      <div class="caption" id="scene-caption">From Japan's Consumer Price Index (2025 = 100)</div>
+    </div>
   </header>
 
-  <section>
-    <div class="section-head">
+  <div class="dash reveal" id="dash">
+    <div class="dash-head">
+      <h2><span data-icon="chart" data-c="#2a78d6"></span>Japan's kitchen-table dashboard <span id="dash-month" style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:13px;font-weight:700;color:var(--text-muted);"></span></h2>
+      <div class="note">Change vs. a year ago. Small charts: last 13 months</div>
+    </div>
+    <div class="dash-grid" id="dash-grid"></div>
+    <div class="dash-foot"><span>Source: Statistics Bureau of Japan, Consumer Price Index by item (2025 = 100)</span><a href="../food_prices.html">Food price details (JA) →</a><a href="../vegetables.html">Vegetable details (JA) →</a></div>
+  </div>
+
+  <section id="menu">
+    <div class="section-head reveal">
       <div class="en">Explore</div>
       <h2>What you can find here</h2>
       <div class="section-sub">Pages marked "Japanese" are currently available in Japanese only. Your browser's translate feature works well on them.</div>
     </div>
-    <div class="menu" id="menu"></div>
+    <div class="menu" id="menu-grid"></div>
+  </section>
+
+  <section id="culture-sec">
+    <div class="culture reveal">
+      <div>
+        <div class="section-head" style="margin-bottom:0;">
+          <div class="en">Food Culture</div>
+          <h2>47 prefectures, 47 traditional dishes</h2>
+        </div>
+        <p>Between the numbers, a taste of Japan itself. Endless bowls of wanko soba, wild boar hot pot, udon simmered in dark miso — one dish from every prefecture, on an illustrated map. Hover over a square to see its dish.</p>
+        <div class="dishes" id="culture-chips"></div>
+        <div class="cta"><a class="btn ghost" href="food_culture.html">Open the dishes map →</a></div>
+      </div>
+      <a class="minimap" href="food_culture.html" aria-label="Open the regional dishes map">
+        <svg id="minimap" viewBox="0 0 0 0"></svg>
+        <div class="hint">Colors show the type of dish. Click to open the map</div>
+      </a>
+    </div>
   </section>
 
   <section>
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="en">About</div>
       <h2>How this site works</h2>
     </div>
-    <div class="about" id="about">
+    <div class="about reveal" id="about">
       <div><b><span data-icon="chart" data-c="#2a78d6"></span>Public data only</b>Government statistics (Statistics Bureau of Japan, Ministry of Agriculture), industry associations and company filings.</div>
       <div><b><span data-icon="paper" data-c="#d03b3b"></span>Sources on every page</b>Every number links back to its source so you can check it yourself.</div>
       <div><b><span data-icon="bulb" data-c="#eda100"></span>Facts vs. views</b>In the monthly topics, data and news are kept separate from my own interpretation.</div>
@@ -150,27 +356,165 @@
 <script>
 (function(){
   "use strict";
-  var MENU = [
-    { href:"monthly_digest.html", icon:"paper", c:"#d03b3b", title:"Monthly Topics", text:"Japan's food market in 3 minutes: what moved in prices, which consumer needs are shifting, and the new products that answer them.", tag:"English", feature:true },
-    { href:"market_size.html", icon:"chart", c:"#2a78d6", title:"Market Size", text:"Prepared foods, seasonings, confectionery and soft drinks: which categories are growing, and why.", tag:"English" },
-    { href:"food_culture.html", icon:"nabe", c:"#eb6834", title:"Regional Dishes Map", text:"Wanko soba, wild boar hot pot, miso udon: one traditional dish from each of Japan's 47 prefectures.", tag:"English" },
-    { href:"../food_prices.html", icon:"bowl", c:"#1baf7a", title:"Food Prices", text:"Rice, eggs, bread, milk and cooking oil: consumer price trends since 1970.", tag:"Japanese" },
-    { href:"../vegetables.html", icon:"veggie", c:"#1baf7a", title:"Vegetable Prices", text:"Monthly prices of cabbage, tomatoes, onions and more.", tag:"Japanese" },
-    { href:"../trade.html", icon:"ship", c:"#eda100", title:"Imports", text:"Wheat, soybeans, corn, beef and coffee: what Japan imports and at what price.", tag:"Japanese" },
-    { href:"../product_news.html", icon:"box", c:"#13a3b8", title:"New Products", text:"New launches from Japan's leading food makers, with links to the original releases.", tag:"Japanese" },
-    { href:"../industry_map.html", icon:"factory", c:"#8a5cd1", title:"Industry Map", text:"Japan's 20 biggest food makers: sales, profits and growth by category.", tag:"Japanese" },
-    { href:"../oem_makers.html", icon:"box", c:"#eda100", title:"OEM Makers", text:"Small and mid-sized contract food manufacturers and what they make best.", tag:"Japanese" }
-  ];
-  document.getElementById("hero-art").innerHTML = JL.heroArt();
-  document.getElementById("menu").innerHTML = MENU.map(function(m){
-    return '<div class="card'+(m.feature?' feature':'')+'" style="--c:'+m.c+'">'+
-      '<div class="badge">'+JL.icon(m.icon, 32, m.c)+'</div>'+
-      '<div><h3><a href="'+m.href+'">'+m.title+' →</a></h3><p>'+m.text+'</p>'+
-      '<span class="tag'+(m.tag==="Japanese"?' ja':'')+'">'+m.tag+'</span></div></div>';
-  }).join("");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  function ymEn(ym){ var p = ym.split("-"); return MONTHS[+p[1]-1]+" "+p[0]; }
+  function dateEn(d){ var p = d.split("-"); return MONTHS[+p[1]-1]+" "+(+p[2])+", "+p[0]; }
+  function load(url, fn){ fetch(url, { cache:"no-cache" }).then(function(r){ return r.json(); }).then(fn).catch(function(err){ console.error(url, err); }); }
+  function lastMonth(items){ var arr = items[0].cpi_index_monthly; return arr[arr.length-1].ym; }
+  function fmtPct(p){ return (p>=0?"+":"−")+Math.abs(p).toFixed(1)+"%"; }
+  function cls(p){ return p>=0.5 ? "up" : (p<=-0.5 ? "down" : "flat"); }
+  function setLatest(key, label, text){
+    var el = document.querySelector('[data-latest="'+key+'"]');
+    if(el) el.innerHTML = '<span class="lbl">'+label+'</span>'+text;
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll("[data-icon]"), function(e){
-    e.outerHTML = JL.icon(e.getAttribute("data-icon"), 22, e.getAttribute("data-c"));
+    if(window.JL){ e.innerHTML = JL.icon(e.getAttribute("data-icon"), +(e.getAttribute("data-size")||22), e.getAttribute("data-c")); }
   });
+
+  function countUp(el, target){
+    if(reduce){ el.textContent = fmtPct(target); return; }
+    var start = null, dur = 900;
+    function step(ts){
+      if(!start) start = ts;
+      var t = Math.min(1, (ts-start)/dur), e = 1-Math.pow(1-t, 3);
+      el.textContent = fmtPct(target*e);
+      if(t<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function spark(values, color){
+    var w = 72, h = 34, mn = Math.min.apply(null, values), mx = Math.max.apply(null, values);
+    var pts = values.map(function(v,i){
+      var x = (w-2) * i/(values.length-1) + 1;
+      var y = mx===mn ? h/2 : h-3 - (h-6)*(v-mn)/(mx-mn);
+      return x.toFixed(1)+","+y.toFixed(1);
+    });
+    var last = pts[pts.length-1].split(",");
+    return '<svg viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts.join(" ")+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2.6" fill="'+color+'"/></svg>';
+  }
+
+  // ---- menu cards (same links as before, now with latest-data lines)
+  var MENU = [
+    { href:"monthly_digest.html", icon:"paper", c:"#d03b3b", no:"Start here | Monthly Topics", title:"Japan's food market in 3 minutes", text:"What moved in prices and imports, which consumer needs are shifting, and the new products that answer them — with industry news and a look ahead.", tag:"English", latest:"digest", feature:true },
+    { href:"market_size.html", icon:"chart", c:"#2a78d6", no:"01 | Market Size", title:"Which food categories are growing?", text:"Prepared foods, seasonings, confectionery and soft drinks: production trends and the forces behind them.", tag:"English", latest:"market" },
+    { href:"food_culture.html", icon:"nabe", c:"#eb6834", no:"02 | Regional Dishes", title:"One traditional dish per prefecture", text:"Wanko soba, wild boar hot pot, miso udon: Japan's food culture on an illustrated map.", tag:"English" },
+    { href:"../food_prices.html", icon:"bowl", c:"#1baf7a", no:"03 | Food Prices", title:"Rice, eggs and bread over the long run", text:"Consumer price trends since 1970 for 8 staple items, with rankings and Engel's coefficient.", tag:"Japanese", latest:"food" },
+    { href:"../vegetables.html", icon:"veggie", c:"#1baf7a", no:"04 | Vegetable Prices", title:"Which vegetables spiked this month?", text:"Monthly prices for cabbage, tomatoes, onions and more.", tag:"Japanese", latest:"veg" },
+    { href:"../trade.html", icon:"ship", c:"#eda100", no:"05 | Imports", title:"Upstream of Japan's food costs", text:"Wheat, soybeans, corn, beef and coffee: volumes, values and unit prices.", tag:"Japanese", latest:"trade" },
+    { href:"../product_news.html", icon:"candy", c:"#13a3b8", no:"06 | New Products", title:"What the big makers are launching", text:"New releases from Japan's leading food makers, with links to the original announcements.", tag:"Japanese", latest:"news" },
+    { href:"../industry_map.html", icon:"factory", c:"#8a5cd1", no:"07 | Industry Map", title:"Japan's 20 biggest food makers", text:"Sales, profits and growth, mapped by category from earnings reports.", tag:"Japanese", latest:"industry" },
+    { href:"../oem_makers.html", icon:"box", c:"#eda100", no:"08 | OEM Makers", title:"Who can manufacture your product", text:"Small and mid-sized contract manufacturers and what they make best.", tag:"Japanese", latest:"oem" }
+  ];
+  document.getElementById("menu-grid").innerHTML = MENU.map(function(m){
+    return '<div class="card'+(m.feature?' feature':'')+' reveal" style="--c:'+m.c+'">'+
+      '<div class="c-top"><div class="c-left"><span class="c-badge">'+JL.icon(m.icon, 26, m.c)+'</span><span class="c-no">'+m.no+'</span></div>'+
+      '<span class="c-tag'+(m.tag==="Japanese"?' ja':'')+'">'+m.tag+'</span></div>'+
+      '<h3><a class="stretch" href="'+m.href+'">'+m.title+'<span class="arrow">→</span></a></h3>'+
+      '<div class="c-desc">'+m.text+'</div>'+
+      (m.latest ? '<div class="c-latest" data-latest="'+m.latest+'"><span class="lbl">Latest</span>…</div>' : '')+
+      (m.feature ? '<div class="feat-art" aria-hidden="true"><svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="74" fill="rgba(208,59,59,.08)"/><rect x="38" y="36" width="84" height="100" rx="8" fill="#fff" stroke="#d03b3b" stroke-width="3"/><path d="M52 60h56M52 76h56M52 92h36" stroke="#52514e" stroke-width="4" stroke-linecap="round"/><path d="M52 118l14-14 12 10 20-22" fill="none" stroke="#d03b3b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="112" cy="40" r="14" fill="#eda100"/><path d="M106 40l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' : '')+
+    '</div>';
+  }).join("");
+
+  // ---- price tags & dashboard from the site's own data
+  var series = {};
+  function yoy(s){ var a = s.cpi_index_monthly; var l = a[a.length-1], y = a[a.length-13]; return y ? (l.value/y.value-1)*100 : null; }
+  function mom(s){ var a = s.cpi_index_monthly; var l = a[a.length-1], p = a[a.length-2]; return p ? (l.value/p.value-1)*100 : null; }
+  function setTag(id, item, pct){
+    var el = document.getElementById(id); if(!el || pct===null) return;
+    var c = cls(pct)==="down" ? "var(--down)" : (cls(pct)==="up" ? "var(--up)" : "var(--text-secondary)");
+    el.style.setProperty("--tc", c);
+    countUp(el.querySelector(".v"), pct);
+  }
+  var KPI = [
+    { key:"rice", name:"Rice", icon:"rice" }, { key:"cooking_oil", name:"Cooking oil", icon:"bottle" }, { key:"egg", name:"Eggs", icon:"dish" },
+    { key:"bread", name:"Bread", icon:"bowl" }, { key:"soy_sauce", name:"Soy sauce", icon:"soy" }, { key:"lettuce", name:"Lettuce", icon:"veggie" },
+    { key:"cabbage", name:"Cabbage", icon:"veggie" }, { key:"tomato", name:"Tomato", icon:"veggie" }
+  ];
+  function renderDash(){
+    var grid = document.getElementById("dash-grid");
+    var html = "", ym = null;
+    KPI.forEach(function(k){
+      var s = series[k.key]; if(!s) return;
+      var a = s.cpi_index_monthly, p = yoy(s); if(p===null) return;
+      ym = a[a.length-1].ym;
+      var vals = a.slice(-13).map(function(r){ return r.value; });
+      var color = cls(p)==="down" ? "#2a78d6" : (cls(p)==="up" ? "#d03b3b" : "#898781");
+      html += '<div class="kpi"><div class="n">'+(window.JL?JL.icon(k.icon,16,color):"")+k.name+'</div><div class="val '+cls(p)+'" data-pct="'+p+'">'+fmtPct(p)+'</div><div class="lbl">Index '+a[a.length-1].value+'</div>'+spark(vals,color)+'</div>';
+    });
+    grid.innerHTML = html;
+    if(ym) document.getElementById("dash-month").textContent = "("+ymEn(ym)+")";
+    Array.prototype.forEach.call(grid.querySelectorAll(".val"), function(el){ countUp(el, +el.getAttribute("data-pct")); });
+  }
+  var pending = 2;
+  function doneOne(){ if(--pending===0){ renderDash(); } }
+
+  load("../data.json", function(d){
+    d.items.forEach(function(it){ series[it.key] = it; });
+    setLatest("food", "Latest", "data through "+ymEn(lastMonth(d.items)));
+    setTag("tag-rice", series.rice, yoy(series.rice));
+    setTag("tag-oil", series.cooking_oil, yoy(series.cooking_oil));
+    setTag("tag-egg", series.egg, yoy(series.egg));
+    document.getElementById("scene-caption").textContent = "From Japan's CPI for "+ymEn(lastMonth(d.items))+" (2025 = 100)";
+    doneOne();
+  });
+  load("../vegetables_data.json", function(d){
+    d.items.forEach(function(it){ series[it.key] = it; });
+    setLatest("veg", "Latest", "data through "+ymEn(lastMonth(d.items)));
+    setTag("tag-lettuce", series.lettuce, mom(series.lettuce));
+    doneOne();
+  });
+
+  load("../monthly_digest_data.json", function(d){
+    var m = d.months[0];
+    var themes = (m.analysis && m.analysis.themes) ? m.analysis.themes.length : 0;
+    setLatest("digest", "Latest issue", (m.label_en||m.ym)+(themes ? " ("+themes+" themes)" : ""));
+  });
+  load("../trade_data.json", function(d){ var y = d.items[0].yearly; setLatest("trade", "Latest", "data through "+y[y.length-1].year); });
+  load("../product_news.json", function(d){
+    var latest = d.products.map(function(p){ return p.announced_date; }).sort().pop();
+    setLatest("news", "Tracked", d.products.length+" releases, newest "+dateEn(latest));
+  });
+  load("../market_size_data.json", function(d){
+    var maxY = 0; d.categories.forEach(function(c){ c.yearly.forEach(function(r){ if(r.year>maxY) maxY = r.year; }); });
+    setLatest("market", "Latest", "data through "+maxY);
+  });
+  load("../oem_makers_data.json", function(d){ setLatest("oem", "Listed", d.companies.length+" makers in "+d.categories.length+" categories"); });
+  load("../industry_map_data.json", function(d){ setLatest("industry", "Listed", d.companies.length+" companies, data as of "+dateEn(d.meta.generated_at)); });
+
+  // ---- regional dishes minimap
+  load("../food_culture_data.json", function(d){
+    var S = 26, G = 3, svgns = "http://www.w3.org/2000/svg";
+    var cols = Math.max.apply(null, d.dishes.map(function(x){ return x.c; }))+1;
+    var rows = Math.max.apply(null, d.dishes.map(function(x){ return x.r; }))+1;
+    var svg = document.getElementById("minimap");
+    svg.setAttribute("viewBox", "0 0 "+(cols*(S+G))+" "+(rows*(S+G)));
+    var colorOf = {}; d.categories.forEach(function(c){ colorOf[c.key] = c.color; });
+    d.dishes.forEach(function(x){
+      var g = document.createElementNS(svgns, "g");
+      var r = document.createElementNS(svgns, "rect");
+      r.setAttribute("x", x.c*(S+G)); r.setAttribute("y", x.r*(S+G)); r.setAttribute("width", S); r.setAttribute("height", S); r.setAttribute("rx", 6); r.setAttribute("fill", colorOf[x.cat]||"#898781");
+      var t = document.createElementNS(svgns, "title"); t.textContent = (x.pref_en||x.pref)+": "+x.en;
+      g.appendChild(r); g.appendChild(t);
+      if(x.fun){ var s = document.createElementNS(svgns, "text"); s.setAttribute("x", x.c*(S+G)+S/2); s.setAttribute("y", x.r*(S+G)+S/2+4); s.setAttribute("text-anchor","middle"); s.setAttribute("font-size","11"); s.setAttribute("fill","#fff2b3"); s.textContent = "★"; g.appendChild(s); }
+      svg.appendChild(g);
+    });
+    var chips = d.dishes.filter(function(x){ return x.fun; }).slice(0, 6).map(function(x){ return "<span>"+x.en+"</span>"; }).join("");
+    document.getElementById("culture-chips").innerHTML = chips;
+  });
+
+  // ---- reveal on scroll
+  function arm(){
+    var targets = document.querySelectorAll(".reveal");
+    if(reduce || !("IntersectionObserver" in window)){ Array.prototype.forEach.call(targets, function(e){ e.classList.add("in"); }); return; }
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }); }, { rootMargin:"0px 0px -8% 0px" });
+    Array.prototype.forEach.call(targets, function(e){ io.observe(e); });
+  }
+  arm();
 })();
 </script>
 </body>
