@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Taste Labo｜食品マーケターのための公的データまとめ「食卓の物価」</title>
-<meta name="description" content="マーケターが、食品価格・野菜価格・輸入統計・新製品・市場規模・業界マップを、総務省・農林水産省などの公的統計と各社の公表資料からまとめたサイトです。毎月25日ごろ更新。">
+<meta name="description" content="マーケターが、食品価格・野菜価格・輸入統計・新製品・市場規模・業界マップ・郷土料理を、総務省・農林水産省などの公的統計と各社の公表資料からまとめたサイトです。毎月25日ごろ更新。">
 <link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/">
 <link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/">
 <link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/">
@@ -42,92 +42,162 @@
     --series-6: #8a5cd1;
     --series-7: #13a3b8;
     --series-8: #6b6a64;
+    --up:   #d03b3b;
+    --down: #2a78d6;
 
     --accent: var(--series-1);
   }
   /* このページは常にライト配色に固定しています */
 
   *{box-sizing:border-box;}
+  html{ scroll-behavior:smooth; }
   body{
     margin:0;
     background:var(--page-plane);
     color:var(--text-primary);
     font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; position:relative; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
 
-  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; position:relative; z-index:2; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
 
-  /* ---- hero ---- */
-  .hero{ padding:44px 0 34px; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--text-secondary); margin-bottom:14px; }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
-  .hero h1{ font-size:clamp(36px,7vw,58px); line-height:1.1; letter-spacing:.01em; }
-  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(16px,2.6vw,20px); color:var(--text-secondary); margin-top:10px; }
-  .hero p{ font-size:15px; line-height:1.9; color:var(--text-secondary); max-width:62ch; margin:18px 0 0; }
-  .facts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:26px; max-width:760px; }
-  .fact{ background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:13px 14px; box-shadow:var(--card-shadow); }
-  .fact .k{ font-size:11px; font-weight:700; color:var(--text-muted); letter-spacing:.04em; }
-  .fact .v{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:21px; margin-top:4px; line-height:1.2; }
-  .fact .v small{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:12px; font-weight:700; color:var(--text-secondary); margin-left:2px; }
+  /* ---- 背景の装飾（青海波＋やわらかい色の玉） ---- */
+  .bg-deco{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .bg-deco .wave{ position:absolute; left:0; right:0; top:0; height:720px; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23d9d3c7' stroke-width='1'%3E%3Cpath d='M0 40a40 40 0 0 1 80 0M10 40a30 30 0 0 1 60 0M20 40a20 20 0 0 1 40 0M30 40a10 10 0 0 1 20 0'/%3E%3Cpath d='M-40 40a40 40 0 0 1 80 0M-30 40a30 30 0 0 1 60 0M-20 40a20 20 0 0 1 40 0M-10 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3Cpath d='M40 40a40 40 0 0 1 80 0M50 40a30 30 0 0 1 60 0M60 40a20 20 0 0 1 40 0M70 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); }
+  .bg-deco .blob{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.55; }
+  .bg-deco .b1{ width:520px; height:520px; right:-160px; top:-120px; background:radial-gradient(circle, rgba(237,161,0,.35), rgba(237,161,0,0) 70%); }
+  .bg-deco .b2{ width:460px; height:460px; left:-200px; top:260px; background:radial-gradient(circle, rgba(42,120,214,.28), rgba(42,120,214,0) 70%); }
+  .bg-deco .b3{ width:380px; height:380px; right:12%; top:520px; background:radial-gradient(circle, rgba(208,59,59,.22), rgba(208,59,59,0) 70%); }
 
-  section{ padding:34px 0; border-top:1px solid var(--border); }
-  .section-head{ margin-bottom:18px; }
-  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; }
-  .section-head h2{ font-size:24px; margin-top:4px; }
+  /* ---- hero ---- */
+  .hero{ position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center; padding:46px 0 26px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--text-secondary); margin-bottom:16px; background:var(--surface-1); border:1px solid var(--border); border-radius:99px; padding:6px 12px 6px 8px; box-shadow:var(--card-shadow); }
+  .eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:var(--series-5); box-shadow:0 0 0 4px rgba(208,59,59,.15); }
+  .hero h1{ font-size:clamp(40px,7.5vw,66px); line-height:1.05; letter-spacing:.01em; position:relative; display:inline-block; }
+  .hero h1 .brush{ position:absolute; left:-4px; right:-4px; bottom:4px; height:.32em; z-index:-1; border-radius:4px;
+    background:linear-gradient(90deg, rgba(237,161,0,.55), rgba(208,59,59,.35) 55%, rgba(42,120,214,.3)); transform:skewX(-8deg); }
+  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(17px,2.6vw,22px); color:var(--text-secondary); margin-top:14px; }
+  .hero p{ font-size:15px; line-height:1.95; color:var(--text-secondary); max-width:56ch; margin:16px 0 0; }
+  .cta{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:99px; font-size:13.5px; font-weight:700; text-decoration:none; transition:transform .15s, box-shadow .15s; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn.primary{ background:var(--text-primary); color:#fff; box-shadow:0 8px 20px rgba(11,11,11,.18); }
+  .btn.ghost{ background:var(--surface-1); color:var(--text-primary); border:1px solid var(--border); box-shadow:var(--card-shadow); }
+  .facts{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:22px; font-size:12.5px; color:var(--text-muted); }
+  .facts b{ color:var(--text-primary); font-family:"Zen Old Mincho",serif; font-size:15px; margin-right:3px; }
+
+  /* 食卓のイラスト＋浮かぶ値札 */
+  .scene{ position:relative; aspect-ratio:1/1; max-width:520px; margin:0 auto; width:100%; }
+  .scene svg.tray{ width:100%; height:100%; display:block; overflow:visible; }
+  .tag{ position:absolute; display:flex; flex-direction:column; gap:1px; background:#fff; border:2px solid var(--tc); border-radius:12px; padding:7px 11px 7px 10px; box-shadow:0 10px 24px rgba(11,11,11,.14); font-size:11px; font-weight:700; color:var(--text-secondary); white-space:nowrap; animation:bob 4.2s ease-in-out infinite; transform-origin:center; }
+  .tag:after{ content:""; position:absolute; left:50%; bottom:-9px; width:14px; height:14px; background:#fff; border-right:2px solid var(--tc); border-bottom:2px solid var(--tc); transform:translateX(-50%) rotate(45deg); }
+  .tag .v{ font-family:"Zen Old Mincho",serif; font-size:22px; line-height:1; color:var(--tc); letter-spacing:.01em; }
+  .tag .v small{ font-size:11px; font-family:"Zen Kaku Gothic New",sans-serif; margin-left:3px; color:var(--text-muted); }
+  .tag.t1{ left:4%; top:12%; animation-delay:0s; }
+  .tag.t2{ right:0; top:4%; animation-delay:1.3s; }
+  .tag.t3{ right:6%; bottom:20%; animation-delay:2.4s; }
+  .tag.t4{ left:0; bottom:26%; animation-delay:.7s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-1deg);} 50%{ transform:translateY(-9px) rotate(1deg);} }
+  .steam{ fill:none; stroke:#b9b2a7; stroke-width:4; stroke-linecap:round; opacity:0; animation:steam 3.2s ease-in-out infinite; }
+  .steam.s2{ animation-delay:.9s; } .steam.s3{ animation-delay:1.8s; }
+  @keyframes steam{ 0%{ opacity:0; transform:translateY(8px);} 30%{ opacity:.9;} 100%{ opacity:0; transform:translateY(-26px);} }
+  .scene .caption{ position:absolute; left:50%; bottom:-6px; transform:translateX(-50%); font-size:11px; color:var(--text-muted); white-space:nowrap; }
+
+  /* ---- 今月の食卓ダッシュボード ---- */
+  .dash{ position:relative; z-index:1; margin-top:10px; background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:16px 18px 14px; }
+  .dash-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+  .dash-head h2{ font-size:18px; display:flex; align-items:center; gap:8px; }
+  .dash-head .note{ font-size:11.5px; color:var(--text-muted); }
+  .dash-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
+  .kpi{ position:relative; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto auto auto; column-gap:8px; align-items:end; border:1px solid var(--border); border-radius:12px; padding:10px 12px 9px; background:#fff; overflow:hidden; transition:transform .15s, box-shadow .15s; }
+  .kpi:hover{ transform:translateY(-2px); box-shadow:var(--card-shadow); }
+  .kpi .n{ grid-column:1 / -1; font-size:11.5px; font-weight:700; color:var(--text-secondary); display:flex; align-items:center; gap:6px; }
+  .kpi .val{ grid-column:1; font-family:"Zen Old Mincho",serif; font-size:25px; line-height:1.1; margin-top:4px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .kpi .val.up{ color:var(--up);} .kpi .val.down{ color:var(--down);} .kpi .val.flat{ color:var(--text-secondary); }
+  .kpi .lbl{ grid-column:1; font-size:10.5px; color:var(--text-muted); margin-top:2px; }
+  .kpi svg{ grid-column:2; grid-row:2 / span 2; width:72px; height:34px; opacity:.95; align-self:center; }
+  .dash-foot{ margin-top:10px; font-size:11px; color:var(--text-muted); display:flex; flex-wrap:wrap; gap:6px 14px; }
+  .dash-foot a{ font-weight:700; text-decoration:none; }
+
+  section{ position:relative; z-index:1; padding:40px 0; border-top:1px solid var(--border); }
+  .section-head{ margin-bottom:20px; }
+  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.16em; color:var(--series-5); text-transform:uppercase; }
+  .section-head h2{ font-size:26px; margin-top:4px; }
   .section-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:6px; line-height:1.75; max-width:64ch; }
 
   /* ---- site menu ---- */
-  .menu{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+  .menu{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:14px; }
   .menu-card{
     position:relative; display:flex; flex-direction:column; gap:8px;
-    background:var(--surface-1); border:1px solid var(--border); border-radius:14px;
-    padding:18px 18px 16px; box-shadow:var(--card-shadow);
-    text-decoration:none; color:inherit; transition:transform .12s, box-shadow .12s, border-color .12s;
+    background:var(--surface-1); border:1px solid var(--border); border-radius:16px;
+    padding:18px 18px 16px; box-shadow:var(--card-shadow); overflow:hidden;
+    color:inherit; transition:transform .16s, box-shadow .16s, border-color .16s;
   }
-  .menu-card:hover{ transform:translateY(-2px); border-color:color-mix(in srgb, var(--c) 45%, transparent); box-shadow:0 2px 4px rgba(11,11,11,0.06), 0 14px 30px rgba(11,11,11,0.08); }
+  .menu-card:before{ content:""; position:absolute; right:-40px; top:-40px; width:150px; height:150px; border-radius:50%; background:color-mix(in srgb, var(--c) 12%, transparent); transition:transform .3s; }
+  .menu-card:hover{ transform:translateY(-3px); border-color:color-mix(in srgb, var(--c) 45%, transparent); box-shadow:0 2px 4px rgba(11,11,11,0.06), 0 16px 34px rgba(11,11,11,0.10); }
+  .menu-card:hover:before{ transform:scale(1.5); }
+  .menu-card:hover .arrow{ transform:translateX(4px); }
   .menu-card:focus-within{ outline:2px solid var(--c); outline-offset:2px; }
   .menu-card h3 a.stretch{ color:inherit; text-decoration:none; }
-  .menu-card h3 a.stretch:after{ content:""; position:absolute; inset:0; border-radius:14px; z-index:1; }
+  .menu-card h3 a.stretch:after{ content:""; position:absolute; inset:0; border-radius:16px; z-index:1; }
   .menu-card h3 a.stretch:focus-visible{ outline:none; }
-  .menu-card:before{ content:""; position:absolute; left:18px; right:18px; top:0; height:3px; border-radius:0 0 3px 3px; background:var(--c); }
-  .mc-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
-  .mc-no{ font-size:11px; font-weight:900; color:var(--c); letter-spacing:.08em; }
+  .mc-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; position:relative; }
+  .mc-badge{ width:46px; height:46px; border-radius:14px; display:inline-flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--c) 14%, #fff); border:1px solid color-mix(in srgb, var(--c) 25%, transparent); }
+  .mc-no{ font-size:11px; font-weight:900; color:var(--c); letter-spacing:.08em; display:block; }
   .mc-freq{ font-size:10.5px; font-weight:700; color:var(--text-secondary); background:var(--page-plane); border:1px solid var(--border); border-radius:99px; padding:2px 8px; white-space:nowrap; }
-  .menu-card h3{ font-size:19px; line-height:1.35; }
-  .menu-card h3 .arrow{ color:var(--c); font-family:"Zen Kaku Gothic New",sans-serif; font-size:15px; margin-left:4px; }
-  .mc-desc{ font-size:12.5px; line-height:1.75; color:var(--text-secondary); }
+  .menu-card h3{ font-size:19px; line-height:1.35; position:relative; }
+  .menu-card h3 .arrow{ display:inline-block; color:var(--c); font-family:"Zen Kaku Gothic New",sans-serif; font-size:15px; margin-left:4px; transition:transform .16s; }
+  .mc-desc{ font-size:12.5px; line-height:1.75; color:var(--text-secondary); position:relative; }
   .mc-src{ font-size:11px; color:var(--text-muted); line-height:1.6; }
   .mc-latest{ margin-top:auto; padding-top:9px; border-top:1px dashed var(--border); font-size:11.5px; font-weight:700; color:var(--text-primary); min-height:1.6em; }
   .mc-latest .lbl{ color:var(--text-muted); font-weight:500; margin-right:4px; }
   .mc-langs{ display:flex; gap:6px; flex-wrap:wrap; }
-  .mc-langs a{ font-size:10.5px; font-weight:700; text-decoration:none; color:var(--c); border:1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius:4px; padding:1px 6px; position:relative; z-index:2; }
+  .mc-langs a{ font-size:10.5px; font-weight:700; text-decoration:none; color:var(--c); border:1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius:4px; padding:1px 6px; position:relative; z-index:2; background:#fff; }
 
-  .menu-card.feature{ grid-column:1 / -1; background:linear-gradient(135deg, color-mix(in srgb, var(--c) 9%, var(--surface-1)), var(--surface-1) 70%); }
-  .menu-card.feature h3{ font-size:23px; }
+  .menu-card.feature{ grid-column:1 / -1; display:grid; grid-template-columns:1fr auto; gap:6px 24px; background:linear-gradient(120deg, color-mix(in srgb, var(--c) 12%, var(--surface-1)), var(--surface-1) 60%); }
+  .menu-card.feature > *{ grid-column:1; }
+  .menu-card.feature h3{ font-size:24px; }
   .menu-card.feature .mc-desc{ font-size:13.5px; max-width:70ch; }
+  .menu-card.feature .feat-art{ grid-column:2; grid-row:1 / span 5; align-self:center; width:150px; height:150px; }
+  .menu-card.feature .feat-art svg{ width:100%; height:100%; }
+
+  /* ---- 郷土料理ティザー ---- */
+  .culture{ display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; background:linear-gradient(135deg, #fff6e9, #fcfcfb 60%); border:1px solid var(--border); border-radius:20px; padding:24px; box-shadow:var(--card-shadow); }
+  .culture h2{ font-size:26px; margin-top:6px; }
+  .culture p{ font-size:13.5px; line-height:1.85; color:var(--text-secondary); margin:10px 0 0; }
+  .culture .dishes{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .culture .dishes span{ font-size:11.5px; font-weight:700; background:#fff; border:1px solid var(--border); border-radius:99px; padding:4px 10px; color:var(--text-secondary); }
+  .minimap{ display:block; text-decoration:none; }
+  .minimap svg{ width:100%; height:auto; display:block; }
+  .minimap rect{ transition:transform .15s; transform-box:fill-box; transform-origin:center; }
+  .minimap g:hover rect{ transform:scale(1.25); stroke:#0b0b0b; stroke-width:1.5; }
+  .minimap .hint{ text-align:center; font-size:11.5px; color:var(--text-muted); margin-top:6px; }
 
   /* ---- about ---- */
   .about-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:18px; align-items:start; }
   .about-text p{ font-size:14px; line-height:1.95; color:var(--text-secondary); margin:0 0 14px; }
   .about-text p b{ color:var(--text-primary); }
-  .name-box{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px 18px; box-shadow:var(--card-shadow); }
+  .name-box{ background:var(--surface-1); border:1px solid var(--border); border-radius:16px; padding:18px 20px; box-shadow:var(--card-shadow); }
   .name-box h3{ font-size:15px; margin-bottom:10px; }
-  .name-row{ display:grid; grid-template-columns:62px 1fr; gap:10px; padding:9px 0; border-top:1px solid var(--border); font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
+  .name-row{ display:grid; grid-template-columns:70px 1fr; gap:10px; padding:10px 0; border-top:1px solid var(--border); font-size:12.5px; line-height:1.7; color:var(--text-secondary); align-items:center; }
   .name-row:first-of-type{ border-top:none; }
-  .name-row b{ font-family:"Zen Old Mincho",serif; font-size:16px; color:var(--accent); }
-  .policy{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:18px; }
-  .policy div{ background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:12px 14px; font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
-  .policy div b{ display:block; color:var(--text-primary); font-size:13px; margin-bottom:3px; }
+  .name-row b{ font-family:"Zen Old Mincho",serif; font-size:22px; background:linear-gradient(135deg, var(--series-5), var(--series-4)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .policy{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; margin-top:18px; }
+  .policy div{ background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:14px; font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
+  .policy div b{ display:flex; align-items:center; gap:8px; color:var(--text-primary); font-size:13px; margin-bottom:5px; }
 
   /* ---- schedule & history ---- */
   .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
-  .sched{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; box-shadow:var(--card-shadow); overflow:hidden; }
+  .sched{ background:var(--surface-1); border:1px solid var(--border); border-radius:16px; box-shadow:var(--card-shadow); overflow:hidden; }
   .sched-row{ display:grid; grid-template-columns:118px 1fr; gap:12px; padding:13px 16px; border-top:1px solid var(--border); }
   .sched-row:first-child{ border-top:none; }
   .sched-row .when{ font-weight:900; font-size:13px; color:var(--accent); }
@@ -137,25 +207,45 @@
   .timeline li{ position:relative; padding:0 0 14px 22px; border-left:2px solid rgba(42,120,214,0.25); font-size:12.5px; line-height:1.7; color:var(--text-secondary); }
   .timeline li:last-child{ border-left-color:transparent; padding-bottom:0; }
   .timeline li:before{ content:""; position:absolute; left:-6px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--surface-1); border:2px solid var(--accent); }
+  .timeline li:first-child:before{ background:var(--series-5); border-color:var(--series-5); box-shadow:0 0 0 4px rgba(208,59,59,.15); }
   .timeline .d{ display:block; font-weight:900; color:var(--text-primary); font-size:12px; }
 
-  .lang-band{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; padding:16px 18px; border-radius:14px; background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--card-shadow); font-size:13px; color:var(--text-secondary); }
+  .lang-band{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; padding:18px 20px; border-radius:16px; background:linear-gradient(120deg, #eef4fc, var(--surface-1) 60%); border:1px solid var(--border); box-shadow:var(--card-shadow); font-size:13px; color:var(--text-secondary); }
   .lang-band b{ color:var(--text-primary); }
-  .lang-band a{ font-weight:700; text-decoration:none; padding:5px 12px; border-radius:99px; border:1px solid rgba(42,120,214,0.35); }
+  .lang-band a{ font-weight:700; text-decoration:none; padding:6px 14px; border-radius:99px; border:1px solid rgba(42,120,214,0.35); background:#fff; }
 
-  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  footer{ position:relative; z-index:1; padding:34px 0 60px; border-top:1px solid var(--border); }
   .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.85; max-width:76ch; }
 
+  /* スクロールで現れる */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .tag, .steam{ animation:none; } .steam{ opacity:.6; }
+    html{ scroll-behavior:auto; }
+  }
+
+  @media (max-width:820px){
+    .hero{ grid-template-columns:1fr; gap:14px; }
+    .scene{ max-width:440px; }
+    .menu-card.feature{ grid-template-columns:1fr; }
+    .menu-card.feature .feat-art{ display:none; }
+    .culture{ grid-template-columns:1fr; }
+  }
   @media (max-width:720px){
     .about-grid, .two-col{ grid-template-columns:1fr; }
   }
   @media (max-width:520px){
-    .hero{ padding:32px 0 26px; }
+    .hero{ padding:30px 0 20px; }
     .sched-row{ grid-template-columns:1fr; gap:2px; }
+    .tag .v{ font-size:18px; }
   }
 </style>
 </head>
 <body>
+
+<div class="bg-deco" aria-hidden="true"><div class="wave"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 
 <div class="wrap">
 
@@ -176,77 +266,167 @@
   </nav>
 
   <header class="hero">
-    <div class="eyebrow"><span class="dot"></span>食品マーケターのための公的データまとめ</div>
-    <h1>AI Taste Labo</h1>
-    <div class="sub">食卓の物価 ― 食品の「いま」を、公的データで。</div>
-    <p>マーケターが、企画書や営業資料づくりで毎回探していた公的な数字を、1か所にまとめたサイトです。総務省・農林水産省などの統計や各社の公表資料をもとに、食品の価格、原材料の輸入、市場規模、新製品、業界の顔ぶれをグラフと一覧で確認できます。</p>
-    <div class="facts">
-      <div class="fact"><div class="k">スタート</div><div class="v">2026年9月</div></div>
-      <div class="fact"><div class="k">更新</div><div class="v">毎月25日<small>ごろ</small></div></div>
-      <div class="fact"><div class="k">データページ</div><div class="v">8<small>ページ</small></div></div>
-      <div class="fact"><div class="k">対応言語</div><div class="v">3<small>言語</small></div></div>
+    <div>
+      <div class="eyebrow"><span class="dot"></span>食品マーケターのための公的データまとめ</div>
+      <h1>AI Taste Labo<span class="brush"></span></h1>
+      <div class="sub">食卓の物価 ― 食品の「いま」を、公的データで。</div>
+      <p>マーケターが、企画書や営業資料づくりで毎回探していた公的な数字を、1か所にまとめたサイトです。総務省・農林水産省などの統計や各社の公表資料をもとに、食品の価格、原材料の輸入、市場規模、新製品、業界の顔ぶれをグラフと一覧で確認できます。</p>
+      <div class="cta">
+        <a class="btn primary" href="monthly_digest.html">今月の食品市場を3分で読む →</a>
+        <a class="btn ghost" href="#menu">サイトメニューを見る</a>
+      </div>
+      <div class="facts">
+        <span><b>2026年9月</b>スタート</span>
+        <span><b>毎月25日</b>ごろ更新</span>
+        <span><b>8</b>データページ</span>
+        <span><b>3</b>言語</span>
+      </div>
+    </div>
+
+    <div class="scene" id="scene">
+      <svg class="tray" viewBox="0 0 420 420" role="img" aria-label="和食の食卓のイラスト。ご飯、みそ汁、焼き魚、漬物、お茶に、最新の価格の値札が浮かんでいる">
+        <defs>
+          <radialGradient id="g-tray" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#d9a06a"/><stop offset="1" stop-color="#a86b3c"/></radialGradient>
+          <linearGradient id="g-rice" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ece6da"/></linearGradient>
+          <linearGradient id="g-bowl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f8de6"/><stop offset="1" stop-color="#1f5fb0"/></linearGradient>
+          <linearGradient id="g-miso" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e04a4a"/><stop offset="1" stop-color="#9e2626"/></linearGradient>
+          <linearGradient id="g-fish" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f3b640"/><stop offset="1" stop-color="#d98a12"/></linearGradient>
+          <linearGradient id="g-tea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f9f6e"/><stop offset="1" stop-color="#1d6b45"/></linearGradient>
+        </defs>
+        <!-- 影と盆 -->
+        <ellipse cx="210" cy="392" rx="178" ry="16" fill="rgba(11,11,11,.08)"/>
+        <ellipse cx="210" cy="250" rx="190" ry="126" fill="url(#g-tray)"/>
+        <ellipse cx="210" cy="244" rx="176" ry="112" fill="none" stroke="#8a5530" stroke-opacity=".35" stroke-width="2"/>
+        <ellipse cx="210" cy="246" rx="160" ry="98" fill="none" stroke="#f1c99d" stroke-opacity=".35" stroke-width="1.5"/>
+
+        <!-- 焼き魚の皿（奥） -->
+        <ellipse cx="226" cy="190" rx="86" ry="26" fill="#ffffff" stroke="#e1e0d9" stroke-width="2"/>
+        <ellipse cx="226" cy="190" rx="70" ry="17" fill="none" stroke="#2a78d6" stroke-opacity=".35" stroke-width="2"/>
+        <path d="M168 186c16-22 70-22 88 0-18 20-72 20-88 0z" fill="url(#g-fish)"/>
+        <path d="M256 186l26-14v28z" fill="#d98a12"/>
+        <path d="M190 180c5 5 5 9 0 14M204 177c5 6 5 10 0 16M218 178c5 6 5 10 0 16" fill="none" stroke="#9a5e05" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="178" cy="184" r="2.8" fill="#0b0b0b"/>
+        <path d="M246 204c10-3 18-3 26 0" fill="none" stroke="#1baf7a" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="166" cy="204" r="6" fill="#f2d6a0"/>
+
+        <!-- ご飯茶碗（左） -->
+        <path d="M70 262h100c0 32-22 56-50 56s-50-24-50-56z" fill="url(#g-bowl)"/>
+        <path d="M78 270h84" stroke="#ffffff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round"/>
+        <path d="M70 262c3-26 22-40 50-40s47 14 50 40z" fill="url(#g-rice)"/>
+        <ellipse cx="120" cy="262" rx="50" ry="8" fill="#fff"/>
+        <circle cx="100" cy="246" r="3" fill="#e6dfd2"/><circle cx="124" cy="238" r="3" fill="#e6dfd2"/><circle cx="140" cy="250" r="3" fill="#e6dfd2"/>
+        <circle cx="120" cy="233" r="7" fill="#c23b3b"/>
+
+        <!-- みそ汁（右） -->
+        <path d="M250 272h94c0 28-20 50-47 50s-47-22-47-50z" fill="url(#g-miso)"/>
+        <ellipse cx="297" cy="272" rx="47" ry="11" fill="#c4874a"/>
+        <ellipse cx="297" cy="272" rx="40" ry="8" fill="#d99a5a"/>
+        <rect x="282" y="266" width="12" height="7" rx="1.5" fill="#f8f3e8"/>
+        <rect x="302" y="268" width="10" height="6" rx="1.5" fill="#f8f3e8"/>
+        <path d="M312 262l9 5" stroke="#1baf7a" stroke-width="4" stroke-linecap="round"/>
+        <path d="M268 266c6-2 10-1 14 2" stroke="#2f5d3a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <g class="steam-g">
+          <path class="steam s1" d="M280 250c-8-10 8-14 0-28"/>
+          <path class="steam s2" d="M298 246c-8-10 8-14 0-28"/>
+          <path class="steam s3" d="M316 250c-8-10 8-14 0-28"/>
+        </g>
+
+        <!-- 漬物（手前左） -->
+        <ellipse cx="150" cy="332" rx="36" ry="13" fill="#fff" stroke="#e1e0d9" stroke-width="2"/>
+        <rect x="128" y="320" width="16" height="12" rx="3" fill="#e9d34a" transform="rotate(-12 136 326)"/>
+        <rect x="146" y="318" width="16" height="12" rx="3" fill="#f0dc6a" transform="rotate(8 154 324)"/>
+        <ellipse cx="166" cy="326" rx="8" ry="6" fill="#7a3fb0"/>
+
+        <!-- 湯のみ（手前右） -->
+        <path d="M258 318h40v30a8 8 0 0 1-8 8h-24a8 8 0 0 1-8-8z" fill="url(#g-tea)"/>
+        <ellipse cx="278" cy="318" rx="20" ry="6" fill="#8fd0ad"/>
+        <path d="M262 318h32" stroke="#fff" stroke-opacity=".5" stroke-width="2"/>
+
+        <!-- 箸と箸置き -->
+        <ellipse cx="215" cy="366" rx="12" ry="5" fill="#8a5cd1"/>
+        <path d="M110 372l200-18M112 380l200-14" stroke="#4a3328" stroke-width="5" stroke-linecap="round"/>
+        <path d="M110 372l60-5M112 380l60-4" stroke="#d03b3b" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+
+      <div class="tag t1" id="tag-rice" style="--tc:var(--down)"><span>米（うるち米）</span><span class="v">…</span><span>前年同月比</span></div>
+      <div class="tag t2" id="tag-oil" style="--tc:var(--up)"><span>食用油</span><span class="v">…</span><span>前年同月比</span></div>
+      <div class="tag t3" id="tag-egg" style="--tc:var(--up)"><span>鶏卵</span><span class="v">…</span><span>前年同月比</span></div>
+      <div class="tag t4" id="tag-lettuce" style="--tc:var(--up)"><span>レタス</span><span class="v">…</span><span>前月比</span></div>
+      <div class="caption" id="scene-caption">総務省 消費者物価指数（2025年=100）より</div>
     </div>
   </header>
 
+  <div class="dash reveal" id="dash">
+    <div class="dash-head">
+      <h2><span data-icon="chart" data-c="#2a78d6"></span>今月の食卓ダッシュボード <span id="dash-month" style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:13px;font-weight:700;color:var(--text-muted);"></span></h2>
+      <div class="note">前年同月比。小さなグラフは直近13か月の推移</div>
+    </div>
+    <div class="dash-grid" id="dash-grid"></div>
+    <div class="dash-foot"><span>出典：総務省統計局 消費者物価指数（品目別、2025年=100）</span><a href="food_prices.html">食品価格の詳細 →</a><a href="vegetables.html">野菜価格の詳細 →</a></div>
+  </div>
+
   <section id="menu">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="en">Site Menu</div>
       <h2>サイトメニュー</h2>
       <div class="section-sub">知りたいテーマから選んでください。各ページに出典・データ取得日を明記しています。</div>
     </div>
     <div class="menu" id="menu-grid">
 
-      <div class="menu-card feature" style="--c:var(--series-5)">
-        <div class="mc-top"><span class="mc-no">まずはここから ｜ 月次トピックス</span><span class="mc-freq">毎月更新</span></div>
+      <div class="menu-card feature reveal" style="--c:var(--series-5)">
+        <div class="mc-top"><div><span class="mc-no">まずはここから ｜ 月次トピックス</span></div><span class="mc-freq">毎月更新</span></div>
         <h3><a class="stretch" href="monthly_digest.html">今月の食品市場を3分でつかむ<span class="arrow">→</span></a></h3>
         <div class="mc-desc">価格・輸入・新製品の今月の動きをまとめ、「生活者ニーズの変化 → 市場の動き → 各社の新製品」のつながりをテーマ別に解説。国内の業界ニュースと来月の注目ポイントも。</div>
-        <div class="mc-langs"><a href="en/index.html" lang="en">English</a><a href="zh/monthly_digest.html" lang="zh-Hant">中文</a></div>
+        <div class="mc-langs"><a href="en/monthly_digest.html" lang="en">English</a><a href="zh/monthly_digest.html" lang="zh-Hant">中文</a></div>
         <div class="mc-latest" data-latest="digest"><span class="lbl">最新号</span>…</div>
+        <div class="feat-art" aria-hidden="true">
+          <svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="74" fill="rgba(208,59,59,.08)"/><rect x="38" y="36" width="84" height="100" rx="8" fill="#fff" stroke="#d03b3b" stroke-width="3"/><path d="M52 60h56M52 76h56M52 92h36" stroke="#52514e" stroke-width="4" stroke-linecap="round"/><path d="M52 118l14-14 12 10 20-22" fill="none" stroke="#d03b3b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="112" cy="40" r="14" fill="#eda100"/><path d="M106 40l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-1)">
-        <div class="mc-top"><span class="mc-no">01 ｜ 食品価格</span><span class="mc-freq">毎月更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-1)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="bowl" data-c="var(--series-1)" data-size="26"></span><span class="mc-no">01 ｜ 食品価格</span></div><span class="mc-freq">毎月更新</span></div>
         <h3><a class="stretch" href="food_prices.html">米・卵・パンの値上がりを長期で見る<span class="arrow">→</span></a></h3>
         <div class="mc-desc">米・食パン・鶏卵・牛乳・食用油など8品目の価格推移（1970年〜）、値上げランキング、エンゲル係数。</div>
         <div class="mc-src">出典：総務省統計局 消費者物価指数</div>
         <div class="mc-latest" data-latest="food"><span class="lbl">最新データ</span>…</div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-3)">
-        <div class="mc-top"><span class="mc-no">02 ｜ 野菜価格</span><span class="mc-freq">毎月更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-3)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="veggie" data-c="var(--series-3)" data-size="26"></span><span class="mc-no">02 ｜ 野菜価格</span></div><span class="mc-freq">毎月更新</span></div>
         <h3><a class="stretch" href="vegetables.html">野菜の高騰・値下がりをチェック<span class="arrow">→</span></a></h3>
         <div class="mc-desc">キャベツ・トマト・じゃがいもなど主要8品目の月次価格推移と、上がった・下がった野菜のランキング。</div>
         <div class="mc-src">出典：総務省統計局 消費者物価指数</div>
         <div class="mc-latest" data-latest="veg"><span class="lbl">最新データ</span>…</div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-4)">
-        <div class="mc-top"><span class="mc-no">03 ｜ 輸入統計</span><span class="mc-freq">年1回更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-4)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="ship" data-c="var(--series-4)" data-size="26"></span><span class="mc-no">03 ｜ 輸入統計</span></div><span class="mc-freq">年1回更新</span></div>
         <h3><a class="stretch" href="trade.html">原材料コストの上流を追う<span class="arrow">→</span></a></h3>
         <div class="mc-desc">小麦・大豆・とうもろこし・輸入牛肉・コーヒー生豆の輸入量・金額・単価の推移。</div>
         <div class="mc-src">出典：農林水産省 品目別貿易実績</div>
         <div class="mc-latest" data-latest="trade"><span class="lbl">最新データ</span>…</div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-7)">
-        <div class="mc-top"><span class="mc-no">04 ｜ 新製品情報</span><span class="mc-freq">毎月更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-7)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="candy" data-c="var(--series-7)" data-size="26"></span><span class="mc-no">04 ｜ 新製品情報</span></div><span class="mc-freq">毎月更新</span></div>
         <h3><a class="stretch" href="product_news.html">大手食品メーカーの新商品を一覧で<span class="arrow">→</span></a></h3>
         <div class="mc-desc">売上上位の食品メーカーの新製品発表を、会社別に絞り込んで確認できます。</div>
         <div class="mc-src">出典：各社のプレスリリース（PR TIMES）</div>
         <div class="mc-latest" data-latest="news"><span class="lbl">掲載</span>…</div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-2)">
-        <div class="mc-top"><span class="mc-no">05 ｜ 市場規模</span><span class="mc-freq">年1回更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-2)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="chart" data-c="var(--series-2)" data-size="26"></span><span class="mc-no">05 ｜ 市場規模</span></div><span class="mc-freq">年1回更新</span></div>
         <h3><a class="stretch" href="market_size.html">伸びている食品カテゴリーは？<span class="arrow">→</span></a></h3>
         <div class="mc-desc">調理食品（冷凍食品等）・調味料・菓子・清涼飲料の生産推移と、拡大・縮小の要因。</div>
         <div class="mc-src">出典：農林水産省 食品産業動態調査、全国清涼飲料連合会</div>
-        <div class="mc-langs"><a href="en/index.html" lang="en">English</a></div>
+        <div class="mc-langs"><a href="en/market_size.html" lang="en">English</a></div>
         <div class="mc-latest" data-latest="market"><span class="lbl">最新データ</span>…</div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-6)">
-        <div class="mc-top"><span class="mc-no">06 ｜ 業界マップ</span><span class="mc-freq">年1回更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-6)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="factory" data-c="var(--series-6)" data-size="26"></span><span class="mc-no">06 ｜ 業界マップ</span></div><span class="mc-freq">年1回更新</span></div>
         <h3><a class="stretch" href="industry_map.html">主要食品メーカー20社の規模と勢い<span class="arrow">→</span></a></h3>
         <div class="mc-desc">調味料・冷凍食品・即席麺・菓子・乳業・製パンの6分野で、売上高・営業利益・前期比をマップとランキングで。</div>
         <div class="mc-src">出典：各社の決算短信・有価証券報告書</div>
@@ -254,21 +434,24 @@
         <div class="mc-latest" data-latest="industry"><span class="lbl">掲載</span>…</div>
       </div>
 
-      <div class="menu-card" style="--c:var(--series-4)">
-        <div class="mc-top"><span class="mc-no">07 ｜ OEMメーカー</span><span class="mc-freq">年1回更新</span></div>
+      <div class="menu-card reveal" style="--c:var(--series-4)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="box" data-c="var(--series-4)" data-size="26"></span><span class="mc-no">07 ｜ OEMメーカー</span></div><span class="mc-freq">年1回更新</span></div>
         <h3><a class="stretch" href="oem_makers.html">小ロットで頼める受託製造メーカー<span class="arrow">→</span></a></h3>
         <div class="mc-desc">調味料・惣菜・麺・菓子・飲料のOEMを受ける中小・中堅メーカーを、得意な製品・最小ロットとともに一覧で。</div>
         <div class="mc-src">出典：各社の公式サイト</div>
         <div class="mc-latest" data-latest="oem"><span class="lbl">掲載</span>…</div>
       </div>
-      <div class="menu-card" style="--c:var(--series-5)">
-        <div class="mc-top"><span class="mc-no">08 ｜ 郷土料理</span><span class="mc-freq">日本の食文化</span></div>
+
+      <div class="menu-card reveal" style="--c:var(--series-5)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="nabe" data-c="var(--series-5)" data-size="26"></span><span class="mc-no">08 ｜ 郷土料理</span></div><span class="mc-freq">日本の食文化</span></div>
         <h3><a class="stretch" href="food_culture.html">わんこそば、ぼたん鍋…地図で見る郷土料理<span class="arrow">→</span></a></h3>
         <div class="mc-desc">47都道府県の個性的な伝統料理を、日本地図とおもしろ郷土料理のピックアップで紹介。</div>
         <div class="mc-src">参考：農林水産省「うちの郷土料理」</div>
+        <div class="mc-langs"><a href="en/food_culture.html" lang="en">English</a></div>
       </div>
-      <div class="menu-card" style="--c:var(--series-8)">
-        <div class="mc-top"><span class="mc-no">09 ｜ お問い合わせ</span></div>
+
+      <div class="menu-card reveal" style="--c:var(--series-8)">
+        <div class="mc-top"><div style="display:flex;align-items:center;gap:10px;"><span class="mc-badge" data-icon="mail" data-c="var(--series-8)" data-size="26"></span><span class="mc-no">09 ｜ お問い合わせ</span></div></div>
         <h3><a class="stretch" href="contact.html">ご意見・掲載データのご要望<span class="arrow">→</span></a></h3>
         <div class="mc-desc">「この品目も見たい」「数字が違うのでは」などのご意見はこちらから。</div>
       </div>
@@ -276,12 +459,30 @@
     </div>
   </section>
 
+  <section id="culture-sec">
+    <div class="culture reveal">
+      <div>
+        <div class="section-head" style="margin-bottom:0;">
+          <div class="en">Food Culture</div>
+          <h2>47都道府県、47の郷土料理</h2>
+        </div>
+        <p>データの合間に、日本の食の多様さも。わんこそば、ぼたん鍋、味噌煮込みうどん、しもつかれ――その土地の気候や行事から生まれた料理を、1県1品ずつ地図にのせました。右の地図のマスにカーソルを合わせると料理名が出ます。</p>
+        <div class="dishes" id="culture-chips"></div>
+        <div class="cta"><a class="btn ghost" href="food_culture.html">郷土料理マップを開く →</a></div>
+      </div>
+      <a class="minimap" href="food_culture.html" aria-label="郷土料理マップへ">
+        <svg id="minimap" viewBox="0 0 0 0"></svg>
+        <div class="hint">マスの色は料理の種類。クリックで地図ページへ</div>
+      </a>
+    </div>
+  </section>
+
   <section id="about">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="en">About</div>
       <h2>AI Taste Labo について</h2>
     </div>
-    <div class="about-grid">
+    <div class="about-grid reveal">
       <div class="about-text">
         <p>AI Taste Labo は、<b>マーケターが運営</b>している、食品市場の公的データまとめサイトです。</p>
         <p>「米はコロナ前から何％上がった？」「冷凍食品の市場は伸びている？」「あの会社の売上は？」――企画や商談のたびに、統計サイトや決算資料を一つずつ探していた経験から、<b>マーケターが本当に使う数字</b>を集め、グラフと一覧で見られるようにしました。</p>
@@ -294,17 +495,17 @@
         <div class="name-row"><b>Labo</b><span>研究所のように、数字から食品市場を読み解く場所でありたいという思い。</span></div>
       </div>
     </div>
-    <div class="policy">
-      <div><b>公的情報だけを使う</b>官公庁の統計、業界団体の統計、各社の公表資料など、誰でも確認できる情報に限っています。</div>
-      <div><b>出典と取得日を明記</b>すべての数値に出典を付け、元の資料をたどれるようにしています。</div>
-      <div><b>数字を推測で埋めない</b>取得できない年・品目は空欄のままにし、注記しています。</div>
-      <div><b>事実と解釈を分ける</b>月次トピックスでは、統計・報道の事実と当サイトの見立てを分けて書いています。</div>
+    <div class="policy reveal">
+      <div><b><span data-icon="chart" data-c="#2a78d6" data-size="20"></span>公的情報だけを使う</b>官公庁の統計、業界団体の統計、各社の公表資料など、誰でも確認できる情報に限っています。</div>
+      <div><b><span data-icon="paper" data-c="#d03b3b" data-size="20"></span>出典と取得日を明記</b>すべての数値に出典を付け、元の資料をたどれるようにしています。</div>
+      <div><b><span data-icon="bulb" data-c="#eda100" data-size="20"></span>数字を推測で埋めない</b>取得できない年・品目は空欄のままにし、注記しています。</div>
+      <div><b><span data-icon="heart" data-c="#8a5cd1" data-size="20"></span>事実と解釈を分ける</b>月次トピックスでは、統計・報道の事実と当サイトの見立てを分けて書いています。</div>
     </div>
   </section>
 
   <section id="schedule">
     <div class="two-col">
-      <div>
+      <div class="reveal">
         <div class="section-head">
           <div class="en">Update</div>
           <h2>更新スケジュール</h2>
@@ -316,28 +517,29 @@
           <div class="sched-row"><div class="when">年1回</div><div class="what"><b>輸入統計</b>・<b>市場規模</b>（農林水産省・業界団体の年報の公表後）</div></div>
         </div>
       </div>
-      <div>
+      <div class="reveal">
         <div class="section-head">
           <div class="en">History</div>
           <h2>これまでの歩み</h2>
           <div class="section-sub">2026年9月に食品価格ページからスタートしました。</div>
         </div>
         <ul class="timeline">
-          <li><span class="d">2026年9月17日</span>食品価格・野菜価格ページを作成</li>
-          <li><span class="d">2026年9月18〜23日</span>輸入統計・新製品情報・市場規模・月次トピックスを追加</li>
-          <li><span class="d">2026年9月27日</span>サイトを一般公開</li>
-          <li><span class="d">2026年9月28日</span>英語版（月次トピックス・市場規模）を公開</li>
-          <li><span class="d">2026年10月5日</span>業界マップと中国語版（繁体字）を公開</li>
-          <li><span class="d">2026年10月7日</span>トップページを開設</li>
+          <li><span class="d">2026年11月10日</span>トップページを刷新（動く食卓・ダッシュボード）</li>
+          <li><span class="d">2026年11月8〜9日</span>郷土料理マップを追加、英語版をイラスト付きに刷新</li>
           <li><span class="d">2026年10月18日</span>OEMメーカーのページを追加</li>
-          <li><span class="d">2026年11月8日</span>郷土料理マップを追加</li>
+          <li><span class="d">2026年10月7日</span>トップページを開設</li>
+          <li><span class="d">2026年10月5日</span>業界マップと中国語版（繁体字）を公開</li>
+          <li><span class="d">2026年9月28日</span>英語版（月次トピックス・市場規模）を公開</li>
+          <li><span class="d">2026年9月27日</span>サイトを一般公開</li>
+          <li><span class="d">2026年9月17日</span>食品価格・野菜価格ページを作成</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="langs">
-    <div class="lang-band">
+    <div class="lang-band reveal">
+      <span data-icon="globe" data-c="#2a78d6" data-size="24"></span>
       <b>For international readers / 國際讀者</b>
       <span>海外の食品企業・日本市場への参入を検討している方向けに、一部ページを英語・中国語（繁体字）で公開しています。</span>
       <a href="en/index.html" lang="en">English</a>
@@ -355,9 +557,11 @@
 
 </div>
 
+<script src="en/icons.js"></script>
 <script>
 (function(){
   "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function ymJa(ym){ var p = ym.split("-"); return p[0]+"年"+(+p[1])+"月"; }
   function dateJa(d){ var p = d.split("-"); return p[0]+"年"+(+p[1])+"月"+(+p[2])+"日"; }
@@ -366,38 +570,138 @@
     if(el) el.innerHTML = '<span class="lbl">'+label+'</span>'+text;
   }
   function load(url, fn){
-    fetch(url).then(function(r){ return r.json(); }).then(fn).catch(function(err){ console.error(url, err); });
+    fetch(url, { cache:"no-cache" }).then(function(r){ return r.json(); }).then(fn).catch(function(err){ console.error(url, err); });
   }
-  function lastMonth(items){
-    var arr = items[0].cpi_index_monthly;
-    return arr[arr.length-1].ym;
+  function lastMonth(items){ var arr = items[0].cpi_index_monthly; return arr[arr.length-1].ym; }
+  function fmtPct(p){ return (p>=0?"+":"−")+Math.abs(p).toFixed(1)+"%"; }
+  function cls(p){ return p>=0.5 ? "up" : (p<=-0.5 ? "down" : "flat"); }
+
+  // ---- アイコン（en/icons.js を共用）
+  Array.prototype.forEach.call(document.querySelectorAll("[data-icon]"), function(e){
+    var size = +(e.getAttribute("data-size")||22);
+    if(window.JL){ e.innerHTML = JL.icon(e.getAttribute("data-icon"), size, e.getAttribute("data-c")); }
+  });
+
+  // ---- 数字のカウントアップ
+  function countUp(el, target, suffix){
+    if(reduce){ el.textContent = fmtPct(target); return; }
+    var start = null, dur = 900;
+    function step(ts){
+      if(!start) start = ts;
+      var t = Math.min(1, (ts-start)/dur), e = 1-Math.pow(1-t, 3);
+      el.textContent = fmtPct(target*e);
+      if(t<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
 
+  // ---- ミニグラフ
+  function spark(values, color){
+    var w = 76, h = 30, mn = Math.min.apply(null, values), mx = Math.max.apply(null, values);
+    var pts = values.map(function(v,i){
+      var x = (w-2) * i/(values.length-1) + 1;
+      var y = mx===mn ? h/2 : h-3 - (h-6)*(v-mn)/(mx-mn);
+      return x.toFixed(1)+","+y.toFixed(1);
+    });
+    var last = pts[pts.length-1].split(",");
+    return '<svg viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts.join(" ")+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2.6" fill="'+color+'"/></svg>';
+  }
+
+  // ---- 値札とダッシュボード（食品価格・野菜価格のデータから）
+  var series = {};
+  function yoy(s){ var a = s.cpi_index_monthly; var l = a[a.length-1], y = a[a.length-13]; return y ? (l.value/y.value-1)*100 : null; }
+  function mom(s){ var a = s.cpi_index_monthly; var l = a[a.length-1], p = a[a.length-2]; return p ? (l.value/p.value-1)*100 : null; }
+  function setTag(id, item, pct){
+    var el = document.getElementById(id); if(!el || pct===null) return;
+    var c = cls(pct)==="down" ? "var(--down)" : (cls(pct)==="up" ? "var(--up)" : "var(--text-secondary)");
+    el.style.setProperty("--tc", c);
+    countUp(el.querySelector(".v"), pct);
+  }
+  var KPI = [
+    { key:"rice", name:"米", icon:"rice" }, { key:"cooking_oil", name:"食用油", icon:"bottle" }, { key:"egg", name:"鶏卵", icon:"dish" },
+    { key:"bread", name:"食パン", icon:"bowl" }, { key:"soy_sauce", name:"しょうゆ", icon:"soy" }, { key:"lettuce", name:"レタス", icon:"veggie" },
+    { key:"cabbage", name:"キャベツ", icon:"veggie" }, { key:"tomato", name:"トマト", icon:"veggie" }
+  ];
+  function renderDash(){
+    var grid = document.getElementById("dash-grid");
+    var html = "", ym = null;
+    KPI.forEach(function(k){
+      var s = series[k.key]; if(!s) return;
+      var a = s.cpi_index_monthly, p = yoy(s); if(p===null) return;
+      ym = a[a.length-1].ym;
+      var vals = a.slice(-13).map(function(r){ return r.value; });
+      var color = cls(p)==="down" ? "#2a78d6" : (cls(p)==="up" ? "#d03b3b" : "#898781");
+      html += '<div class="kpi"><div class="n">'+(window.JL?JL.icon(k.icon,16,color):"")+k.name+'</div><div class="val '+cls(p)+'" data-pct="'+p+'">'+fmtPct(p)+'</div><div class="lbl">指数 '+a[a.length-1].value+'</div>'+spark(vals,color)+'</div>';
+    });
+    grid.innerHTML = html;
+    if(ym) document.getElementById("dash-month").textContent = "（"+ymJa(ym)+"分）";
+    Array.prototype.forEach.call(grid.querySelectorAll(".val"), function(el){ countUp(el, +el.getAttribute("data-pct")); });
+  }
+  var pending = 2;
+  function doneOne(){ if(--pending===0){ renderDash(); } }
+
+  load("data.json", function(d){
+    d.items.forEach(function(it){ series[it.key] = it; });
+    setLatest("food", "最新データ", ymJa(lastMonth(d.items))+"分まで");
+    setTag("tag-rice", series.rice, yoy(series.rice));
+    setTag("tag-oil", series.cooking_oil, yoy(series.cooking_oil));
+    setTag("tag-egg", series.egg, yoy(series.egg));
+    document.getElementById("scene-caption").textContent = ymJa(lastMonth(d.items))+"の消費者物価指数（総務省、2025年=100）より";
+    doneOne();
+  });
+  load("vegetables_data.json", function(d){
+    d.items.forEach(function(it){ series[it.key] = it; });
+    setLatest("veg", "最新データ", ymJa(lastMonth(d.items))+"分まで");
+    setTag("tag-lettuce", series.lettuce, mom(series.lettuce));
+    doneOne();
+  });
+
+  // ---- 各ページの最新情報
   load("monthly_digest_data.json", function(d){
     var m = d.months[0];
     var themes = (m.analysis && m.analysis.themes) ? m.analysis.themes.length : 0;
     setLatest("digest", "最新号", m.label_ja + "号" + (themes ? "（テーマ "+themes+" 本）" : ""));
   });
-  load("data.json", function(d){ setLatest("food", "最新データ", ymJa(lastMonth(d.items))+"分まで"); });
-  load("vegetables_data.json", function(d){ setLatest("veg", "最新データ", ymJa(lastMonth(d.items))+"分まで"); });
-  load("trade_data.json", function(d){
-    var y = d.items[0].yearly; setLatest("trade", "最新データ", y[y.length-1].year+"年まで");
-  });
+  load("trade_data.json", function(d){ var y = d.items[0].yearly; setLatest("trade", "最新データ", y[y.length-1].year+"年まで"); });
   load("product_news.json", function(d){
     var latest = d.products.map(function(p){ return p.announced_date; }).sort().pop();
     setLatest("news", "掲載", d.products.length+"件 ／ 最新の発表 "+dateJa(latest));
   });
   load("market_size_data.json", function(d){
-    var maxY = 0;
-    d.categories.forEach(function(c){ c.yearly.forEach(function(r){ if(r.year>maxY) maxY = r.year; }); });
+    var maxY = 0; d.categories.forEach(function(c){ c.yearly.forEach(function(r){ if(r.year>maxY) maxY = r.year; }); });
     setLatest("market", "最新データ", maxY+"年（度）まで");
   });
-  load("oem_makers_data.json", function(d){
-    setLatest("oem", "掲載", d.companies.length+"社 ／ "+d.categories.length+"分野 ／ 情報確認 "+dateJa(d.meta.generated_at));
+  load("oem_makers_data.json", function(d){ setLatest("oem", "掲載", d.companies.length+"社 ／ "+d.categories.length+"分野 ／ 情報確認 "+dateJa(d.meta.generated_at)); });
+  load("industry_map_data.json", function(d){ setLatest("industry", "掲載", d.companies.length+"社 ／ データ取得 "+dateJa(d.meta.generated_at)); });
+
+  // ---- 郷土料理ミニ地図
+  load("food_culture_data.json", function(d){
+    var S = 26, G = 3, svgns = "http://www.w3.org/2000/svg";
+    var cols = Math.max.apply(null, d.dishes.map(function(x){ return x.c; }))+1;
+    var rows = Math.max.apply(null, d.dishes.map(function(x){ return x.r; }))+1;
+    var svg = document.getElementById("minimap");
+    svg.setAttribute("viewBox", "0 0 "+(cols*(S+G))+" "+(rows*(S+G)));
+    var colorOf = {}; d.categories.forEach(function(c){ colorOf[c.key] = c.color; });
+    d.dishes.forEach(function(x){
+      var g = document.createElementNS(svgns, "g");
+      var r = document.createElementNS(svgns, "rect");
+      r.setAttribute("x", x.c*(S+G)); r.setAttribute("y", x.r*(S+G)); r.setAttribute("width", S); r.setAttribute("height", S); r.setAttribute("rx", 6); r.setAttribute("fill", colorOf[x.cat]||"#898781");
+      var t = document.createElementNS(svgns, "title"); t.textContent = x.pref+"："+x.dish;
+      g.appendChild(r); g.appendChild(t);
+      if(x.fun){ var s = document.createElementNS(svgns, "text"); s.setAttribute("x", x.c*(S+G)+S/2); s.setAttribute("y", x.r*(S+G)+S/2+4); s.setAttribute("text-anchor","middle"); s.setAttribute("font-size","11"); s.setAttribute("fill","#fff2b3"); s.textContent = "★"; g.appendChild(s); }
+      svg.appendChild(g);
+    });
+    var chips = d.dishes.filter(function(x){ return x.fun; }).slice(0, 8).map(function(x){ return "<span>"+x.dish+"</span>"; }).join("");
+    document.getElementById("culture-chips").innerHTML = chips;
   });
-  load("industry_map_data.json", function(d){
-    setLatest("industry", "掲載", d.companies.length+"社 ／ データ取得 "+dateJa(d.meta.generated_at));
-  });
+
+  // ---- スクロールで現れる
+  var targets = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){ Array.prototype.forEach.call(targets, function(e){ e.classList.add("in"); }); }
+  else {
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }); }, { rootMargin:"0px 0px -8% 0px" });
+    Array.prototype.forEach.call(targets, function(e){ io.observe(e); });
+  }
 })();
 </script>
 </body>
