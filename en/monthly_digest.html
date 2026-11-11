@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Japan Food Market Monthly Topics | Prices, New Products & Consumer Trends | AI Taste Labo</title>
-<meta name="description" content="A monthly briefing on Japan's food market for food marketers and companies entering Japan: consumer price trends, market size, and new products from major Japanese food makers, connected through shifting consumer needs.">
+<meta name="description" content="A monthly magazine-style briefing on Japan's food market for food marketers and companies entering Japan: consumer price trends, market size, and new products from major Japanese food makers, connected through shifting consumer needs.">
 <link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/monthly_digest.html">
 <link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/monthly_digest.html">
 <link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/monthly_digest.html">
@@ -26,119 +26,153 @@
 <style>
   :root{
     color-scheme: light;
-    --surface-1:      #fcfcfb;
-    --page-plane:     #f9f9f7;
-    --text-primary:   #0b0b0b;
-    --text-secondary: #52514e;
-    --text-muted:     #898781;
-    --border:         rgba(11,11,11,0.10);
-    --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
-    --status-critical: #d03b3b;
-    --accent: #2a78d6;
+    --surface-1:#fcfcfb; --page-plane:#f9f9f7;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
+    --border:rgba(11,11,11,0.10);
+    --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --ink:#1f2a44;           /* magazine cover navy */
+    --paper:#f5f1e8;         /* cover paper color */
+    --red:#d03b3b; --blue:#2a78d6; --green:#1baf7a; --gold:#eda100; --purple:#8a5cd1;
+    --accent:#2a78d6;
   }
-
+  /* Light theme only */
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--page-plane);
-    color:var(--text-primary);
-    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{ max-width:820px; margin:0 auto; padding:0 20px; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary);
+    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 20px; position:relative; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
 
-  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  /* reading progress bar */
+  #progress{ position:fixed; left:0; top:0; height:3px; width:0; background:linear-gradient(90deg, var(--red), var(--gold)); z-index:50; transition:width .1s linear; }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; position:relative; z-index:2; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
   .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
   .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
   .top-nav a.lang2{ color:var(--accent); font-weight:700; }
 
-  .hero{ padding:32px 0 28px; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:12px; font-weight:700; letter-spacing:.08em;
-    color:var(--text-secondary); text-transform:uppercase;
-    margin-bottom:14px;
-  }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
-  .hero h1{ font-size:clamp(28px,5vw,40px); line-height:1.2; }
-  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:64ch; margin:16px 0 0; }
-  .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
+  /* ---- issue tabs ---- */
+  .issues{ display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end; margin:26px 0 0; }
+  .issues .lbl{ font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--text-muted); text-transform:uppercase; margin-right:6px; padding-bottom:10px; }
+  .issue-tab{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:14px; color:var(--text-secondary);
+    background:var(--surface-1); border:1px solid var(--border); border-bottom:none; border-radius:12px 12px 0 0;
+    padding:9px 18px 11px; cursor:pointer; transition:transform .12s, color .12s; }
+  .issue-tab:hover{ transform:translateY(-2px); }
+  .issue-tab[aria-pressed="true"]{ color:var(--paper); background:var(--ink); border-color:var(--ink); }
 
-  #months{ display:grid; gap:28px; }
-  .month-card{
-    background:var(--surface-1); border:1px solid var(--border); border-radius:14px;
-    padding:24px 22px; box-shadow:var(--card-shadow);
-  }
-  .month-card h2{ font-size:22px; margin-bottom:4px; }
-  .month-card .sub{ font-size:12.5px; color:var(--text-muted); margin-bottom:18px; }
+  /* ---- magazine cover ---- */
+  .cover{ position:relative; border-radius:0 22px 22px 22px; overflow:hidden; color:var(--paper);
+    background:radial-gradient(120% 140% at 85% -20%, #35466e, var(--ink) 55%, #16203a);
+    box-shadow:0 18px 44px rgba(31,42,68,.35); padding:30px 30px 26px; }
+  .cover .pattern{ position:absolute; inset:0; opacity:.10; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23f5f1e8' stroke-width='1'%3E%3Cpath d='M0 40a40 40 0 0 1 80 0M10 40a30 30 0 0 1 60 0M20 40a20 20 0 0 1 40 0M30 40a10 10 0 0 1 20 0'/%3E%3Cpath d='M-40 40a40 40 0 0 1 80 0M-30 40a30 30 0 0 1 60 0M-20 40a20 20 0 0 1 40 0M-10 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3Cpath d='M40 40a40 40 0 0 1 80 0M50 40a30 30 0 0 1 60 0M60 40a20 20 0 0 1 40 0M70 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3C/g%3E%3C/svg%3E"); }
+  .cover-grid{ position:relative; display:grid; grid-template-columns:1.25fr .75fr; gap:20px; align-items:center; }
+  .cover .masthead{ display:flex; align-items:center; gap:10px; font-size:11.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#c9d4ea; }
+  .cover .masthead:after{ content:""; flex:1; height:1px; background:rgba(245,241,232,.25); }
+  .cover h1{ font-size:clamp(34px,6vw,56px); line-height:1.08; margin-top:12px; color:var(--paper); }
+  .cover .issue-no{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:12px; font-weight:700; letter-spacing:.18em; color:#c9d4ea; margin-top:8px; text-transform:uppercase; }
+  .cover .toc{ margin:18px 0 0; padding:0; list-style:none; display:grid; gap:9px; }
+  .cover .toc li{ display:flex; gap:12px; align-items:baseline; font-size:14px; line-height:1.55; color:#e8e3d6; }
+  .cover .toc .no{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:18px; color:var(--gold); min-width:30px; }
+  .cover .toc .t{ font-weight:700; }
+  .cover .toc .news{ color:#c9d4ea; font-weight:500; }
+  .cover .date-line{ margin-top:18px; font-size:11.5px; color:#aab6d0; }
+  .cover-art{ position:relative; background:var(--paper); border-radius:16px; padding:12px 12px 4px; box-shadow:0 10px 26px rgba(0,0,0,.25); transform:rotate(1.6deg); }
+  .cover-art svg{ width:100%; height:auto; display:block; }
+  .cover-art .cap{ text-align:center; font-size:10px; color:#7a7466; padding:2px 0 6px; font-weight:700; letter-spacing:.06em; }
+  .seal{ position:absolute; top:16px; right:18px; width:74px; height:74px; transform:rotate(8deg); filter:drop-shadow(0 4px 10px rgba(0,0,0,.3)); z-index:3; }
 
-  .highlight-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:22px; }
-  .highlight-tile{ background:var(--page-plane); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
-  .highlight-tile .ti{ display:flex; align-items:center; gap:8px; }  .highlight-tile .ib{ width:34px; height:34px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:rgba(42,120,214,.12); flex:none; }
-  .highlight-tile .cat{ font-size:11px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.04em; }
-  .highlight-tile .label{ font-size:14px; font-weight:700; margin-top:4px; }
-  .highlight-tile .detail{ font-size:12px; color:var(--text-secondary); margin-top:4px; line-height:1.6; }
-  .highlight-tile a{ display:inline-block; margin-top:6px; font-size:11.5px; font-weight:700; text-decoration:none; }
+  /* ---- at a glance ---- */
+  .glance{ margin-top:26px; }
+  .kicker{ display:flex; align-items:center; gap:10px; font-size:11.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:34px 0 12px; }
+  .kicker:after{ content:""; flex:1; height:2px; background:linear-gradient(90deg, rgba(208,59,59,.4), rgba(208,59,59,0)); }
+  .kicker .k-ico{ width:26px; height:26px; border-radius:8px; background:rgba(208,59,59,.1); display:inline-flex; align-items:center; justify-content:center; }
+  .highlight-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
+  .highlight-tile{ position:relative; background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:14px 15px; box-shadow:var(--card-shadow); overflow:hidden; transition:transform .15s, box-shadow .15s; }
+  .highlight-tile:hover{ transform:translateY(-2px); box-shadow:0 2px 4px rgba(11,11,11,.06), 0 14px 30px rgba(11,11,11,.09); }
+  .highlight-tile:before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--tc,#2a78d6); }
+  .highlight-tile .ti{ display:flex; align-items:center; gap:8px; }
+  .highlight-tile .ib{ width:34px; height:34px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--tc,#2a78d6) 12%, #fff); flex:none; }
+  .highlight-tile .cat{ font-size:10.5px; font-weight:700; color:var(--tc,#2a78d6); text-transform:uppercase; letter-spacing:.06em; }
+  .highlight-tile .label{ font-family:"Zen Old Mincho",serif; font-size:16px; font-weight:900; margin-top:2px; }
+  .highlight-tile .detail{ font-size:12px; color:var(--text-secondary); margin-top:6px; line-height:1.65; }
+  .highlight-tile a{ display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; text-decoration:none; color:var(--tc,#2a78d6); }
   .highlight-tile a:after{ content:" →"; }
 
-  .section-label{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text-primary); margin:20px 0 10px; border-top:1px solid var(--border); padding-top:18px; }
-
-  .trend-item{ padding:12px 0; border-bottom:1px solid var(--border); }
-  .trend-item:last-child{ border-bottom:none; }
-  .trend-item h3{ font-size:14.5px; font-weight:700; margin-bottom:5px; }
-  .trend-item p{ font-size:13px; line-height:1.75; color:var(--text-secondary); margin:0 0 6px; }
-  .trend-item .src{ font-size:11.5px; color:var(--text-muted); }
-  .trend-item .src a{ font-weight:700; text-decoration:none; }
-
-  .analysis-intro{ font-size:13.5px; line-height:1.8; color:var(--text-secondary); margin:0 0 14px; }
-  .theme{ border:1px solid var(--border); border-radius:12px; padding:16px 16px 12px; margin-bottom:12px; background:var(--surface-1); }
-  .theme h3{ font-size:15.5px; margin-bottom:12px; }
-  .flow{ display:grid; gap:0; }
-  .flow-step{ position:relative; padding:0 0 14px 22px; border-left:2px solid rgba(42,120,214,0.25); margin-left:6px; }
-  .flow-step:last-child{ border-left-color:transparent; padding-bottom:4px; }
-  .flow-step:before{ content:""; position:absolute; left:-6px; top:3px; width:10px; height:10px; border-radius:50%; background:var(--surface-1); border:2px solid var(--accent); }
-  .flow-step.market:before{ border-color:var(--status-critical); }
-  .flow-step.products:before{ border-color:#1baf7a; }
-  .flow-step.take:before{ background:var(--text-primary); border-color:var(--text-primary); }
-  .flow-step .k{ display:flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--text-muted); margin-bottom:3px; text-transform:uppercase; }
-  .flow-step .v{ font-size:13px; line-height:1.75; color:var(--text-secondary); }
+  /* ---- feature articles (themes) ---- */
+  .intro-lead{ font-size:15px; line-height:1.95; color:var(--text-secondary); margin:0 0 18px; max-width:72ch; }
+  .intro-lead::first-letter{ font-family:"Zen Old Mincho",serif; font-size:3.1em; font-weight:900; float:left; line-height:.9; padding:4px 10px 0 0; color:var(--red); }
+  .feature{ position:relative; background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:22px 22px 18px; margin-bottom:18px; overflow:hidden; }
+  .feature:before{ content:""; position:absolute; right:-50px; top:-50px; width:180px; height:180px; border-radius:50%; background:color-mix(in srgb, var(--fc) 9%, transparent); }
+  .feat-head{ display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center; margin-bottom:14px; position:relative; }
+  .feat-no{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:44px; line-height:1; color:color-mix(in srgb, var(--fc) 70%, #000);
+    background:linear-gradient(135deg, color-mix(in srgb, var(--fc) 22%, #fff), color-mix(in srgb, var(--fc) 8%, #fff));
+    border:1px solid color-mix(in srgb, var(--fc) 30%, transparent); border-radius:14px; padding:8px 14px 10px; }
+  .feat-head h3{ font-size:clamp(17px,2.6vw,21px); line-height:1.4; }
+  .feat-art{ width:92px; height:92px; flex:none; }
+  .feat-art svg{ width:100%; height:100%; }
+  .flow{ display:grid; gap:0; position:relative; }
+  .flow-step{ position:relative; padding:0 0 16px 40px; }
+  .flow-step:not(:last-child):before{ content:""; position:absolute; left:13px; top:28px; bottom:-2px; width:2px; background:repeating-linear-gradient(to bottom, color-mix(in srgb, var(--sc) 45%, transparent) 0 6px, transparent 6px 11px); }
+  .flow-step .medal{ position:absolute; left:0; top:0; width:28px; height:28px; border-radius:50%; background:color-mix(in srgb, var(--sc) 14%, #fff); border:2px solid var(--sc); display:flex; align-items:center; justify-content:center; }
+  .flow-step .k{ font-size:11px; font-weight:700; letter-spacing:.08em; color:var(--sc); margin-bottom:3px; text-transform:uppercase; padding-top:4px; }
+  .flow-step .v{ font-size:13.5px; line-height:1.8; color:var(--text-secondary); }
   .flow-step .v a{ font-size:11.5px; font-weight:700; text-decoration:none; }
-  .flow-step.take .v{ color:var(--text-primary); font-weight:500; }
-  .prod-list{ list-style:none; margin:4px 0 0; padding:0; display:grid; gap:6px; }
-  .prod-list li{ font-size:12.5px; line-height:1.6; background:var(--page-plane); border:1px solid var(--border); border-radius:8px; padding:7px 10px; }
+  .flow-step.take .v{ color:var(--text-primary); font-weight:500; background:color-mix(in srgb, var(--gold) 10%, #fff); border:1px solid color-mix(in srgb, var(--gold) 30%, transparent); border-radius:10px; padding:10px 12px; }
+  .prod-list{ list-style:none; margin:8px 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:8px; }
+  .prod-list li{ display:grid; grid-template-columns:auto 1fr; gap:10px; font-size:12.5px; line-height:1.6; background:#fff; border:1px solid var(--border); border-radius:10px; padding:10px 12px; }
+  .prod-list .mono{ width:34px; height:34px; border-radius:50%; background:var(--mc,#2a78d6); color:#fff; font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16px; display:flex; align-items:center; justify-content:center; }
   .prod-list .co{ font-weight:700; color:var(--text-primary); }
   .prod-list .dt{ color:var(--text-muted); font-size:11px; margin-left:4px; }
   .prod-list .pt{ display:block; color:var(--text-secondary); }
   .prod-list .jp{ display:block; color:var(--text-muted); font-size:11px; }
   .prod-list a{ font-size:11px; font-weight:700; text-decoration:none; }
-  .analysis-src{ font-size:11px; color:var(--text-muted); line-height:1.7; margin-top:6px; }
+  .analysis-src{ font-size:11px; color:var(--text-muted); line-height:1.7; margin-top:10px; }
   .analysis-src a{ text-decoration:none; }
 
-  .outlook-box{
-    margin-top:6px; padding:14px 16px; border-radius:10px;
-    background:linear-gradient(135deg, rgba(208,59,59,0.07), rgba(208,59,59,0.02));
-    border:1px solid rgba(208,59,59,0.16);
-    font-size:12.5px; line-height:1.75; color:var(--text-secondary);
-  }
+  /* ---- news column ---- */
+  .news-col{ background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:6px 22px; }
+  .trend-item{ display:grid; grid-template-columns:auto 1fr; gap:14px; padding:16px 0; border-bottom:1px dashed var(--border); }
+  .trend-item:last-child{ border-bottom:none; }
+  .trend-item .pin{ width:34px; height:34px; border-radius:10px; background:rgba(208,59,59,.1); display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .trend-item h3{ font-size:15px; font-weight:900; margin-bottom:5px; }
+  .trend-item p{ font-size:13px; line-height:1.8; color:var(--text-secondary); margin:0 0 6px; }
+  .trend-item .src{ font-size:11.5px; color:var(--text-muted); }
+  .trend-item .src a{ font-weight:700; text-decoration:none; }
 
-  footer{ padding:34px 0 60px; border-top:1px solid var(--border); margin-top:10px; }
+  /* ---- outlook ---- */
+  .outlook-box{ position:relative; display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center;
+    padding:18px 20px; border-radius:18px; overflow:hidden;
+    background:linear-gradient(120deg, #fdf0ef, #fff8ec 70%); border:1px solid rgba(208,59,59,0.18);
+    font-size:13.5px; line-height:1.85; color:var(--text-secondary); box-shadow:var(--card-shadow); }
+  .outlook-box .tele{ width:64px; height:64px; }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); margin-top:34px; }
   .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.8; }
 
-  @media (max-width:520px){
-    .hero{ padding:28px 0 20px; }
-    .month-card{ padding:18px 16px; }
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
   }
-  .ico{ display:inline-block; vertical-align:middle; flex:none; }
-  .hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center; }
-  .hero-art{ width:100%; height:auto; display:block; }
-  .top-nav a.lang2{ color:var(--accent); font-weight:700; }
-  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } .hero-art{ max-width:400px; margin:0 auto; } }</style>
+
+  @media (max-width:760px){
+    .cover-grid{ grid-template-columns:1fr; }
+    .cover-art{ max-width:340px; margin:4px auto 0; }
+    .seal{ width:58px; height:58px; top:14px; right:14px; }
+    .feat-head{ grid-template-columns:auto 1fr; }
+    .feat-art{ display:none; }
+  }
+</style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
 
 <div class="wrap">
 
@@ -157,17 +191,9 @@
     <a href="../monthly_digest.html" class="lang" lang="ja">日本語</a>
     <a href="../zh/monthly_digest.html" class="lang2" lang="zh-Hant">中文</a>
   </nav>
-  <div class="hero"><div class="hero-grid"><div>
-    <div class="eyebrow"><span class="dot"></span>Monthly briefing</div>
-    <h1>Japan Food Market: Monthly Topics</h1>
-    <p>Each month we summarize what moved in Japan's food market, from consumer prices and imported ingredients to new products from major Japanese food makers, and explain how shifting consumer needs connect market trends to product launches. Written for food marketers and companies considering the Japanese market.</p>
-    <div class="meta-row">
-      <span id="updated-at">Loading…</span>
-    </div>
-    </div><div id="hero-art"></div></div>
-  </div>
 
-  <div id="months"></div>
+  <div class="issues" id="issues" role="tablist" aria-label="Choose an issue"><span class="lbl">Issues</span></div>
+  <div id="issue-root"></div>
 
   <footer>
     <div class="disclaimer">
@@ -191,84 +217,169 @@
   function en(obj, key){ return obj[key+"_en"] || obj[key] || ""; }
   function fmtDate(iso){ if(!iso) return ""; var p = iso.split("-"); return MONTHS[+p[1]-1]+" "+(+p[2])+", "+p[0]; }
   // Pages with an English version stay in /en/, others go to the Japanese page
-  var EN_PAGES = ["market_size.html","monthly_digest.html"];
+  var EN_PAGES = ["market_size.html","monthly_digest.html","food_culture.html"];
   function link(page){ return EN_PAGES.indexOf(page) >= 0 ? page : "../"+page; }
 
-  var TILE_ICON = { "food_prices.html":"bowl", "vegetables.html":"veggie", "trade.html":"ship", "product_news.html":"box", "market_size.html":"chart" };
-  document.getElementById("hero-art").innerHTML = JL.heroArt();
+  var TILE = {
+    "food_prices.html":{ icon:"bowl", c:"#2a78d6" },
+    "vegetables.html":{ icon:"veggie", c:"#1baf7a" },
+    "trade.html":{ icon:"ship", c:"#eda100" },
+    "product_news.html":{ icon:"candy", c:"#13a3b8" },
+    "market_size.html":{ icon:"chart", c:"#eb6834" }
+  };
+  var MONO = ["#2a78d6","#d03b3b","#1baf7a","#eda100","#8a5cd1","#13a3b8"];
+  var FEAT_C = ["#2a78d6","#d03b3b","#1baf7a","#8a5cd1"];
 
-  function renderUpdated(meta){
-    document.getElementById("updated-at").textContent = "Data as of " + fmtDate(meta.generated_at);
+  /* small scene illustrations for the feature articles (cycled by index) */
+  function featArt(i){
+    var a = [
+      // 0: microwave & bowl — convenience
+      '<svg viewBox="0 0 110 110" aria-hidden="true"><rect x="8" y="30" width="94" height="56" rx="10" fill="#fff" stroke="#2a78d6" stroke-width="3"/><rect x="18" y="40" width="52" height="36" rx="6" fill="#e8f1fc" stroke="#2a78d6" stroke-width="2.5"/><path d="M30 68c4-8 20-8 26 0z" fill="#eda100"/><ellipse cx="43" cy="69" rx="16" ry="4.5" fill="#d98a12"/><circle cx="84" cy="48" r="4.5" fill="#2a78d6"/><circle cx="84" cy="62" r="4.5" fill="#9cc1ee"/><rect x="78" y="70" width="13" height="5" rx="2.5" fill="#9cc1ee"/><path d="M38 32c-5-6 5-8 0-15M50 32c-5-6 5-8 0-15" fill="none" stroke="#b9b2a7" stroke-width="3" stroke-linecap="round"/></svg>',
+      // 1: price tag & sparkle — value
+      '<svg viewBox="0 0 110 110" aria-hidden="true"><g transform="rotate(-10 52 58)"><path d="M26 42h42l16 18-16 18H26z" fill="#fff" stroke="#d03b3b" stroke-width="3.5"/><circle cx="76" cy="60" r="4" fill="#fff" stroke="#d03b3b" stroke-width="3"/><text x="44" y="69" text-anchor="middle" font-family="Zen Old Mincho,serif" font-size="26" font-weight="900" fill="#d03b3b">&#165;</text></g><path d="M84 26l3 8 8 3-8 3-3 8-3-8-8-3 8-3zM22 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#eda100"/></svg>',
+      // 2: bowl with heart steam — health
+      '<svg viewBox="0 0 110 110" aria-hidden="true"><path d="M20 58h70c0 20-15 36-35 36S20 78 20 58z" fill="#1baf7a"/><path d="M26 64h58" stroke="#fff" stroke-opacity=".5" stroke-width="4" stroke-linecap="round"/><ellipse cx="55" cy="58" rx="35" ry="8" fill="#0e8a5e"/><path d="M42 44c0-5 8-5 8 0 0 4-8 9-8 9s-8-5-8-9c0-5 8-5 8 0z" transform="translate(13 -18)" fill="#d03b3b"/><path d="M36 42c-4-6 4-8 0-14" fill="none" stroke="#b9b2a7" stroke-width="3" stroke-linecap="round"/><path d="M72 40c-4-6 4-8 0-14" fill="none" stroke="#b9b2a7" stroke-width="3" stroke-linecap="round"/></svg>',
+      // 3: shopping basket — general
+      '<svg viewBox="0 0 110 110" aria-hidden="true"><path d="M22 48h66l-8 38H30z" fill="#fff" stroke="#8a5cd1" stroke-width="3.5"/><path d="M38 48l10-20M72 48L62 28" stroke="#8a5cd1" stroke-width="3.5" stroke-linecap="round"/><path d="M36 58v18M50 58v18M64 58v18M76 58l-2 18" stroke="#c9b6ea" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="40" r="6" fill="#d03b3b"/><rect x="52" y="32" width="10" height="12" rx="3" fill="#eda100"/></svg>'
+    ];
+    return a[i % a.length];
+  }
+  function sealSvg(){
+    return '<svg class="seal" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36" fill="none" stroke="#d03b3b" stroke-width="4"/><circle cx="40" cy="40" r="29" fill="#d03b3b"/><text x="40" y="52" text-anchor="middle" font-family="Zen Old Mincho,serif" font-size="32" font-weight="900" fill="#f5f1e8">食</text></svg>';
+  }
+  function teleSvg(){
+    return '<svg class="tele" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36" fill="rgba(208,59,59,.1)"/><g transform="rotate(-18 40 40)"><rect x="14" y="34" width="34" height="13" rx="4" fill="#d03b3b"/><rect x="46" y="31" width="14" height="19" rx="4" fill="#9e2626"/><rect x="60" y="28" width="7" height="25" rx="3" fill="#6e1a1a"/></g><path d="M30 56l-6 14M40 50v20" stroke="#6e1a1a" stroke-width="4" stroke-linecap="round"/><path d="M66 18l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#eda100"/></svg>';
   }
 
-  function renderAnalysis(a){
-    if(!a) return "";
-    var themes = (a.themes||[]).map(function(t){
-      var prods = (t.products||[]).map(function(p){
-        return '<li><span class="co">'+en(p,"company")+'</span> "'+en(p,"name")+'"<span class="dt">'+fmtDate(p.date)+'</span>'+
-          '<span class="pt">'+en(p,"point")+'  <a href="'+p.source_url+'" target="_blank" rel="noopener">Press release (JA) →</a></span>'+
-          '<span class="jp" lang="ja">'+p.company+'「'+p.name+'」</span></li>';
-      }).join("");
-      return '<div class="theme"><h3>'+en(t,"title")+'</h3><div class="flow">'+
-        '<div class="flow-step needs"><div class="k">'+JL.icon("heart",16,"#2a78d6")+'Shift in consumer needs</div><div class="v">'+en(t,"needs")+'</div></div>'+
-        '<div class="flow-step market"><div class="k">'+JL.icon("chart",16,"#d03b3b")+'Market movement</div><div class="v">'+en(t,"market")+
-          (t.market_link ? '  <a href="'+link(t.market_link)+'">Market size page →</a>' : '')+'</div></div>'+
-        '<div class="flow-step products"><div class="k">'+JL.icon("box",16,"#1baf7a")+'New products from Japanese makers</div><div class="v"><ul class="prod-list">'+prods+'</ul></div></div>'+
-        '<div class="flow-step take"><div class="k">'+JL.icon("bulb",16,"#eda100")+'Takeaway (our interpretation)</div><div class="v">'+en(t,"takeaway")+'</div></div>'+
-      '</div></div>';
+  function highlightTile(h){
+    var t = TILE[h.link_page] || { icon:"bowl", c:"#2a78d6" };
+    return '<div class="highlight-tile" style="--tc:'+t.c+'">'+
+      '<div class="ti"><span class="ib">'+JL.icon(t.icon,20,t.c)+'</span><div class="cat">'+en(h,"category")+'</div></div>'+
+      '<div class="label">'+en(h,"label")+'</div>'+
+      '<div class="detail">'+en(h,"detail")+'</div>'+
+      (h.link_page ? '<a href="'+link(h.link_page)+'">'+(en(h,"link_label")||"Learn more")+'</a>' : '')+
+      '</div>';
+  }
+
+  function featureHtml(t, i){
+    var prods = (t.products||[]).map(function(p, j){
+      var init = (en(p,"company")||"?").replace(/^The /,"").charAt(0).toUpperCase();
+      return '<li style="--mc:'+MONO[j % MONO.length]+'"><span class="mono">'+init+'</span><span>'+
+        '<span class="co">'+en(p,"company")+'</span> "'+en(p,"name")+'"<span class="dt">'+fmtDate(p.date)+'</span>'+
+        '<span class="pt">'+en(p,"point")+'  <a href="'+p.source_url+'" target="_blank" rel="noopener">Press release (JA) →</a></span>'+
+        '<span class="jp" lang="ja">'+p.company+'「'+p.name+'」</span></span></li>';
     }).join("");
-    var srcs = (a.sources||[]).map(function(s){
+    function step(cls, color, icon, label, body){
+      return '<div class="flow-step '+cls+'" style="--sc:'+color+'"><span class="medal">'+JL.icon(icon,15,color)+'</span>'+
+        '<div class="k">'+label+'</div><div class="v">'+body+'</div></div>';
+    }
+    return '<article class="feature reveal" style="--fc:'+FEAT_C[i % FEAT_C.length]+'">'+
+      '<div class="feat-head"><span class="feat-no">'+(i+1<10?"0":"")+(i+1)+'</span><h3>'+en(t,"title").replace(/^Theme \d+ \| /,"")+'</h3><span class="feat-art">'+featArt(i)+'</span></div>'+
+      '<div class="flow">'+
+        step("needs", "#2a78d6", "heart", "Shift in consumer needs", en(t,"needs"))+
+        step("market", "#d03b3b", "chart", "Market movement", en(t,"market")+(t.market_link ? '  <a href="'+link(t.market_link)+'">Market size page →</a>' : ''))+
+        step("products", "#1baf7a", "box", "New products from Japanese makers", '<ul class="prod-list">'+prods+'</ul>')+
+        step("take", "#b98500", "bulb", "Takeaway (our interpretation)", en(t,"takeaway"))+
+      '</div></article>';
+  }
+
+  function kicker(icon, color, text){
+    return '<div class="kicker reveal"><span class="k-ico" style="background:color-mix(in srgb, '+color+' 10%, #fff)">'+JL.icon(icon,16,color)+'</span>'+text+'</div>';
+  }
+
+  function issueHtml(m, idx, total, meta){
+    var themes = (m.analysis && m.analysis.themes) || [];
+    var toc = themes.map(function(t, i){
+      return '<li><span class="no">'+(i+1<10?"0":"")+(i+1)+'</span><span class="t">'+en(t,"title").replace(/^Theme \d+ \| /,"")+'</span></li>';
+    }).join("");
+    var newsN = (m.domestic_trends||[]).length;
+    if(newsN){ toc += '<li><span class="no">＋</span><span class="news">'+newsN+' industry news stories & what to watch next month</span></li>'; }
+
+    var srcs = ((m.analysis||{}).sources||[]).map(function(s){
       return '<a href="'+s.url+'" target="_blank" rel="noopener">'+en(s,"name")+'</a>';
     }).join(" / ");
-    return '<div class="section-label">'+JL.icon("bulb",20,"#eda100")+'Consumer needs, market trends and new products</div>'+
-      '<p class="analysis-intro">'+en(a,"intro")+'</p>'+themes+
-      '<div class="analysis-src">Main sources: '+srcs+'<br>'+en(a,"note")+'</div>';
-  }
 
-  function renderMonths(data){
-    var wrap = document.getElementById("months");
-    wrap.innerHTML = "";
-    data.months.forEach(function(m){
-      var card = document.createElement("div");
-      card.className = "month-card";
+    var html = '';
+    // cover
+    html += '<section class="cover reveal"><div class="pattern"></div>'+sealSvg()+
+      '<div class="cover-grid"><div>'+
+      '<div class="masthead">The Japan Labo Monthly</div>'+
+      '<h1>'+(m.label_en||m.ym)+'</h1>'+
+      '<div class="issue-no">Issue '+(total-idx<10?"0":"")+(total-idx)+' · Japan’s food market, in one read</div>'+
+      '<ul class="toc">'+toc+'</ul>'+
+      '<div class="date-line">Data as of '+fmtDate(meta.generated_at)+' · Sources: Statistics Bureau of Japan, MAFF, company releases</div>'+
+      '</div><div class="cover-art">'+JL.heroArt()+'<div class="cap">TONIGHT’S TABLE IN TOKYO</div></div></div></section>';
 
-      var highlightsHtml = m.highlights.map(function(h){
-        return '<div class="highlight-tile">'+
-          '<div class="ti"><span class="ib">'+JL.icon(TILE_ICON[h.link_page]||"bowl",20,"#2a78d6")+'</span><div class="cat">'+en(h,"category")+'</div></div>'+
-          '<div class="label">'+en(h,"label")+'</div>'+
-          '<div class="detail">'+en(h,"detail")+'</div>'+
-          (h.link_page ? '<a href="'+link(h.link_page)+'">'+(en(h,"link_label")||"Learn more")+'</a>' : '')+
-          '</div>';
-      }).join("");
+    // at a glance
+    html += kicker("chart", "#d03b3b", "This month at a glance");
+    html += '<div class="highlight-grid reveal">'+(m.highlights||[]).map(highlightTile).join("")+'</div>';
 
-      var trendsHtml = (m.domestic_trends||[]).map(function(t){
-        return '<div class="trend-item">'+
-          '<h3>'+en(t,"title")+'</h3>'+
-          '<p>'+en(t,"summary")+'</p>'+
+    // features
+    if(m.analysis){
+      html += kicker("bulb", "#eda100", "Features · needs → market → new products");
+      html += '<p class="intro-lead reveal">'+en(m.analysis,"intro")+'</p>';
+      html += themes.map(featureHtml).join("");
+      html += '<div class="analysis-src reveal">Main sources: '+srcs+'<br>'+en(m.analysis,"note")+'</div>';
+    }
+
+    // news
+    if(newsN){
+      html += kicker("paper", "#2a78d6", "Industry news in Japan");
+      html += '<div class="news-col reveal">'+(m.domestic_trends||[]).map(function(t){
+        return '<div class="trend-item"><span class="pin">'+JL.icon("paper",18,"#d03b3b")+'</span><div>'+
+          '<h3>'+en(t,"title")+'</h3><p>'+en(t,"summary")+'</p>'+
           '<div class="src">Source: '+en(t,"source_name")+'  <a href="'+t.source_url+'" target="_blank" rel="noopener">Read article (JA)</a></div>'+
-          '</div>';
-      }).join("");
+          '</div></div>';
+      }).join("")+'</div>';
+    }
 
-      card.innerHTML =
-        '<h2>'+(m.label_en||m.ym)+'</h2>'+
-        '<div class="sub">Highlights from this site\'s data plus Japanese food industry news</div>'+
-        '<div class="highlight-grid">'+highlightsHtml+'</div>'+
-        renderAnalysis(m.analysis)+
-        '<div class="section-label">'+JL.icon("paper",20,"#d03b3b")+'Industry news in Japan</div>'+
-        trendsHtml+
-        (en(m,"outlook") ? '<div class="section-label">'+JL.icon("chart",20,"#2a78d6")+'What to watch next month</div><div class="outlook-box">'+en(m,"outlook")+'</div>' : '');
-
-      wrap.appendChild(card);
-    });
+    // outlook
+    if(en(m,"outlook")){
+      html += kicker("bulb", "#d03b3b", "Looking ahead");
+      html += '<div class="outlook-box reveal">'+teleSvg()+'<div>'+en(m,"outlook")+'</div></div>';
+    }
+    return html;
   }
 
-  fetch("../monthly_digest_data.json").then(function(r){return r.json();}).then(function(json){
-    renderUpdated(json.meta);
-    renderMonths(json);
+  function arm(){
+    var targets = document.querySelectorAll(".reveal:not(.in)");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduce || !("IntersectionObserver" in window)){ Array.prototype.forEach.call(targets, function(e){ e.classList.add("in"); }); return; }
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en2){ if(en2.isIntersecting){ en2.target.classList.add("in"); io.unobserve(en2.target); } }); }, { rootMargin:"0px 0px -6% 0px" });
+    Array.prototype.forEach.call(targets, function(e){ io.observe(e); });
+  }
+
+  var DATA = null;
+  function show(idx){
+    document.getElementById("issue-root").innerHTML = issueHtml(DATA.months[idx], idx, DATA.months.length, DATA.meta);
+    var tabs = document.querySelectorAll(".issue-tab");
+    Array.prototype.forEach.call(tabs, function(b, i){ b.setAttribute("aria-pressed", i===idx ? "true" : "false"); });
+    arm();
+  }
+
+  fetch("../monthly_digest_data.json", { cache:"no-cache" }).then(function(r){ return r.json(); }).then(function(json){
+    DATA = json;
+    var bar = document.getElementById("issues");
+    json.months.forEach(function(m, i){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "issue-tab"; b.setAttribute("role","tab");
+      b.textContent = m.label_en || m.ym;
+      b.addEventListener("click", function(){ show(i); window.scrollTo({ top:0, behavior:"smooth" }); });
+      bar.appendChild(b);
+    });
+    show(0);
   }).catch(function(err){
-    document.getElementById("months").innerHTML = "<div class='month-card'>Failed to load data. Please reload the page.</div>";
+    document.getElementById("issue-root").innerHTML = "<p>Failed to load data. Please reload the page.</p>";
     console.error(err);
   });
+
+  // reading progress
+  var bar = document.getElementById("progress");
+  window.addEventListener("scroll", function(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop/max*100) : 0) + "%";
+  }, { passive:true });
 })();
 </script>
 </body>
