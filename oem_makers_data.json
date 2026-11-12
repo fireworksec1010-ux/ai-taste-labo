@@ -1,96 +1,445 @@
-{
-  "meta": {
-    "generated_at": "2026-10-18",
-    "description": "食品のOEM（受託製造）を受けている中小・中堅メーカー。各社の公式サイトの記載に基づく。企業規模・売上は非公表のため掲載していない。",
-    "note": "掲載は当サイトが公式サイトの記載をもとに選んだもので、推薦・紹介ではありません。最小ロット・対応品目・認証は変わることがあるため、依頼前に必ず各社へ直接ご確認ください。"
-  },
-  "categories": [
-    { "key": "seasoning", "label": "調味料・たれ", "color": "--series-2" },
-    { "key": "deli", "label": "惣菜・冷凍・レトルト", "color": "--series-1" },
-    { "key": "noodle", "label": "麺", "color": "--series-5" },
-    { "key": "confectionery", "label": "菓子", "color": "--series-3" },
-    { "key": "drink", "label": "飲料", "color": "--series-6" }
-  ],
-  "companies": [
-    { "name": "サンキョーヒカリ株式会社", "category": "seasoning", "pref": "愛知県", "city": "名古屋市",
-      "specialty": ["ソース", "たれ", "ドレッシング", "ゼリー", "ドリンク・シロップ"],
-      "note": "液体調味料を中心に、中華・エスニック、トマトベース、デザート用ソースまで。リパック・充填にも対応。",
-      "min_lot": "150kg程度から", "cert": "JFS-B、HACCP",
-      "url": "https://sankyohikari.co.jp/solution.html" },
-    { "name": "鶏林食品株式会社", "category": "seasoning", "pref": "静岡県", "city": "沼津市",
-      "specialty": ["焼肉のたれ", "つゆ", "ドレッシング"],
-      "note": "焼肉のたれをはじめとする液体調味料の受託実績。小ロット多品種向けの生産ライン。",
-      "min_lot": "1ロット100kgから", "cert": "",
-      "url": "https://www.yakinikunotare.com/original/" },
-    { "name": "株式会社大徳", "category": "seasoning", "pref": "大阪府", "city": "守口市",
-      "specialty": ["ぽん酢", "つゆ", "たれ", "だし", "すし酢"],
-      "note": "ぽん酢が得意で、業務用・料亭仕様・ふぐ専用・非加熱など固有ブランド向けの開発に対応。",
-      "min_lot": "小ロット可（数量は要問い合わせ）", "cert": "",
-      "url": "https://daitoku.biz/oem/" },
-    { "name": "ケンコー食品工業株式会社", "category": "seasoning", "pref": "宮崎県", "city": "都城市",
-      "specialty": ["たれ・ドレッシング", "乾燥野菜・果実", "果実搾汁", "麹・味噌の粉末"],
-      "note": "調味料の開発に加え、マイクロ波減圧乾燥や非加熱の粉末・ペーストなど素材加工も受託。",
-      "min_lot": "たれ・調味料 100〜150Lから（要相談）", "cert": "",
-      "url": "https://www.misogura.com/oem/" },
-
-    { "name": "株式会社サンフーズ", "category": "deli", "pref": "愛媛県", "city": "大洲市",
-      "specialty": ["レトルトカレー", "パスタソース", "スープ", "栗製品"],
-      "note": "レトルトカレーやパスタソースなどのOEMが事業の中心。",
-      "min_lot": "要問い合わせ", "cert": "",
-      "url": "https://www.sunfoods-ozu.com/",
-      "source_note": "所在地・製品は四国経済産業局の企業紹介資料による" },
-    { "name": "京都食品株式会社", "category": "deli", "pref": "京都府", "city": "向日市",
-      "specialty": ["惣菜", "つくだ煮", "焼き魚", "弁当", "おせち"],
-      "note": "和洋中の惣菜を冷凍・チルド・レトルトの各温度帯で受託。",
-      "min_lot": "小ロット可（数量は要問い合わせ）", "cert": "HACCP",
-      "url": "https://www.kyotoshokuhin.jp/oem/" },
-    { "name": "株式会社原田食品", "category": "deli", "pref": "大阪府", "city": "交野市",
-      "specialty": ["餃子", "小籠包", "焼売", "肉まん"],
-      "note": "生ぎょうざの工場。オリジナル餃子の商品化を試作から支援。",
-      "min_lot": "小ロット相談可", "cert": "",
-      "url": "https://hanachan-gyouza.jp/oem_gyouza/" },
-
-    { "name": "株式会社マルワ製麺", "category": "noodle", "pref": "北海道", "city": "美幌町",
-      "specialty": ["ラーメン", "うどん", "そば", "焼きそば", "パスタ"],
-      "note": "生麺・乾麺の両方に対応。",
-      "min_lot": "生麺100食から（乾麺ラーメンは1,000食から）", "cert": "",
-      "url": "https://www.maruwaseimen.co.jp/oem" },
-    { "name": "株式会社王子製麺", "category": "noodle", "pref": "高知県", "city": "高知市",
-      "specialty": ["冷凍うどん", "中華麺", "生パスタ", "チャーシュー"],
-      "note": "麺に加え、ラーメンの具など惣菜も受託。",
-      "min_lot": "冷凍うどん30個から（商品により異なる）", "cert": "",
-      "url": "https://www.oji-tamamen.com/oem.htm" },
-
-    { "name": "株式会社F・L・B", "category": "confectionery", "pref": "大阪府", "city": "大阪市",
-      "specialty": ["冷凍生ケーキ", "焼菓子", "チョコレート", "クッキー缶"],
-      "note": "フィナンシェ・カヌレ・パウンドケーキなどの焼菓子から冷凍生ケーキまで。試作にも対応。",
-      "min_lot": "100個程度から", "cert": "",
-      "url": "https://flb-sweets.com/" },
-    { "name": "株式会社ユウカ", "category": "confectionery", "pref": "大阪府", "city": "八尾市",
-      "specialty": ["チョコレート菓子", "しみこみチョコ", "コーティングチョコ"],
-      "note": "さまざまな素材を使ったチョコレート菓子が得意。",
-      "min_lot": "小ロット可（数量は要問い合わせ）", "cert": "",
-      "url": "https://www.you-ka.com/oem/" },
-    { "name": "鈴鹿あられ株式会社", "category": "confectionery", "pref": "三重県", "city": "鈴鹿市",
-      "specialty": ["あられ", "ぽんせんべい", "ポン菓子"],
-      "note": "ご当地商品・ギフト・記念品向けのオリジナルあられ。既存商品のパッケージ変更にも対応。",
-      "min_lot": "既存商品で約30袋から／オリジナル製造は約10kgから", "cert": "",
-      "url": "https://suzukaarare-oem.com/" },
-    { "name": "蔵王米菓株式会社", "category": "confectionery", "pref": "山形県", "city": "村山市",
-      "specialty": ["せんべい", "米パフ", "おこげ", "グルテンフリー"],
-      "note": "焼き・揚げせんべいのほか、グルテンフリーやアレルゲン配慮など成分をコントロールした米菓も。",
-      "min_lot": "要問い合わせ", "cert": "",
-      "url": "https://www.zaou.co.jp/" },
-
-    { "name": "タンポポ産業株式会社", "category": "drink", "pref": "千葉県", "city": "船橋市",
-      "specialty": ["健康・美容ドリンク", "ガラスびん飲料"],
-      "note": "ガラスびん入り飲料の専門。原料選定・処方提案から試作、安定性試験まで自社で対応。",
-      "min_lot": "300〜900ml：1,000本から（容量により異なる）", "cert": "ISO9001",
-      "url": "https://tampopo-sangyo.com/" },
-    { "name": "アダプトゲン製薬九州株式会社", "category": "drink", "pref": "宮崎県", "city": "宮崎市",
-      "specialty": ["清涼飲料", "パウチ飲料", "小容量ドリンク"],
-      "note": "スパウトパウチ・小びん・ペットボトルなど10ml〜2,000mlまで充填。処方提案から製品化まで。",
-      "min_lot": "小ロット可（数量は要問い合わせ）", "cert": "",
-      "url": "https://adaptgen-kyushu.com/oem-drink/" }
-  ]
+﻿{
+    "meta":  {
+                 "generated_at":  "2026-10-18",
+                 "description":  "食品のOEM（受託製造）を受けている中小・中堅メーカー。各社の公式サイトの記載に基づく。企業規模・売上は非公表のため掲載していない。",
+                 "note":  "掲載は当サイトが公式サイトの記載をもとに選んだもので、推薦・紹介ではありません。最小ロット・対応品目・認証は変わることがあるため、依頼前に必ず各社へ直接ご確認ください。",
+                 "description_en":  "Small and mid-sized contract food manufacturers (OEM) in Japan. Based on each company\u0027s official website. Company size and revenue are not disclosed, so not listed here.",
+                 "note_en":  "This list was selected by this site from public websites; it is not a recommendation or endorsement. Minimum lot sizes, product scope and whether a maker is currently accepting new orders can change, so please confirm directly with each company before contacting them."
+             },
+    "categories":  [
+                       {
+                           "key":  "seasoning",
+                           "label":  "調味料・たれ",
+                           "color":  "--series-2",
+                           "label_en":  "Sauces \u0026 Seasonings"
+                       },
+                       {
+                           "key":  "deli",
+                           "label":  "惣菜・冷凍・レトルト",
+                           "color":  "--series-1",
+                           "label_en":  "Deli, Frozen \u0026 Retort"
+                       },
+                       {
+                           "key":  "noodle",
+                           "label":  "麺",
+                           "color":  "--series-5",
+                           "label_en":  "Noodles"
+                       },
+                       {
+                           "key":  "confectionery",
+                           "label":  "菓子",
+                           "color":  "--series-3",
+                           "label_en":  "Confectionery"
+                       },
+                       {
+                           "key":  "drink",
+                           "label":  "飲料",
+                           "color":  "--series-6",
+                           "label_en":  "Beverages"
+                       }
+                   ],
+    "companies":  [
+                      {
+                          "name":  "サンキョーヒカリ株式会社",
+                          "category":  "seasoning",
+                          "pref":  "愛知県",
+                          "city":  "名古屋市",
+                          "specialty":  [
+                                            "ソース",
+                                            "たれ",
+                                            "ドレッシング",
+                                            "ゼリー",
+                                            "ドリンク・シロップ"
+                                        ],
+                          "note":  "液体調味料を中心に、中華・エスニック、トマトベース、デザート用ソースまで。リパック・充填にも対応。",
+                          "min_lot":  "150kg程度から",
+                          "cert":  "JFS-B、HACCP",
+                          "url":  "https://sankyohikari.co.jp/solution.html",
+                          "name_en":  "Sankyo Hikari Co., Ltd.",
+                          "pref_en":  "Aichi",
+                          "city_en":  "Nagoya",
+                          "specialty_en":  [
+                                               "Sauces",
+                                               "Tare sauces",
+                                               "Dressings",
+                                               "Jelly drinks",
+                                               "Drinks \u0026 syrups"
+                                           ],
+                          "note_en":  "Focused on liquid seasonings, from Chinese/ethnic and tomato-based sauces to dessert sauces. Also handles repacking and filling.",
+                          "min_lot_en":  "From about 150kg"
+                      },
+                      {
+                          "name":  "鶏林食品株式会社",
+                          "category":  "seasoning",
+                          "pref":  "静岡県",
+                          "city":  "沼津市",
+                          "specialty":  [
+                                            "焼肉のたれ",
+                                            "つゆ",
+                                            "ドレッシング"
+                                        ],
+                          "note":  "焼肉のたれをはじめとする液体調味料の受託実績。小ロット多品種向けの生産ライン。",
+                          "min_lot":  "1ロット100kgから",
+                          "cert":  "",
+                          "url":  "https://www.yakinikunotare.com/original/",
+                          "name_en":  "Keirin Foods Co., Ltd.",
+                          "pref_en":  "Shizuoka",
+                          "city_en":  "Numazu",
+                          "specialty_en":  [
+                                               "Yakiniku sauce",
+                                               "Tsuyu (noodle soup base)",
+                                               "Dressings"
+                                           ],
+                          "note_en":  "Track record contract-manufacturing yakiniku sauce and other liquid seasonings, with a line built for small-lot, multi-item production.",
+                          "min_lot_en":  "From 100kg per lot"
+                      },
+                      {
+                          "name":  "株式会社大徳",
+                          "category":  "seasoning",
+                          "pref":  "大阪府",
+                          "city":  "守口市",
+                          "specialty":  [
+                                            "ぽん酢",
+                                            "つゆ",
+                                            "たれ",
+                                            "だし",
+                                            "すし酢"
+                                        ],
+                          "note":  "ぽん酢が得意で、業務用・料亭仕様・ふぐ専用・非加熱など固有ブランド向けの開発に対応。",
+                          "min_lot":  "小ロット可（数量は要問い合わせ）",
+                          "cert":  "",
+                          "url":  "https://daitoku.biz/oem/",
+                          "name_en":  "Daitoku Co., Ltd.",
+                          "pref_en":  "Osaka",
+                          "city_en":  "Moriguchi",
+                          "specialty_en":  [
+                                               "Ponzu",
+                                               "Tsuyu",
+                                               "Tare sauces",
+                                               "Dashi",
+                                               "Sushi vinegar"
+                                           ],
+                          "note_en":  "Specializes in ponzu, including foodservice, ryotei-grade, fugu-specific and non-heated versions developed for a client\u0027s own brand.",
+                          "min_lot_en":  "Small lots OK (please inquire for quantity)"
+                      },
+                      {
+                          "name":  "ケンコー食品工業株式会社",
+                          "category":  "seasoning",
+                          "pref":  "宮崎県",
+                          "city":  "都城市",
+                          "specialty":  [
+                                            "たれ・ドレッシング",
+                                            "乾燥野菜・果実",
+                                            "果実搾汁",
+                                            "麹・味噌の粉末"
+                                        ],
+                          "note":  "調味料の開発に加え、マイクロ波減圧乾燥や非加熱の粉末・ペーストなど素材加工も受託。",
+                          "min_lot":  "たれ・調味料 100〜150Lから（要相談）",
+                          "cert":  "",
+                          "url":  "https://www.misogura.com/oem/",
+                          "name_en":  "Kenko Foods Industry Co., Ltd.",
+                          "pref_en":  "Miyazaki",
+                          "city_en":  "Miyakonojo",
+                          "specialty_en":  [
+                                               "Sauces \u0026 dressings",
+                                               "Dried vegetables/fruit",
+                                               "Fruit juicing",
+                                               "Koji/miso powder"
+                                           ],
+                          "note_en":  "Beyond seasoning development, also handles ingredient processing: microwave vacuum drying, and non-heated powders and pastes.",
+                          "min_lot_en":  "Sauces/seasonings from 100-150L (negotiable)"
+                      },
+                      {
+                          "name":  "株式会社サンフーズ",
+                          "category":  "deli",
+                          "pref":  "愛媛県",
+                          "city":  "大洲市",
+                          "specialty":  [
+                                            "レトルトカレー",
+                                            "パスタソース",
+                                            "スープ",
+                                            "栗製品"
+                                        ],
+                          "note":  "レトルトカレーやパスタソースなどのOEMが事業の中心。",
+                          "min_lot":  "要問い合わせ",
+                          "cert":  "",
+                          "url":  "https://www.sunfoods-ozu.com/",
+                          "source_note":  "所在地・製品は四国経済産業局の企業紹介資料による",
+                          "name_en":  "Sun Foods Co., Ltd.",
+                          "pref_en":  "Ehime",
+                          "city_en":  "Ozu",
+                          "specialty_en":  [
+                                               "Retort curry",
+                                               "Pasta sauce",
+                                               "Soup",
+                                               "Chestnut products"
+                                           ],
+                          "note_en":  "OEM of retort curry and pasta sauce is the core of its business.",
+                          "min_lot_en":  "Please inquire"
+                      },
+                      {
+                          "name":  "京都食品株式会社",
+                          "category":  "deli",
+                          "pref":  "京都府",
+                          "city":  "向日市",
+                          "specialty":  [
+                                            "惣菜",
+                                            "つくだ煮",
+                                            "焼き魚",
+                                            "弁当",
+                                            "おせち"
+                                        ],
+                          "note":  "和洋中の惣菜を冷凍・チルド・レトルトの各温度帯で受託。",
+                          "min_lot":  "小ロット可（数量は要問い合わせ）",
+                          "cert":  "HACCP",
+                          "url":  "https://www.kyotoshokuhin.jp/oem/",
+                          "name_en":  "Kyoto Shokuhin Co., Ltd.",
+                          "pref_en":  "Kyoto",
+                          "city_en":  "Muko",
+                          "specialty_en":  [
+                                               "Prepared side dishes",
+                                               "Simmered foods (tsukudani)",
+                                               "Grilled fish",
+                                               "Bento",
+                                               "Osechi"
+                                           ],
+                          "note_en":  "Contract-manufactures Japanese, Western and Chinese side dishes across frozen, chilled and retort temperature zones.",
+                          "min_lot_en":  "Small lots OK (please inquire for quantity)"
+                      },
+                      {
+                          "name":  "株式会社原田食品",
+                          "category":  "deli",
+                          "pref":  "大阪府",
+                          "city":  "交野市",
+                          "specialty":  [
+                                            "餃子",
+                                            "小籠包",
+                                            "焼売",
+                                            "肉まん"
+                                        ],
+                          "note":  "生ぎょうざの工場。オリジナル餃子の商品化を試作から支援。",
+                          "min_lot":  "小ロット相談可",
+                          "cert":  "",
+                          "url":  "https://hanachan-gyouza.jp/oem_gyouza/",
+                          "name_en":  "Harada Foods Co., Ltd.",
+                          "pref_en":  "Osaka",
+                          "city_en":  "Katano",
+                          "specialty_en":  [
+                                               "Gyoza",
+                                               "Xiaolongbao",
+                                               "Shumai",
+                                               "Steamed buns"
+                                           ],
+                          "note_en":  "A fresh-gyoza factory that supports clients from prototyping through to commercializing an original gyoza product.",
+                          "min_lot_en":  "Small lots negotiable"
+                      },
+                      {
+                          "name":  "株式会社マルワ製麺",
+                          "category":  "noodle",
+                          "pref":  "北海道",
+                          "city":  "美幌町",
+                          "specialty":  [
+                                            "ラーメン",
+                                            "うどん",
+                                            "そば",
+                                            "焼きそば",
+                                            "パスタ"
+                                        ],
+                          "note":  "生麺・乾麺の両方に対応。",
+                          "min_lot":  "生麺100食から（乾麺ラーメンは1,000食から）",
+                          "cert":  "",
+                          "url":  "https://www.maruwaseimen.co.jp/oem",
+                          "name_en":  "Maruwa Seimen Co., Ltd.",
+                          "pref_en":  "Hokkaido",
+                          "city_en":  "Bihoro",
+                          "specialty_en":  [
+                                               "Ramen",
+                                               "Udon",
+                                               "Soba",
+                                               "Yakisoba",
+                                               "Pasta"
+                                           ],
+                          "note_en":  "Handles both fresh and dried noodles.",
+                          "min_lot_en":  "Fresh noodles from 100 servings (dried ramen from 1,000 servings)"
+                      },
+                      {
+                          "name":  "株式会社王子製麺",
+                          "category":  "noodle",
+                          "pref":  "高知県",
+                          "city":  "高知市",
+                          "specialty":  [
+                                            "冷凍うどん",
+                                            "中華麺",
+                                            "生パスタ",
+                                            "チャーシュー"
+                                        ],
+                          "note":  "麺に加え、ラーメンの具など惣菜も受託。",
+                          "min_lot":  "冷凍うどん30個から（商品により異なる）",
+                          "cert":  "",
+                          "url":  "https://www.oji-tamamen.com/oem.htm",
+                          "name_en":  "Oji Tamamen Co., Ltd.",
+                          "pref_en":  "Kochi",
+                          "city_en":  "Kochi",
+                          "specialty_en":  [
+                                               "Frozen udon",
+                                               "Chinese-style noodles",
+                                               "Fresh pasta",
+                                               "Char siu"
+                                           ],
+                          "note_en":  "Beyond noodles, also contract-manufactures prepared items such as ramen toppings.",
+                          "min_lot_en":  "Frozen udon from 30 units (varies by product)"
+                      },
+                      {
+                          "name":  "株式会社F・L・B",
+                          "category":  "confectionery",
+                          "pref":  "大阪府",
+                          "city":  "大阪市",
+                          "specialty":  [
+                                            "冷凍生ケーキ",
+                                            "焼菓子",
+                                            "チョコレート",
+                                            "クッキー缶"
+                                        ],
+                          "note":  "フィナンシェ・カヌレ・パウンドケーキなどの焼菓子から冷凍生ケーキまで。試作にも対応。",
+                          "min_lot":  "100個程度から",
+                          "cert":  "",
+                          "url":  "https://flb-sweets.com/",
+                          "name_en":  "F・L・B Co., Ltd.",
+                          "pref_en":  "Osaka",
+                          "city_en":  "Osaka",
+                          "specialty_en":  [
+                                               "Frozen fresh cakes",
+                                               "Baked sweets",
+                                               "Chocolate",
+                                               "Cookie tins"
+                                           ],
+                          "note_en":  "Covers everything from baked sweets such as financiers, cannele and pound cake to frozen fresh cakes, including prototyping.",
+                          "min_lot_en":  "From about 100 units"
+                      },
+                      {
+                          "name":  "株式会社ユウカ",
+                          "category":  "confectionery",
+                          "pref":  "大阪府",
+                          "city":  "八尾市",
+                          "specialty":  [
+                                            "チョコレート菓子",
+                                            "しみこみチョコ",
+                                            "コーティングチョコ"
+                                        ],
+                          "note":  "さまざまな素材を使ったチョコレート菓子が得意。",
+                          "min_lot":  "小ロット可（数量は要問い合わせ）",
+                          "cert":  "",
+                          "url":  "https://www.you-ka.com/oem/",
+                          "name_en":  "Yuka Co., Ltd.",
+                          "pref_en":  "Osaka",
+                          "city_en":  "Yao",
+                          "specialty_en":  [
+                                               "Chocolate confectionery",
+                                               "Soaked chocolate",
+                                               "Coated chocolate"
+                                           ],
+                          "note_en":  "Specializes in chocolate confectionery made with a wide range of ingredients.",
+                          "min_lot_en":  "Small lots OK (please inquire for quantity)"
+                      },
+                      {
+                          "name":  "鈴鹿あられ株式会社",
+                          "category":  "confectionery",
+                          "pref":  "三重県",
+                          "city":  "鈴鹿市",
+                          "specialty":  [
+                                            "あられ",
+                                            "ぽんせんべい",
+                                            "ポン菓子"
+                                        ],
+                          "note":  "ご当地商品・ギフト・記念品向けのオリジナルあられ。既存商品のパッケージ変更にも対応。",
+                          "min_lot":  "既存商品で約30袋から／オリジナル製造は約10kgから",
+                          "cert":  "",
+                          "url":  "https://suzukaarare-oem.com/",
+                          "name_en":  "Suzuka Arare Co., Ltd.",
+                          "pref_en":  "Mie",
+                          "city_en":  "Suzuka",
+                          "specialty_en":  [
+                                               "Arare rice crackers",
+                                               "Pon-senbei",
+                                               "Puffed rice snacks"
+                                           ],
+                          "note_en":  "Original arare for regional specialty goods, gifts and commemorative items; also repackages existing products under a client\u0027s own branding.",
+                          "min_lot_en":  "From about 30 bags for existing products / about 10kg for a fully original recipe"
+                      },
+                      {
+                          "name":  "蔵王米菓株式会社",
+                          "category":  "confectionery",
+                          "pref":  "山形県",
+                          "city":  "村山市",
+                          "specialty":  [
+                                            "せんべい",
+                                            "米パフ",
+                                            "おこげ",
+                                            "グルテンフリー"
+                                        ],
+                          "note":  "焼き・揚げせんべいのほか、グルテンフリーやアレルゲン配慮など成分をコントロールした米菓も。",
+                          "min_lot":  "要問い合わせ",
+                          "cert":  "",
+                          "url":  "https://www.zaou.co.jp/",
+                          "name_en":  "Zao Beika Co., Ltd.",
+                          "pref_en":  "Yamagata",
+                          "city_en":  "Murayama",
+                          "specialty_en":  [
+                                               "Rice crackers",
+                                               "Puffed rice",
+                                               "Okoge (crispy rice)",
+                                               "Gluten-free"
+                                           ],
+                          "note_en":  "Baked and fried senbei, plus rice snacks formulated for gluten-free or allergen-conscious diets.",
+                          "min_lot_en":  "Please inquire"
+                      },
+                      {
+                          "name":  "タンポポ産業株式会社",
+                          "category":  "drink",
+                          "pref":  "千葉県",
+                          "city":  "船橋市",
+                          "specialty":  [
+                                            "健康・美容ドリンク",
+                                            "ガラスびん飲料"
+                                        ],
+                          "note":  "ガラスびん入り飲料の専門。原料選定・処方提案から試作、安定性試験まで自社で対応。",
+                          "min_lot":  "300〜900ml：1,000本から（容量により異なる）",
+                          "cert":  "ISO9001",
+                          "url":  "https://tampopo-sangyo.com/",
+                          "name_en":  "Tampopo Sangyo Co., Ltd.",
+                          "pref_en":  "Chiba",
+                          "city_en":  "Funabashi",
+                          "specialty_en":  [
+                                               "Health \u0026 beauty drinks",
+                                               "Glass-bottled beverages"
+                                           ],
+                          "note_en":  "Specialist in glass-bottled drinks, handling everything in-house from formulation and ingredient selection to prototyping and stability testing.",
+                          "min_lot_en":  "300-900ml: from 1,000 bottles (varies by size)"
+                      },
+                      {
+                          "name":  "アダプトゲン製薬九州株式会社",
+                          "category":  "drink",
+                          "pref":  "宮崎県",
+                          "city":  "宮崎市",
+                          "specialty":  [
+                                            "清涼飲料",
+                                            "パウチ飲料",
+                                            "小容量ドリンク"
+                                        ],
+                          "note":  "スパウトパウチ・小びん・ペットボトルなど10ml〜2,000mlまで充填。処方提案から製品化まで。",
+                          "min_lot":  "小ロット可（数量は要問い合わせ）",
+                          "cert":  "",
+                          "url":  "https://adaptgen-kyushu.com/oem-drink/",
+                          "name_en":  "Adaptogen Pharma Kyushu Co., Ltd.",
+                          "pref_en":  "Miyazaki",
+                          "city_en":  "Miyazaki",
+                          "specialty_en":  [
+                                               "Soft drinks",
+                                               "Pouch drinks",
+                                               "Small-format drinks"
+                                           ],
+                          "note_en":  "Fills spouted pouches, small bottles and PET bottles from 10ml to 2,000ml, covering everything from formulation to finished product.",
+                          "min_lot_en":  "Small lots OK (please inquire for quantity)"
+                      }
+                  ]
 }
