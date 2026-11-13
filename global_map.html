@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>海外食品メーカー業界マップ｜世界の大手14社と日本の比較｜AI Taste Labo</title>
+<meta name="description" content="ネスレ、ペプシコ、JBS、モンデリーズ、ダノンなど海外の大手食品メーカー14社の最新売上高を分野別に整理。味の素・明治・山崎製パンなど日本の大手との規模の違いを円換算で比較します。">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/global_map.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="食卓の物価｜AI Taste Labo">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="海外食品メーカー業界マップ｜世界の大手14社と日本の比較">
+<meta property="og:description" content="世界の大手食品メーカー14社の売上高を分野別に一覧。日本の大手との規模・利益率の違いも比較。">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/global_map.html">
+<meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
+<style>[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page-plane:#f9f9f7;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
+    --border:rgba(11,11,11,0.10);
+    --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --series-4:#eda100;
+    --series-5:#d03b3b; --series-6:#8a5cd1; --series-7:#4a5a78;
+    --navy:#1f2a44; --jp:#d03b3b; --world:#2a78d6;
+    --up:#d03b3b; --down:#2a78d6;
+    --accent:var(--series-1);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary);
+    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+
+  /* ---- hero ---- */
+  .hero{ position:relative; margin:22px 0 10px; border-radius:20px; overflow:hidden; background:var(--navy); color:#f5f1e8; padding:34px 30px 30px; }
+  .hero:before{ content:""; position:absolute; inset:0; opacity:.13;
+    background-image:radial-gradient(circle at 100% 150%, transparent 24%, #f5f1e8 25%, #f5f1e8 26%, transparent 27%, transparent 34%, #f5f1e8 35%, #f5f1e8 36%, transparent 37%);
+    background-size:56px 28px; }
+  .hero > *{ position:relative; }
+  .hero .grid > *{ min-width:0; }
+  .hero .grid{ display:grid; grid-template-columns:1.25fr 1fr; gap:24px; align-items:center; }
+  .eyebrow{ display:inline-block; font-size:11.5px; font-weight:900; letter-spacing:.12em; background:var(--jp); color:#fff; padding:4px 10px; border-radius:6px; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(28px,5vw,42px); line-height:1.2; }
+  .hero p{ font-size:14.5px; line-height:1.85; color:#c9d4ea; margin:14px 0 0; max-width:56ch; }
+  .hero p a{ color:#fff; }
+  .hero .meta-row{ margin-top:16px; font-size:12px; color:#aab6d0; display:flex; flex-wrap:wrap; gap:6px 16px; }
+  .globe{ width:100%; max-width:330px; justify-self:center; }
+  .hero-stat{ margin-top:20px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); border-radius:12px; padding:12px 16px; }
+  .hero-stat .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:clamp(32px,6vw,46px); color:#ffd36b; line-height:1; }
+  .hero-stat .num small{ font-size:16px; margin-left:2px; }
+  .hero-stat .desc{ font-size:12.5px; font-weight:700; line-height:1.6; }
+
+  section{ padding:32px 0; border-top:1px solid var(--border); }
+  section.first{ border-top:none; }
+  .section-head{ margin-bottom:18px; }
+  .section-head h2{ font-size:22px; }
+  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:6px; max-width:66ch; line-height:1.7; }
+
+  /* ---- compare ---- */
+  .vs-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:14px; }
+  .vs{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--card-shadow); border-top:5px solid var(--c); }
+  .vs .cat{ font-size:12px; font-weight:900; color:var(--c); letter-spacing:.04em; }
+  .vs .times{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:30px; margin:4px 0 10px; line-height:1.1; }
+  .vs .times small{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-left:6px; }
+  .vrow{ display:grid; grid-template-columns:118px 1fr; gap:4px 10px; align-items:center; margin:7px 0; font-size:12px; }
+  .vrow .nm{ font-weight:700; line-height:1.3; }
+  .vrow .nm .fl{ display:block; font-size:10.5px; color:var(--text-muted); font-weight:500; }
+  .vbar{ position:relative; height:22px; border-radius:5px; background:color-mix(in srgb, var(--text-primary) 5%, transparent); }
+  .vbar i{ position:absolute; left:0; top:0; bottom:0; border-radius:5px; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
+  .vbar b{ position:absolute; left:6px; top:3px; font-size:11px; color:#fff; white-space:nowrap; text-shadow:0 1px 2px rgba(0,0,0,.25); }
+  .vbar b.out{ color:var(--text-primary); text-shadow:none; }
+  .vs .foot{ font-size:11.5px; color:var(--text-secondary); line-height:1.65; margin-top:8px; border-top:1px dashed var(--border); padding-top:8px; }
+
+  /* ---- margin table ---- */
+  .mg-wrap{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; box-shadow:var(--card-shadow); padding:6px 16px; }
+  .mg{ display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; padding:12px 0; border-bottom:1px solid var(--border); align-items:center; }
+  .mg:last-child{ border-bottom:none; }
+  .mg .side{ display:grid; grid-template-columns:1fr auto; gap:2px 8px; align-items:center; font-size:12.5px; }
+  .mg .side .pct{ font-weight:900; font-size:18px; font-variant-numeric:tabular-nums; }
+  .mg .side .lb{ grid-column:1/-1; font-size:10.5px; color:var(--text-muted); }
+  .mg .mbar{ grid-column:1/-1; height:6px; border-radius:3px; background:color-mix(in srgb, var(--text-primary) 6%, transparent); position:relative; }
+  .mg .mbar i{ position:absolute; left:0; top:0; bottom:0; border-radius:3px; }
+
+  /* ---- size chart ---- */
+  .legend{ display:flex; gap:14px; font-size:12px; color:var(--text-secondary); margin-bottom:10px; flex-wrap:wrap; }
+  .legend span:before{ content:""; display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; background:var(--k); }
+  .size-chart{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; box-shadow:var(--card-shadow); padding:14px 16px; }
+  .srow{ display:grid; grid-template-columns:150px 1fr 74px; gap:10px; align-items:center; padding:4px 0; font-size:12.5px; }
+  .srow .nm{ font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .srow .nm small{ font-weight:500; color:var(--text-muted); margin-left:4px; font-size:10.5px; }
+  .srow.jp .nm{ color:var(--jp); }
+  .sbar{ height:14px; border-radius:4px; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
+  .srow .v{ text-align:right; font-weight:900; font-variant-numeric:tabular-nums; }
+
+  /* ---- map ---- */
+  .map{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr)); gap:16px; align-items:start; }
+  .cat-block{ border-radius:14px; padding:12px; background:color-mix(in srgb, var(--c) 7%, var(--surface-1)); border:1px solid color-mix(in srgb, var(--c) 28%, transparent); }
+  .cat-block h3{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:14px; font-weight:900; color:#fff; background:var(--c); display:inline-block; padding:4px 12px; border-radius:99px; margin:0 0 10px; }
+  .cat-block h3 .n{ font-weight:500; opacity:.85; margin-left:4px; font-size:12px; }
+  .cards{ display:grid; gap:10px; }
+  .co-card{ background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:12px 13px; box-shadow:0 1px 2px rgba(11,11,11,0.04); }
+  .co-head{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+  .co-name{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16.5px; line-height:1.3; }
+  .co-name small{ display:block; font-family:"Zen Kaku Gothic New",sans-serif; font-size:10.5px; color:var(--text-muted); font-weight:500; }
+  .co-country{ font-size:11px; font-weight:700; flex:none; background:var(--page-plane); border:1px solid var(--border); border-radius:99px; padding:1px 8px; }
+  .co-note{ font-size:12px; line-height:1.65; color:var(--text-secondary); margin:6px 0 6px; }
+  .co-brands{ display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
+  .co-brands span{ font-size:10.5px; color:color-mix(in srgb, var(--c) 75%, #000); background:color-mix(in srgb, var(--c) 10%, transparent); border-radius:4px; padding:1px 6px; }
+  .fig{ display:grid; grid-template-columns:auto 1fr auto; gap:3px 10px; align-items:baseline; border-top:1px dashed var(--border); padding-top:7px; }
+  .fig .k{ font-size:11px; color:var(--text-muted); font-weight:700; }
+  .fig .v{ font-size:17px; font-weight:900; text-align:right; font-variant-numeric:tabular-nums; }
+  .fig .v small{ font-size:11px; font-weight:500; color:var(--text-secondary); margin-left:1px; }
+  .fig .v.sub{ font-size:12.5px; font-weight:700; color:var(--text-secondary); }
+  .chg{ font-size:11.5px; font-weight:700; min-width:58px; text-align:right; font-variant-numeric:tabular-nums; }
+  .chg.up{ color:var(--up); } .chg.down{ color:var(--down); } .chg.flat{ color:var(--text-muted); }
+  .co-foot{ display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-top:7px; font-size:10.5px; color:var(--text-muted); }
+  .co-foot a{ font-weight:700; text-decoration:none; }
+
+  /* ---- insights ---- */
+  .ins{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:12px; }
+  .ins div{ background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--card-shadow); font-size:13px; line-height:1.75; color:var(--text-secondary); }
+  .ins b{ display:block; font-family:"Zen Old Mincho",serif; font-size:16px; color:var(--text-primary); margin-bottom:6px; }
+  .ins .no{ font-family:"Zen Old Mincho",serif; font-weight:900; color:var(--jp); font-size:22px; line-height:1; display:block; margin-bottom:6px; }
+
+  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
+  .sources{ display:grid; gap:6px; margin-top:14px; font-size:12px; color:var(--text-secondary); line-height:1.7; }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:76ch; }
+
+  @media (max-width:720px){
+    .hero{ padding:26px 18px 22px; }
+    .hero .grid{ grid-template-columns:1fr; }
+    .globe{ max-width:220px; order:-1; }
+    .srow{ grid-template-columns:104px 1fr 62px; font-size:11.5px; }
+    .srow .nm small{ display:none; }
+    .mg{ grid-template-columns:1fr; }
+    .map{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="top-nav">
+    <a href="index.html">ホーム</a>
+    <a href="monthly_digest.html">月次トピックス</a>
+    <a href="food_prices.html">食品価格</a>
+    <a href="vegetables.html">野菜価格</a>
+    <a href="trade.html">輸入統計</a>
+    <a href="product_news.html">新製品情報</a>
+    <a href="market_size.html">市場規模</a>
+    <a href="industry_map.html">業界マップ</a>
+    <a href="global_map.html" class="active">海外業界マップ</a>
+    <a href="oem_makers.html">OEMメーカー</a>
+    <a href="food_culture.html">郷土料理</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="en/index.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
+  </nav>
+
+  <div class="hero">
+    <div class="grid">
+      <div>
+        <span class="eyebrow">GLOBAL FOOD MAKERS</span>
+        <h1>海外食品メーカー<br>業界マップ</h1>
+        <p>ネスレ、ペプシコ、JBSなど、世界の大手食品メーカー14社を7分野に整理し、最新の通期売上高をまとめました。円に換算して、<a href="industry_map.html">日本の大手20社</a>と規模や利益率を比べています。</p>
+        <div class="hero-stat" id="hero-stat" hidden>
+          <div class="num" id="hero-num"></div>
+          <div class="desc" id="hero-desc"></div>
+        </div>
+        <div class="meta-row">
+          <span id="updated-at">データ取得日を読み込み中…</span>
+          <span>出典：各社の決算発表（詳細は末尾）</span>
+        </div>
+      </div>
+      <svg class="globe" viewBox="0 0 320 300" aria-hidden="true">
+        <defs>
+          <radialGradient id="gl" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#3d5a92"/><stop offset="1" stop-color="#22325a"/></radialGradient>
+        </defs>
+        <circle cx="160" cy="150" r="118" fill="url(#gl)" stroke="#f5f1e8" stroke-opacity=".5" stroke-width="2"/>
+        <g fill="none" stroke="#f5f1e8" stroke-opacity=".22" stroke-width="1.4">
+          <ellipse cx="160" cy="150" rx="118" ry="40"/><ellipse cx="160" cy="150" rx="118" ry="84"/>
+          <ellipse cx="160" cy="150" rx="40" ry="118"/><ellipse cx="160" cy="150" rx="84" ry="118"/>
+          <line x1="42" y1="150" x2="278" y2="150"/><line x1="160" y1="32" x2="160" y2="268"/>
+        </g>
+        <g fill="#1baf7a" opacity=".85">
+          <path d="M88 92c18-12 40-10 52 2 6 8-4 16-12 22-6 6-2 18-12 22-10 3-18-8-26-12-10-5-18-14-14-22 2-6 6-9 12-12z"/>
+          <path d="M120 170c10-4 22 2 24 14 3 14-4 30-12 44-4 8-12 6-14-2-3-14-10-24-8-38 1-8 4-15 10-18z"/>
+          <path d="M176 82c12-6 30-4 40 4 8 6 2 14-6 16-10 2-14 10-24 10-10 0-16-8-16-16 0-6 2-10 6-14z"/>
+          <path d="M186 124c12-2 22 6 24 18 2 14-6 28-16 34-8 4-14-4-16-12-3-14-6-26-2-34 2-4 5-6 10-6z"/>
+          <path d="M226 110c10-4 22 0 26 10 3 8-4 14-12 14-8 1-14 8-20 4-6-4-4-16 0-22 2-3 4-5 6-6z"/>
+          <path d="M240 186c8-2 18 2 20 10 1 8-6 12-14 12-8 0-14-6-12-14 1-4 3-7 6-8z"/>
+        </g>
+        <!-- Japan pin -->
+        <circle cx="258" cy="122" r="6" fill="#d03b3b" stroke="#fff" stroke-width="2"/>
+        <!-- floating labels -->
+        <g font-family="Zen Kaku Gothic New, sans-serif" font-weight="900" font-size="12">
+          <g transform="translate(6,46)"><rect width="104" height="26" rx="13" fill="#ffd36b"/><text x="52" y="17.5" text-anchor="middle" fill="#1f2a44">ネスレ（スイス）</text></g>
+          <g transform="translate(14,214)"><rect width="110" height="26" rx="13" fill="#f5f1e8"/><text x="55" y="17.5" text-anchor="middle" fill="#1f2a44">JBS（ブラジル）</text></g>
+          <g transform="translate(206,30)"><rect width="104" height="26" rx="13" fill="#f5f1e8"/><text x="52" y="17.5" text-anchor="middle" fill="#1f2a44">ペプシコ（米）</text></g>
+          <g transform="translate(222,238)"><rect width="92" height="26" rx="13" fill="#d03b3b"/><text x="46" y="17.5" text-anchor="middle" fill="#fff">日本勢</text></g>
+        </g>
+        <g fill="#ffd36b"><circle cx="70" cy="128" r="3"/><circle cx="292" cy="160" r="2.5"/><circle cx="40" cy="176" r="2"/></g>
+      </svg>
+    </div>
+  </div>
+
+  <section class="first" id="compare-sec">
+    <div class="section-head">
+      <h2>日本の大手と比べると？</h2>
+      <div class="section-sub">分野ごとに、海外の最大手と日本の最大手の売上高を円換算で並べました（日本は<a href="industry_map.html">業界マップ</a>の各分野トップ）。</div>
+    </div>
+    <div class="vs-grid" id="vs-grid"></div>
+  </section>
+
+  <section id="margin-sec">
+    <div class="section-head">
+      <h2>もうけの効率（営業利益率）の比較</h2>
+      <div class="section-sub">海外勢は各社が重視する「調整後」の利益率（一時的な損益を除く）を、日本勢は決算短信の営業利益率を使っています。計算方法が異なるため、目安としてご覧ください。</div>
+    </div>
+    <div class="mg-wrap" id="mg-wrap"></div>
+  </section>
+
+  <section id="size-sec">
+    <div class="section-head">
+      <h2>売上高の規模ランキング（円換算）</h2>
+      <div class="section-sub">海外14社に、日本の売上高上位5社を加えて並べました。単位は兆円。</div>
+    </div>
+    <div class="legend"><span style="--k:var(--world)">海外メーカー</span><span style="--k:var(--jp)">日本のメーカー</span></div>
+    <div class="size-chart" id="size-chart"></div>
+  </section>
+
+  <section id="map-sec">
+    <div class="section-head">
+      <h2>分野別マップ</h2>
+      <div class="section-sub">売上高は決算通貨のまま表示し、下に円換算を添えています。右の％は前期比（<span style="color:var(--up);font-weight:700;">▲増加</span>／<span style="color:var(--down);font-weight:700;">▼減少</span>、決算通貨ベース）。</div>
+    </div>
+    <div class="map" id="map"></div>
+  </section>
+
+  <section id="ins-sec">
+    <div class="section-head">
+      <h2>比べて分かる3つのこと</h2>
+    </div>
+    <div class="ins" id="ins"></div>
+  </section>
+
+  <footer>
+    <h2 style="font-size:18px;">出典・注記</h2>
+    <div class="sources" id="sources"></div>
+    <div class="disclaimer" id="disclaimer">
+      ・売上高は各社の連結の実績値です（各社の決算発表・年次報告をもとに、報道で数値を確認）。決算期は会社ごとに異なります。<br>
+      ・<span id="fx-note"></span><br>
+      ・前期比は決算通貨ベースです。円換算後の伸びとは一致しません。<br>
+      ・CJ第一製糖は物流子会社（CJ大韓通運）を除いた数値です。康師傅は飲料事業を含む会社全体の売上です。<br>
+      ・営業利益率は、各社が公表する指標（調整後・コア・経常など）の名前をカードに記載しています。公表値をすぐに確認できなかった会社は「—」としています。<br>
+      ・マース、フェレロ、ラクタリス、カーギルなど株式非公開の大手は、比較できる決算が公開されていないため載せていません。<br>
+      ・分野分け・紹介文・主なブランドは、当サイトが各社の公表情報をもとに独自に整理したものです。投資判断を目的としたものではありません。
+    </div>
+    <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;">© 2026 AI Taste Labo</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var G, J;
+  function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function jpy(c){ return c.sales * G.meta.fx[c.currency]; }          // 億円
+  function cho(oku){ return (Math.round(oku/1000)/10).toFixed(1); }   // 兆円（小数1桁）
+  function fmtOku(v){ if(v>=10000){ var a=Math.floor(v/10000), r=Math.round(v%10000); return a+"兆"+(r? r.toLocaleString("ja-JP"):""); } return Math.round(v).toLocaleString("ja-JP"); }
+  function fmtLocal(c){
+    var v = c.sales;
+    if(c.currency==="KRW") return (v/10000).toFixed(1)+'<small>兆ウォン</small>';
+    return v.toLocaleString("ja-JP",{maximumFractionDigits:1})+'<small>'+G.meta.currency_label[c.currency]+'</small>';
+  }
+  function chg(p){
+    if(p===null||p===undefined) return '<span class="chg flat">—</span>';
+    var cls = p>=0.5?"up":(p<=-0.5?"down":"flat"), m = cls==="up"?"▲":(cls==="down"?"▼":"→");
+    return '<span class="chg '+cls+'">'+m+Math.abs(p).toFixed(1)+'%</span>';
+  }
+  function cat(k){ return G.categories.find(function(c){ return c.key===k; }); }
+  function jpTop(jk){ return J.companies.filter(function(c){ return c.category===jk; }).sort(function(a,b){ return b.sales-a.sales; })[0]; }
+  function jpBy(name){ return J.companies.find(function(c){ return c.name===name; }); }
+  function grow(sel){ requestAnimationFrame(function(){ setTimeout(function(){
+    document.querySelectorAll(sel).forEach(function(el){ el.style.width = el.getAttribute("data-w"); });
+  }, 60); }); }
+
+  function renderHero(){
+    var nestle = G.companies[0], aji = jpTop("seasoning");
+    var x = jpy(nestle)/aji.sales;
+    document.getElementById("hero-stat").hidden = false;
+    document.getElementById("hero-num").innerHTML = x.toFixed(1)+"<small>倍</small>";
+    document.getElementById("hero-desc").innerHTML = "世界最大のネスレ（約"+cho(jpy(nestle))+"兆円）は、<br>日本最大の"+aji.name+"（約"+cho(aji.sales)+"兆円）の売上高の"+x.toFixed(1)+"倍";
+    var p = G.meta.generated_at.split("-");
+    document.getElementById("updated-at").textContent = "データ取得日："+p[0]+"年"+(+p[1])+"月"+(+p[2])+"日";
+  }
+
+  function renderVs(){
+    var html = "";
+    G.categories.filter(function(c){ return c.jp_key; }).forEach(function(ct){
+      var w = G.companies.filter(function(c){ return c.category===ct.key; }).sort(function(a,b){ return jpy(b)-jpy(a); })[0];
+      var j = jpTop(ct.jp_key);
+      var wv = jpy(w), jv = j.sales, mx = Math.max(wv,jv), x = wv/jv;
+      var col = cssVar(ct.color);
+      function row(nm, sub, v, color){
+        var pct = v/mx*100;
+        return '<div class="vrow"><div class="nm">'+nm+'<span class="fl">'+sub+'</span></div>'+
+          '<div class="vbar"><i class="gw" data-w="'+pct.toFixed(1)+'%" style="background:'+color+'"></i><b class="'+(pct<34?'out':'')+'" style="'+(pct<34?'left:calc('+pct.toFixed(1)+'% + 6px)':'')+'">'+fmtOku(v)+'億円</b></div></div>';
+      }
+      html += '<div class="vs" style="--c:'+col+'"><div class="cat">'+ct.label+'</div>'+
+        '<div class="times">'+(x>=1? x.toFixed(1)+'倍' : (1/x).toFixed(1)+'分の1')+'<small>海外最大手 ÷ 日本最大手</small></div>'+
+        row(w.name, w.country+"・"+w.fy, wv, cssVar("--world"))+
+        row(j.name, "日本・"+j.fy, jv, cssVar("--jp"))+
+        '<div class="foot">'+vsNote(ct.key, w, j)+'</div></div>';
+    });
+    document.getElementById("vs-grid").innerHTML = html;
+  }
+  function vsNote(k, w, j){
+    var n = {
+      seasoning: "海外の調味料大手はケチャップ・チーズ・加工肉までの総合型。日本の"+j.name+"はアミノ酸の技術を軸に、海外売上の比率が高いのが特徴です。",
+      confectionery: "ビスケット・チョコレートで世界展開する"+w.name+"に対し、日本の菓子メーカーは国内中心。売上の差が最も大きい分野です。",
+      dairy: "ヨーグルトや水を世界で売る"+w.name+"に対し、日本の乳業は国内の牛乳・ヨーグルト・菓子が中心です。",
+      noodle: w.name+"は売上の約6割が飲料のため単純比較はできませんが、即席麺の分野では日本勢も世界で戦える規模です。",
+      bakery: "製パンは日本の"+j.name+"も世界有数の規模。"+w.name+"は北米・中南米など30か国以上で展開しています。"
+    };
+    return n[k]||"";
+  }
+
+  function renderMargin(){
+    var pairs = [
+      ["ネスレ","味の素"], ["ダノン","明治ホールディングス"], ["モンデリーズ","江崎グリコ"],
+      ["マコーミック","キッコーマン"]
+    ];
+    var html = "";
+    pairs.forEach(function(p){
+      var w = G.companies.find(function(c){ return c.name===p[0]; }), j = jpBy(p[1]);
+      if(!w||!j||w.margin==null) return;
+      var jm = j.op/j.sales*100, mx = 25;
+      function side(nm, sub, m, color){
+        return '<div class="side"><span><b>'+nm+'</b></span><span class="pct" style="color:'+color+'">'+m.toFixed(1)+'%</span>'+
+          '<div class="mbar"><i style="width:'+Math.min(m/mx*100,100)+'%;background:'+color+'"></i></div><span class="lb">'+sub+'</span></div>';
+      }
+      html += '<div class="mg">'+side(w.name, w.country+"・"+w.margin_label, w.margin, cssVar("--world"))+side(j.name, "日本・営業利益率（"+j.fy+"）", jm, cssVar("--jp"))+'</div>';
+    });
+    document.getElementById("mg-wrap").innerHTML = html;
+  }
+
+  function renderSize(){
+    var rows = G.companies.map(function(c){ return { nm:c.name, sub:c.country, v:jpy(c), jp:false }; });
+    J.companies.slice().sort(function(a,b){ return b.sales-a.sales; }).slice(0,5).forEach(function(c){ rows.push({ nm:c.name, sub:"日本", v:c.sales, jp:true }); });
+    rows.sort(function(a,b){ return b.v-a.v; });
+    var mx = rows[0].v;
+    document.getElementById("size-chart").innerHTML = rows.map(function(r){
+      return '<div class="srow'+(r.jp?' jp':'')+'"><div class="nm">'+r.nm+'<small>'+r.sub+'</small></div>'+
+        '<div><div class="sbar gs" data-w="'+(r.v/mx*100).toFixed(1)+'%" style="background:'+(r.jp?cssVar("--jp"):cssVar("--world"))+'"></div></div>'+
+        '<div class="v">'+cho(r.v)+'兆円</div></div>';
+    }).join("");
+  }
+
+  function renderMap(){
+    var html = "";
+    G.categories.forEach(function(ct){
+      var list = G.companies.filter(function(c){ return c.category===ct.key; }).sort(function(a,b){ return jpy(b)-jpy(a); });
+      if(!list.length) return;
+      html += '<div class="cat-block" style="--c:'+cssVar(ct.color)+'"><h3>'+ct.label+'<span class="n">'+list.length+'社</span></h3><div class="cards">'+
+        list.map(function(c){
+          return '<div class="co-card"><div class="co-head"><div class="co-name">'+c.name+'<small>'+c.name_en+'</small></div><div class="co-country">'+c.country+'</div></div>'+
+            '<div class="co-note">'+c.note+'</div>'+
+            '<div class="co-brands">'+c.brands.map(function(b){ return "<span>"+b+"</span>"; }).join("")+'</div>'+
+            '<div class="fig"><span class="k">売上高</span><span class="v">'+fmtLocal(c)+'</span>'+chg(c.sales_g)+
+            '<span class="k">円換算</span><span class="v sub">約'+fmtOku(jpy(c))+'億円</span><span></span>'+
+            '<span class="k">利益率</span><span class="v sub">'+(c.margin!=null? c.margin.toFixed(1)+'%（'+c.margin_label+'）' : '—')+'</span><span></span></div>'+
+            '<div class="co-foot"><span>'+c.fy+'・連結</span><a href="'+c.source_url+'" target="_blank" rel="noopener">決算情報 →</a></div></div>';
+        }).join("")+'</div></div>';
+    });
+    document.getElementById("map").innerHTML = html;
+  }
+
+  function renderIns(){
+    var jtotal = J.companies.reduce(function(s,c){ return s+c.sales; },0);
+    var top3 = G.companies.slice().sort(function(a,b){ return jpy(b)-jpy(a); }).slice(0,3);
+    var t3 = top3.reduce(function(s,c){ return s+jpy(c); },0);
+    var items = [
+      ["規模の差は大きい", "海外上位3社（"+top3.map(function(c){return c.name;}).join("・")+"）の売上高は合計約"+cho(t3)+"兆円。日本の大手20社の合計（約"+cho(jtotal)+"兆円）を"+(t3>jtotal?"上回ります":"下回ります")+"。"],
+      ["原料高は世界共通の悩み", "カカオ高でハーシーやモンデリーズは値上げをしても利益が減少。原材料の値上がりを価格に転嫁する難しさは、日本の食品メーカーと同じです（<a href=\"trade.html\">輸入統計</a>も参照）。"],
+      ["為替で見え方が変わる", "ネスレは現地通貨では成長しましたが、スイスフラン高で売上は2%減。円換算の比較も為替次第で倍率が動くため、伸び率は決算通貨で見るのがおすすめです。"]
+    ];
+    document.getElementById("ins").innerHTML = items.map(function(t,i){ return '<div><span class="no">0'+(i+1)+'</span><b>'+t[0]+'</b>'+t[1]+'</div>'; }).join("");
+  }
+
+  function renderSources(){
+    document.getElementById("fx-note").textContent = G.meta.fx_note;
+    document.getElementById("sources").innerHTML = G.companies.map(function(c){
+      return '<div><b>'+c.name_en+'</b>（'+c.fy+'）　<a href="'+c.source_url+'" target="_blank" rel="noopener">決算情報</a></div>';
+    }).join("") + '<div><b>日本のメーカー</b>：当サイト<a href="industry_map.html">業界マップ</a>（各社 決算短信・有価証券報告書）</div>';
+  }
+
+  Promise.all([
+    fetch("global_map_data.json",{cache:"no-cache"}).then(function(r){ return r.json(); }),
+    fetch("industry_map_data.json",{cache:"no-cache"}).then(function(r){ return r.json(); })
+  ]).then(function(res){
+    G = res[0]; J = res[1];
+    renderHero(); renderVs(); renderMargin(); renderSize(); renderMap(); renderIns(); renderSources();
+    grow(".gw"); grow(".gs");
+  }).catch(function(e){
+    document.getElementById("vs-grid").innerHTML = "<div class='vs'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    console.error(e);
+  });
+})();
+</script>
+</body>
+</html>
