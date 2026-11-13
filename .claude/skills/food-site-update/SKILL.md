@@ -70,6 +70,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 - 情報源：PR TIMES各社公式アカウント（`meta.companies[].prtimes_url`）。対象は売上高上位の食品メーカー（食肉加工大手を除く）：明治、味の素、山崎製パン、マルハニチロ（2026年3月にUmios株式会社へ社名変更）、日清製粉ウェルナ／日清製粉グループ、ニッスイ、雪印メグミルク、森永乳業、ニチレイフーズ、キユーピー。
 - `meta.generated_at` 以降の新商品プレスリリースを確認し、`products` に追記（`company_key, company_name, product_name, announced_date, summary, category, source_url`）。
 - **著作権配慮**：要約は必ず自分の言葉で1〜2文にし、本文の丸写し・画像転載はしない。実在を確認した記事URLのみ載せる。IR・採用・CSR等、新商品以外は対象外。
+- 英語版 `en/product_news.html`（2026-11-13追加）：同じ `product_news.json` を読む。商品を追加したら `product_name_en`（英訳かローマ字）・`summary_en`・`category_en` も書く（無ければ日本語表示）。会社名は `meta.companies[].name_en`・`short_en`。
 
 ### 5. 市場規模（market_size.html / market_size_data.json）
 - 調理食品・調味料・菓子：農水省「食品産業動態調査」年報Excel（生産指数シート、令和2年度=100）。清涼飲料：全国清涼飲料連合会「清涼飲料水統計」ダイジェストPDF（数量kl・金額百万円）。
