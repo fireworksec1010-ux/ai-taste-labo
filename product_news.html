@@ -24,86 +24,171 @@
 <style>
   :root{
     color-scheme: light;
-    --surface-1:      #fcfcfb;
-    --page-plane:     #f9f9f7;
-    --text-primary:   #0b0b0b;
-    --text-secondary: #52514e;
-    --text-muted:     #898781;
-    --gridline:       #e1e0d9;
-    --border:         rgba(11,11,11,0.10);
-    --card-shadow:    0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
-    --accent: #2a78d6;
+    /* 墨・生成り・朱。差し色は朱ひとつ、金茶は罫線だけ */
+    --sumi:    #1b1e25;
+    --sumi-2:  #2a2e38;
+    --washi:   #f4f0e6;
+    --paper:   #fbf9f3;
+    --shu:     #c2402c;
+    --kincha:  #a88a55;
+    --text-primary:   #1b1e25;
+    --text-secondary: #55565a;
+    --text-muted:     #8e8c85;
+    --line:    rgba(27,30,37,0.14);
+    --accent:  var(--shu);
   }
-  /* このページは常にライト配色に固定しています（ダーク配色は意図的に無効化） */
+  /* このページは常にライト配色に固定しています */
 
   *{box-sizing:border-box;}
   body{
-    margin:0;
-    background:var(--page-plane);
-    color:var(--text-primary);
+    margin:0; background:var(--washi); color:var(--text-primary);
     font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{ max-width:820px; margin:0 auto; padding:0 20px; }
+  .wrap{ max-width:880px; margin:0 auto; padding:0 20px; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
-  a{ color:var(--accent); }
+  a{ color:var(--text-primary); }
 
   .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
-  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--shu); }
 
-  .hero{ padding:32px 0 28px; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:12px; font-weight:700; letter-spacing:.08em;
-    color:var(--text-secondary); text-transform:uppercase;
-    margin-bottom:14px;
+  /* ================= 表紙 ================= */
+  .hero{
+    position:relative; overflow:hidden; margin:22px 0 0;
+    background:var(--sumi); color:var(--washi); border-radius:4px;
+    padding:44px 40px 38px;
   }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
-  .hero h1{ font-size:clamp(28px,5vw,40px); line-height:1.2; }
-  .hero p{ font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:62ch; margin:16px 0 0; }
-  .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
-  .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
+  .hero:before{ /* 青海波をごく薄く */
+    content:""; position:absolute; inset:0; opacity:.06;
+    background-image:radial-gradient(circle at 50% 100%, transparent 44%, #f4f0e6 45%, #f4f0e6 48%, transparent 49%, transparent 64%, #f4f0e6 65%, #f4f0e6 68%, transparent 69%);
+    background-size:44px 22px;
+  }
+  .hero:after{ /* 内側の細い金罫 */
+    content:""; position:absolute; inset:10px; border:1px solid rgba(168,138,85,.45); pointer-events:none;
+  }
+  .hero > *{ position:relative; }
+  .hero-grid{ display:grid; grid-template-columns:1fr 300px; gap:28px; align-items:center; }
+  .hero-grid > *{ min-width:0; }
+  .kicker{ font-size:11px; letter-spacing:.42em; color:var(--kincha); font-weight:700; margin-bottom:18px; }
+  .hero h1{ font-size:clamp(36px,6.4vw,58px); line-height:1.15; letter-spacing:.06em; }
+  .hero h1 .thin{ display:block; font-size:.34em; letter-spacing:.5em; font-weight:600; color:var(--kincha); margin-bottom:10px; }
+  .rule{ width:56px; height:2px; background:var(--shu); margin:20px 0 18px; }
+  .hero p.lede{ font-size:13.5px; line-height:2; color:#cfcabd; max-width:46ch; margin:0; }
+  .stats{ display:flex; gap:0; margin-top:26px; }
+  .stat{ padding:0 22px; border-left:1px solid rgba(244,240,230,.2); }
+  .stat:first-child{ padding-left:0; border-left:none; }
+  .stat .n{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:38px; line-height:1; font-variant-numeric:tabular-nums; }
+  .stat .l{ font-size:10.5px; letter-spacing:.24em; color:#a9a596; margin-top:8px; }
+  .meta-row{ display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:22px; font-size:11.5px; color:#8f8b7e; }
 
-  section{ padding:28px 0; border-top:1px solid var(--border); }
-  .section-head{ margin-bottom:16px; }
-  .section-head h2{ font-size:20px; }
-  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:4px; max-width:60ch; line-height:1.7;}
+  /* 線が描かれていくイラスト */
+  .art-box{ position:relative; justify-self:center; width:100%; max-width:300px; }
+  .art{ width:100%; display:block; }
+  .art .ln{ fill:none; stroke:#e9e3d3; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:1; stroke-dashoffset:1; animation:draw 2.2s cubic-bezier(.5,0,.2,1) forwards; }
+  .art .ln.g{ stroke:var(--kincha); }
+  .art .ln.d2{ animation-delay:.35s; } .art .ln.d3{ animation-delay:.7s; } .art .ln.d4{ animation-delay:1.05s; } .art .ln.d5{ animation-delay:1.4s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .art .sun{ fill:var(--shu); opacity:0; animation:fade 1s ease 1.7s forwards; }
+  @keyframes fade{ to{ opacity:1; } }
+  .tate{ position:absolute; right:-6px; top:4px; writing-mode:vertical-rl; font-family:"Zen Old Mincho",serif; font-weight:600;
+    font-size:13px; letter-spacing:.5em; color:var(--kincha); }
+  .seal{ position:absolute; left:2px; bottom:6px; width:44px; height:44px; background:var(--shu); color:#fff;
+    font-family:"Zen Old Mincho",serif; font-weight:900; font-size:25px; display:grid; place-items:center; border-radius:4px;
+    transform:rotate(-5deg); box-shadow:0 0 0 2px var(--sumi), 0 0 0 3px rgba(194,64,44,.6); }
 
-  .filter-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  /* ================= 見出し ================= */
+  section{ padding:44px 0 6px; }
+  .section-head{ display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+  .section-head .no{ font-family:"Zen Old Mincho",serif; font-size:12px; letter-spacing:.2em; color:var(--shu); font-weight:900; }
+  .section-head h2{ font-size:22px; letter-spacing:.08em; }
+  .section-head .bar{ flex:1; height:1px; background:var(--line); }
+  .section-sub{ font-size:12.5px; color:var(--text-secondary); line-height:1.8; margin:-8px 0 18px; }
+
+  /* 顔ぶれ（分野の内訳） */
+  .lineup{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr)); gap:0 34px; }
+  .lu{ display:grid; grid-template-columns:26px 92px 1fr 26px; gap:10px; align-items:center; padding:11px 0; border-bottom:1px solid var(--line); font-size:13px; }
+  .lu .ico{ display:block; }
+  .lu .t{ font-weight:700; }
+  .lu .track{ height:3px; background:rgba(27,30,37,.08); }
+  .lu .track i{ display:block; height:100%; width:0; background:var(--sumi); transition:width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .lu:first-child .track i{ background:var(--shu); }
+  .lu .n{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16px; text-align:right; font-variant-numeric:tabular-nums; }
+
+  /* 絞り込み */
+  .filter-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
   .filter-chip{
-    display:inline-flex; align-items:center; gap:6px;
-    padding:7px 12px; border-radius:99px; border:1px solid var(--border);
-    background:var(--surface-1); color:var(--text-secondary);
-    font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit;
+    padding:7px 14px; border-radius:2px; cursor:pointer; font-family:inherit;
+    border:1px solid var(--sumi); background:transparent; color:var(--sumi);
+    font-size:12.5px; font-weight:700; letter-spacing:.03em; transition:background .2s, color .2s, opacity .2s;
   }
-  .filter-chip[aria-pressed="true"]{ background:var(--text-primary); color:var(--surface-1); border-color:var(--text-primary); }
-  .filter-chip.all{ font-weight:700; }
-  .filter-chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .filter-chip small{ font-weight:500; opacity:.6; margin-left:5px; }
+  .filter-chip[aria-pressed="false"]{ border-color:var(--line); color:var(--text-muted); }
+  .filter-chip[aria-pressed="true"]{ background:var(--sumi); color:var(--washi); }
+  .filter-chip.all{ border-color:var(--shu); color:var(--shu); background:transparent; }
+  .filter-chip.all:hover{ background:var(--shu); color:#fff; }
+  .filter-chip:focus-visible{ outline:2px solid var(--shu); outline-offset:2px; }
 
-  .feed{ display:grid; gap:12px; }
+  /* ================= 年表 ================= */
+  .feed{ margin-top:8px; }
+  .month{ display:flex; align-items:baseline; gap:12px; margin:38px 0 16px; padding-bottom:10px; border-bottom:2px solid var(--sumi); }
+  .month:first-child{ margin-top:14px; }
+  .month .m{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:44px; line-height:.9; font-variant-numeric:tabular-nums; }
+  .month .m small{ font-size:15px; margin-left:3px; }
+  .month .y{ font-size:11.5px; letter-spacing:.3em; color:var(--text-muted); font-weight:700; }
+  .month .cnt{ margin-left:auto; font-size:11.5px; color:var(--text-secondary); letter-spacing:.1em; }
+
   .news-card{
-    background:var(--surface-1); border:1px solid var(--border); border-radius:12px;
-    padding:16px 18px; box-shadow:var(--card-shadow);
+    position:relative; display:grid; grid-template-columns:52px 1fr; gap:18px;
+    background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--sumi);
+    padding:20px 22px 18px; margin-bottom:12px;
+    opacity:0; transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease, border-color .25s, box-shadow .25s;
   }
-  .news-card .top-line{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
-  .tag-group{ display:flex; gap:6px; flex-wrap:wrap; }
-  .tag{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:99px; background:var(--page-plane); color:var(--text-secondary); border:1px solid var(--border); }
-  .tag.company{ color:var(--accent); border-color:currentColor; }
-  .news-card .date{ font-size:11.5px; color:var(--text-muted); font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .news-card h3{ font-size:16px; font-family:"Zen Kaku Gothic New",sans-serif; font-weight:700; margin-bottom:6px; }
-  .news-card p{ font-size:13.5px; line-height:1.75; color:var(--text-secondary); margin:0 0 10px; }
-  .news-card .link{ font-size:12.5px; font-weight:700; text-decoration:none; }
-  .news-card .link:after{ content:" →"; }
+  .news-card.in{ opacity:1; transform:none; }
+  .news-card:hover{ border-left-color:var(--shu); box-shadow:0 14px 30px rgba(27,30,37,.09); }
+  .cat-disc{ width:52px; height:52px; border-radius:50%; border:1px solid var(--sumi); display:grid; place-items:center; color:var(--sumi); transition:background .25s, color .25s; }
+  .news-card:hover .cat-disc{ background:var(--sumi); color:var(--washi); }
+  .top-line{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; font-size:11.5px; }
+  .co{ font-weight:900; letter-spacing:.04em; }
+  .ct{ color:var(--text-muted); }
+  .ct:before{ content:"／"; margin-right:8px; color:var(--line); }
+  .date{ margin-left:auto; font-family:"Zen Old Mincho",serif; font-weight:600; color:var(--text-secondary); font-variant-numeric:tabular-nums; letter-spacing:.06em; }
+  .news-card h3{ font-size:17.5px; line-height:1.55; margin:8px 0 6px; letter-spacing:.02em; }
+  .news-card p{ font-size:13px; line-height:1.9; color:var(--text-secondary); margin:0 0 12px; }
+  .link{ font-size:12px; font-weight:700; text-decoration:none; color:var(--sumi); letter-spacing:.06em;
+    background-image:linear-gradient(var(--shu),var(--shu)); background-size:100% 1px; background-repeat:no-repeat; background-position:0 100%;
+    padding-bottom:3px; transition:color .2s; }
+  .link:after{ content:"　→"; transition:margin .2s; }
+  .link:hover{ color:var(--shu); } .link:hover:after{ margin-left:4px; }
 
-  .empty-state{ padding:32px 16px; text-align:center; color:var(--text-muted); font-size:13px; background:var(--surface-1); border:1px dashed var(--border); border-radius:12px; }
+  .new-seal{ position:absolute; top:-8px; right:16px; width:30px; height:30px; background:var(--shu); color:#fff;
+    font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16px; display:grid; place-items:center; border-radius:3px; transform:rotate(4deg); }
 
-  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
-  .sources{ display:grid; gap:8px; margin-top:14px; font-size:12.5px; color:var(--text-secondary); }
-  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:70ch; }
+  .empty-state{ text-align:center; padding:44px 20px; border:1px dashed var(--line); color:var(--text-secondary); font-size:13.5px; }
 
-  @media (max-width:520px){
-    .hero{ padding:28px 0 22px; }
+  /* ================= 奥付 ================= */
+  footer{ padding:40px 0 60px; border-top:2px solid var(--sumi); margin-top:48px; }
+  .sources{ display:grid; gap:7px; margin-top:14px; }
+  .sources > div{ font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
+  .sources strong{ color:var(--text-primary); }
+  .sources a{ color:var(--shu); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.9; max-width:72ch; }
+
+  @media (prefers-reduced-motion:reduce){
+    .art .ln{ animation:none; stroke-dashoffset:0; } .art .sun{ animation:none; opacity:1; }
+    .news-card{ opacity:1; transform:none; transition:none; }
+  }
+  @media (max-width:680px){
+    .hero{ padding:34px 24px 30px; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .art-box{ max-width:230px; order:-1; margin-bottom:6px; }
+    .stat{ padding:0 14px; } .stat .n{ font-size:30px; }
+    .news-card{ grid-template-columns:40px 1fr; gap:12px; padding:16px 14px; }
+    .cat-disc{ width:40px; height:40px; }
+    .date{ width:100%; margin-left:0; }
+    .month .m{ font-size:36px; }
   }
 </style>
 
@@ -122,32 +207,67 @@
     <a href="oem_makers.html">OEMメーカー</a>
     <a href="food_culture.html">郷土料理</a>
     <a href="contact.html">お問い合わせ</a>
-    <a href="en/index.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
-    <a href="zh/monthly_digest.html" lang="zh-Hant" style="color:#2a78d6;font-weight:700;">中文</a>
+    <a href="en/product_news.html" lang="en" style="margin-left:auto;color:#c2402c;font-weight:700;">English</a>
+    <a href="zh/monthly_digest.html" lang="zh-Hant" style="color:#c2402c;font-weight:700;">中文</a>
   </nav>
 
   <div class="hero">
-    <div class="eyebrow"><span class="dot"></span>PR TIMES発表ベース</div>
-    <h1>新製品ウォッチ</h1>
-    <p>売上高上位の食品メーカー10社（食肉加工大手を除く）が、PR TIMESで発表した新製品情報をまとめました。競合・業界動向のキャッチアップや商品企画のヒント探しにご利用ください。要約は独自にまとめたもので、詳細は各リンク先の原文をご確認ください。</p>
-    <div class="meta-row">
-      <span id="updated-at">データ取得日を読み込み中…</span>
-      <span>出典：各社PR TIMES公式アカウント（詳細は末尾）</span>
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">NEW PRODUCT WATCH</div>
+        <h1><span class="thin">大手食品メーカーの</span>新製品ウォッチ</h1>
+        <div class="rule"></div>
+        <p class="lede">売上高上位の食品メーカー10社（食肉加工大手を除く）が、PR TIMESで発表した新製品をまとめました。競合・業界動向の把握や、商品企画のヒント探しにご利用ください。要約は独自にまとめたもので、詳細は各リンク先の原文をご確認ください。</p>
+        <div class="stats" id="stats" hidden>
+          <div class="stat"><div class="n" id="st-products">0</div><div class="l">掲載商品</div></div>
+          <div class="stat"><div class="n" id="st-makers">0</div><div class="l">掲載企業</div></div>
+          <div class="stat"><div class="n" id="st-cats">0</div><div class="l">分野</div></div>
+        </div>
+        <div class="meta-row">
+          <span id="updated-at">データ取得日を読み込み中…</span>
+          <span>出典：各社PR TIMES公式アカウント</span>
+        </div>
+      </div>
+
+      <div class="art-box">
+        <svg class="art" viewBox="0 0 300 300" role="img" aria-label="棚に並ぶ新製品の線画イラスト">
+          <circle class="sun" cx="222" cy="66" r="26"/>
+          <!-- 棚 -->
+          <path class="ln g" pathLength="1" d="M24 150 H262"/>
+          <path class="ln g d2" pathLength="1" d="M24 262 H262"/>
+          <path class="ln g d2" pathLength="1" d="M32 150 V272 M254 150 V272"/>
+          <!-- 上段：瓶・箱・カップ -->
+          <path class="ln" pathLength="1" d="M56 150 V104 q0 -10 8 -16 V72 h14 v16 q8 6 8 16 V150"/>
+          <path class="ln" pathLength="1" d="M58 118 h26"/>
+          <path class="ln d2" pathLength="1" d="M112 150 V96 h46 v54 M112 96 l8 -12 h30 l8 12 M124 116 h22 M124 128 h14"/>
+          <path class="ln d3" pathLength="1" d="M178 110 h46 l-7 40 h-32 z M174 100 h54 v10 h-54 z"/>
+          <path class="ln d3" pathLength="1" d="M192 90 q4 -8 -2 -14 M206 90 q4 -8 -2 -14"/>
+          <!-- 下段：缶・袋・椀 -->
+          <path class="ln d3" pathLength="1" d="M52 262 v-52 q0 -8 18 -8 t18 8 v52 M52 210 q0 8 18 8 t18 -8 M52 236 q18 10 36 0"/>
+          <path class="ln d4" pathLength="1" d="M112 262 l-6 -62 l10 6 l10 -6 l10 6 l10 -6 l10 6 l-6 62 M122 228 h22 M126 240 h14"/>
+          <path class="ln d5" pathLength="1" d="M180 226 h60 q0 30 -30 30 t-30 -30 z M196 256 v6 h28 v-6"/>
+          <path class="ln d5" pathLength="1" d="M188 226 q10 -22 22 -8 q8 -14 22 8"/>
+        </svg>
+        <div class="tate" aria-hidden="true">新しい味を、いちはやく。</div>
+        <div class="seal" aria-hidden="true">新</div>
+      </div>
     </div>
   </div>
 
-  <section id="feed-section">
-    <div class="section-head">
-      <h2>新製品フィード</h2>
-      <div class="section-sub">企業名をクリックすると絞り込めます（複数選択可）。発表日が新しい順に並んでいます。</div>
-    </div>
+  <section id="lineup-sec">
+    <div class="section-head"><span class="no">壱</span><h2>今回の顔ぶれ</h2><div class="bar"></div></div>
+    <div class="lineup" id="lineup"></div>
+  </section>
 
+  <section id="feed-section">
+    <div class="section-head"><span class="no">弐</span><h2>新製品の一覧</h2><div class="bar"></div></div>
+    <div class="section-sub">企業名を押すと絞り込めます（複数選択可）。発表日が新しい順です。朱の「新」印は、直近2か月に発表された商品です。</div>
     <div class="filter-row" id="filter-row"></div>
     <div class="feed" id="feed"></div>
   </section>
 
   <footer>
-    <h2 style="font-size:18px;">出典・注記</h2>
+    <h2 style="font-size:18px;letter-spacing:.08em;">出典・注記</h2>
     <div class="sources" id="sources"></div>
     <div class="disclaimer">
       ・対象企業は、民間調査サイトの売上高ランキングを参考に、食肉加工（ハム・ソーセージ）中心の企業を除いた上位10社です。<br>
@@ -160,15 +280,78 @@
 
 </div>
 
+<script src="en/icons.js"></script>
 <script>
 (function(){
   "use strict";
 
   var state = { data:null, activeKeys:null };
 
-  function renderUpdated(){
+  var CATS = [
+    { re:/アイス/,   label:"アイス",     icon:"sweet"  },
+    { re:/^菓子/,    label:"菓子",       icon:"candy"  },
+    { re:/^飲料/,    label:"飲料",       icon:"bottle" },
+    { re:/^乳製品/,  label:"乳製品",     icon:"bowl"   },
+    { re:/^調味料/,  label:"調味料",     icon:"soy"    },
+    { re:/^冷凍食品/,label:"冷凍食品",   icon:"frozen" },
+    { re:/^パン/,    label:"パン",       icon:"dish"   },
+    { re:/^水産/,    label:"水産加工品", icon:"ship"   },
+    { re:/サラダ/,   label:"その他",     icon:"veggie" },
+    { re:/卵/,       label:"その他",     icon:"dish"   },
+    { re:/介護/,     label:"その他",     icon:"heart"  },
+    { re:/./,        label:"その他",     icon:"box"    }
+  ];
+  function catOf(p){
+    var s = p.category || "";
+    for(var i=0;i<CATS.length;i++){ if(CATS[i].re.test(s)) return CATS[i]; }
+    return CATS[CATS.length-1];
+  }
+  function ic(name, size){ return (window.JL && JL.icon) ? JL.icon(name, size, "currentColor", 1.5) : ""; }
+  function shortName(n){ return n.replace(/（.*?）/g,"").replace(/株式会社/g,"").split("／")[0]; }
+
+  var observer = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); observer.unobserve(e.target); } });
+  }, { rootMargin:"0px 0px -40px 0px" }) : null;
+  function watch(el){ if(observer) observer.observe(el); else el.classList.add("in"); }
+
+  function countUp(el, target){
+    var t0 = null, dur = 1100;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts-t0)/dur, 1), e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*e);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function isNew(p){
+    if(!p.announced_date) return false;
+    var diff = (new Date(state.data.meta.generated_at) - new Date(p.announced_date)) / 86400000;
+    return diff >= 0 && diff <= 62;
+  }
+
+  function renderHero(){
+    var ps = state.data.products;
+    document.getElementById("stats").hidden = false;
+    countUp(document.getElementById("st-products"), ps.length);
+    countUp(document.getElementById("st-makers"), new Set(ps.map(function(p){ return p.company_key; })).size);
+    countUp(document.getElementById("st-cats"), new Set(ps.map(function(p){ return catOf(p).label; })).size);
     var parts = state.data.meta.generated_at.split("-");
     document.getElementById("updated-at").textContent = "データ取得日：" + parts[0]+"年"+(+parts[1])+"月"+(+parts[2])+"日";
+  }
+
+  function renderLineup(){
+    var counts = {};
+    state.data.products.forEach(function(p){ var c = catOf(p); if(!counts[c.label]) counts[c.label] = { cat:c, n:0 }; counts[c.label].n++; });
+    var list = Object.keys(counts).map(function(k){ return counts[k]; }).sort(function(a,b){ return b.n-a.n; });
+    var mx = list[0].n;
+    document.getElementById("lineup").innerHTML = list.map(function(it){
+      return '<div class="lu">'+ic(it.cat.label==="その他" ? "box" : it.cat.icon, 22)+'<span class="t">'+it.cat.label+'</span>'+
+        '<span class="track"><i data-w="'+(it.n/mx*100).toFixed(0)+'%"></i></span><span class="n">'+it.n+'</span></div>';
+    }).join("");
+    requestAnimationFrame(function(){ setTimeout(function(){
+      document.querySelectorAll(".lu .track i").forEach(function(el){ el.style.width = el.getAttribute("data-w"); });
+    }, 80); });
   }
 
   function renderFilters(){
@@ -176,7 +359,7 @@
     row.innerHTML = "";
     var allBtn = document.createElement("button");
     allBtn.type = "button"; allBtn.className = "filter-chip all";
-    allBtn.textContent = "すべて";
+    allBtn.textContent = "すべて表示";
     allBtn.addEventListener("click", function(){
       state.activeKeys = new Set(state.data.meta.companies.map(function(c){return c.key;}));
       renderFilters(); renderFeed();
@@ -189,7 +372,7 @@
       var btn = document.createElement("button");
       btn.type = "button"; btn.className = "filter-chip";
       btn.setAttribute("aria-pressed", state.activeKeys.has(c.key) ? "true":"false");
-      btn.textContent = c.name.replace(/（.*?）/g,"") + "（"+count+"）";
+      btn.innerHTML = shortName(c.name) + "<small>"+count+"</small>";
       btn.addEventListener("click", function(){
         if(state.activeKeys.has(c.key)) state.activeKeys.delete(c.key);
         else state.activeKeys.add(c.key);
@@ -197,6 +380,22 @@
       });
       row.appendChild(btn);
     });
+  }
+
+  function cardHtml(p){
+    var cat = catOf(p);
+    var dateTxt = p.announced_date ? p.announced_date.replace(/-/g,".") : "発表日不明";
+    return '<div class="news-card">'+
+      (isNew(p) ? '<span class="new-seal" title="直近2か月の発表">新</span>' : '')+
+      '<div class="cat-disc">'+ic(cat.icon,24)+'</div>'+
+      '<div>'+
+        '<div class="top-line"><span class="co">'+shortName(p.company_name)+'</span>'+
+          (p.category ? '<span class="ct">'+p.category+'</span>' : '')+
+          '<span class="date">'+dateTxt+'</span></div>'+
+        '<h3>'+p.product_name+'</h3>'+
+        '<p>'+p.summary+'</p>'+
+        '<a class="link" href="'+p.source_url+'" target="_blank" rel="noopener">PR TIMESで見る</a>'+
+      '</div></div>';
   }
 
   function renderFeed(){
@@ -208,29 +407,26 @@
       .sort(function(a,b){ return (b.announced_date||"").localeCompare(a.announced_date||""); });
 
     if(!items.length){
-      var empty = document.createElement("div");
-      empty.className = "empty-state";
-      empty.textContent = "該当する新製品情報がありません。企業の絞り込みを解除してください。";
-      feed.appendChild(empty);
+      feed.innerHTML = '<div class="empty-state">該当する新製品情報がありません。「すべて表示」で絞り込みを解除してください。</div>';
       return;
     }
-
+    var cur = "";
     items.forEach(function(p){
-      var card = document.createElement("div");
-      card.className = "news-card";
-      var dateTxt = p.announced_date ? p.announced_date.replace(/-/g,"/") : "発表日不明";
-      card.innerHTML =
-        '<div class="top-line">'+
-          '<div class="tag-group">'+
-            '<span class="tag company">'+p.company_name+'</span>'+
-            (p.category ? '<span class="tag">'+p.category+'</span>' : '')+
-          '</div>'+
-          '<span class="date">'+dateTxt+'</span>'+
-        '</div>'+
-        '<h3>'+p.product_name+'</h3>'+
-        '<p>'+p.summary+'</p>'+
-        '<a class="link" href="'+p.source_url+'" target="_blank" rel="noopener">PR TIMESで見る</a>';
+      var ym = (p.announced_date||"").slice(0,7);
+      if(ym && ym !== cur){
+        cur = ym;
+        var n = items.filter(function(q){ return (q.announced_date||"").slice(0,7)===ym; }).length;
+        var d = ym.split("-");
+        var m = document.createElement("div");
+        m.className = "month";
+        m.innerHTML = '<span class="m">'+(+d[1])+'<small>月</small></span><span class="y">'+d[0]+'</span><span class="cnt">'+n+'件</span>';
+        feed.appendChild(m);
+      }
+      var holder = document.createElement("div");
+      holder.innerHTML = cardHtml(p);
+      var card = holder.firstChild;
       feed.appendChild(card);
+      watch(card);
     });
   }
 
@@ -244,20 +440,14 @@
     });
   }
 
-  function renderAll(){
-    renderUpdated();
-    renderFilters();
-    renderFeed();
-    renderSources();
-  }
-
-  fetch("product_news.json").then(function(r){return r.json();}).then(function(json){
+  fetch("product_news.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(json){
     state.data = json;
     state.activeKeys = new Set(json.meta.companies.map(function(c){return c.key;}));
-    renderAll();
+    renderHero(); renderLineup(); renderFilters(); renderFeed(); renderSources();
   }).catch(function(err){
     document.getElementById("feed").innerHTML = "<div class='empty-state'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
     console.error(err);
   });
 })();
 </script>
+</html>
