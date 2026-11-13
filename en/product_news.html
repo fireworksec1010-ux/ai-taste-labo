@@ -24,208 +24,174 @@
 <style>
   :root{
     color-scheme: light;
-    --surface-1:      #fffdf8;
-    --page-plane:     #faf6ec;
-    --text-primary:   #17232a;
-    --text-secondary: #4e5a60;
-    --text-muted:     #8b9298;
-    --border:         rgba(23,35,42,0.11);
-    --card-shadow:    0 1px 2px rgba(23,35,42,0.05), 0 10px 28px rgba(23,35,42,0.07);
-    --ink:    #17232a;
-    --teal:   #13a3b8;
-    --teal-d: #0c7f90;
-    --red:    #e04f4f;
-    --amber:  #eda100;
-    --pink:   #e85d8a;
-    --accent: var(--teal);
+    /* 墨・生成り・朱。差し色は朱ひとつ、金茶は罫線だけ */
+    --sumi:    #1b1e25;
+    --sumi-2:  #2a2e38;
+    --washi:   #f4f0e6;
+    --paper:   #fbf9f3;
+    --shu:     #c2402c;
+    --kincha:  #a88a55;
+    --text-primary:   #1b1e25;
+    --text-secondary: #55565a;
+    --text-muted:     #8e8c85;
+    --line:    rgba(27,30,37,0.14);
+    --accent:  var(--shu);
   }
-  /* このページは常にライト配色に固定しています（ダーク配色は意図的に無効化） */
+  /* このページは常にライト配色に固定しています */
 
   *{box-sizing:border-box;}
   body{
-    margin:0;
-    background:var(--page-plane);
-    background-image:radial-gradient(rgba(19,163,184,0.07) 1.5px, transparent 1.5px);
-    background-size:26px 26px;
-    color:var(--text-primary);
+    margin:0; background:var(--washi); color:var(--text-primary);
     font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
-  .wrap{ max-width:900px; margin:0 auto; padding:0 20px; }
+  .wrap{ max-width:880px; margin:0 auto; padding:0 20px; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
-  a{ color:var(--accent); }
+  a{ color:var(--text-primary); }
 
   .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
-  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
-  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
-  .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--shu); }
+  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--line); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ margin-left:auto; color:var(--shu); font-weight:700; }
 
-  /* ================= HERO ================= */
-  .hero{ position:relative; padding:38px 0 8px; }
-  .hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:18px; align-items:center; }
+  /* ================= 表紙 ================= */
+  .hero{
+    position:relative; overflow:hidden; margin:22px 0 0;
+    background:var(--sumi); color:var(--washi); border-radius:4px;
+    padding:44px 40px 38px;
+  }
+  .hero:before{ /* 青海波をごく薄く */
+    content:""; position:absolute; inset:0; opacity:.06;
+    background-image:radial-gradient(circle at 50% 100%, transparent 44%, #f4f0e6 45%, #f4f0e6 48%, transparent 49%, transparent 64%, #f4f0e6 65%, #f4f0e6 68%, transparent 69%);
+    background-size:44px 22px;
+  }
+  .hero:after{ /* 内側の細い金罫 */
+    content:""; position:absolute; inset:10px; border:1px solid rgba(168,138,85,.45); pointer-events:none;
+  }
+  .hero > *{ position:relative; }
+  .hero-grid{ display:grid; grid-template-columns:1fr 300px; gap:28px; align-items:center; }
   .hero-grid > *{ min-width:0; }
-  .stamp{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:11.5px; font-weight:900; letter-spacing:.14em; text-transform:uppercase;
-    color:#fff; background:var(--ink); border-radius:8px; padding:6px 12px;
-    transform:rotate(-1.5deg); box-shadow:3px 3px 0 rgba(19,163,184,.45);
-    margin-bottom:16px;
-  }
-  .stamp .dot{ width:7px; height:7px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 3px rgba(19,163,184,.3); }
-  .hero h1{ font-size:clamp(34px,6vw,54px); line-height:1.12; letter-spacing:.01em; }
-  .hero h1 .hl{
-    display:inline-block; color:#fff; background:var(--teal); padding:0 12px 2px; border-radius:10px;
-    transform:rotate(-2deg); box-shadow:0 6px 0 var(--teal-d);
-  }
-  .hero p.lede{ font-size:14.5px; line-height:1.85; color:var(--text-secondary); max-width:52ch; margin:18px 0 0; }
-  .meta-row{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:14px; font-size:12px; color:var(--text-muted); }
+  .kicker{ font-size:11px; letter-spacing:.42em; color:var(--kincha); font-weight:700; margin-bottom:18px; }
+  .hero h1{ font-size:clamp(36px,6.4vw,58px); line-height:1.12; letter-spacing:.01em; }
+  .hero h1 .thin{ display:block; font-size:.3em; letter-spacing:.3em; text-transform:uppercase; font-weight:600; color:var(--kincha); margin-bottom:10px; }
+  .rule{ width:56px; height:2px; background:var(--shu); margin:20px 0 18px; }
+  .hero p.lede{ font-size:13.5px; line-height:2; color:#cfcabd; max-width:46ch; margin:0; }
+  .stats{ display:flex; gap:0; margin-top:26px; }
+  .stat{ padding:0 22px; border-left:1px solid rgba(244,240,230,.2); }
+  .stat:first-child{ padding-left:0; border-left:none; }
+  .stat .n{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:38px; line-height:1; font-variant-numeric:tabular-nums; }
+  .stat .l{ font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:#a9a596; margin-top:8px; }
+  .meta-row{ display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:22px; font-size:11.5px; color:#8f8b7e; }
 
-  .stat-pills{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
-  .pill{
-    background:var(--surface-1); border:1.5px solid var(--ink); border-radius:14px;
-    padding:10px 16px 8px; box-shadow:3px 3px 0 rgba(23,35,42,.12); min-width:96px;
-  }
-  .pill .n{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:30px; line-height:1; color:var(--ink); }
-  .pill .n small{ font-size:14px; }
-  .pill .l{ font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); margin-top:3px; }
-  .pill.t .n{ color:var(--teal); } .pill.r .n{ color:var(--red); } .pill.a .n{ color:var(--amber); }
+  /* 線が描かれていくイラスト */
+  .art-box{ position:relative; justify-self:center; width:100%; max-width:300px; }
+  .art{ width:100%; display:block; }
+  .art .ln{ fill:none; stroke:#e9e3d3; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:1; stroke-dashoffset:1; animation:draw 2.2s cubic-bezier(.5,0,.2,1) forwards; }
+  .art .ln.g{ stroke:var(--kincha); }
+  .art .ln.d2{ animation-delay:.35s; } .art .ln.d3{ animation-delay:.7s; } .art .ln.d4{ animation-delay:1.05s; } .art .ln.d5{ animation-delay:1.4s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .art .sun{ fill:var(--shu); opacity:0; animation:fade 1s ease 1.7s forwards; }
+  @keyframes fade{ to{ opacity:1; } }
+  .tate{ position:absolute; right:-6px; top:4px; writing-mode:vertical-rl; font-family:"Zen Old Mincho",serif; font-weight:600;
+    font-size:13px; letter-spacing:.5em; color:var(--kincha); }
+  .seal{ position:absolute; left:2px; bottom:6px; width:44px; height:44px; background:var(--shu); color:#fff;
+    font-family:"Zen Old Mincho",serif; font-weight:900; font-size:25px; display:grid; place-items:center; border-radius:4px;
+    transform:rotate(-5deg); box-shadow:0 0 0 2px var(--sumi), 0 0 0 3px rgba(194,64,44,.6); }
 
-  /* hero art */
-  .hero-art{ width:100%; max-width:390px; justify-self:center; filter:drop-shadow(0 14px 22px rgba(23,35,42,.13)); }
-  .bob1,.bob2,.bob3{ animation:bob 3.6s ease-in-out infinite; transform-origin:center; }
-  .bob2{ animation-delay:-1.2s; } .bob3{ animation-delay:-2.4s; }
-  @keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-6px); } }
-  .spin-slow{ animation:spin 14s linear infinite; transform-origin:center; transform-box:fill-box; }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-  .tw{ animation:tw 2.2s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
-  .tw.d1{ animation-delay:-.7s; } .tw.d2{ animation-delay:-1.4s; }
-  @keyframes tw{ 0%,100%{ opacity:.25; transform:scale(.7); } 50%{ opacity:1; transform:scale(1.15); } }
+  /* ================= 見出し ================= */
+  section{ padding:44px 0 6px; }
+  .section-head{ display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+  .section-head .no{ font-family:"Zen Old Mincho",serif; font-size:12px; letter-spacing:.2em; color:var(--shu); font-weight:900; }
+  .section-head h2{ font-size:22px; letter-spacing:.08em; }
+  .section-head .bar{ flex:1; height:1px; background:var(--line); }
+  .section-sub{ font-size:12.5px; color:var(--text-secondary); line-height:1.8; margin:-8px 0 18px; }
 
-  /* ================= TICKER ================= */
-  .ticker{
-    margin:30px 0 6px; transform:rotate(-.7deg);
-    background:var(--ink); color:#faf6ec; border-radius:12px;
-    overflow:hidden; white-space:nowrap; box-shadow:0 8px 20px rgba(23,35,42,.18);
-  }
-  .ticker-track{ display:inline-flex; animation:tick 26s linear infinite; }
-  .ticker span{ display:inline-flex; align-items:center; gap:10px; padding:10px 0; font-size:12.5px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; }
-  .ticker b{ color:var(--teal); margin:0 18px; font-weight:900; }
-  @keyframes tick{ to{ transform:translateX(-50%); } }
+  /* 顔ぶれ（分野の内訳） */
+  .lineup{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr)); gap:0 34px; }
+  .lu{ display:grid; grid-template-columns:26px 112px 1fr 26px; gap:10px; align-items:center; padding:11px 0; border-bottom:1px solid var(--line); font-size:13px; }
+  .lu .ico{ display:block; }
+  .lu .t{ font-weight:700; }
+  .lu .track{ height:3px; background:rgba(27,30,37,.08); }
+  .lu .track i{ display:block; height:100%; width:0; background:var(--sumi); transition:width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .lu:first-child .track i{ background:var(--shu); }
+  .lu .n{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16px; text-align:right; font-variant-numeric:tabular-nums; }
 
-  /* ================= SECTIONS ================= */
-  section{ padding:34px 0 8px; }
-  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:16px; flex-wrap:wrap; }
-  .section-head h2{ font-size:24px; }
-  .section-head .doodle{ flex:1; height:10px; min-width:60px;
-    background-image:radial-gradient(circle, var(--teal) 2px, transparent 2.5px); background-size:14px 10px; background-position:0 60%; opacity:.5; }
-  .section-sub{ font-size:13px; color:var(--text-secondary); line-height:1.7; margin:-8px 0 16px; max-width:64ch; }
-
-  /* batch tiles */
-  .batch{ display:flex; gap:10px; flex-wrap:wrap; }
-  .b-tile{
-    display:flex; align-items:center; gap:10px;
-    background:var(--surface-1); border:1.5px solid var(--border); border-radius:99px;
-    padding:7px 16px 7px 8px; box-shadow:var(--card-shadow);
-    transition:transform .2s; cursor:default;
-  }
-  .b-tile:hover{ transform:translateY(-3px) rotate(-1deg); }
-  .b-ico{ width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:color-mix(in srgb, var(--c) 16%, #fff); color:var(--c); }
-  .b-tile .t{ font-size:12.5px; font-weight:700; }
-  .b-tile .n{ font-size:11px; font-weight:900; color:#fff; background:var(--c); border-radius:99px; padding:1px 8px; margin-left:2px; }
-
-  /* filters */
-  .filter-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+  /* 絞り込み */
+  .filter-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
   .filter-chip{
-    display:inline-flex; align-items:center; gap:7px;
-    padding:8px 14px; border-radius:99px; cursor:pointer; font-family:inherit;
-    border:1.5px solid var(--border); background:var(--surface-1); color:var(--text-primary);
-    font-size:12.5px; font-weight:700; transition:transform .15s, box-shadow .15s;
+    padding:7px 14px; border-radius:2px; cursor:pointer; font-family:inherit;
+    border:1px solid var(--sumi); background:transparent; color:var(--sumi);
+    font-size:12.5px; font-weight:700; letter-spacing:.03em; transition:background .2s, color .2s, opacity .2s;
   }
-  .filter-chip:hover{ transform:translateY(-2px); box-shadow:0 4px 10px rgba(23,35,42,.12); }
-  .filter-chip .co-dot{ width:9px; height:9px; border-radius:50%; background:var(--c, var(--ink)); }
-  .filter-chip[aria-pressed="true"]{ background:var(--c, var(--ink)); border-color:var(--c, var(--ink)); color:#fff; }
-  .filter-chip[aria-pressed="true"] .co-dot{ background:#fff; }
-  .filter-chip.all[aria-pressed="true"]{ background:var(--ink); border-color:var(--ink); }
-  .filter-chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .filter-chip small{ font-weight:500; opacity:.6; margin-left:5px; }
+  .filter-chip[aria-pressed="false"]{ border-color:var(--line); color:var(--text-muted); }
+  .filter-chip[aria-pressed="true"]{ background:var(--sumi); color:var(--washi); }
+  .filter-chip.all{ border-color:var(--shu); color:var(--shu); background:transparent; }
+  .filter-chip.all:hover{ background:var(--shu); color:#fff; }
+  .filter-chip:focus-visible{ outline:2px solid var(--shu); outline-offset:2px; }
 
-  /* ================= FEED / TIMELINE ================= */
-  .feed{ position:relative; margin-top:10px; padding-left:26px; }
-  .feed:before{ content:""; position:absolute; left:7px; top:10px; bottom:10px; width:2.5px;
-    background-image:linear-gradient(var(--teal) 55%, transparent 55%); background-size:2.5px 12px; opacity:.5; }
-  .month{ position:relative; margin:26px 0 14px; }
-  .month:first-child{ margin-top:4px; }
-  .month:before{ content:""; position:absolute; left:-26px; top:4px; width:16px; height:16px; border-radius:50%;
-    background:var(--teal); border:3.5px solid var(--page-plane); box-shadow:0 0 0 2px var(--teal); }
-  .month h3{ font-size:19px; display:inline-block; }
-  .month .cnt{ font-size:11px; font-weight:900; color:var(--teal-d); background:rgba(19,163,184,.13); border-radius:99px; padding:2px 10px; margin-left:10px; vertical-align:3px; }
+  /* ================= 年表 ================= */
+  .feed{ margin-top:8px; }
+  .month{ display:flex; align-items:baseline; gap:12px; margin:38px 0 16px; padding-bottom:10px; border-bottom:2px solid var(--sumi); }
+  .month:first-child{ margin-top:14px; }
+  .month .m{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:34px; line-height:1; font-variant-numeric:tabular-nums; }
+  .month .m small{ font-size:15px; margin-left:3px; }
+  .month .y{ font-size:11.5px; letter-spacing:.3em; color:var(--text-muted); font-weight:700; }
+  .month .cnt{ margin-left:auto; font-size:11.5px; color:var(--text-secondary); letter-spacing:.1em; }
 
   .news-card{
-    position:relative; display:grid; grid-template-columns:58px 1fr; gap:14px;
-    background:var(--surface-1); border:1.5px solid var(--border); border-radius:16px;
-    padding:16px 18px; margin-bottom:12px; box-shadow:var(--card-shadow);
-    opacity:0; transform:translateY(16px);
-    transition:opacity .5s ease, transform .5s ease, box-shadow .25s ease;
+    position:relative; display:grid; grid-template-columns:52px 1fr; gap:18px;
+    background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--sumi);
+    padding:20px 22px 18px; margin-bottom:12px;
+    opacity:0; transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease, border-color .25s, box-shadow .25s;
   }
-  .news-card.in{ opacity:1; transform:translateY(0); }
-  .news-card:hover{ box-shadow:0 4px 8px rgba(23,35,42,.08), 0 18px 36px rgba(23,35,42,.13); }
-  .news-card:hover .cat-disc{ transform:rotate(-8deg) scale(1.1); }
-  .cat-disc{
-    width:58px; height:58px; border-radius:18px; display:grid; place-items:center;
-    background:color-mix(in srgb, var(--c) 15%, #fff); color:var(--c);
-    border:1.5px solid color-mix(in srgb, var(--c) 35%, transparent);
-    transition:transform .25s ease;
-  }
-  .top-line{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  .tag{ font-size:10.5px; font-weight:700; border-radius:99px; padding:2px 9px; background:var(--page-plane); border:1px solid var(--border); color:var(--text-secondary); }
-  .tag.company{ color:#fff; background:var(--cc, var(--ink)); border-color:transparent; }
-  .tag.cat{ color:var(--c); background:color-mix(in srgb, var(--c) 10%, #fff); border-color:color-mix(in srgb, var(--c) 30%, transparent); }
-  .date{ margin-left:auto; font-size:11px; color:var(--text-muted); font-weight:700; font-variant-numeric:tabular-nums; }
-  .news-card h3{ font-size:16.5px; line-height:1.45; margin:7px 0 1px; }
-  .ja-name{ font-size:11.5px; color:var(--text-muted); margin:0 0 4px; }
-  .news-card p{ font-size:13px; line-height:1.75; color:var(--text-secondary); margin:4px 0 10px; }
-  .link{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:12px; font-weight:800; text-decoration:none;
-    color:var(--teal-d); background:rgba(19,163,184,.1); border:1.5px solid rgba(19,163,184,.35);
-    border-radius:99px; padding:5px 14px; transition:gap .15s, background .15s;
-  }
-  .link:hover{ gap:10px; background:rgba(19,163,184,.18); }
+  .news-card.in{ opacity:1; transform:none; }
+  .news-card:hover{ border-left-color:var(--shu); box-shadow:0 14px 30px rgba(27,30,37,.09); }
+  .cat-disc{ width:52px; height:52px; border-radius:50%; border:1px solid var(--sumi); display:grid; place-items:center; color:var(--sumi); transition:background .25s, color .25s; }
+  .news-card:hover .cat-disc{ background:var(--sumi); color:var(--washi); }
+  .top-line{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; font-size:11.5px; }
+  .co{ font-weight:900; letter-spacing:.04em; }
+  .ct{ color:var(--text-muted); }
+  .ct:before{ content:"／"; margin-right:8px; color:var(--line); }
+  .date{ margin-left:auto; font-family:"Zen Old Mincho",serif; font-weight:600; color:var(--text-secondary); font-variant-numeric:tabular-nums; letter-spacing:.06em; }
+  .news-card h3{ font-size:17.5px; line-height:1.45; margin:8px 0 2px; }
+  .ja-name{ font-size:11.5px; color:var(--text-muted); margin:0 0 6px; }
+  .news-card p{ font-size:13.5px; line-height:1.75; color:var(--text-secondary); margin:0 0 12px; }
+  .link{ font-size:12px; font-weight:700; text-decoration:none; color:var(--sumi); letter-spacing:.06em;
+    background-image:linear-gradient(var(--shu),var(--shu)); background-size:100% 1px; background-repeat:no-repeat; background-position:0 100%;
+    padding-bottom:3px; transition:color .2s; }
+  .link:after{ content:"　→"; transition:margin .2s; }
+  .link:hover{ color:var(--shu); } .link:hover:after{ margin-left:4px; }
 
-  .new-burst{
-    position:absolute; top:-9px; right:14px;
-    font-size:10px; font-weight:900; letter-spacing:.08em; color:#fff;
-    background:var(--red); border-radius:99px; padding:3px 11px;
-    transform:rotate(3deg); box-shadow:0 3px 8px rgba(224,79,79,.4);
-  }
-  .new-burst:before{ content:"★ "; }
+  .new-seal{ position:absolute; top:-8px; right:16px; width:30px; height:30px; background:var(--shu); color:#fff;
+    font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16px; display:grid; place-items:center; border-radius:3px; transform:rotate(4deg); }
 
-  .empty-state{
-    text-align:center; padding:42px 20px; background:var(--surface-1);
-    border:1.5px dashed var(--border); border-radius:16px; color:var(--text-secondary); font-size:13.5px;
-  }
+  .empty-state{ text-align:center; padding:44px 20px; border:1px dashed var(--line); color:var(--text-secondary); font-size:13.5px; }
 
-  /* ================= FOOTER ================= */
-  footer{ padding:40px 0 60px; border-top:1.5px solid var(--border); margin-top:36px; }
-  .sources{ display:grid; gap:8px; margin-top:14px; }
+  /* ================= 奥付 ================= */
+  footer{ padding:40px 0 60px; border-top:2px solid var(--sumi); margin-top:48px; }
+  .sources{ display:grid; gap:7px; margin-top:14px; }
   .sources > div{ font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
   .sources strong{ color:var(--text-primary); }
-  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:70ch; }
+  .sources a{ color:var(--shu); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.9; max-width:72ch; }
 
   @media (prefers-reduced-motion:reduce){
-    .bob1,.bob2,.bob3,.spin-slow,.tw,.ticker-track{ animation:none; }
+    .art .ln{ animation:none; stroke-dashoffset:0; } .art .sun{ animation:none; opacity:1; }
     .news-card{ opacity:1; transform:none; transition:none; }
   }
-  @media (max-width:640px){
-    .hero{ padding:28px 0 4px; }
+  @media (max-width:680px){
+    .hero{ padding:34px 24px 30px; }
     .hero-grid{ grid-template-columns:1fr; }
-    .hero-art{ max-width:270px; order:-1; }
-    .feed{ padding-left:20px; }
-    .month:before{ left:-20px; width:12px; height:12px; }
-    .news-card{ grid-template-columns:44px 1fr; padding:14px; }
-    .cat-disc{ width:44px; height:44px; border-radius:14px; }
+    .art-box{ max-width:230px; order:-1; margin-bottom:6px; }
+    .stat{ padding:0 14px; } .stat .n{ font-size:30px; }
+    .news-card{ grid-template-columns:40px 1fr; gap:12px; padding:16px 14px; }
+    .cat-disc{ width:40px; height:40px; }
     .date{ width:100%; margin-left:0; }
+    .month .m{ font-size:28px; }
   }
 </style>
 
@@ -249,13 +215,14 @@
   <div class="hero">
     <div class="hero-grid">
       <div>
-        <span class="stamp"><span class="dot"></span>Fresh from PR TIMES announcements</span>
-        <h1>New Product<br><span class="hl">Watch</span></h1>
-        <p class="lede">What are Japan's biggest food makers launching right now? New products from 10 top makers, summarized in English. Track competitors, spot trends, and find your next product idea.</p>
-        <div class="stat-pills" id="stat-pills" hidden>
-          <div class="pill t"><div class="n" id="st-products">0</div><div class="l">launches</div></div>
-          <div class="pill r"><div class="n" id="st-makers">0</div><div class="l">makers</div></div>
-          <div class="pill a"><div class="n" id="st-cats">0</div><div class="l">categories</div></div>
+        <div class="kicker">NEW PRODUCT WATCH</div>
+        <h1><span class="thin">Japan's top food makers</span>New Product Watch</h1>
+        <div class="rule"></div>
+        <p class="lede">What are Japan's biggest food makers launching right now? New products announced on PR TIMES by 10 top makers (excluding meat processors), summarized in English. Summaries are our own; see each link for the original Japanese announcement.</p>
+        <div class="stats" id="stats" hidden>
+          <div class="stat"><div class="n" id="st-products">0</div><div class="l">Launches</div></div>
+          <div class="stat"><div class="n" id="st-makers">0</div><div class="l">Makers</div></div>
+          <div class="stat"><div class="n" id="st-cats">0</div><div class="l">Categories</div></div>
         </div>
         <div class="meta-row">
           <span id="updated-at">Loading data date…</span>
@@ -263,86 +230,39 @@
         </div>
       </div>
 
-      <svg class="hero-art" viewBox="0 0 390 320" role="img" aria-label="Illustration of new Japanese food products on a conveyor: milk, cup noodles, chocolate, mayonnaise and ice cream">
-        <!-- sunburst -->
-        <g class="spin-slow" opacity=".35" stroke="#13a3b8" stroke-width="2">
-          <g transform="translate(195,150)">
-            <path d="M0 -118 L0 -98 M83 -83 L69 -69 M118 0 L98 0 M83 83 L69 69 M0 118 L0 98 M-83 83 L-69 69 M-118 0 L-98 0 M-83 -83 L-69 -69"/>
-            <path d="M45 -109 L38 -91 M109 -45 L91 -38 M109 45 L91 38 M45 109 L38 91 M-45 109 L-38 91 M-109 45 L-91 38 M-109 -45 L-91 -38 M-45 -109 L-38 -91" opacity=".5"/>
-          </g>
-        </g>
-        <!-- sparkles -->
-        <g fill="#eda100">
-          <path class="tw" d="M52 60 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/>
-          <path class="tw d1" d="M332 48 l3.5 8.5 8.5 3.5 -8.5 3.5 -3.5 8.5 -3.5 -8.5 -8.5 -3.5 8.5 -3.5z"/>
-          <path class="tw d2" d="M348 170 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/>
-        </g>
-        <!-- conveyor -->
-        <rect x="26" y="238" width="338" height="34" rx="17" fill="#17232a"/>
-        <circle cx="64" cy="255" r="9" fill="#faf6ec" opacity=".85"/><circle cx="130" cy="255" r="9" fill="#faf6ec" opacity=".85"/>
-        <circle cx="196" cy="255" r="9" fill="#faf6ec" opacity=".85"/><circle cx="262" cy="255" r="9" fill="#faf6ec" opacity=".85"/>
-        <circle cx="328" cy="255" r="9" fill="#faf6ec" opacity=".85"/>
-        <ellipse cx="195" cy="294" rx="150" ry="12" fill="#17232a" opacity=".08"/>
-
-        <!-- milk carton -->
-        <g class="bob1">
-          <path d="M44 148 l54 0 0 90 -54 0z" fill="#fffdf8" stroke="#17232a" stroke-width="2.5"/>
-          <path d="M44 148 l8 -22 38 0 8 22z" fill="#2a78d6" stroke="#17232a" stroke-width="2.5"/>
-          <rect x="44" y="186" width="54" height="22" fill="#2a78d6" opacity=".2"/>
-          <path d="M57 176 q14 -10 28 0" stroke="#2a78d6" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <circle cx="71" cy="199" r="6.5" fill="none" stroke="#2a78d6" stroke-width="3"/>
-        </g>
-        <!-- cup noodle -->
-        <g class="bob2">
-          <path d="M122 170 h62 l-8 68 h-46z" fill="#fffdf8" stroke="#17232a" stroke-width="2.5"/>
-          <rect x="118" y="160" width="70" height="14" rx="7" fill="#e04f4f" stroke="#17232a" stroke-width="2.5"/>
-          <path d="M128 192 h50 M131 212 h44" stroke="#e04f4f" stroke-width="5" stroke-linecap="round" opacity=".75"/>
-          <path d="M140 150 q4 -10 -2 -16 M153 150 q4 -10 -2 -16 M166 150 q4 -10 -2 -16" stroke="#8b9298" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        </g>
-        <!-- chocolate bar -->
-        <g class="bob3">
-          <rect x="206" y="178" width="58" height="60" rx="6" fill="#8a5cd1" stroke="#17232a" stroke-width="2.5"/>
-          <path d="M206 198 h58 M206 218 h58 M225 178 v60 M245 178 v60" stroke="#17232a" stroke-width="2" opacity=".5"/>
-          <rect x="214" y="164" width="42" height="22" rx="4" fill="#faf6ec" stroke="#17232a" stroke-width="2.5" transform="rotate(-6 235 175)"/>
-        </g>
-        <!-- mayo bottle -->
-        <g class="bob1">
-          <path d="M288 180 q-8 14 -8 30 l0 22 q0 6 6 6 l32 0 q6 0 6 -6 l0 -22 q0 -16 -8 -30 q-3 -6 -3 -12 l-22 0 q0 6 -3 12z" fill="#fffdf8" stroke="#17232a" stroke-width="2.5"/>
-          <rect x="294" y="152" width="20" height="16" rx="3" fill="#e04f4f" stroke="#17232a" stroke-width="2.5"/>
-          <path d="M290 206 q16 -8 32 0" stroke="#e04f4f" stroke-width="3" fill="none"/>
-        </g>
-        <!-- ice cream cup, small front -->
-        <g class="bob2">
-          <path d="M156 92 a22 22 0 0 1 44 0z" fill="#e85d8a" stroke="#17232a" stroke-width="2.5"/>
-          <circle cx="166" cy="78" r="5" fill="#faf6ec"/>
-          <path d="M158 92 h40 l-5 26 h-30z" fill="#fffdf8" stroke="#17232a" stroke-width="2.5"/>
-          <path d="M163 103 h30" stroke="#e85d8a" stroke-width="4" opacity=".6"/>
-        </g>
-        <!-- NEW badge -->
-        <g class="bob3">
-          <g transform="translate(297,96)">
-            <path d="M0 -34 L8 -12 30 -16 16 2 34 14 11 16 14 38 -3 23 -17 34 -14 12 -34 8 -16 -8 -26 -26 -6 -20z" fill="#e04f4f" stroke="#17232a" stroke-width="2.5"/>
-            <text x="0" y="8" text-anchor="middle" font-family="Zen Kaku Gothic New, sans-serif" font-weight="900" font-size="15" fill="#fff">NEW</text>
-          </g>
-        </g>
-      </svg>
-    </div>
-
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track" id="ticker-track">
-        <span>Fresh launches<b>★</b>Ice cream<b>★</b>Seasonings<b>★</b>Frozen foods<b>★</b>Dairy<b>★</b>Snacks<b>★</b>Beverages<b>★</b>Straight from Japan<b>★</b></span>
+      <div class="art-box">
+        <svg class="art" viewBox="0 0 300 300" role="img" aria-label="Line drawing of new products on a shelf">
+          <circle class="sun" cx="222" cy="66" r="26"/>
+          <!-- 棚 -->
+          <path class="ln g" pathLength="1" d="M24 150 H262"/>
+          <path class="ln g d2" pathLength="1" d="M24 262 H262"/>
+          <path class="ln g d2" pathLength="1" d="M32 150 V272 M254 150 V272"/>
+          <!-- 上段：瓶・箱・カップ -->
+          <path class="ln" pathLength="1" d="M56 150 V104 q0 -10 8 -16 V72 h14 v16 q8 6 8 16 V150"/>
+          <path class="ln" pathLength="1" d="M58 118 h26"/>
+          <path class="ln d2" pathLength="1" d="M112 150 V96 h46 v54 M112 96 l8 -12 h30 l8 12 M124 116 h22 M124 128 h14"/>
+          <path class="ln d3" pathLength="1" d="M178 110 h46 l-7 40 h-32 z M174 100 h54 v10 h-54 z"/>
+          <path class="ln d3" pathLength="1" d="M192 90 q4 -8 -2 -14 M206 90 q4 -8 -2 -14"/>
+          <!-- 下段：缶・袋・椀 -->
+          <path class="ln d3" pathLength="1" d="M52 262 v-52 q0 -8 18 -8 t18 8 v52 M52 210 q0 8 18 8 t18 -8 M52 236 q18 10 36 0"/>
+          <path class="ln d4" pathLength="1" d="M112 262 l-6 -62 l10 6 l10 -6 l10 6 l10 -6 l10 6 l-6 62 M122 228 h22 M126 240 h14"/>
+          <path class="ln d5" pathLength="1" d="M180 226 h60 q0 30 -30 30 t-30 -30 z M196 256 v6 h28 v-6"/>
+          <path class="ln d5" pathLength="1" d="M188 226 q10 -22 22 -8 q8 -14 22 8"/>
+        </svg>
+        <div class="tate" aria-hidden="true">新しい味を、いちはやく。</div>
+        <div class="seal" aria-hidden="true">新</div>
       </div>
     </div>
   </div>
 
-  <section id="batch-sec">
-    <div class="section-head"><h2>What's in this batch</h2><div class="doodle"></div></div>
-    <div class="batch" id="batch"></div>
+  <section id="lineup-sec">
+    <div class="section-head"><span class="no">01</span><h2>This batch</h2><div class="bar"></div></div>
+    <div class="lineup" id="lineup"></div>
   </section>
 
   <section id="feed-section">
-    <div class="section-head"><h2>Launch timeline</h2><div class="doodle"></div></div>
-    <div class="section-sub">Click a company to filter (multiple selections allowed). Newest announcements first — items marked <b style="color:var(--red);">★ NEW</b> landed within the last two months.</div>
+    <div class="section-head"><span class="no">02</span><h2>Launch timeline</h2><div class="bar"></div></div>
+    <div class="section-sub">Click a company to filter (multiple selections allowed). Newest first. The red <span lang="ja">新</span> ("new") seal marks products announced in the last two months.</div>
     <div class="filter-row" id="filter-row"></div>
     <div class="feed" id="feed"></div>
   </section>
@@ -370,30 +290,26 @@
   var state = { data:null, activeKeys:null };
 
   var CATS = [
-    { re:/^Ice cream/i,      label:"Ice cream",     icon:"sweet",  c:"#e85d8a" },
-    { re:/^Confectionery/i,  label:"Confectionery", icon:"candy",  c:"#8a5cd1" },
-    { re:/^Beverages/i,      label:"Beverages",     icon:"bottle", c:"#2a78d6" },
-    { re:/^Dairy/i,          label:"Dairy",         icon:"bowl",   c:"#eda100" },
-    { re:/^Seasonings/i,     label:"Seasonings",    icon:"soy",    c:"#eb6834" },
-    { re:/^Frozen/i,         label:"Frozen foods",  icon:"frozen", c:"#13a3b8" },
-    { re:/^Bread/i,          label:"Bread",         icon:"dish",   c:"#c98a52" },
-    { re:/^Seafood/i,        label:"Seafood",       icon:"ship",   c:"#1baf7a" },
-    { re:/salad/i,           label:"Other",         icon:"veggie", c:"#1baf7a" },
-    { re:/egg/i,             label:"Other",         icon:"dish",   c:"#eda100" },
-    { re:/care food/i,       label:"Other",         icon:"heart",  c:"#e85d8a" },
-    { re:/./,                label:"Other",         icon:"box",    c:"#607089" }
+    { re:/^Ice cream/i,     label:"Ice cream",     icon:"sweet"  },
+    { re:/^Confectionery/i, label:"Confectionery", icon:"candy"  },
+    { re:/^Beverages/i,     label:"Beverages",     icon:"bottle" },
+    { re:/^Dairy/i,         label:"Dairy",         icon:"bowl"   },
+    { re:/^Seasonings/i,    label:"Seasonings",    icon:"soy"    },
+    { re:/^Frozen/i,        label:"Frozen foods",  icon:"frozen" },
+    { re:/^Bread/i,         label:"Bread",         icon:"dish"   },
+    { re:/^Seafood/i,       label:"Seafood",       icon:"ship"   },
+    { re:/salad/i,          label:"Other",         icon:"veggie" },
+    { re:/egg/i,            label:"Other",         icon:"dish"   },
+    { re:/care food/i,      label:"Other",         icon:"heart"  },
+    { re:/./,               label:"Other",         icon:"box"    }
   ];
-  var CO_COLORS = ["#d03b3b","#eb6834","#c98a52","#2a78d6","#8a5cd1","#1baf7a","#13a3b8","#eda100","#e85d8a","#607089"];
-
   function catOf(p){
     var s = p.category_en || p.category || "";
     for(var i=0;i<CATS.length;i++){ if(CATS[i].re.test(s)) return CATS[i]; }
     return CATS[CATS.length-1];
   }
-  function coOf(k){ return state.data.meta.companies.find(function(x){ return x.key===k; }); }
-  function coName(k){ var c = coOf(k); return c ? (c.short_en||c.name) : k; }
-  function coColor(k){ var c = coOf(k); return (c && c._col) || "#17232a"; }
-  function ic(name, size, color){ return (window.JL && JL.icon) ? JL.icon(name, size, color, 2) : ""; }
+  function ic(name, size){ return (window.JL && JL.icon) ? JL.icon(name, size, "currentColor", 1.5) : ""; }
+  function coName(k){ var c = state.data.meta.companies.find(function(x){ return x.key===k; }); return c ? (c.short_en||c.name) : k; }
 
   var observer = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); observer.unobserve(e.target); } });
@@ -401,7 +317,7 @@
   function watch(el){ if(observer) observer.observe(el); else el.classList.add("in"); }
 
   function countUp(el, target){
-    var t0 = null, dur = 900;
+    var t0 = null, dur = 1100;
     function step(ts){
       if(!t0) t0 = ts;
       var p = Math.min((ts-t0)/dur, 1), e = 1-Math.pow(1-p,3);
@@ -410,44 +326,42 @@
     }
     requestAnimationFrame(step);
   }
-
   function isNew(p){
     if(!p.announced_date) return false;
-    var gen = new Date(state.data.meta.generated_at), d = new Date(p.announced_date);
-    return (gen - d) / 86400000 <= 62 && (gen - d) >= 0;
+    var diff = (new Date(state.data.meta.generated_at) - new Date(p.announced_date)) / 86400000;
+    return diff >= 0 && diff <= 62;
   }
 
   function renderHero(){
     var ps = state.data.products;
-    var makers = new Set(ps.map(function(p){ return p.company_key; })).size;
-    var cats = new Set(ps.map(function(p){ return catOf(p).label; })).size;
-    document.getElementById("stat-pills").hidden = false;
+    document.getElementById("stats").hidden = false;
     countUp(document.getElementById("st-products"), ps.length);
-    countUp(document.getElementById("st-makers"), makers);
-    countUp(document.getElementById("st-cats"), cats);
+    countUp(document.getElementById("st-makers"), new Set(ps.map(function(p){ return p.company_key; })).size);
+    countUp(document.getElementById("st-cats"), new Set(ps.map(function(p){ return catOf(p).label; })).size);
     var parts = state.data.meta.generated_at.split("-");
     document.getElementById("updated-at").textContent = "Data as of: " + new Date(+parts[0], +parts[1]-1, +parts[2]).toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
-    var tr = document.getElementById("ticker-track");
-    tr.innerHTML += tr.innerHTML; /* seamless loop */
   }
 
-  function renderBatch(){
+  function renderLineup(){
     var counts = {};
-    state.data.products.forEach(function(p){ var c = catOf(p); counts[c.label] = counts[c.label]||{ cat:c, n:0 }; counts[c.label].n++; });
+    state.data.products.forEach(function(p){ var c = catOf(p); if(!counts[c.label]) counts[c.label] = { cat:c, n:0 }; counts[c.label].n++; });
     var list = Object.keys(counts).map(function(k){ return counts[k]; }).sort(function(a,b){ return b.n-a.n; });
-    document.getElementById("batch").innerHTML = list.map(function(it){
-      return '<div class="b-tile" style="--c:'+it.cat.c+'"><span class="b-ico">'+ic(it.cat.icon,19,it.cat.c)+'</span><span class="t">'+it.cat.label+'</span><span class="n">'+it.n+'</span></div>';
+    var mx = list[0].n;
+    document.getElementById("lineup").innerHTML = list.map(function(it){
+      return '<div class="lu">'+ic(it.cat.label==="Other" ? "box" : it.cat.icon, 22)+'<span class="t">'+it.cat.label+'</span>'+
+        '<span class="track"><i data-w="'+(it.n/mx*100).toFixed(0)+'%"></i></span><span class="n">'+it.n+'</span></div>';
     }).join("");
+    requestAnimationFrame(function(){ setTimeout(function(){
+      document.querySelectorAll(".lu .track i").forEach(function(el){ el.style.width = el.getAttribute("data-w"); });
+    }, 80); });
   }
 
   function renderFilters(){
     var row = document.getElementById("filter-row");
     row.innerHTML = "";
-    var allOn = state.data.meta.companies.every(function(c){ return state.activeKeys.has(c.key); });
     var allBtn = document.createElement("button");
     allBtn.type = "button"; allBtn.className = "filter-chip all";
-    allBtn.setAttribute("aria-pressed", allOn ? "true" : "false");
-    allBtn.textContent = "All";
+    allBtn.textContent = "Show all";
     allBtn.addEventListener("click", function(){
       state.activeKeys = new Set(state.data.meta.companies.map(function(c){return c.key;}));
       renderFilters(); renderFeed();
@@ -459,9 +373,8 @@
       if(count===0) return;
       var btn = document.createElement("button");
       btn.type = "button"; btn.className = "filter-chip";
-      btn.style.setProperty("--c", c._col);
       btn.setAttribute("aria-pressed", state.activeKeys.has(c.key) ? "true":"false");
-      btn.innerHTML = '<span class="co-dot"></span>' + (c.short_en||c.name) + " ("+count+")";
+      btn.innerHTML = (c.short_en||c.name) + "<small>"+count+"</small>";
       btn.addEventListener("click", function(){
         if(state.activeKeys.has(c.key)) state.activeKeys.delete(c.key);
         else state.activeKeys.add(c.key);
@@ -474,21 +387,17 @@
   function cardHtml(p){
     var cat = catOf(p);
     var dateTxt = p.announced_date ? new Date(p.announced_date).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}) : "Date unknown";
-    return '<div class="news-card" style="--c:'+cat.c+';--cc:'+coColor(p.company_key)+'">'+
-      (isNew(p) ? '<span class="new-burst">NEW</span>' : '')+
-      '<div class="cat-disc">'+ic(cat.icon,26,cat.c)+'</div>'+
+    return '<div class="news-card">'+
+      (isNew(p) ? '<span class="new-seal" title="Announced in the last two months" lang="ja">新</span>' : '')+
+      '<div class="cat-disc">'+ic(cat.icon,24)+'</div>'+
       '<div>'+
-        '<div class="top-line">'+
-          '<span class="tag company">'+coName(p.company_key)+'</span>'+
-          (p.category ? '<span class="tag cat">'+(p.category_en||p.category)+'</span>' : '')+
-          '<span class="date">'+dateTxt+'</span>'+
-        '</div>'+
-        '<h3>'+(p.product_name_en||p.product_name)+'</h3>'+
-        (p.product_name_en ? '<div class="ja-name" lang="ja">'+p.product_name+'</div>' : '')+
+        '<div class="top-line"><span class="co">'+coName(p.company_key)+'</span>'+
+          (p.category ? '<span class="ct">'+(p.category_en||p.category)+'</span>' : '')+
+          '<span class="date">'+dateTxt+'</span></div>'+
+        '<h3>'+(p.product_name_en||p.product_name)+'</h3>'+(p.product_name_en ? '<div class="ja-name" lang="ja">'+p.product_name+'</div>' : '')+
         '<p>'+(p.summary_en||p.summary)+'</p>'+
-        '<a class="link" href="'+p.source_url+'" target="_blank" rel="noopener">View on PR TIMES (Japanese) <span aria-hidden="true">→</span></a>'+
-      '</div>'+
-    '</div>';
+        '<a class="link" href="'+p.source_url+'" target="_blank" rel="noopener">View on PR TIMES (Japanese)</a>'+
+      '</div></div>';
   }
 
   function renderFeed(){
@@ -500,22 +409,20 @@
       .sort(function(a,b){ return (b.announced_date||"").localeCompare(a.announced_date||""); });
 
     if(!items.length){
-      feed.innerHTML = '<div class="empty-state">'+ic("box",34,"#8b9298")+'<br>No products match. Please clear the company filter.</div>';
+      feed.innerHTML = '<div class="empty-state">No products match. Press "Show all" to clear the filter.</div>';
       return;
     }
-
-    var curMonth = "";
+    var cur = "";
     items.forEach(function(p){
       var ym = (p.announced_date||"").slice(0,7);
-      if(ym && ym !== curMonth){
-        curMonth = ym;
+      if(ym && ym !== cur){
+        cur = ym;
         var n = items.filter(function(q){ return (q.announced_date||"").slice(0,7)===ym; }).length;
         var d = ym.split("-");
-        var label = new Date(+d[0], +d[1]-1, 1).toLocaleDateString("en-US",{month:"long",year:"numeric"});
-        var mdiv = document.createElement("div");
-        mdiv.className = "month";
-        mdiv.innerHTML = '<h3>'+label+'</h3><span class="cnt">'+n+' item'+(n>1?'s':'')+'</span>';
-        feed.appendChild(mdiv);
+        var m = document.createElement("div");
+        m.className = "month";
+        m.innerHTML = '<span class="m">'+new Date(+d[0], +d[1]-1, 1).toLocaleDateString("en-US",{month:"long"})+'</span><span class="y">'+d[0]+'</span><span class="cnt">'+n+' item'+(n>1?'s':'')+'</span>';
+        feed.appendChild(m);
       }
       var holder = document.createElement("div");
       holder.innerHTML = cardHtml(p);
@@ -537,13 +444,8 @@
 
   fetch("../product_news.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(json){
     state.data = json;
-    json.meta.companies.forEach(function(c,i){ c._col = CO_COLORS[i % CO_COLORS.length]; });
     state.activeKeys = new Set(json.meta.companies.map(function(c){return c.key;}));
-    renderHero();
-    renderBatch();
-    renderFilters();
-    renderFeed();
-    renderSources();
+    renderHero(); renderLineup(); renderFilters(); renderFeed(); renderSources();
   }).catch(function(err){
     document.getElementById("feed").innerHTML = "<div class='empty-state'>Failed to load data. Please reload the page.</div>";
     console.error(err);
