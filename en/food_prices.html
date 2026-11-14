@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Food Prices in Japan | Rice, Eggs, Bread and More Since 1970 | AI Taste Labo</title>
+<meta name="description" content="How have food prices moved in Japan? Monthly and long-term price charts for rice, bread, eggs, milk, cooking oil, cup noodles, pork and soy sauce, based on Japan's official Consumer Price Index, plus the share of household budgets spent on food.">
+<link rel="canonical" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/food_prices.html">
+<link rel="alternate" hreflang="en" href="https://fireworksec1010-ux.github.io/ai-taste-labo/en/food_prices.html">
+<link rel="alternate" hreflang="ja" href="https://fireworksec1010-ux.github.io/ai-taste-labo/food_prices.html">
+<link rel="alternate" hreflang="x-default" href="https://fireworksec1010-ux.github.io/ai-taste-labo/food_prices.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Taste Labo">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Food Prices in Japan | Rice, Eggs, Bread and More Since 1970">
+<meta property="og:description" content="Price charts for eight everyday staples in Japan, from official statistics. Updated monthly.">
+<meta property="og:url" content="https://fireworksec1010-ux.github.io/ai-taste-labo/en/food_prices.html">
+<meta property="og:image" content="https://fireworksec1010-ux.github.io/ai-taste-labo/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "01b322e4ae7a468da9de43a282ff93f7"}'></script><!-- End Cloudflare Web Analytics -->
+<style>[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page-plane:#f9f9f7; --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
+    --border:rgba(11,11,11,0.10); --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --up:#d03b3b; --down:#2a78d6; --accent:#2a78d6; --amber:#eda100;
+  }
+  /* Light theme only */
+  *{box-sizing:border-box;}
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary); font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; position:relative; }
+  h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
+  a{ color:var(--accent); }
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
+
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; position:relative; z-index:2; }
+  .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
+  .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
+
+  /* ---- background: seigaiha waves + soft color pools (same as Home) ---- */
+  .bg-deco{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .bg-deco .wave{ position:absolute; left:0; right:0; top:0; height:720px; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23d9d3c7' stroke-width='1'%3E%3Cpath d='M0 40a40 40 0 0 1 80 0M10 40a30 30 0 0 1 60 0M20 40a20 20 0 0 1 40 0M30 40a10 10 0 0 1 20 0'/%3E%3Cpath d='M-40 40a40 40 0 0 1 80 0M-30 40a30 30 0 0 1 60 0M-20 40a20 20 0 0 1 40 0M-10 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3Cpath d='M40 40a40 40 0 0 1 80 0M50 40a30 30 0 0 1 60 0M60 40a20 20 0 0 1 40 0M70 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); }
+  .bg-deco .blob{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.55; }
+  .bg-deco .b1{ width:520px; height:520px; right:-160px; top:-120px; background:radial-gradient(circle, rgba(42,120,214,.3), rgba(42,120,214,0) 70%); }
+  .bg-deco .b2{ width:460px; height:460px; left:-200px; top:260px; background:radial-gradient(circle, rgba(237,161,0,.3), rgba(237,161,0,0) 70%); }
+  .bg-deco .b3{ width:380px; height:380px; right:12%; top:520px; background:radial-gradient(circle, rgba(208,59,59,.2), rgba(208,59,59,0) 70%); }
+
+  /* ---- hero ---- */
+  .hero{ position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center; padding:42px 0 24px; }
+  .hero > *{ min-width:0; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--text-secondary); margin-bottom:16px; background:var(--surface-1); border:1px solid var(--border); border-radius:99px; padding:6px 12px 6px 8px; box-shadow:var(--card-shadow); text-transform:uppercase; }
+  .eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:#d03b3b; box-shadow:0 0 0 4px rgba(208,59,59,.15); }
+  .hero h1{ font-size:clamp(36px,6.6vw,58px); line-height:1.08; letter-spacing:.01em; position:relative; display:inline-block; }
+  .hero h1 .hl{ position:relative; display:inline-block; }
+  .hero h1 .brush{ position:absolute; left:-4px; right:-4px; bottom:4px; height:.32em; z-index:-1; border-radius:4px;
+    background:linear-gradient(90deg, rgba(42,120,214,.4), rgba(237,161,0,.45) 55%, rgba(208,59,59,.35)); transform:skewX(-8deg); }
+  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(16px,2.4vw,21px); color:var(--text-secondary); margin-top:14px; }
+  .hero p{ font-size:15px; line-height:1.9; color:var(--text-secondary); max-width:54ch; margin:14px 0 0; }
+  .cta{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:99px; font-size:13.5px; font-weight:700; text-decoration:none; transition:transform .15s, box-shadow .15s; cursor:pointer; font-family:inherit; border:none; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn.primary{ background:var(--text-primary); color:#fff; box-shadow:0 8px 20px rgba(11,11,11,.18); }
+  .btn.ghost{ background:var(--surface-1); color:var(--text-primary); border:1px solid var(--border); box-shadow:var(--card-shadow); }
+  .facts{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:20px; font-size:12.5px; color:var(--text-muted); }
+  .facts b{ color:var(--text-primary); font-family:"Zen Old Mincho",serif; font-size:15px; margin-right:4px; }
+
+  .scene{ position:relative; aspect-ratio:1/1; max-width:500px; margin:0 auto; width:100%; }
+  .scene svg.tray{ width:100%; height:100%; display:block; overflow:visible; }
+  .tag{ position:absolute; display:flex; flex-direction:column; gap:1px; background:#fff; border:2px solid var(--tc); border-radius:12px; padding:7px 11px 7px 10px; box-shadow:0 10px 24px rgba(11,11,11,.14); font-size:11px; font-weight:700; color:var(--text-secondary); white-space:nowrap; animation:bob 4.2s ease-in-out infinite; }
+  .tag:after{ content:""; position:absolute; left:50%; bottom:-9px; width:14px; height:14px; background:#fff; border-right:2px solid var(--tc); border-bottom:2px solid var(--tc); transform:translateX(-50%) rotate(45deg); }
+  .tag .v{ font-family:"Zen Old Mincho",serif; font-size:22px; line-height:1; color:var(--tc); }
+  .tag.t1{ left:-6%; top:37%; animation-delay:0s; }
+  .tag.t2{ left:26%; top:0; animation-delay:1.3s; }
+  .tag.t3{ right:0; top:9%; animation-delay:2.4s; }
+  .tag.t4{ right:-3%; bottom:1%; animation-delay:.7s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-1deg);} 50%{ transform:translateY(-9px) rotate(1deg);} }
+  .steam{ fill:none; stroke:#b9b2a7; stroke-width:2.5; stroke-linecap:round; opacity:0; animation:steam 3.2s ease-in-out infinite; }
+  .steam.s2{ animation-delay:.9s; } .steam.s3{ animation-delay:1.8s; }
+  @keyframes steam{ 0%{ opacity:0; transform:translateY(5px);} 30%{ opacity:.9;} 100%{ opacity:0; transform:translateY(-12px);} }
+  .scene .caption{ position:absolute; left:50%; bottom:-10px; transform:translateX(-50%); font-size:11px; color:var(--text-muted); white-space:nowrap; }
+
+  /* ---- staples board ---- */
+  .dash{ position:relative; z-index:1; margin-top:14px; background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:18px 18px 14px; }
+  .dash-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+  .dash-head h2{ font-size:19px; display:flex; align-items:center; gap:8px; }
+  .dash-head .note{ font-size:11.5px; color:var(--text-muted); }
+  .items{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(215px,100%),1fr)); gap:10px; }
+  .item{ position:relative; display:grid; grid-template-columns:48px 1fr auto; gap:2px 10px; align-items:center; text-align:left; font-family:inherit; color:inherit; cursor:pointer;
+    border:1.5px solid var(--border); border-radius:14px; padding:11px 12px 10px; background:#fff; transition:transform .15s, box-shadow .15s, border-color .15s; }
+  .item:hover{ transform:translateY(-2px); box-shadow:var(--card-shadow); }
+  .item[aria-pressed="true"]{ border-color:var(--text-primary); box-shadow:0 0 0 1.5px var(--text-primary), var(--card-shadow); background:linear-gradient(135deg,#fff6e9,#fff 70%); }
+  .item .art{ grid-row:1 / span 3; width:48px; height:48px; }
+  .item .n{ font-size:12.5px; font-weight:700; color:var(--text-secondary); }
+  .item .val{ font-family:"Zen Old Mincho",serif; font-size:24px; line-height:1.1; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .val.up{ color:var(--up);} .val.down{ color:var(--down);} .val.flat{ color:var(--text-secondary); }
+  .item .lbl{ font-size:10.5px; color:var(--text-muted); }
+  .item svg.sp{ grid-column:3; grid-row:1 / span 3; width:66px; height:34px; }
+  .dash-foot{ margin-top:12px; font-size:11px; color:var(--text-muted); }
+
+  section{ position:relative; z-index:1; padding:40px 0; border-top:1px solid var(--border); }
+  section.first{ border-top:none; padding-top:26px; }
+  .section-head{ margin-bottom:18px; }
+  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.16em; color:#d03b3b; text-transform:uppercase; }
+  .section-head h2{ font-size:26px; margin-top:4px; }
+  .section-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:6px; line-height:1.75; max-width:66ch; }
+
+  /* ---- detail panel ---- */
+  .detail{ background:linear-gradient(135deg, #fff6e9, #fcfcfb 55%); border:1px solid var(--border); border-radius:20px; padding:22px; box-shadow:var(--card-shadow); }
+  .d-head{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .d-head .art{ width:76px; height:76px; flex:none; filter:drop-shadow(0 6px 10px rgba(11,11,11,.12)); }
+  .d-head h3{ font-size:28px; line-height:1.2; }
+  .d-head .now{ font-size:12.5px; color:var(--text-secondary); margin-top:4px; }
+  .d-head .now b{ font-family:"Zen Old Mincho",serif; font-size:19px; color:var(--text-primary); margin:0 3px; }
+  .d-stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr)); gap:10px; margin-top:16px; }
+  .d-stat{ background:#fff; border:1px solid var(--border); border-radius:12px; padding:11px 14px 10px; }
+  .d-stat .l{ font-size:11.5px; font-weight:700; color:var(--text-secondary); }
+  .d-stat .val{ font-family:"Zen Old Mincho",serif; font-size:28px; line-height:1.15; margin-top:2px; font-variant-numeric:tabular-nums; }
+  .d-stat .s{ font-size:10.5px; color:var(--text-muted); margin-top:1px; }
+
+  .chart-card{ background:#fff; border:1px solid var(--border); border-radius:14px; padding:14px 14px 8px; margin-top:14px; }
+  .chart-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:4px; }
+  .chart-top .ttl{ font-size:13.5px; font-weight:700; }
+  .seg{ display:inline-flex; background:var(--page-plane); border:1px solid var(--border); border-radius:99px; padding:3px; }
+  .seg button{ font-family:inherit; font-size:12px; font-weight:700; border:none; background:transparent; color:var(--text-secondary); padding:6px 14px; border-radius:99px; cursor:pointer; }
+  .seg button[aria-pressed="true"]{ background:var(--text-primary); color:#fff; }
+  .chart-wrap{ position:relative; }
+  svg.chart{ width:100%; height:auto; display:block; overflow:visible; }
+  .grid{ stroke:#ebe9e2; stroke-width:1; }
+  .ax{ font-size:11px; fill:#898781; font-family:"Zen Kaku Gothic New",sans-serif; }
+  .ref{ stroke:#b9b2a7; stroke-width:1; stroke-dasharray:4 4; }
+  .ln{ fill:none; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+  .ln.draw{ stroke-dasharray:1; stroke-dashoffset:1; animation:draw 1.1s cubic-bezier(.4,0,.2,1) forwards; }
+  .ln.dashed{ stroke-dasharray:5 5; opacity:.75; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .mk{ font-size:11.5px; font-weight:700; fill:#0b0b0b; font-family:"Zen Kaku Gothic New",sans-serif; }
+  .hit{ fill:transparent; cursor:crosshair; }
+  .hv-line{ stroke:#0b0b0b; stroke-opacity:.25; stroke-width:1; display:none; }
+  .hv-dot{ fill:#fff; stroke-width:2.5; display:none; }
+  .tip{ position:absolute; pointer-events:none; transform:translate(-50%,-135%); background:#0b0b0b; color:#fff; font-size:11.5px; padding:5px 9px; border-radius:8px; white-space:nowrap; opacity:0; transition:opacity .12s; z-index:3; }
+  .tip b{ font-family:"Zen Old Mincho",serif; font-size:13px; margin-left:4px; }
+  .chart-foot{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; font-size:11px; color:var(--text-muted); padding:4px 2px 6px; }
+  .dl{ font-family:inherit; font-size:11.5px; font-weight:700; background:var(--surface-1); border:1px solid var(--border); border-radius:99px; padding:5px 12px; cursor:pointer; color:var(--text-primary); }
+
+  .story{ display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; margin-top:14px; background:#fff; border:1px solid var(--border); border-left:4px solid var(--amber); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.8; color:var(--text-secondary); }
+  .story b.h{ display:block; color:var(--text-primary); font-size:13.5px; margin-bottom:2px; }
+
+  /* ---- ranking ---- */
+  .rank{ background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:10px 16px; }
+  .rk{ display:grid; grid-template-columns:22px 40px 118px 1fr 70px; gap:10px; align-items:center; padding:8px 4px; border-bottom:1px dashed var(--border); cursor:pointer; background:none; border-left:none; border-right:none; border-top:none; width:100%; font-family:inherit; text-align:left; color:inherit; border-radius:8px; }
+  .rk:last-child{ border-bottom:none; }
+  .rk:hover{ background:#fff; }
+  .rk .no{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:15px; color:var(--text-muted); }
+  .rk:first-child .no{ color:var(--up); }
+  .rk .art{ width:40px; height:40px; }
+  .rk .nm{ font-size:13.5px; font-weight:700; }
+  .rk .track{ height:14px; border-radius:7px; background:rgba(11,11,11,.05); overflow:hidden; }
+  .rk .track i{ display:block; height:100%; width:0; border-radius:7px; background:linear-gradient(90deg, rgba(208,59,59,.55), #d03b3b); transition:width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .rk .track i.neg{ background:linear-gradient(90deg, rgba(42,120,214,.55), #2a78d6); }
+  .rk .pv{ font-family:"Zen Old Mincho",serif; font-size:18px; text-align:right; font-variant-numeric:tabular-nums; }
+
+  /* ---- engel ---- */
+  .engel{ display:grid; grid-template-columns:300px 1fr; gap:16px; align-items:stretch; }
+  .engel > *{ min-width:0; }
+  .big{ background:linear-gradient(160deg, #eef5ff, #fcfcfb 70%); border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow:var(--card-shadow); display:flex; flex-direction:column; }
+  .big .wallet{ width:92px; height:92px; }
+  .big .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:56px; line-height:1; margin-top:8px; color:var(--up); }
+  .big .num small{ font-size:22px; }
+  .big .cap{ font-size:14px; font-weight:700; margin-top:8px; line-height:1.5; }
+  .big p{ font-size:12.5px; line-height:1.8; color:var(--text-secondary); margin:10px 0 0; }
+  .legend{ display:flex; gap:16px; flex-wrap:wrap; font-size:11px; color:var(--text-muted); padding:2px 2px 6px; }
+  .legend i{ display:inline-block; width:22px; border-top:2.6px solid var(--accent); vertical-align:middle; margin-right:6px; }
+  .legend i.d{ border-top-style:dashed; opacity:.75; }
+
+  /* ---- how to read ---- */
+  .about{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); gap:12px; }
+  .about div{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px; font-size:13px; line-height:1.75; color:var(--text-secondary); }
+  .about b{ display:flex; align-items:center; gap:8px; color:var(--text-primary); font-size:14.5px; margin-bottom:6px; }
+
+  footer{ position:relative; z-index:1; padding:34px 0 60px; border-top:1px solid var(--border); }
+  .sources{ display:grid; gap:8px; margin-top:14px; font-size:12.5px; color:var(--text-secondary); line-height:1.7; }
+  .sources b{ color:var(--text-primary); }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); line-height:1.85; max-width:76ch; margin-top:20px; }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .tag, .steam{ animation:none; } .steam{ opacity:.6; }
+    .ln.draw{ animation:none; stroke-dashoffset:0; }
+    html{ scroll-behavior:auto; }
+  }
+  @media (max-width:820px){
+    .hero{ grid-template-columns:1fr; gap:14px; }
+    .scene{ max-width:420px; }
+    .engel{ grid-template-columns:1fr; }
+  }
+  @media (max-width:520px){
+    .hero{ padding:28px 0 18px; }
+    .tag .v{ font-size:18px; }
+    .rk{ grid-template-columns:18px 32px 1fr 62px; }
+    .rk .art{ width:32px; height:32px; }
+    .rk .track{ grid-column:1 / -1; height:8px; }
+    .detail{ padding:16px 14px; }
+    .d-head h3{ font-size:23px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-deco" aria-hidden="true"><div class="wave"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<div class="wrap">
+
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="monthly_digest.html">Monthly Topics</a>
+    <a href="food_prices.html" class="active">Food Prices</a>
+    <a href="../vegetables.html" class="ja-only">Vegetables</a>
+    <a href="../trade.html" class="ja-only">Imports</a>
+    <a href="product_news.html">New Products</a>
+    <a href="market_size.html">Market Size</a>
+    <a href="../industry_map.html" class="ja-only">Industry Map</a>
+    <a href="oem_makers.html">OEM Makers</a>
+    <a href="food_culture.html">Regional Dishes</a>
+    <a href="../contact.html" class="ja-only">Contact</a>
+    <a href="../food_prices.html" class="lang" lang="ja">日本語</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Official statistics, updated monthly</div>
+      <h1>Food Prices<br><span class="hl">in Japan<span class="brush"></span></span></h1>
+      <div class="sub">Eight everyday staples, from 1970 to this month</div>
+      <p>Rice, bread, eggs, milk, cooking oil, cup noodles, pork and soy sauce: how have their prices moved? This page charts Japan's Consumer Price Index for each staple, shows how far prices have climbed since before COVID, and tracks how much of the household budget now goes to food.</p>
+      <div class="cta">
+        <a class="btn primary" href="#pick">See the eight staples ↓</a>
+        <a class="btn ghost" href="#engel">The household squeeze</a>
+      </div>
+      <div class="facts">
+        <span><b id="fact-month">…</b>latest month</span>
+        <span><b>8</b>staples</span>
+        <span><b>1970</b>onward</span>
+      </div>
+    </div>
+
+    <div class="scene" id="scene">
+      <svg class="tray" id="tray" viewBox="0 0 420 420" role="img" aria-label="Illustration of eight Japanese food staples on a wooden tray: milk, cooking oil, soy sauce, cup noodles, rice, bread, eggs and pork, with live price tags floating around them"></svg>
+      <div class="tag t1" id="tag-rice" style="--tc:var(--down)"><span>Rice</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="tag t2" id="tag-cooking_oil" style="--tc:var(--up)"><span>Cooking oil</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="tag t3" id="tag-instant_noodles" style="--tc:var(--up)"><span>Cup noodles</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="tag t4" id="tag-egg" style="--tc:var(--up)"><span>Eggs</span><span class="v">…</span><span>vs. a year ago</span></div>
+      <div class="caption">From Japan's Consumer Price Index (2025 = 100)</div>
+    </div>
+  </header>
+
+  <div class="dash reveal" id="pick">
+    <div class="dash-head">
+      <h2><span data-icon="chart" data-c="#2a78d6"></span>Pick a staple <span id="dash-month" style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:13px;font-weight:700;color:var(--text-muted);"></span></h2>
+      <div class="note">Change vs. a year ago. Small charts: last 13 months. Tap one to see its story below.</div>
+    </div>
+    <div class="items" id="items"></div>
+    <div class="dash-foot">Red = prices up, blue = prices down (the usual convention in Japan).</div>
+  </div>
+
+  <section class="first reveal" id="detail-sec">
+    <div class="detail">
+      <div class="d-head">
+        <svg class="art" id="d-art" viewBox="0 0 64 64" aria-hidden="true"></svg>
+        <div>
+          <h3 id="d-name">…</h3>
+          <div class="now" id="d-now"></div>
+        </div>
+      </div>
+      <div class="d-stats" id="d-stats"></div>
+
+      <div class="chart-card">
+        <div class="chart-top">
+          <div class="ttl" id="c-title">Price index</div>
+          <div class="seg" role="group" aria-label="Time range">
+            <button type="button" data-range="monthly" aria-pressed="true">Monthly, 2015–</button>
+            <button type="button" data-range="yearly" aria-pressed="false">Yearly, 1970–</button>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <svg class="chart" id="svg-main" viewBox="0 0 720 290"></svg>
+          <div class="tip" id="tip-main"></div>
+        </div>
+        <div class="chart-foot">
+          <span>Consumer Price Index by item, national. 2025 average = 100.</span>
+          <button type="button" class="dl" id="dl">Download as Excel</button>
+        </div>
+      </div>
+
+      <div class="story" id="story" hidden>
+        <span data-icon="bulb" data-c="#eda100" data-s="24"></span>
+        <div><b class="h">What happened</b><span id="story-text"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" id="rank-sec">
+    <div class="section-head">
+      <div class="en">Since before COVID</div>
+      <h2>Which staples rose the most?</h2>
+      <div class="section-sub" id="rank-sub">Latest monthly price compared with the 2019 average. Tap a row to open its chart above.</div>
+    </div>
+    <div class="rank" id="rank"></div>
+  </section>
+
+  <section class="reveal" id="engel">
+    <div class="section-head">
+      <div class="en">The household squeeze</div>
+      <h2>How much of the budget goes to food?</h2>
+      <div class="section-sub">Engel's coefficient is the share of household spending that goes to food (households of two or more people). When it rises, food is taking a bigger bite out of the budget.</div>
+    </div>
+    <div class="engel">
+      <div class="big">
+        <svg class="wallet" viewBox="0 0 96 96" aria-hidden="true">
+          <ellipse cx="48" cy="86" rx="34" ry="5" fill="rgba(11,11,11,.08)"/>
+          <rect x="12" y="26" width="72" height="52" rx="10" fill="#a86b3c"/>
+          <rect x="12" y="26" width="72" height="16" rx="8" fill="#8a5530"/>
+          <rect x="54" y="44" width="34" height="18" rx="9" fill="#d9a06a"/>
+          <circle cx="66" cy="53" r="4" fill="#fff6e9"/>
+          <rect x="22" y="12" width="38" height="20" rx="3" fill="#8fd0ad" transform="rotate(-8 41 22)"/>
+          <circle cx="40" cy="21" r="5" fill="#3f9f6e" transform="rotate(-8 41 22)"/>
+          <path d="M22 68h26" stroke="#f1c99d" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="num" id="engel-num">…</div>
+        <div class="cap" id="engel-cap"></div>
+        <p id="engel-p"></p>
+      </div>
+      <div class="chart-card" style="margin-top:0;">
+        <div class="chart-top"><div class="ttl">Engel's coefficient in Japan, <span id="engel-range"></span></div></div>
+        <div class="chart-wrap">
+          <svg class="chart" id="svg-engel" viewBox="0 0 720 320"></svg>
+          <div class="tip" id="tip-engel"></div>
+        </div>
+        <div class="legend"><span><i></i>Statistics Bureau figures</span><span><i class="d"></i>Secondary sources based on the same survey (for reference)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="en">How to read this page</div>
+      <h2>Three things to know</h2>
+    </div>
+    <div class="about">
+      <div><b><span data-icon="chart" data-c="#2a78d6"></span>It's an index, not yen</b>Every chart uses the Consumer Price Index with the 2025 average set to 100. A value of 80 means prices are 20% below the 2025 average; 110 means 10% above.</div>
+      <div><b><span data-icon="yen" data-c="#d03b3b"></span>Why compare with 2019?</b>2019 is the last full year before COVID, the weak yen and the surge in global commodity prices. It is a common baseline for "how much more expensive is life now?"</div>
+      <div><b><span data-icon="paper" data-c="#1baf7a"></span>Where the data comes from</b>Japan's Statistics Bureau surveys retail prices nationwide every month. This page is updated around the 25th, after each release.</div>
+    </div>
+  </section>
+
+  <footer>
+    <h2 style="font-size:18px;">Sources &amp; notes</h2>
+    <div class="sources" id="sources"></div>
+    <div class="disclaimer">
+      • Yearly values are annual averages. Values before 2025 are the Statistics Bureau's linked index, rebased to 2025 = 100.<br>
+      • "vs. 2019" compares the latest monthly index with the average of the twelve monthly values of 2019.<br>
+      • Engel's coefficient for 2018 could not be confirmed and is left blank. Values for 1946–2017 and 2019–2022 come from secondary sources based on the same government survey and are shown as a dashed line.<br>
+      • This page is reference material. Please check the original statistics before quoting figures.
+    </div>
+    <div style="margin-top:22px;font-size:12px;color:var(--text-muted);font-weight:500;">© 2026 AI Taste Labo</div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="icons.js"></script>
+<script>
+(function(){
+  "use strict";
+  var D = null, cur = "rice", range = "monthly";
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var NAME = { rice:"Rice", bread:"White bread", egg:"Eggs", milk:"Milk", cooking_oil:"Cooking oil", instant_noodles:"Cup noodles", pork:"Pork (domestic)", soy_sauce:"Soy sauce" };
+
+  /* ---- item illustrations (64 x 64), drawn in the same flat style as the Home tray ---- */
+  var ART = {
+    rice: '<path d="M10 34h44c0 14-9.5 24-22 24S10 48 10 34z" fill="#2f7fdc"/><path d="M15 39h34" stroke="#fff" stroke-opacity=".45" stroke-width="2.5" stroke-linecap="round"/><path d="M10 34c1.5-12 10-18 22-18s20.500 6 22 18z" fill="#fff" stroke="#e6dfd2" stroke-width="1.2"/><circle cx="24" cy="27" r="1.6" fill="#e6dfd2"/><circle cx="40" cy="28" r="1.6" fill="#e6dfd2"/><circle cx="32" cy="21.500" r="3.4" fill="#c23b3b"/>',
+    bread: '<path d="M13 27c-5-3-4-12 5-14 4-4 24-4 28 0 9 2 10 11 5 14v25a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4z" fill="#d49a52"/><path d="M19 28c-3-2-3-8 3-9 3-3 17-3 20 0 6 1 6 7 3 9v22H19z" fill="#fbeed3"/><circle cx="27" cy="34" r="1.5" fill="#f1dcb0"/><circle cx="37" cy="40" r="1.5" fill="#f1dcb0"/><circle cx="29" cy="44" r="1.2" fill="#f1dcb0"/>',
+    egg: '<ellipse cx="23" cy="38" rx="13" ry="17" fill="#fbf3e4" stroke="#e3d3b4" stroke-width="1.5"/><ellipse cx="43" cy="42" rx="11.500" ry="15" fill="#f0d9b2" stroke="#d9bf92" stroke-width="1.5"/><path d="M16.500 31c1.500-4 4-6.500 6.500-7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M38 36c1-3 2.500-4.500 4.500-5" stroke="#fff" stroke-opacity=".7" stroke-width="2.200" stroke-linecap="round" fill="none"/>',
+    milk: '<path d="M24 7h16v4H24z" fill="#2f7fdc"/><path d="M18 23l6-12h16l6 12v33a2.500 2.500 0 0 1-2.500 2.500h-23A2.500 2.500 0 0 1 18 56z" fill="#fff" stroke="#d6dbe3" stroke-width="1.5"/><path d="M18 23h28" stroke="#d6dbe3" stroke-width="1.5"/><rect x="18.800" y="32" width="26.400" height="15" fill="#2f7fdc"/><circle cx="32" cy="39.500" r="4.200" fill="#fff"/>',
+    cooking_oil: '<rect x="27" y="5" width="10" height="8" rx="2.500" fill="#c98a12"/><path d="M27 13h10v6c6 3 9 8 9 14v21a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V33c0-6 3-11 9-14z" fill="#f4c64e"/><rect x="18" y="36" width="28" height="14" fill="#fffdf5"/><path d="M24 43h16" stroke="#1baf7a" stroke-width="3" stroke-linecap="round"/><path d="M22.500 28c1-3 3-5 5.500-6" stroke="#fff" stroke-opacity=".75" stroke-width="2.500" stroke-linecap="round" fill="none"/>',
+    instant_noodles: '<path d="M14 26h36l-5 29.500a3 3 0 0 1-3 2.500H22a3 3 0 0 1-3-2.500z" fill="#fff" stroke="#e1e0d9" stroke-width="1.5"/><path d="M15.700 36h32.600l-1.700 10H17.400z" fill="#d94a4a"/><rect x="11" y="20" width="42" height="7.500" rx="3.700" fill="#d94a4a"/><path class="steam s1" d="M24 15c-3-4 3-5.500 0-10"/><path class="steam s2" d="M32 14c-3-4 3-5.500 0-10"/><path class="steam s3" d="M40 15c-3-4 3-5.500 0-10"/>',
+    pork: '<ellipse cx="32" cy="46" rx="27" ry="10.500" fill="#fff" stroke="#e1e0d9" stroke-width="1.5"/><path d="M13 40c-2-10 8-18.500 21-17.500 11 1 18.500 7 16.500 15.500-2 7-12 9-20.500 9-8 0-15-2-17-7z" fill="#ef96a2"/><path d="M19 37c0-6 7-10.500 15-9.500" stroke="#fff" stroke-opacity=".85" stroke-width="3.200" stroke-linecap="round" fill="none"/><path d="M29 41c5 1 10.500 0 14-3.500" stroke="#fbd5da" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M48 50c2-1.500 4-1.500 6 0" stroke="#1baf7a" stroke-width="3" stroke-linecap="round" fill="none"/>',
+    soy_sauce: '<rect x="25" y="5" width="14" height="9" rx="3" fill="#d94a4a"/><path d="M27 14h10v5l8 9v26a4 4 0 0 1-4 4H23a4 4 0 0 1-4-4V28l8-9z" fill="#4a2a1c"/><rect x="19" y="34" width="26" height="14" fill="#f8f3e8"/><path d="M25 41h14" stroke="#4a2a1c" stroke-width="2.600" stroke-linecap="round"/><path d="M23.500 27c1-2 2.500-3.500 4-5" stroke="#fff" stroke-opacity=".35" stroke-width="2.500" stroke-linecap="round" fill="none"/>'
+  };
+  function art(key, cls){ return '<svg class="'+(cls||"art")+'" viewBox="0 0 64 64" aria-hidden="true">'+ART[key]+'</svg>'; }
+
+  /* history notes (static; the live numbers come from the data) */
+  var STORY = {
+    rice: "In summer 2024, panic buying after a megaquake advisory left store shelves short of rice, a shortage Japan nicknamed the \"Reiwa rice crisis.\" The yearly index jumped from 46.8 in 2023 to 59.7 in 2024 (+27.6%) and 100 in 2025 (+67.5%), about 2.1 times its 2020 level. Monthly prices peaked at 108.7 in November 2025 and have been falling since.",
+    egg: "Bird flu swept Japan from late October 2022 to April 2023: 61 outbreaks and about 16.5 million laying hens culled, roughly 12% of the national flock. Egg production fell 6.1% in 2023 and the yearly index rose from 75.4 to 97.0 (+28.6%). Government retail surveys show a pack of ten eggs rising again from ¥244 to ¥303 between April 2024 and September 2025.",
+    cooking_oil: "The yearly index jumped from 71.6 in 2021 to 96.8 in 2022 (+35.2%) as world prices for oilseeds climbed, partly because of the war in Ukraine. Prices never came back down (2025 is 49% above 2020), and they turned upward again in 2026.",
+    pork: "Government retail surveys show the national average price of domestic pork loin rising from ¥254 to ¥286 (+13%) between April 2024 and September 2025, alongside increases for chicken and eggs."
+  };
+  var SRC = [
+    { id:"cpi_item_index_monthly", org:"Statistics Bureau of Japan", name:"Consumer Price Index, price index by item (2025 base, national, monthly)" },
+    { id:"cpi_item_index", org:"Statistics Bureau of Japan", name:"Consumer Price Index, price index by item (2025 base, national, annual average, 1970 onward)" },
+    { id:"maff_meat_egg_price", org:"Ministry of Agriculture, Forestry and Fisheries", name:"Food Price Trend Survey (meat and eggs), national average retail prices" },
+    { id:"engel_coefficient_primary", org:"Statistics Bureau of Japan", name:"Family Income and Expenditure Survey, 2024 annual results" },
+    { id:"engel_coefficient_secondary", org:"Nenji-Toukei (compiled from the Family Income and Expenditure Survey)", name:"Engel's coefficient, 1946–2017, households of two or more people" },
+    { id:"engel_coefficient_secondary2", org:"Nippon Life (based on the Family Income and Expenditure Survey)", name:"Article summarizing Engel's coefficient for 2019–2022" }
+  ];
+
+  function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function f1(v){ return (Math.round(v*10)/10).toFixed(1); }
+  function pct(a,b){ return b ? (a-b)/b*100 : null; }
+  function pctTxt(p){ return p===null ? "–" : (p>=0?"+":"−")+f1(Math.abs(p))+"%"; }
+  function cls(p){ return p===null ? "flat" : (p>=0.05 ? "up" : (p<=-0.05 ? "down" : "flat")); }
+  function ymLabel(ym){ var a = ym.split("-"); return MON[+a[1]-1]+" "+a[0]; }
+  function item(k){ return D.items.find(function(i){ return i.key===k; }); }
+  function mval(it, ym){ var r = it.cpi_index_monthly.find(function(p){ return p.ym===ym; }); return r ? r.value : null; }
+  function shiftYm(ym, years){ var a = ym.split("-"); return (+a[0]+years)+"-"+a[1]; }
+  function stats(it){
+    var m = it.cpi_index_monthly, last = m[m.length-1];
+    var y19 = m.filter(function(p){ return p.ym.slice(0,4)==="2019"; });
+    var b19 = y19.length ? y19.reduce(function(s,p){ return s+p.value; },0)/y19.length : null;
+    var ya = mval(it, shiftYm(last.ym,-1)), ta = mval(it, shiftYm(last.ym,-10));
+    return { last:last, yoy:pct(last.value, ya), v19:pct(last.value, b19), v10:pct(last.value, ta), ym10:shiftYm(last.ym,-10),
+      spark:m.slice(-13).map(function(p){ return p.value; }) };
+  }
+  function spark(values, color){
+    var w=66,h=34,mn=Math.min.apply(null,values),mx=Math.max.apply(null,values),r=(mx-mn)||1;
+    var pts = values.map(function(v,i){ return [(i/(values.length-1))*(w-6)+3, h-4-((v-mn)/r)*(h-10)]; });
+    var d = pts.map(function(p,i){ return (i?"L":"M")+p[0].toFixed(1)+","+p[1].toFixed(1); }).join(" ");
+    var e = pts[pts.length-1];
+    return '<svg class="sp" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><path d="'+d+' L'+e[0].toFixed(1)+','+h+' L3,'+h+' Z" fill="'+color+'" opacity=".10"/><path d="'+d+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="'+e[0].toFixed(1)+'" cy="'+e[1].toFixed(1)+'" r="2.8" fill="'+color+'"/></svg>';
+  }
+
+  /* ---- hero: the eight staples on a wooden tray ---- */
+  function renderTray(){
+    var pos = [ ["milk",62,96,1.5], ["cooking_oil",146,84,1.5], ["soy_sauce",226,84,1.5], ["instant_noodles",300,104,1.45],
+                ["rice",34,214,1.75], ["bread",140,232,1.5], ["egg",226,236,1.45], ["pork",296,236,1.6] ];
+    var h = '<defs><radialGradient id="g-tray" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#d9a06a"/><stop offset="1" stop-color="#a86b3c"/></radialGradient></defs>'+
+      '<ellipse cx="210" cy="392" rx="178" ry="16" fill="rgba(11,11,11,.08)"/>'+
+      '<ellipse cx="210" cy="262" rx="196" ry="122" fill="url(#g-tray)"/>'+
+      '<ellipse cx="210" cy="256" rx="182" ry="108" fill="none" stroke="#8a5530" stroke-opacity=".35" stroke-width="2"/>'+
+      '<ellipse cx="210" cy="258" rx="166" ry="94" fill="none" stroke="#f1c99d" stroke-opacity=".35" stroke-width="1.5"/>';
+    pos.forEach(function(p){
+      h += '<ellipse cx="'+(p[1]+32*p[3])+'" cy="'+(p[2]+59*p[3])+'" rx="'+(24*p[3])+'" ry="'+(5*p[3])+'" fill="rgba(74,42,20,.22)"/>';
+      h += '<g transform="translate('+p[1]+' '+p[2]+') scale('+p[3]+')">'+ART[p[0]]+'</g>';
+    });
+    h += '<ellipse cx="208" cy="372" rx="11" ry="4.500" fill="#8a5cd1"/><path d="M108 378l196-16M110 386l196-12" stroke="#4a3328" stroke-width="5" stroke-linecap="round"/><path d="M108 378l58-5M110 386l58-4" stroke="#d03b3b" stroke-width="5" stroke-linecap="round"/>';
+    document.getElementById("tray").innerHTML = h;
+  }
+  function renderTags(){
+    ["rice","cooking_oil","instant_noodles","egg"].forEach(function(k){
+      var s = stats(item(k)), el = document.getElementById("tag-"+k);
+      el.style.setProperty("--tc", s.yoy>=0 ? "var(--up)" : "var(--down)");
+      el.querySelector(".v").textContent = pctTxt(s.yoy);
+    });
+  }
+
+  /* ---- staples board ---- */
+  function renderItems(){
+    var box = document.getElementById("items"); box.innerHTML = "";
+    D.items.forEach(function(it){
+      var s = stats(it), c = cls(s.yoy), col = c==="up" ? cssVar("--up") : (c==="down" ? cssVar("--down") : "#898781");
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "item"; b.setAttribute("aria-pressed", it.key===cur ? "true":"false");
+      b.innerHTML = art(it.key)+'<span class="n">'+NAME[it.key]+'</span>'+
+        '<span class="val '+c+'">'+pctTxt(s.yoy)+'</span><span class="lbl">index '+f1(s.last.value)+'</span>'+spark(s.spark, col);
+      b.addEventListener("click", function(){ select(it.key, true); });
+      box.appendChild(b);
+    });
+  }
+
+  /* ---- generic line chart ---- */
+  function chart(svg, pts, o){
+    var NS = "http://www.w3.org/2000/svg", W = 720, H = svg.viewBox.baseVal.height, m = {t:22, r:56, b:28, l:40};
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    function el(t,a){ var e = document.createElementNS(NS,t); for(var k in a) e.setAttribute(k,a[k]); svg.appendChild(e); return e; }
+    var ok = pts.filter(function(p){ return p.y!=null; });
+    var xMin = pts[0].x, xMax = pts[pts.length-1].x;
+    var yTop = Math.max.apply(null, ok.map(function(p){ return p.y; }))*1.12, step = o.step || (yTop>120?50:(yTop>60?25:10));
+    var yMax = Math.ceil(yTop/step)*step, iw = W-m.l-m.r, ih = H-m.t-m.b;
+    function sx(x){ return m.l+(x-xMin)/(xMax-xMin)*iw; } function sy(y){ return m.t+ih-(y/yMax)*ih; }
+    for(var v=0; v<=yMax+0.001; v+=step){
+      el("line",{class:"grid", x1:m.l, x2:W-m.r, y1:sy(v), y2:sy(v)});
+      el("text",{class:"ax", x:m.l-8, y:sy(v)+4, "text-anchor":"end"}).textContent = v+(o.unit||"");
+    }
+    o.ticks.forEach(function(t){ el("text",{class:"ax", x:sx(t.x), y:H-8, "text-anchor":"middle"}).textContent = t.label; });
+    if(o.ref!=null){
+      el("line",{class:"ref", x1:m.l, x2:W-m.r, y1:sy(o.ref), y2:sy(o.ref)});
+      el("text",{class:"ax", x:m.l+4, y:sy(o.ref)-5}).textContent = o.refLabel||"";
+    }
+    var color = o.color || cssVar("--accent");
+    var segs = [], c = null;
+    pts.forEach(function(p){
+      if(p.y==null){ if(c){ segs.push(c); c=null; } return; }
+      var d = !!p.dashed;
+      if(!c){ c = {dashed:d, p:[p]}; return; }
+      if(c.dashed!==d){ var prev = c.p[c.p.length-1]; segs.push(c); c = {dashed:d, p:[prev, p]}; }
+      else c.p.push(p);
+    });
+    if(c) segs.push(c);
+    var gid = svg.id+"-g", defs = el("defs",{}), lg = document.createElementNS(NS,"linearGradient");
+    lg.setAttribute("id",gid); lg.setAttribute("x1","0"); lg.setAttribute("y1","0"); lg.setAttribute("x2","0"); lg.setAttribute("y2","1");
+    [["0%",".20"],["100%","0"]].forEach(function(s){ var st = document.createElementNS(NS,"stop"); st.setAttribute("offset",s[0]); st.setAttribute("stop-color",color); st.setAttribute("stop-opacity",s[1]); lg.appendChild(st); });
+    defs.appendChild(lg);
+    segs.forEach(function(s){
+      if(s.p.length<2) return;
+      var d = s.p.map(function(p,i){ return (i?"L":"M")+sx(p.x).toFixed(1)+","+sy(p.y).toFixed(1); }).join(" ");
+      el("path",{d:d+" L"+sx(s.p[s.p.length-1].x).toFixed(1)+","+sy(0)+" L"+sx(s.p[0].x).toFixed(1)+","+sy(0)+" Z", fill:"url(#"+gid+")"});
+      var a = {class:"ln"+(s.dashed?" dashed":" draw"), d:d, stroke:color};
+      if(!s.dashed) a.pathLength = 1;
+      el("path", a);
+    });
+    (o.marks||[]).forEach(function(k){
+      el("circle",{cx:sx(k.x), cy:sy(k.y), r:4.5, fill:"#fff", stroke:color, "stroke-width":2.5});
+      el("text",{class:"mk", x:sx(k.x)+(k.dx||0), y:sy(k.y)+(k.dy||-10), "text-anchor":k.anchor||"middle"}).textContent = k.text;
+    });
+    var hl = el("line",{class:"hv-line", y1:m.t, y2:m.t+ih}), hd = el("circle",{class:"hv-dot", r:5, stroke:color});
+    var hit = el("rect",{class:"hit", x:m.l, y:m.t, width:iw, height:ih}), tip = o.tip;
+    function at(evt){
+      var r = svg.getBoundingClientRect(), ux = (evt.clientX-r.left)/r.width*W, best = null, bd = 1e9;
+      ok.forEach(function(p){ var d = Math.abs(sx(p.x)-ux); if(d<bd){ bd=d; best=p; } });
+      if(!best) return;
+      hl.setAttribute("x1",sx(best.x)); hl.setAttribute("x2",sx(best.x)); hl.style.display = "block";
+      hd.setAttribute("cx",sx(best.x)); hd.setAttribute("cy",sy(best.y)); hd.style.display = "block";
+      tip.innerHTML = best.label+"<b>"+o.fmt(best.y)+"</b>";
+      tip.style.left = (sx(best.x)/W*r.width)+"px"; tip.style.top = (sy(best.y)/H*r.height)+"px"; tip.style.opacity = 1;
+    }
+    function off(){ hl.style.display = "none"; hd.style.display = "none"; tip.style.opacity = 0; }
+    hit.addEventListener("mousemove", at); hit.addEventListener("mouseleave", off);
+    hit.addEventListener("touchstart", function(e){ if(e.touches[0]) at(e.touches[0]); }, {passive:true});
+    hit.addEventListener("touchmove", function(e){ if(e.touches[0]) at(e.touches[0]); }, {passive:true});
+    hit.addEventListener("touchend", off);
+  }
+
+  /* ---- detail panel ---- */
+  function renderDetail(){
+    var it = item(cur), s = stats(it);
+    document.getElementById("d-art").innerHTML = ART[cur];
+    document.getElementById("d-name").textContent = NAME[cur];
+    document.getElementById("d-now").innerHTML = "Index <b>"+f1(s.last.value)+"</b> in "+ymLabel(s.last.ym)+" (2025 average = 100)";
+    var tiles = [
+      ["vs. a year ago", s.yoy, "compared with "+ymLabel(shiftYm(s.last.ym,-1))],
+      ["vs. before COVID", s.v19, "compared with the 2019 average"],
+      ["vs. 10 years ago", s.v10, "compared with "+ymLabel(s.ym10)]
+    ];
+    document.getElementById("d-stats").innerHTML = tiles.map(function(t){
+      return '<div class="d-stat"><div class="l">'+t[0]+'</div><div class="val '+cls(t[1])+'">'+pctTxt(t[1])+'</div><div class="s">'+t[2]+'</div></div>';
+    }).join("");
+    var pts, ticks = [], marks, last;
+    if(range==="monthly"){
+      pts = it.cpi_index_monthly.map(function(p){ var a = p.ym.split("-"); return { x:(+a[0])*12+(+a[1])-1, y:p.value, label:ymLabel(p.ym) }; });
+      for(var y=+it.cpi_index_monthly[0].ym.slice(0,4); y<=+s.last.ym.slice(0,4); y+=2) ticks.push({ x:y*12, label:String(y) });
+      document.getElementById("c-title").textContent = NAME[cur]+": monthly price index since "+it.cpi_index_monthly[0].ym.slice(0,4);
+    } else {
+      pts = it.cpi_index.map(function(p){ return { x:p.year, y:p.value, label:String(p.year) }; });
+      for(var yy=Math.ceil(pts[0].x/10)*10; yy<=pts[pts.length-1].x; yy+=10) ticks.push({ x:yy, label:String(yy) });
+      document.getElementById("c-title").textContent = NAME[cur]+": yearly price index, "+pts[0].x+"–"+pts[pts.length-1].x;
+    }
+    last = pts[pts.length-1];
+    marks = [{ x:last.x, y:last.y, text:f1(last.y), anchor:"start", dx:9, dy:4 }];
+    chart(document.getElementById("svg-main"), pts, { ticks:ticks, ref:100, refLabel:"2025 = 100", marks:marks,
+      tip:document.getElementById("tip-main"), fmt:function(v){ return f1(v); } });
+    var st = document.getElementById("story");
+    if(STORY[cur]){ st.hidden = false; document.getElementById("story-text").textContent = STORY[cur]; } else st.hidden = true;
+  }
+
+  function select(k, scroll){
+    cur = k; renderItems(); renderDetail();
+    if(scroll){ var t = document.getElementById("detail-sec"); t.classList.add("in"); t.scrollIntoView({ behavior:"smooth", block:"start" }); }
+  }
+
+  /* ---- ranking vs 2019 ---- */
+  function renderRank(){
+    var rows = D.items.map(function(it){ return { k:it.key, p:stats(it).v19 }; }).sort(function(a,b){ return b.p-a.p; });
+    var mx = Math.max.apply(null, rows.map(function(r){ return Math.abs(r.p); }));
+    var box = document.getElementById("rank"); box.innerHTML = "";
+    rows.forEach(function(r,i){
+      var b = document.createElement("button"); b.type = "button"; b.className = "rk";
+      b.innerHTML = '<span class="no">'+(i+1)+'</span>'+art(r.k)+'<span class="nm">'+NAME[r.k]+'</span>'+
+        '<span class="track"><i class="'+(r.p<0?"neg":"")+'" data-w="'+(Math.abs(r.p)/mx*100).toFixed(1)+'%"></i></span>'+
+        '<span class="pv val '+cls(r.p)+'">'+pctTxt(r.p)+'</span>';
+      b.addEventListener("click", function(){ select(r.k, true); });
+      box.appendChild(b);
+    });
+    var s = stats(D.items[0]);
+    document.getElementById("rank-sub").textContent = "Price in "+ymLabel(s.last.ym)+" compared with the 2019 average, the last full year before COVID. Tap a row to open its chart above.";
+  }
+  function growBars(){ document.querySelectorAll(".rk .track i").forEach(function(e){ e.style.width = e.getAttribute("data-w"); }); }
+
+  /* ---- Engel's coefficient ---- */
+  function renderEngel(){
+    var e = D.engel_coefficient, ok = e.filter(function(p){ return p.value!=null; }), last = ok[ok.length-1];
+    var pts = [], byYear = {};
+    e.forEach(function(p){ byYear[p.year] = p; });
+    for(var y=e[0].year; y<=last.year; y++){
+      var p = byYear[y];
+      pts.push({ x:y, y:(p && p.value!=null) ? p.value : null, dashed: !!(p && p.tier!=="primary"), label:String(y) });
+    }
+    var modern = ok.filter(function(p){ return p.year>=1970; }), low = modern.reduce(function(a,b){ return b.value<a.value ? b : a; });
+    var since = null;
+    for(var i=ok.length-2; i>=0; i--){ if(ok[i].value>=last.value){ since = ok[i].year; break; } }
+    document.getElementById("engel-num").innerHTML = f1(last.value)+"<small>%</small>";
+    document.getElementById("engel-cap").textContent = since ? "of household spending went to food in "+last.year+", the highest in "+(last.year-since)+" years" : "of household spending went to food in "+last.year;
+    document.getElementById("engel-p").textContent = "The share fell for decades as Japan grew richer, bottoming out at "+f1(low.value)+"% in "+low.year+". Rising food prices have pushed it back up"+(since ? " to a level last seen in "+since+"." : ".");
+    document.getElementById("engel-range").textContent = e[0].year+"–"+last.year;
+    var ticks = []; for(var t=1950; t<=last.year; t+=10) ticks.push({ x:t, label:String(t) });
+    chart(document.getElementById("svg-engel"), pts, { ticks:ticks, unit:"%", step:20,
+      marks:[ { x:last.x || last.year, y:last.value, text:f1(last.value)+"%", anchor:"start", dx:9, dy:4 },
+              { x:low.year, y:low.value, text:f1(low.value)+"% ("+low.year+")", dy:22 },
+              { x:ok[0].year, y:ok[0].value, text:f1(ok[0].value)+"% ("+ok[0].year+")", anchor:"start", dx:9, dy:4 } ],
+      tip:document.getElementById("tip-engel"), fmt:function(v){ return f1(v)+"%"; } });
+  }
+
+  function renderSources(){
+    var by = {}; D.meta.sources.forEach(function(s){ by[s.id] = s; });
+    document.getElementById("sources").innerHTML = SRC.filter(function(s){ return by[s.id]; }).map(function(s){
+      return '<div><b>'+s.org+'</b>: '+s.name+'  <a href="'+by[s.id].url+'" target="_blank" rel="noopener">source (Japanese)</a></div>';
+    }).join("");
+  }
+
+  function download(){
+    if(typeof XLSX==="undefined"){ alert("The download library failed to load."); return; }
+    var it = item(cur), wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(it.cpi_index_monthly.map(function(p){ return { Month:p.ym, "Index (2025=100)":p.value }; })), "Monthly");
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(it.cpi_index.map(function(p){ return { Year:p.year, "Index (2025=100)":p.value }; })), "Yearly");
+    XLSX.writeFile(wb, "japan_food_price_"+cur+"_"+D.meta.generated_at+".xlsx");
+  }
+
+  function decorate(){
+    document.querySelectorAll("[data-icon]").forEach(function(e){
+      if(window.JL) e.innerHTML = JL.icon(e.getAttribute("data-icon"), +(e.getAttribute("data-s")||20), e.getAttribute("data-c"), 2);
+    });
+    var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
+      es.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); if(x.target.id==="rank-sec") setTimeout(growBars, 150); io.unobserve(x.target); } });
+    }, { rootMargin:"0px 0px -60px 0px" }) : null;
+    document.querySelectorAll(".reveal").forEach(function(e){ if(io) io.observe(e); else e.classList.add("in"); });
+    if(!io) growBars();
+  }
+
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.addEventListener("click", function(){
+      range = b.getAttribute("data-range");
+      document.querySelectorAll(".seg button").forEach(function(x){ x.setAttribute("aria-pressed", x===b ? "true":"false"); });
+      renderDetail();
+    });
+  });
+  document.getElementById("dl").addEventListener("click", download);
+
+  renderTray();
+  fetch("../data.json", { cache:"no-cache" }).then(function(r){ return r.json(); }).then(function(json){
+    D = json;
+    var s = stats(D.items[0]);
+    document.getElementById("fact-month").textContent = ymLabel(s.last.ym);
+    document.getElementById("dash-month").textContent = "· "+ymLabel(s.last.ym);
+    renderTags(); renderItems(); renderDetail(); renderRank(); renderEngel(); renderSources(); decorate();
+  }).catch(function(err){
+    document.getElementById("items").innerHTML = "<div style='padding:20px;color:#52514e;'>Failed to load data. Please reload the page.</div>";
+    console.error(err);
+  });
+})();
+</script>
+</body>
+</html>
