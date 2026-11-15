@@ -25,134 +25,184 @@
 <style>
   :root{
     color-scheme: light;
-    --surface-1:#fcfcfb; --page-plane:#f9f9f7;
-    --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
-    --border:rgba(11,11,11,0.10);
-    --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
-    --series-1:#2a78d6; --series-2:#eb6834; --series-3:#1baf7a; --series-4:#eda100;
-    --series-5:#d03b3b; --series-6:#8a5cd1; --series-7:#4a5a78;
-    --navy:#1f2a44; --jp:#d03b3b; --world:#2a78d6;
-    --up:#d03b3b; --down:#2a78d6;
-    --accent:var(--series-1);
+    --surface-1:#fcfcfb; --page-plane:#f9f9f7; --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#898781;
+    --border:rgba(11,11,11,0.10); --card-shadow:0 1px 2px rgba(11,11,11,0.05), 0 8px 24px rgba(11,11,11,0.05);
+    --world:#2a78d6; --jp:#d03b3b; --amber:#eda100; --up:#d03b3b; --down:#2a78d6; --accent:#2a78d6;
   }
+  /* Light theme only */
   *{box-sizing:border-box;}
-  body{ margin:0; background:var(--page-plane); color:var(--text-primary);
-    font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
-  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--page-plane); color:var(--text-primary); font-family:"Zen Kaku Gothic New", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 20px; position:relative; }
   h1,h2,h3{ font-family:"Zen Old Mincho", serif; font-weight:900; text-wrap:balance; margin:0; }
   a{ color:var(--accent); }
+  .ico{ display:inline-block; vertical-align:middle; flex:none; }
 
-  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .top-nav{ display:flex; gap:18px; padding-top:16px; font-size:12.5px; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:thin; position:relative; z-index:2; }
   .top-nav a{ color:var(--text-secondary); text-decoration:none; padding:4px 0 6px; border-bottom:2px solid transparent; font-weight:500; white-space:nowrap; flex:none; }
   .top-nav a.active{ color:var(--text-primary); font-weight:700; border-bottom-color:var(--accent); }
+  .top-nav a.ja-only:after{ content:"JA"; font-size:9px; font-weight:700; color:var(--text-muted); border:1px solid var(--border); border-radius:4px; padding:0 3px; margin-left:4px; vertical-align:1px; }
+  .top-nav a.lang{ margin-left:auto; color:var(--accent); font-weight:700; }
 
-  /* ---- hero ---- */
-  .hero{ position:relative; margin:22px 0 10px; border-radius:20px; overflow:hidden; background:var(--navy); color:#f5f1e8; padding:34px 30px 30px; }
-  .hero:before{ content:""; position:absolute; inset:0; opacity:.13;
-    background-image:radial-gradient(circle at 100% 150%, transparent 24%, #f5f1e8 25%, #f5f1e8 26%, transparent 27%, transparent 34%, #f5f1e8 35%, #f5f1e8 36%, transparent 37%);
-    background-size:56px 28px; }
-  .hero > *{ position:relative; }
-  .hero .grid > *{ min-width:0; }
-  .hero .grid{ display:grid; grid-template-columns:1.25fr 1fr; gap:24px; align-items:center; }
-  .eyebrow{ display:inline-block; font-size:11.5px; font-weight:900; letter-spacing:.12em; background:var(--jp); color:#fff; padding:4px 10px; border-radius:6px; margin-bottom:14px; }
-  .hero h1{ font-size:clamp(28px,5vw,42px); line-height:1.2; }
-  .hero p{ font-size:14.5px; line-height:1.85; color:#c9d4ea; margin:14px 0 0; max-width:56ch; }
-  .hero p a{ color:#fff; }
-  .hero .meta-row{ margin-top:16px; font-size:12px; color:#aab6d0; display:flex; flex-wrap:wrap; gap:6px 16px; }
-  .globe{ width:100%; max-width:330px; justify-self:center; }
-  .hero-stat{ margin-top:20px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); border-radius:12px; padding:12px 16px; }
-  .hero-stat .num{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:clamp(32px,6vw,46px); color:#ffd36b; line-height:1; }
-  .hero-stat .num small{ font-size:16px; margin-left:2px; }
-  .hero-stat .desc{ font-size:12.5px; font-weight:700; line-height:1.6; }
+  /* background: seigaiha waves + soft color pools (same as Home) */
+  .bg-deco{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .bg-deco .wave{ position:absolute; left:0; right:0; top:0; height:720px; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23d9d3c7' stroke-width='1'%3E%3Cpath d='M0 40a40 40 0 0 1 80 0M10 40a30 30 0 0 1 60 0M20 40a20 20 0 0 1 40 0M30 40a10 10 0 0 1 20 0'/%3E%3Cpath d='M-40 40a40 40 0 0 1 80 0M-30 40a30 30 0 0 1 60 0M-20 40a20 20 0 0 1 40 0M-10 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3Cpath d='M40 40a40 40 0 0 1 80 0M50 40a30 30 0 0 1 60 0M60 40a20 20 0 0 1 40 0M70 40a10 10 0 0 1 20 0' transform='translate(0 -20)'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0)); }
+  .bg-deco .blob{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.55; }
+  .bg-deco .b1{ width:520px; height:520px; right:-160px; top:-120px; background:radial-gradient(circle, rgba(42,120,214,.3), rgba(42,120,214,0) 70%); }
+  .bg-deco .b2{ width:460px; height:460px; left:-200px; top:260px; background:radial-gradient(circle, rgba(237,161,0,.3), rgba(237,161,0,0) 70%); }
+  .bg-deco .b3{ width:380px; height:380px; right:12%; top:520px; background:radial-gradient(circle, rgba(208,59,59,.2), rgba(208,59,59,0) 70%); }
 
-  section{ padding:32px 0; border-top:1px solid var(--border); }
-  section.first{ border-top:none; }
+  /* hero */
+  .hero{ position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center; padding:42px 0 24px; }
+  .hero > *{ min-width:0; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.1em; color:var(--text-secondary); margin-bottom:16px; background:var(--surface-1); border:1px solid var(--border); border-radius:99px; padding:6px 12px 6px 8px; box-shadow:var(--card-shadow); text-transform:uppercase; }
+  .eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:#d03b3b; box-shadow:0 0 0 4px rgba(208,59,59,.15); }
+  .hero h1{ font-size:clamp(36px,6.6vw,58px); line-height:1.08; letter-spacing:.01em; }
+  .hero h1 .hl{ position:relative; display:inline-block; }
+  .hero h1 .brush{ position:absolute; left:-4px; right:-4px; bottom:4px; height:.32em; z-index:-1; border-radius:4px;
+    background:linear-gradient(90deg, rgba(42,120,214,.4), rgba(237,161,0,.45) 55%, rgba(208,59,59,.35)); transform:skewX(-8deg); }
+  .hero .sub{ font-family:"Zen Old Mincho",serif; font-weight:600; font-size:clamp(16px,2.4vw,21px); color:var(--text-secondary); margin-top:14px; }
+  .hero p{ font-size:15px; line-height:1.9; color:var(--text-secondary); max-width:54ch; margin:14px 0 0; }
+  .lead-stat{ display:inline-flex; align-items:center; gap:14px; margin-top:20px; background:var(--surface-1); border:1px solid var(--border); border-radius:16px; padding:12px 18px; box-shadow:var(--card-shadow); }
+  .lead-stat .x{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:46px; line-height:1; color:var(--world); white-space:nowrap; }
+  .lead-stat .x small{ font-size:24px; }
+  .lead-stat .t{ font-size:12.5px; line-height:1.6; color:var(--text-secondary); font-weight:500; }
+  .lead-stat .t b{ color:var(--text-primary); }
+  .facts{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:18px; font-size:12.5px; color:var(--text-muted); }
+  .facts b{ color:var(--text-primary); font-family:"Zen Old Mincho",serif; font-size:15px; margin-right:4px; }
+
+  .scene{ position:relative; aspect-ratio:1/1; max-width:480px; margin:0 auto; width:100%; }
+  .scene svg{ width:100%; height:100%; display:block; overflow:visible; }
+  .tag{ position:absolute; display:flex; flex-direction:column; gap:1px; background:#fff; border:2px solid var(--tc); border-radius:12px; padding:7px 11px 7px 10px; box-shadow:0 10px 24px rgba(11,11,11,.14); font-size:11px; font-weight:700; color:var(--text-secondary); white-space:nowrap; animation:bob 4.2s ease-in-out infinite; }
+  .tag:after{ content:""; position:absolute; left:50%; bottom:-9px; width:14px; height:14px; background:#fff; border-right:2px solid var(--tc); border-bottom:2px solid var(--tc); transform:translateX(-50%) rotate(45deg); }
+  .tag .v{ font-family:"Zen Old Mincho",serif; font-size:22px; line-height:1; color:var(--tc); }
+  .tag.t1{ left:30%; top:-2%; animation-delay:0s; }
+  .tag.t2{ left:-4%; top:22%; animation-delay:1.3s; }
+  .tag.t3{ left:8%; bottom:26%; animation-delay:2.4s; }
+  .tag.t4{ right:-4%; top:16%; animation-delay:.7s; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-1deg);} 50%{ transform:translateY(-9px) rotate(1deg);} }
+  .pin{ animation:pulse 2.4s ease-out infinite; transform-box:fill-box; transform-origin:center; }
+  .pin.p2{ animation-delay:.6s; } .pin.p3{ animation-delay:1.2s; } .pin.p4{ animation-delay:1.8s; }
+  @keyframes pulse{ 0%{ transform:scale(.6); opacity:.9; } 100%{ transform:scale(2.6); opacity:0; } }
+  .scene .caption{ position:absolute; left:50%; bottom:-8px; transform:translateX(-50%); font-size:11px; color:var(--text-muted); white-space:nowrap; }
+
+  section{ position:relative; z-index:1; padding:40px 0; border-top:1px solid var(--border); }
+  section.first{ border-top:none; padding-top:22px; }
   .section-head{ margin-bottom:18px; }
-  .section-head h2{ font-size:22px; }
-  .section-sub{ font-size:13px; color:var(--text-secondary); margin-top:6px; max-width:66ch; line-height:1.7; }
+  .section-head .en{ font-size:11.5px; font-weight:700; letter-spacing:.16em; color:#d03b3b; text-transform:uppercase; }
+  .section-head h2{ font-size:26px; margin-top:4px; }
+  .section-sub{ font-size:13.5px; color:var(--text-secondary); margin-top:6px; line-height:1.75; max-width:66ch; }
+  .panel{ background:var(--surface-1); border:1px solid var(--border); border-radius:18px; box-shadow:var(--card-shadow); padding:18px; }
+  .legend{ display:flex; gap:16px; font-size:12px; color:var(--text-secondary); flex-wrap:wrap; font-weight:700; }
+  .legend span:before{ content:""; display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--k); }
 
-  /* ---- compare ---- */
-  .vs-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:14px; }
-  .vs{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--card-shadow); border-top:5px solid var(--c); }
-  .vs .cat{ font-size:12px; font-weight:900; color:var(--c); letter-spacing:.04em; }
-  .vs .times{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:30px; margin:4px 0 10px; line-height:1.1; }
-  .vs .times small{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:12.5px; font-weight:700; color:var(--text-secondary); margin-left:6px; }
-  .vrow{ display:grid; grid-template-columns:118px 1fr; gap:4px 10px; align-items:center; margin:7px 0; font-size:12px; }
-  .vrow .nm{ font-weight:700; line-height:1.3; }
-  .vrow .nm .fl{ display:block; font-size:10.5px; color:var(--text-muted); font-weight:500; }
-  .vbar{ position:relative; height:22px; border-radius:5px; background:color-mix(in srgb, var(--text-primary) 5%, transparent); }
-  .vbar i{ position:absolute; left:0; top:0; bottom:0; border-radius:5px; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
-  .vbar b{ position:absolute; left:6px; top:3px; font-size:11px; color:#fff; white-space:nowrap; text-shadow:0 1px 2px rgba(0,0,0,.25); }
-  .vbar b.out{ color:var(--text-primary); text-shadow:none; }
-  .vs .foot{ font-size:11.5px; color:var(--text-secondary); line-height:1.65; margin-top:8px; border-top:1px dashed var(--border); padding-top:8px; }
+  /* bubbles drawn to scale */
+  .bubbles{ --k:1; display:flex; flex-wrap:wrap; gap:16px 14px; align-items:flex-end; justify-content:center; padding:14px 4px 4px; }
+  .bub{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .bub .c{ width:calc(var(--d) * var(--k) * 1px); height:calc(var(--d) * var(--k) * 1px); border-radius:50%; display:grid; place-items:center; text-align:center; color:#fff;
+    background:radial-gradient(circle at 34% 28%, #5b9eea, #2a78d6 62%, #1f5fb0); box-shadow:0 10px 22px rgba(42,120,214,.25);
+    transform:scale(0); transition:transform .8s cubic-bezier(.2,1.3,.4,1); }
+  .bub.jp .c{ background:radial-gradient(circle at 34% 28%, #ea6a6a, #d03b3b 62%, #a82a2a); box-shadow:0 10px 22px rgba(208,59,59,.25); }
+  .in .bub .c{ transform:scale(1); }
+  .bub .c b{ display:block; font-family:"Zen Old Mincho",serif; font-size:calc(var(--d) * var(--k) * .17px); line-height:1.1; }
+  .bub .c span{ display:block; font-size:calc(var(--d) * var(--k) * .095px + 2px); font-weight:700; opacity:.92; margin-top:2px; }
+  .bub .cap{ font-size:11px; font-weight:700; text-align:center; line-height:1.3; max-width:92px; }
+  .bub .cap small{ display:block; color:var(--text-muted); font-weight:500; }
+  .bub.jp .cap{ color:var(--jp); }
+  .bub-foot{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; padding-top:12px; border-top:1px dashed var(--border); font-size:11.5px; color:var(--text-muted); }
 
-  /* ---- margin table ---- */
-  .mg-wrap{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; box-shadow:var(--card-shadow); padding:6px 16px; }
-  .mg{ display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; padding:12px 0; border-bottom:1px solid var(--border); align-items:center; }
+  /* category duels */
+  .duels{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:14px; }
+  .duel{ position:relative; background:var(--surface-1); border:1px solid var(--border); border-radius:16px; padding:18px; box-shadow:var(--card-shadow); overflow:hidden; }
+  .duel:before{ content:""; position:absolute; right:-40px; top:-40px; width:140px; height:140px; border-radius:50%; background:color-mix(in srgb, var(--c) 11%, transparent); }
+  .du-top{ display:flex; align-items:center; gap:10px; position:relative; }
+  .badge{ width:44px; height:44px; border-radius:14px; display:inline-flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--c) 14%, #fff); border:1px solid color-mix(in srgb, var(--c) 25%, transparent); flex:none; }
+  .du-cat{ font-size:13.5px; font-weight:900; letter-spacing:.04em; color:color-mix(in srgb, var(--c) 80%, #000); }
+  .du-x{ margin-left:auto; font-family:"Zen Old Mincho",serif; font-weight:900; font-size:34px; line-height:1; }
+  .du-x small{ font-size:18px; }
+  .du-vis{ display:flex; align-items:flex-end; justify-content:center; gap:18px; height:128px; margin:14px 0 4px; position:relative; }
+  .du-vis .o{ border-radius:50%; flex:none; transform:scale(0); transition:transform .8s cubic-bezier(.2,1.3,.4,1); }
+  .in .du-vis .o{ transform:scale(1); }
+  .du-vis .o.w{ background:radial-gradient(circle at 34% 28%, #5b9eea, #2a78d6 62%, #1f5fb0); }
+  .du-vis .o.j{ background:radial-gradient(circle at 34% 28%, #ea6a6a, #d03b3b 62%, #a82a2a); }
+  .du-rows{ display:grid; gap:6px; font-size:12.5px; }
+  .du-row{ display:grid; grid-template-columns:10px 1fr auto; gap:8px; align-items:baseline; }
+  .du-row i{ width:10px; height:10px; border-radius:50%; align-self:center; }
+  .du-row .nm{ font-weight:700; } .du-row .nm small{ font-weight:500; color:var(--text-muted); margin-left:5px; font-size:11px; }
+  .du-row .v{ font-family:"Zen Old Mincho",serif; font-size:17px; font-variant-numeric:tabular-nums; }
+  .du-note{ font-size:12px; color:var(--text-secondary); line-height:1.7; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); }
+
+  /* margins */
+  .mg{ display:grid; grid-template-columns:1fr 1fr; gap:8px 22px; padding:13px 2px; border-bottom:1px dashed var(--border); }
   .mg:last-child{ border-bottom:none; }
-  .mg .side{ display:grid; grid-template-columns:1fr auto; gap:2px 8px; align-items:center; font-size:12.5px; }
-  .mg .side .pct{ font-weight:900; font-size:18px; font-variant-numeric:tabular-nums; }
-  .mg .side .lb{ grid-column:1/-1; font-size:10.5px; color:var(--text-muted); }
-  .mg .mbar{ grid-column:1/-1; height:6px; border-radius:3px; background:color-mix(in srgb, var(--text-primary) 6%, transparent); position:relative; }
-  .mg .mbar i{ position:absolute; left:0; top:0; bottom:0; border-radius:3px; }
+  .mg > *{ min-width:0; }
+  .side{ display:grid; grid-template-columns:1fr auto; gap:4px 8px; align-items:baseline; font-size:13px; }
+  .side .pct{ font-family:"Zen Old Mincho",serif; font-size:22px; font-variant-numeric:tabular-nums; }
+  .side .mbar{ grid-column:1/-1; height:10px; border-radius:5px; background:rgba(11,11,11,.05); overflow:hidden; }
+  .side .mbar i{ display:block; height:100%; width:0; border-radius:5px; transition:width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .side .lb{ grid-column:1/-1; font-size:10.5px; color:var(--text-muted); }
 
-  /* ---- size chart ---- */
-  .legend{ display:flex; gap:14px; font-size:12px; color:var(--text-secondary); margin-bottom:10px; flex-wrap:wrap; }
-  .legend span:before{ content:""; display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; background:var(--k); }
-  .size-chart{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; box-shadow:var(--card-shadow); padding:14px 16px; }
-  .srow{ display:grid; grid-template-columns:150px 1fr 74px; gap:10px; align-items:center; padding:4px 0; font-size:12.5px; }
-  .srow .nm{ font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .srow .nm small{ font-weight:500; color:var(--text-muted); margin-left:4px; font-size:10.5px; }
-  .srow.jp .nm{ color:var(--jp); }
-  .sbar{ height:14px; border-radius:4px; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
-  .srow .v{ text-align:right; font-weight:900; font-variant-numeric:tabular-nums; }
-
-  /* ---- map ---- */
-  .map{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr)); gap:16px; align-items:start; }
-  .cat-block{ border-radius:14px; padding:12px; background:color-mix(in srgb, var(--c) 7%, var(--surface-1)); border:1px solid color-mix(in srgb, var(--c) 28%, transparent); }
-  .cat-block h3{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:14px; font-weight:900; color:#fff; background:var(--c); display:inline-block; padding:4px 12px; border-radius:99px; margin:0 0 10px; }
-  .cat-block h3 .n{ font-weight:500; opacity:.85; margin-left:4px; font-size:12px; }
-  .cards{ display:grid; gap:10px; }
-  .co-card{ background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:12px 13px; box-shadow:0 1px 2px rgba(11,11,11,0.04); }
+  /* company map */
+  .cat{ margin-top:22px; }
+  .cat:first-child{ margin-top:0; }
+  .cat-head{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .cat-head h3{ font-size:19px; }
+  .cat-head .n{ font-size:11px; font-weight:700; color:var(--text-muted); }
+  .cos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:12px; }
+  .co{ background:var(--surface-1); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:var(--card-shadow); border-top:4px solid color-mix(in srgb, var(--c) 70%, #fff); transition:transform .16s, box-shadow .16s; }
+  .co:hover{ transform:translateY(-3px); box-shadow:0 2px 4px rgba(11,11,11,0.06), 0 16px 34px rgba(11,11,11,0.10); }
   .co-head{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
-  .co-name{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:16.5px; line-height:1.3; }
-  .co-name small{ display:block; font-family:"Zen Kaku Gothic New",sans-serif; font-size:10.5px; color:var(--text-muted); font-weight:500; }
-  .co-country{ font-size:11px; font-weight:700; flex:none; background:var(--page-plane); border:1px solid var(--border); border-radius:99px; padding:1px 8px; }
-  .co-note{ font-size:12px; line-height:1.65; color:var(--text-secondary); margin:6px 0 6px; }
-  .co-brands{ display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
-  .co-brands span{ font-size:10.5px; color:color-mix(in srgb, var(--c) 75%, #000); background:color-mix(in srgb, var(--c) 10%, transparent); border-radius:4px; padding:1px 6px; }
-  .fig{ display:grid; grid-template-columns:auto 1fr auto; gap:3px 10px; align-items:baseline; border-top:1px dashed var(--border); padding-top:7px; }
+  .co-name{ font-family:"Zen Old Mincho",serif; font-weight:900; font-size:18px; line-height:1.3; }
+  .co-country{ font-size:11px; font-weight:700; flex:none; background:var(--page-plane); border:1px solid var(--border); border-radius:99px; padding:1px 9px; color:var(--text-secondary); }
+  .co-note{ font-size:12.5px; line-height:1.7; color:var(--text-secondary); margin:7px 0; }
+  .co-brands{ display:flex; flex-wrap:wrap; gap:4px; margin-bottom:10px; }
+  .co-brands span{ font-size:10.5px; font-weight:700; color:color-mix(in srgb, var(--c) 75%, #000); background:color-mix(in srgb, var(--c) 10%, #fff); border-radius:99px; padding:2px 8px; }
+  .fig{ display:grid; grid-template-columns:auto 1fr auto; gap:3px 10px; align-items:baseline; border-top:1px dashed var(--border); padding-top:9px; }
   .fig .k{ font-size:11px; color:var(--text-muted); font-weight:700; }
-  .fig .v{ font-size:17px; font-weight:900; text-align:right; font-variant-numeric:tabular-nums; }
-  .fig .v small{ font-size:11px; font-weight:500; color:var(--text-secondary); margin-left:1px; }
-  .fig .v.sub{ font-size:12.5px; font-weight:700; color:var(--text-secondary); }
-  .chg{ font-size:11.5px; font-weight:700; min-width:58px; text-align:right; font-variant-numeric:tabular-nums; }
+  .fig .v{ font-family:"Zen Old Mincho",serif; font-size:20px; text-align:right; font-variant-numeric:tabular-nums; }
+  .fig .v small{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:11px; color:var(--text-secondary); }
+  .fig .v.sub{ font-family:"Zen Kaku Gothic New",sans-serif; font-size:12.5px; font-weight:700; color:var(--text-secondary); }
+  .chg{ font-size:11.5px; font-weight:700; min-width:52px; text-align:right; font-variant-numeric:tabular-nums; }
   .chg.up{ color:var(--up); } .chg.down{ color:var(--down); } .chg.flat{ color:var(--text-muted); }
-  .co-foot{ display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-top:7px; font-size:10.5px; color:var(--text-muted); }
+  .co-foot{ display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-top:8px; font-size:10.5px; color:var(--text-muted); }
   .co-foot a{ font-weight:700; text-decoration:none; }
 
-  /* ---- insights ---- */
-  .ins{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:12px; }
-  .ins div{ background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--card-shadow); font-size:13px; line-height:1.75; color:var(--text-secondary); }
-  .ins b{ display:block; font-family:"Zen Old Mincho",serif; font-size:16px; color:var(--text-primary); margin-bottom:6px; }
-  .ins .no{ font-family:"Zen Old Mincho",serif; font-weight:900; color:var(--jp); font-size:22px; line-height:1; display:block; margin-bottom:6px; }
+  .about{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:12px; }
+  .about div{ background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:16px; font-size:13px; line-height:1.75; color:var(--text-secondary); }
+  .about b{ display:flex; align-items:center; gap:8px; color:var(--text-primary); font-size:14.5px; margin-bottom:6px; }
 
-  footer{ padding:34px 0 60px; border-top:1px solid var(--border); }
-  .sources{ display:grid; gap:6px; margin-top:14px; font-size:12px; color:var(--text-secondary); line-height:1.7; }
-  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:22px; line-height:1.8; max-width:76ch; }
+  footer{ position:relative; z-index:1; padding:34px 0 60px; border-top:1px solid var(--border); }
+  .sources{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:6px 18px; margin-top:14px; font-size:12px; color:var(--text-secondary); line-height:1.7; }
+  .disclaimer{ font-size:11.5px; color:var(--text-muted); margin-top:20px; line-height:1.85; max-width:78ch; }
 
-  @media (max-width:720px){
-    .hero{ padding:26px 18px 22px; }
-    .hero .grid{ grid-template-columns:1fr; }
-    .globe{ max-width:220px; order:-1; }
-    .srow{ grid-template-columns:104px 1fr 62px; font-size:11.5px; }
-    .srow .nm small{ display:none; }
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .tag, .pin{ animation:none; } .pin{ opacity:0; }
+    .bub .c, .du-vis .o{ transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+  @media (max-width:820px){
+    .hero{ grid-template-columns:1fr; gap:14px; }
+    .scene{ max-width:400px; }
+    .bubbles{ --k:.78; }
+  }
+  @media (max-width:520px){
+    .hero{ padding:28px 0 18px; }
+    .tag .v{ font-size:18px; }
+    .bubbles{ --k:.6; gap:12px 8px; }
     .mg{ grid-template-columns:1fr; }
-    .map{ grid-template-columns:1fr; }
+    .lead-stat .x{ font-size:38px; }
   }
 </style>
 </head>
 <body>
+
+<div class="bg-deco" aria-hidden="true"><div class="wave"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
 <div class="wrap">
 
   <nav class="top-nav">
@@ -171,97 +221,127 @@
     <a href="en/global_map.html" lang="en" style="margin-left:auto;color:#2a78d6;font-weight:700;">English</a>
   </nav>
 
-  <div class="hero">
-    <div class="grid">
-      <div>
-        <span class="eyebrow">GLOBAL FOOD MAKERS</span>
-        <h1>海外食品メーカー<br>業界マップ</h1>
-        <p>ネスレ、ペプシコ、JBSなど、世界の大手食品メーカー14社を7分野に整理し、最新の通期売上高をまとめました。円に換算して、<a href="industry_map.html">日本の大手20社</a>と規模や利益率を比べています。</p>
-        <div class="hero-stat" id="hero-stat" hidden>
-          <div class="num" id="hero-num"></div>
-          <div class="desc" id="hero-desc"></div>
-        </div>
-        <div class="meta-row">
-          <span id="updated-at">データ取得日を読み込み中…</span>
-          <span>出典：各社の決算発表（詳細は末尾）</span>
-        </div>
+  <header class="hero">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>各社の決算発表に基づく</div>
+      <h1>海外食品メーカー<br><span class="hl">業界マップ<span class="brush"></span></span></h1>
+      <div class="sub">世界の大手14社を、日本の大手と並べて見る</div>
+      <p>ネスレ、ペプシコ、ダノンと比べると、日本の食品メーカーはどれくらいの大きさなのでしょうか。世界の大手14社の最新の通期売上高を円に換算し、<a href="industry_map.html">日本の大手20社</a>と規模や利益率を比べました。</p>
+      <div class="lead-stat" id="lead" hidden>
+        <div class="x" id="lead-x"></div>
+        <div class="t" id="lead-t"></div>
       </div>
-      <svg class="globe" viewBox="0 0 320 300" aria-hidden="true">
+      <div class="facts">
+        <span><b>14</b>社</span>
+        <span><b>7</b>分野</span>
+        <span id="updated-at"></span>
+      </div>
+    </div>
+
+    <div class="scene">
+      <svg viewBox="0 0 420 420" role="img" aria-label="木の台座の卓上地球儀のイラスト。スイス・米国・ブラジル・日本にピンが立ち、売上高の札が浮かんでいる">
         <defs>
-          <radialGradient id="gl" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#3d5a92"/><stop offset="1" stop-color="#22325a"/></radialGradient>
+          <radialGradient id="g-sea" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#5ea3ee"/><stop offset=".6" stop-color="#2f7fdc"/><stop offset="1" stop-color="#1f5fb0"/></radialGradient>
+          <linearGradient id="g-wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a06a"/><stop offset="1" stop-color="#a86b3c"/></linearGradient>
+          <clipPath id="clip-globe"><circle cx="210" cy="186" r="140"/></clipPath>
         </defs>
-        <circle cx="160" cy="150" r="118" fill="url(#gl)" stroke="#f5f1e8" stroke-opacity=".5" stroke-width="2"/>
-        <g fill="none" stroke="#f5f1e8" stroke-opacity=".22" stroke-width="1.4">
-          <ellipse cx="160" cy="150" rx="118" ry="40"/><ellipse cx="160" cy="150" rx="118" ry="84"/>
-          <ellipse cx="160" cy="150" rx="40" ry="118"/><ellipse cx="160" cy="150" rx="84" ry="118"/>
-          <line x1="42" y1="150" x2="278" y2="150"/><line x1="160" y1="32" x2="160" y2="268"/>
+        <ellipse cx="210" cy="398" rx="150" ry="14" fill="rgba(11,11,11,.08)"/>
+        <!-- stand -->
+        <path d="M150 384c0-12 26-20 60-20s60 8 60 20z" fill="url(#g-wood)"/>
+        <rect x="140" y="382" width="140" height="12" rx="6" fill="#8a5530"/>
+        <rect x="202" y="330" width="16" height="40" rx="5" fill="#a86b3c"/>
+        <!-- brass meridian -->
+        <path d="M118 62A160 160 0 1 0 330 300" fill="none" stroke="#e0b25a" stroke-width="9" stroke-linecap="round"/>
+        <path d="M118 62A160 160 0 1 0 330 300" fill="none" stroke="#f4d48a" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+        <circle cx="210" cy="186" r="140" fill="url(#g-sea)"/>
+        <g clip-path="url(#clip-globe)">
+          <g fill="none" stroke="#ffffff" stroke-opacity=".2" stroke-width="1.5">
+            <ellipse cx="210" cy="186" rx="140" ry="48"/><ellipse cx="210" cy="186" rx="140" ry="100"/>
+            <ellipse cx="210" cy="186" rx="48" ry="140"/><ellipse cx="210" cy="186" rx="100" ry="140"/>
+            <line x1="70" y1="186" x2="350" y2="186"/>
+          </g>
+          <g transform="translate(20.200 8.100) scale(1.186)">
+            <g fill="#3f9f6e">
+              <path d="M88 92c18-12 40-10 52 2 6 8-4 16-12 22-6 6-2 18-12 22-10 3-18-8-26-12-10-5-18-14-14-22 2-6 6-9 12-12z"/>
+              <path d="M120 170c10-4 22 2 24 14 3 14-4 30-12 44-4 8-12 6-14-2-3-14-10-24-8-38 1-8 4-15 10-18z"/>
+              <path d="M176 82c12-6 30-4 40 4 8 6 2 14-6 16-10 2-14 10-24 10-10 0-16-8-16-16 0-6 2-10 6-14z"/>
+              <path d="M186 124c12-2 22 6 24 18 2 14-6 28-16 34-8 4-14-4-16-12-3-14-6-26-2-34 2-4 5-6 10-6z"/>
+              <path d="M226 110c10-4 22 0 26 10 3 8-4 14-12 14-8 1-14 8-20 4-6-4-4-16 0-22 2-3 4-5 6-6z"/>
+              <path d="M240 186c8-2 18 2 20 10 1 8-6 12-14 12-8 0-14-6-12-14 1-4 3-7 6-8z"/>
+            </g>
+            <g fill="#8fd0ad" opacity=".55">
+              <path d="M96 98c10-6 22-6 30-1-8 2-20 6-30 1z"/><path d="M180 88c8-4 20-3 28 1-10 2-18 4-28-1z"/><path d="M124 176c6-2 12 0 15 5-6 0-10-1-15-5z"/>
+            </g>
+          </g>
+          <ellipse cx="160" cy="118" rx="60" ry="34" fill="#fff" opacity=".13" transform="rotate(-28 160 118)"/>
         </g>
-        <g fill="#1baf7a" opacity=".85">
-          <path d="M88 92c18-12 40-10 52 2 6 8-4 16-12 22-6 6-2 18-12 22-10 3-18-8-26-12-10-5-18-14-14-22 2-6 6-9 12-12z"/>
-          <path d="M120 170c10-4 22 2 24 14 3 14-4 30-12 44-4 8-12 6-14-2-3-14-10-24-8-38 1-8 4-15 10-18z"/>
-          <path d="M176 82c12-6 30-4 40 4 8 6 2 14-6 16-10 2-14 10-24 10-10 0-16-8-16-16 0-6 2-10 6-14z"/>
-          <path d="M186 124c12-2 22 6 24 18 2 14-6 28-16 34-8 4-14-4-16-12-3-14-6-26-2-34 2-4 5-6 10-6z"/>
-          <path d="M226 110c10-4 22 0 26 10 3 8-4 14-12 14-8 1-14 8-20 4-6-4-4-16 0-22 2-3 4-5 6-6z"/>
-          <path d="M240 186c8-2 18 2 20 10 1 8-6 12-14 12-8 0-14-6-12-14 1-4 3-7 6-8z"/>
-        </g>
-        <!-- Japan pin -->
-        <circle cx="258" cy="122" r="6" fill="#d03b3b" stroke="#fff" stroke-width="2"/>
-        <!-- floating labels -->
-        <g font-family="Zen Kaku Gothic New, sans-serif" font-weight="900" font-size="12">
-          <g transform="translate(6,46)"><rect width="104" height="26" rx="13" fill="#ffd36b"/><text x="52" y="17.5" text-anchor="middle" fill="#1f2a44">ネスレ（スイス）</text></g>
-          <g transform="translate(14,214)"><rect width="110" height="26" rx="13" fill="#f5f1e8"/><text x="55" y="17.5" text-anchor="middle" fill="#1f2a44">JBS（ブラジル）</text></g>
-          <g transform="translate(206,30)"><rect width="104" height="26" rx="13" fill="#f5f1e8"/><text x="52" y="17.5" text-anchor="middle" fill="#1f2a44">ペプシコ（米）</text></g>
-          <g transform="translate(222,238)"><rect width="92" height="26" rx="13" fill="#d03b3b"/><text x="46" y="17.5" text-anchor="middle" fill="#fff">日本勢</text></g>
-        </g>
-        <g fill="#ffd36b"><circle cx="70" cy="128" r="3"/><circle cx="292" cy="160" r="2.5"/><circle cx="40" cy="176" r="2"/></g>
+        <circle cx="210" cy="186" r="140" fill="none" stroke="#1f5fb0" stroke-opacity=".35" stroke-width="2"/>
+        <!-- pins: USA, Switzerland, Brazil, Japan -->
+        <g><circle class="pin" cx="150" cy="140" r="7" fill="#eda100"/><circle cx="150" cy="140" r="6" fill="#eda100" stroke="#fff" stroke-width="2.5"/></g>
+        <g><circle class="pin p2" cx="246" cy="118" r="7" fill="#eda100"/><circle cx="246" cy="118" r="6" fill="#eda100" stroke="#fff" stroke-width="2.5"/></g>
+        <g><circle class="pin p3" cx="176" cy="248" r="7" fill="#eda100"/><circle cx="176" cy="248" r="6" fill="#eda100" stroke="#fff" stroke-width="2.5"/></g>
+        <g><circle class="pin p4" cx="318" cy="152" r="8" fill="#d03b3b"/><circle cx="318" cy="152" r="7" fill="#d03b3b" stroke="#fff" stroke-width="2.5"/></g>
       </svg>
+      <div class="tag t1" id="tag-nestle" style="--tc:var(--world)"><span>ネスレ・スイス</span><span class="v">…</span><span>年間売上高</span></div>
+      <div class="tag t2" id="tag-pepsi" style="--tc:var(--world)"><span>ペプシコ・米国</span><span class="v">…</span><span>年間売上高</span></div>
+      <div class="tag t3" id="tag-jbs" style="--tc:var(--world)"><span>JBS・ブラジル</span><span class="v">…</span><span>年間売上高</span></div>
+      <div class="tag t4" id="tag-jp" style="--tc:var(--jp)"><span id="tag-jp-name">日本最大手</span><span class="v">…</span><span>年間売上高</span></div>
+      <div class="caption">売上高は2025年の平均的な為替レートで円換算</div>
     </div>
-  </div>
+  </header>
 
-  <section class="first" id="compare-sec">
+  <section class="first reveal" id="scale-sec">
     <div class="section-head">
-      <h2>日本の大手と比べると？</h2>
-      <div class="section-sub">分野ごとに、海外の最大手と日本の最大手の売上高を円換算で並べました（日本は<a href="industry_map.html">業界マップ</a>の各分野トップ）。</div>
+      <div class="en">Drawn to scale</div>
+      <h2>大きさを円で比べると</h2>
+      <div class="section-sub">円の面積が年間売上高に比例しています。海外14社に、日本の売上高上位5社を加えました。</div>
     </div>
-    <div class="vs-grid" id="vs-grid"></div>
+    <div class="panel">
+      <div class="legend"><span style="--k:var(--world)">海外メーカー</span><span style="--k:var(--jp)">日本のメーカー</span></div>
+      <div class="bubbles" id="bubbles"></div>
+      <div class="bub-foot"><span id="bub-note"></span><span>年間売上高（円換算）</span></div>
+    </div>
   </section>
 
-  <section id="margin-sec">
+  <section class="reveal" id="duel-sec">
     <div class="section-head">
+      <div class="en">Category by category</div>
+      <h2>海外の最大手と日本の最大手</h2>
+      <div class="section-sub">分野ごとに、海外の最大手と日本の最大手を並べました。円の大きさは、カードの中で売上高に比例しています。</div>
+    </div>
+    <div class="duels" id="duels"></div>
+  </section>
+
+  <section class="reveal" id="margin-sec">
+    <div class="section-head">
+      <div class="en">Profitability</div>
       <h2>もうけの効率（営業利益率）の比較</h2>
-      <div class="section-sub">海外勢は各社が重視する「調整後」の利益率（一時的な損益を除く）を、日本勢は決算短信の営業利益率を使っています。計算方法が異なるため、目安としてご覧ください。</div>
+      <div class="section-sub">営業利益率は、売上高のうち本業のもうけが占める割合です。海外勢は各社が重視する「調整後」の利益率（一時的な損益を除く）を、日本勢は決算短信の営業利益率を使っています。計算方法が異なるため、目安としてご覧ください。</div>
     </div>
-    <div class="mg-wrap" id="mg-wrap"></div>
+    <div class="panel" id="mg-wrap"></div>
   </section>
 
-  <section id="size-sec">
+  <section class="reveal" id="map-sec">
     <div class="section-head">
-      <h2>売上高の規模ランキング（円換算）</h2>
-      <div class="section-sub">海外14社に、日本の売上高上位5社を加えて並べました。単位は兆円。</div>
-    </div>
-    <div class="legend"><span style="--k:var(--world)">海外メーカー</span><span style="--k:var(--jp)">日本のメーカー</span></div>
-    <div class="size-chart" id="size-chart"></div>
-  </section>
-
-  <section id="map-sec">
-    <div class="section-head">
+      <div class="en">Company profiles</div>
       <h2>分野別マップ</h2>
       <div class="section-sub">売上高は決算通貨のまま表示し、下に円換算を添えています。右の％は前期比（<span style="color:var(--up);font-weight:700;">▲増加</span>／<span style="color:var(--down);font-weight:700;">▼減少</span>、決算通貨ベース）。</div>
     </div>
-    <div class="map" id="map"></div>
+    <div id="map"></div>
   </section>
 
-  <section id="ins-sec">
+  <section class="reveal">
     <div class="section-head">
+      <div class="en">What the comparison shows</div>
       <h2>比べて分かる3つのこと</h2>
     </div>
-    <div class="ins" id="ins"></div>
+    <div class="about" id="ins"></div>
   </section>
 
   <footer>
     <h2 style="font-size:18px;">出典・注記</h2>
     <div class="sources" id="sources"></div>
-    <div class="disclaimer" id="disclaimer">
+    <div class="disclaimer">
       ・売上高は各社の連結の実績値です（各社の決算発表・年次報告をもとに、報道で数値を確認）。決算期は会社ごとに異なります。<br>
       ・<span id="fx-note"></span><br>
       ・前期比は決算通貨ベースです。円換算後の伸びとは一致しません。<br>
@@ -274,116 +354,118 @@
   </footer>
 </div>
 
+<script src="en/icons.js"></script>
 <script>
 (function(){
   "use strict";
   var G, J;
-  function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
-  function jpy(c){ return c.sales * G.meta.fx[c.currency]; }          // 億円
-  function cho(oku){ return (Math.round(oku/1000)/10).toFixed(1); }   // 兆円（小数1桁）
-  function fmtOku(v){ if(v>=10000){ var a=Math.floor(v/10000), r=Math.round(v%10000); return a+"兆"+(r? r.toLocaleString("ja-JP"):""); } return Math.round(v).toLocaleString("ja-JP"); }
-  function fmtLocal(c){
-    var v = c.sales;
-    if(c.currency==="KRW") return (v/10000).toFixed(1)+'<small>兆ウォン</small>';
-    return v.toLocaleString("ja-JP",{maximumFractionDigits:1})+'<small>'+G.meta.currency_label[c.currency]+'</small>';
-  }
+  var JP = {"2802":"Ajinomoto","2801":"Kikkoman","2809":"Kewpie","2810":"House Foods","2811":"Kagome","1332":"Nissui","2871":"Nichirei","1333":"Umios (Maruha Nichiro)",
+    "2897":"Nissin Foods","2875":"Toyo Suisan (Maruchan)","2206":"Ezaki Glico","2201":"Morinaga & Co.","2229":"Calbee","2226":"Koikeya","2220":"Kameda Seika",
+    "2269":"Meiji Holdings","2270":"Megmilk Snow Brand","2264":"Morinaga Milk","2212":"Yamazaki Baking","2002":"Nisshin Seifun Group"};
+  var CAT = { general:["globe","#2a78d6"], meat:["dish","#b0553a"], seasoning:["soy","#c9781f"], confectionery:["candy","#8a5cd1"], dairy:["bottle","#2f9a8a"], noodle:["noodle","#c79200"], bakery:["bread","#a8763c"] };
+  function jn(c){ return c.name; }
+  function sn(c){ return c.name; }
+  function fy(s){ return s; }
+  function usd(c){ return c.sales * G.meta.fx[c.currency]; }
+  function jusd(c){ return c.sales; }
+  function bn(v){ return v>=10000 ? (Math.round(v/1000)/10).toFixed(1)+"兆円" : Math.round(v).toLocaleString("ja-JP")+"億円"; }
+  var CUR = { USD:"US$", EUR:"€", CHF:"CHF ", CNY:"CNY ", MXN:"MXN ", KRW:"KRW " };
+  function fmtLocal(c){ if(c.currency==="KRW") return (c.sales/10000).toFixed(1)+"<small>兆ウォン</small>"; return c.sales.toLocaleString("ja-JP",{maximumFractionDigits:1})+"<small>"+G.meta.currency_label[c.currency]+"</small>"; }
   function chg(p){
-    if(p===null||p===undefined) return '<span class="chg flat">—</span>';
+    if(p===null||p===undefined) return '<span class="chg flat">–</span>';
     var cls = p>=0.5?"up":(p<=-0.5?"down":"flat"), m = cls==="up"?"▲":(cls==="down"?"▼":"→");
     return '<span class="chg '+cls+'">'+m+Math.abs(p).toFixed(1)+'%</span>';
   }
-  function cat(k){ return G.categories.find(function(c){ return c.key===k; }); }
+  function ic(name, size, color){
+    if(name==="bread") return '<svg class="ico" viewBox="0 0 24 24" width="'+size+'" height="'+size+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11c-2.500-1-2-6 2-6h10c4 0 4.500 5 2 6v7.500a1.500 1.500 0 0 1-1.500 1.500h-11A1.500 1.500 0 0 1 5 18.500z"/><path d="M9 14v2M15 14v2"/></svg>';
+    return (window.JL && JL.icon) ? JL.icon(name, size, color, 2) : "";
+  }
   function jpTop(jk){ return J.companies.filter(function(c){ return c.category===jk; }).sort(function(a,b){ return b.sales-a.sales; })[0]; }
-  function jpBy(name){ return J.companies.find(function(c){ return c.name===name; }); }
-  function grow(sel){ requestAnimationFrame(function(){ setTimeout(function(){
-    document.querySelectorAll(sel).forEach(function(el){ el.style.width = el.getAttribute("data-w"); });
-  }, 60); }); }
+  function jpBy(code){ return J.companies.find(function(c){ return c.code===code; }); }
+  function gco(name){ return G.companies.find(function(c){ return c.name_en===name; }); }
 
   function renderHero(){
-    var nestle = G.companies[0], aji = jpTop("seasoning");
-    var x = jpy(nestle)/aji.sales;
-    document.getElementById("hero-stat").hidden = false;
-    document.getElementById("hero-num").innerHTML = x.toFixed(1)+"<small>倍</small>";
-    document.getElementById("hero-desc").innerHTML = "世界最大のネスレ（約"+cho(jpy(nestle))+"兆円）は、<br>日本最大の"+aji.name+"（約"+cho(aji.sales)+"兆円）の売上高の"+x.toFixed(1)+"倍";
+    var nestle = gco("Nestlé"), aji = J.companies.slice().sort(function(a,b){ return b.sales-a.sales; })[0], x = usd(nestle)/jusd(aji);
+    document.getElementById("lead").hidden = false;
+    document.getElementById("lead-x").innerHTML = x.toFixed(1)+"<small>倍</small>";
+    document.getElementById("lead-t").innerHTML = "世界最大の<b>ネスレ</b>（約"+bn(usd(nestle))+"）は、<br>日本最大の<b>"+jn(aji)+"</b>（約"+bn(jusd(aji))+"）の"+x.toFixed(1)+"倍";
+    document.querySelector("#tag-nestle .v").textContent = bn(usd(nestle));
+    document.querySelector("#tag-pepsi .v").textContent = bn(usd(gco("PepsiCo")));
+    document.querySelector("#tag-jbs .v").textContent = bn(usd(gco("JBS")));
+    document.querySelector("#tag-jp .v").textContent = bn(jusd(aji));
+    document.getElementById("tag-jp-name").textContent = jn(aji)+"・日本";
     var p = G.meta.generated_at.split("-");
-    document.getElementById("updated-at").textContent = "データ取得日："+p[0]+"年"+(+p[1])+"月"+(+p[2])+"日";
+    document.getElementById("updated-at").innerHTML = "<b>"+p[0]+"年"+(+p[1])+"月"+(+p[2])+"日</b>データ取得";
   }
 
-  function renderVs(){
+  function renderBubbles(){
+    var rows = G.companies.map(function(c){ return { nm:sn(c), sub:c.country, v:usd(c), jp:false }; });
+    J.companies.slice().sort(function(a,b){ return b.sales-a.sales; }).slice(0,5).forEach(function(c){ rows.push({ nm:jn(c), sub:"日本", v:jusd(c), jp:true }); });
+    rows.sort(function(a,b){ return b.v-a.v; });
+    var k = 176/Math.sqrt(rows[0].v);
+    document.getElementById("bubbles").innerHTML = rows.map(function(r,i){
+      var d = Math.round(Math.sqrt(r.v)*k), inside = d>=96;
+      return '<div class="bub'+(r.jp?' jp':'')+'" style="--d:'+d+'"><div class="c" style="transition-delay:'+(i*45)+'ms">'+
+        (inside ? '<div><b>'+r.nm+'</b><span>'+bn(r.v)+'</span></div>' : '')+'</div>'+
+        (inside ? '<div class="cap"><small>'+r.sub+'</small></div>' : '<div class="cap">'+r.nm+'<small>'+bn(r.v)+'・'+r.sub+'</small></div>')+'</div>';
+    }).join("");
+    var jt = J.companies.reduce(function(s,c){ return s+jusd(c); },0);
+    document.getElementById("bub-note").textContent = "参考：日本の大手20社の売上高合計は約"+bn(jt)+"です。";
+  }
+
+  var VSNOTE = {
+    seasoning: function(w,j){ return "海外の調味料大手はケチャップ・チーズ・加工肉までの総合型。日本の"+j+"はアミノ酸の技術を軸に、海外売上の比率が高いのが特徴です。"; },
+    confectionery: function(w,j){ return "ビスケット・チョコレートで世界展開する"+w+"に対し、日本の菓子メーカーは国内中心。売上の差が最も大きい分野です。"; },
+    dairy: function(w,j){ return "ヨーグルトや水を世界で売る"+w+"に対し、日本の乳業は国内の牛乳・ヨーグルト・菓子が中心です。"; },
+    noodle: function(w,j){ return w+"は売上の約6割が飲料のため単純比較はできませんが、即席麺の分野では日本勢も世界で戦える規模です。"; },
+    bakery: function(w,j){ return "製パンは日本の"+j+"も世界有数の規模。"+w+"は北米・中南米など30か国以上で展開しています。"; }
+  };
+  function renderDuels(){
     var html = "";
     G.categories.filter(function(c){ return c.jp_key; }).forEach(function(ct){
-      var w = G.companies.filter(function(c){ return c.category===ct.key; }).sort(function(a,b){ return jpy(b)-jpy(a); })[0];
-      var j = jpTop(ct.jp_key);
-      var wv = jpy(w), jv = j.sales, mx = Math.max(wv,jv), x = wv/jv;
-      var col = cssVar(ct.color);
-      function row(nm, sub, v, color){
-        var pct = v/mx*100;
-        return '<div class="vrow"><div class="nm">'+nm+'<span class="fl">'+sub+'</span></div>'+
-          '<div class="vbar"><i class="gw" data-w="'+pct.toFixed(1)+'%" style="background:'+color+'"></i><b class="'+(pct<34?'out':'')+'" style="'+(pct<34?'left:calc('+pct.toFixed(1)+'% + 6px)':'')+'">'+fmtOku(v)+'億円</b></div></div>';
-      }
-      html += '<div class="vs" style="--c:'+col+'"><div class="cat">'+ct.label+'</div>'+
-        '<div class="times">'+(x>=1? x.toFixed(1)+'倍' : (1/x).toFixed(1)+'分の1')+'<small>海外最大手 ÷ 日本最大手</small></div>'+
-        row(w.name, w.country+"・"+w.fy, wv, cssVar("--world"))+
-        row(j.name, "日本・"+j.fy, jv, cssVar("--jp"))+
-        '<div class="foot">'+vsNote(ct.key, w, j)+'</div></div>';
+      var w = G.companies.filter(function(c){ return c.category===ct.key; }).sort(function(a,b){ return usd(b)-usd(a); })[0];
+      var j = jpTop(ct.jp_key), wv = usd(w), jv = jusd(j), mx = Math.max(wv,jv), K = CAT[ct.key];
+      var dw = Math.round(Math.sqrt(wv/mx)*120), dj = Math.round(Math.sqrt(jv/mx)*120);
+      html += '<div class="duel" style="--c:'+K[1]+'"><div class="du-top"><span class="badge">'+ic(K[0],24,K[1])+'</span><span class="du-cat">'+ct.label+'</span>'+
+        '<span class="du-x">'+(wv/jv).toFixed(1)+'<small>倍</small></span></div>'+
+        '<div class="du-vis"><div class="o w" style="width:'+dw+'px;height:'+dw+'px"></div><div class="o j" style="width:'+dj+'px;height:'+dj+'px;transition-delay:.15s"></div></div>'+
+        '<div class="du-rows">'+
+          '<div class="du-row"><i style="background:var(--world)"></i><span class="nm">'+sn(w)+'<small>'+w.country+'</small></span><span class="v">'+bn(wv)+'</span></div>'+
+          '<div class="du-row"><i style="background:var(--jp)"></i><span class="nm">'+jn(j)+'<small>日本</small></span><span class="v">'+bn(jv)+'</span></div>'+
+        '</div><div class="du-note">'+VSNOTE[ct.key](sn(w), jn(j))+'</div></div>';
     });
-    document.getElementById("vs-grid").innerHTML = html;
-  }
-  function vsNote(k, w, j){
-    var n = {
-      seasoning: "海外の調味料大手はケチャップ・チーズ・加工肉までの総合型。日本の"+j.name+"はアミノ酸の技術を軸に、海外売上の比率が高いのが特徴です。",
-      confectionery: "ビスケット・チョコレートで世界展開する"+w.name+"に対し、日本の菓子メーカーは国内中心。売上の差が最も大きい分野です。",
-      dairy: "ヨーグルトや水を世界で売る"+w.name+"に対し、日本の乳業は国内の牛乳・ヨーグルト・菓子が中心です。",
-      noodle: w.name+"は売上の約6割が飲料のため単純比較はできませんが、即席麺の分野では日本勢も世界で戦える規模です。",
-      bakery: "製パンは日本の"+j.name+"も世界有数の規模。"+w.name+"は北米・中南米など30か国以上で展開しています。"
-    };
-    return n[k]||"";
+    document.getElementById("duels").innerHTML = html;
   }
 
   function renderMargin(){
-    var pairs = [
-      ["ネスレ","味の素"], ["ダノン","明治ホールディングス"], ["モンデリーズ","江崎グリコ"],
-      ["マコーミック","キッコーマン"]
-    ];
-    var html = "";
-    pairs.forEach(function(p){
-      var w = G.companies.find(function(c){ return c.name===p[0]; }), j = jpBy(p[1]);
-      if(!w||!j||w.margin==null) return;
-      var jm = j.op/j.sales*100, mx = 25;
+    var pairs = [["Nestlé","2802"], ["Danone","2269"], ["Mondelēz International","2206"], ["McCormick & Company","2801"]];
+    document.getElementById("mg-wrap").innerHTML = pairs.map(function(p){
+      var w = gco(p[0]), j = jpBy(p[1]);
+      if(!w||!j||w.margin==null) return "";
+      var jm = j.op/j.sales*100, mx = 22;
       function side(nm, sub, m, color){
-        return '<div class="side"><span><b>'+nm+'</b></span><span class="pct" style="color:'+color+'">'+m.toFixed(1)+'%</span>'+
-          '<div class="mbar"><i style="width:'+Math.min(m/mx*100,100)+'%;background:'+color+'"></i></div><span class="lb">'+sub+'</span></div>';
+        return '<div class="side"><b>'+nm+'</b><span class="pct" style="color:'+color+'">'+m.toFixed(1)+'%</span>'+
+          '<div class="mbar"><i data-w="'+Math.min(m/mx*100,100).toFixed(1)+'%" style="background:'+color+'"></i></div><span class="lb">'+sub+'</span></div>';
       }
-      html += '<div class="mg">'+side(w.name, w.country+"・"+w.margin_label, w.margin, cssVar("--world"))+side(j.name, "日本・営業利益率（"+j.fy+"）", jm, cssVar("--jp"))+'</div>';
-    });
-    document.getElementById("mg-wrap").innerHTML = html;
-  }
-
-  function renderSize(){
-    var rows = G.companies.map(function(c){ return { nm:c.name, sub:c.country, v:jpy(c), jp:false }; });
-    J.companies.slice().sort(function(a,b){ return b.sales-a.sales; }).slice(0,5).forEach(function(c){ rows.push({ nm:c.name, sub:"日本", v:c.sales, jp:true }); });
-    rows.sort(function(a,b){ return b.v-a.v; });
-    var mx = rows[0].v;
-    document.getElementById("size-chart").innerHTML = rows.map(function(r){
-      return '<div class="srow'+(r.jp?' jp':'')+'"><div class="nm">'+r.nm+'<small>'+r.sub+'</small></div>'+
-        '<div><div class="sbar gs" data-w="'+(r.v/mx*100).toFixed(1)+'%" style="background:'+(r.jp?cssVar("--jp"):cssVar("--world"))+'"></div></div>'+
-        '<div class="v">'+cho(r.v)+'兆円</div></div>';
+      return '<div class="mg">'+side(sn(w), w.country+"・"+w.margin_label, w.margin, "var(--world)")+
+        side(jn(j), "日本・営業利益率（"+j.fy+"）", jm, "var(--jp)")+'</div>';
     }).join("");
   }
 
   function renderMap(){
     var html = "";
     G.categories.forEach(function(ct){
-      var list = G.companies.filter(function(c){ return c.category===ct.key; }).sort(function(a,b){ return jpy(b)-jpy(a); });
+      var list = G.companies.filter(function(c){ return c.category===ct.key; }).sort(function(a,b){ return usd(b)-usd(a); });
       if(!list.length) return;
-      html += '<div class="cat-block" style="--c:'+cssVar(ct.color)+'"><h3>'+ct.label+'<span class="n">'+list.length+'社</span></h3><div class="cards">'+
+      var K = CAT[ct.key];
+      html += '<div class="cat" style="--c:'+K[1]+'"><div class="cat-head"><span class="badge">'+ic(K[0],24,K[1])+'</span><h3>'+ct.label+'</h3><span class="n">'+list.length+'社</span></div><div class="cos">'+
         list.map(function(c){
-          return '<div class="co-card"><div class="co-head"><div class="co-name">'+c.name+'<small>'+c.name_en+'</small></div><div class="co-country">'+c.country+'</div></div>'+
+          return '<div class="co"><div class="co-head"><div class="co-name">'+c.name+'<small style="display:block;font-family:Zen Kaku Gothic New,sans-serif;font-size:10.5px;color:var(--text-muted);font-weight:500;">'+c.name_en+'</small></div><div class="co-country">'+c.country+'</div></div>'+
             '<div class="co-note">'+c.note+'</div>'+
             '<div class="co-brands">'+c.brands.map(function(b){ return "<span>"+b+"</span>"; }).join("")+'</div>'+
             '<div class="fig"><span class="k">売上高</span><span class="v">'+fmtLocal(c)+'</span>'+chg(c.sales_g)+
-            '<span class="k">円換算</span><span class="v sub">約'+fmtOku(jpy(c))+'億円</span><span></span>'+
-            '<span class="k">利益率</span><span class="v sub">'+(c.margin!=null? c.margin.toFixed(1)+'%（'+c.margin_label+'）' : '—')+'</span><span></span></div>'+
+            '<span class="k">円換算</span><span class="v sub">約'+bn(usd(c))+'</span><span></span>'+
+            '<span class="k">利益率</span><span class="v sub">'+(c.margin!=null ? c.margin.toFixed(1)+'%（'+c.margin_label+'）' : '—')+'</span><span></span></div>'+
             '<div class="co-foot"><span>'+c.fy+'・連結</span><a href="'+c.source_url+'" target="_blank" rel="noopener">決算情報 →</a></div></div>';
         }).join("")+'</div></div>';
     });
@@ -391,15 +473,15 @@
   }
 
   function renderIns(){
-    var jtotal = J.companies.reduce(function(s,c){ return s+c.sales; },0);
-    var top3 = G.companies.slice().sort(function(a,b){ return jpy(b)-jpy(a); }).slice(0,3);
-    var t3 = top3.reduce(function(s,c){ return s+jpy(c); },0);
+    var jtotal = J.companies.reduce(function(s,c){ return s+jusd(c); },0);
+    var top3 = G.companies.slice().sort(function(a,b){ return usd(b)-usd(a); }).slice(0,3);
+    var t3 = top3.reduce(function(s,c){ return s+usd(c); },0);
     var items = [
-      ["規模の差は大きい", "海外上位3社（"+top3.map(function(c){return c.name;}).join("・")+"）の売上高は合計約"+cho(t3)+"兆円。日本の大手20社の合計（約"+cho(jtotal)+"兆円）を"+(t3>jtotal?"上回ります":"下回ります")+"。"],
-      ["原料高は世界共通の悩み", "カカオ高でハーシーやモンデリーズは値上げをしても利益が減少。原材料の値上がりを価格に転嫁する難しさは、日本の食品メーカーと同じです（<a href=\"trade.html\">輸入統計</a>も参照）。"],
-      ["為替で見え方が変わる", "ネスレは現地通貨では成長しましたが、スイスフラン高で売上は2%減。円換算の比較も為替次第で倍率が動くため、伸び率は決算通貨で見るのがおすすめです。"]
+      ["globe","#2a78d6","規模の差は大きい", "海外上位3社（"+top3.map(function(c){ return c.name; }).join("・")+"）の売上高は合計約"+bn(t3)+"。日本の大手20社の合計（約"+bn(jtotal)+"）を"+(t3>jtotal ? "上回ります" : "下回ります")+"。"],
+      ["candy","#d03b3b","原料高は世界共通の悩み", "カカオ高でハーシーやモンデリーズは値上げをしても利益が減少。原材料の値上がりを価格に転嫁する難しさは、日本の食品メーカーと同じです（<a href=\"trade.html\">輸入統計</a>も参照）。"],
+      ["yen","#eda100","為替で見え方が変わる", "ネスレは現地通貨では成長しましたが、スイスフラン高で売上は2%減。円換算の比較も為替次第で倍率が動くため、伸び率は決算通貨で見るのがおすすめです。"]
     ];
-    document.getElementById("ins").innerHTML = items.map(function(t,i){ return '<div><span class="no">0'+(i+1)+'</span><b>'+t[0]+'</b>'+t[1]+'</div>'; }).join("");
+    document.getElementById("ins").innerHTML = items.map(function(t){ return '<div><b>'+ic(t[0],20,t[1])+t[2]+'</b>'+t[3]+'</div>'; }).join("");
   }
 
   function renderSources(){
@@ -409,15 +491,23 @@
     }).join("") + '<div><b>日本のメーカー</b>：当サイト<a href="industry_map.html">業界マップ</a>（各社 決算短信・有価証券報告書）</div>';
   }
 
+  function decorate(){
+    function bars(){ document.querySelectorAll(".mbar i").forEach(function(e){ e.style.width = e.getAttribute("data-w"); }); }
+    var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
+      es.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); if(x.target.id==="margin-sec") setTimeout(bars, 150); io.unobserve(x.target); } });
+    }, { rootMargin:"0px 0px -60px 0px" }) : null;
+    document.querySelectorAll(".reveal").forEach(function(e){ if(io) io.observe(e); else e.classList.add("in"); });
+    if(!io) bars();
+  }
+
   Promise.all([
     fetch("global_map_data.json",{cache:"no-cache"}).then(function(r){ return r.json(); }),
     fetch("industry_map_data.json",{cache:"no-cache"}).then(function(r){ return r.json(); })
   ]).then(function(res){
     G = res[0]; J = res[1];
-    renderHero(); renderVs(); renderMargin(); renderSize(); renderMap(); renderIns(); renderSources();
-    grow(".gw"); grow(".gs");
+    renderHero(); renderBubbles(); renderDuels(); renderMargin(); renderMap(); renderIns(); renderSources(); decorate();
   }).catch(function(e){
-    document.getElementById("vs-grid").innerHTML = "<div class='vs'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
+    document.getElementById("bubbles").innerHTML = "<div style='padding:20px;color:#52514e;'>データの読み込みに失敗しました。ページを再読み込みしてください。</div>";
     console.error(e);
   });
 })();
