@@ -213,7 +213,7 @@
     <a href="trade.html">輸入統計</a>
     <a href="product_news.html">新製品情報</a>
     <a href="market_size.html">市場規模</a>
-    <a href="industry_map.html">業界マップ</a>
+    <a href="industry_map.html">日本業界マップ</a>
     <a href="global_map.html" class="active">海外業界マップ</a>
     <a href="oem_makers.html">OEMメーカー</a>
     <a href="food_culture.html">郷土料理</a>
@@ -488,7 +488,7 @@
     document.getElementById("fx-note").textContent = G.meta.fx_note;
     document.getElementById("sources").innerHTML = G.companies.map(function(c){
       return '<div><b>'+c.name_en+'</b>（'+c.fy+'）　<a href="'+c.source_url+'" target="_blank" rel="noopener">決算情報</a></div>';
-    }).join("") + '<div><b>日本のメーカー</b>：当サイト<a href="industry_map.html">業界マップ</a>（各社 決算短信・有価証券報告書）</div>';
+    }).join("") + '<div><b>日本のメーカー</b>：当サイト<a href="industry_map.html">日本業界マップ</a>（各社 決算短信・有価証券報告書）</div>';
   }
 
   function decorate(){

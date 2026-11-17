@@ -80,7 +80,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\update_cpi.ps1      
 
 - 英語版 `en/global_map.html`（2026-11-15追加）：`global_map_data.json` の `_en` 項目（`note_en`・`brands_en`・`country_en`・`margin_label_en`、分野の `label_en`、`meta.fx_note_en`）と `industry_map_data.json` を読み、米ドル換算で表示。日本企業の英語名は証券コードをキーにHTML内の `JP` 表で持つ。会社を追加・変更したら `_en` 項目と `JP` 表も更新する。
 
-### 6. 業界マップ（industry_map.html / industry_map_data.json）
+### 6. 日本業界マップ（industry_map.html / industry_map_data.json）
 - 主要食品メーカー20社の最新通期決算（連結の売上高・営業利益と前期値、億円未満切り捨て）を6分野で表示。**更新は年1回、6月ごろ**（3月期決算の有価証券報告書が出たあと。11月期・12月期の会社はその時点の最新期）。
 - 取得：`https://irbank.net/{証券コード}/results` をWebFetchで読むと直近期の売上高・営業利益が取れる（決算短信・EDINETの集計）。前期比が±15%を超える会社は、決算短信や報道で理由（買収など）を確認し、必要なら `growth_note` に書く。
 - 資本関係（`parent`・`relations`）は、子会社側の「株式情報（大株主の状況）」や有価証券報告書で確認できたものだけ。
